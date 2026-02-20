@@ -514,10 +514,10 @@
     </section>
 
     <!-- ===== PHOTO BREAK ===== -->
-    <div class="photo-break reveal">
+    <div class="photo-break reveal" style="background: var(--gray-800);">
       <img
-        src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1400&q=80&auto=format"
-        alt="Students working together at a fabrication workbench in a well-lit shop"
+        src="https://images.unsplash.com/photo-1565439085805-3e0e3b0e4720?w=1400&q=80&auto=format"
+        alt="Steel being worked in a fabrication shop with dramatic lighting"
         width="1400" height="788" loading="eager"
       >
       <div class="photo-break__caption">CVHS Metals &amp; Fabrication Program</div>
@@ -686,7 +686,7 @@
           </div>
           <div class="about__text">
             <h2>A decade of building programs from scratch.</h2>
-            <p><strong>Andy McAteer</strong> teaches Metals & Fabrication and Small Engines at Crescent Valley High School in Corvallis, Oregon. Before CVHS, he built CTE programs in Colorado and Lebanon, Oregon -- each time turning underutilized shop spaces into thriving programs with waitlists.</p>
+            <p><strong>Andy McAteer</strong> teaches Metals & Fabrication and Small Engines at Crescent Valley High School in Corvallis, Oregon. Before CVHS, he built CTE programs in Colorado and Lebanon, Oregon &mdash; each time turning underutilized shop spaces into thriving programs with waitlists.</p>
             <p>His approach is simple: <strong>give students tools that respect their intelligence.</strong> That means interactive digital curriculum instead of photocopied worksheets, searchable safety databases instead of laminated posters, and real enterprise projects instead of busywork.</p>
             <p>Every tool on this site was built in-house, for the specific students in the program, and is used in class every week.</p>
           </div>
@@ -716,6 +716,10 @@
         return;
       }
 
+      // Immediately reveal elements already in view (hero)
+      var heroReveal = document.querySelector('.hero .reveal');
+      if (heroReveal) heroReveal.classList.add('visible');
+
       // Scroll reveal via Intersection Observer
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -725,12 +729,14 @@
           }
         });
       }, {
-        threshold: 0.12,
-        rootMargin: '0px 0px -40px 0px'
+        threshold: 0.08,
+        rootMargin: '0px 0px -20px 0px'
       });
 
       document.querySelectorAll('.reveal').forEach(function(el) {
-        observer.observe(el);
+        if (!el.classList.contains('visible')) {
+          observer.observe(el);
+        }
       });
 
       // Subtle nav background on scroll
