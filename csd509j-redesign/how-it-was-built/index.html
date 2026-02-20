@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How This Site Was Built — Corvallis School District 509J</title>
+  <meta name="description" content="A complete school district website built by coordinated AI agents in a single session. Learn how agentic coding and parallel AI operations produced 10 pages, 1,650 lines of CSS, and 13 school profiles.">
+  <meta property="og:title" content="How This Site Was Built — Agentic Web Development">
+  <meta property="og:description" content="A complete school district website built by coordinated AI agents in a single session. Learn how agentic coding and parallel operations multiply the capacity of one person.">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="How This Site Was Built — Agentic Web Development">
+  <meta name="twitter:description" content="A complete school district website built by coordinated AI agents. One person, many agents, parallel execution.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mr-mcateer.github.io/csd509j-redesign/how-it-was-built/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    /* Page-specific styles for the editorial layout */
+    .phase-timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    .phase-timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--gray-200);
+    }
+    .section--dark .phase-timeline::before {
+      background: rgba(255,255,255,0.15);
+    }
+    .phase-block {
+      position: relative;
+      margin-bottom: 56px;
+    }
+    .phase-block:last-child {
+      margin-bottom: 0;
+    }
+    .phase-block::before {
+      content: '';
+      position: absolute;
+      left: -29px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 2px var(--blue);
+    }
+    .section--dark .phase-block::before {
+      border-color: var(--navy);
+    }
+    .phase-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+    .section--dark .phase-label {
+      color: var(--gold);
+    }
+    .phase-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .phase-desc {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .section--dark .phase-desc {
+      color: rgba(255,255,255,0.65);
+    }
+    .agent-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .agent-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-radius: var(--r-md);
+      font-size: 14px;
+      color: var(--gray-800);
+      transition: box-shadow var(--ease), transform var(--ease);
+    }
+    .agent-pill:hover {
+      box-shadow: var(--sh-md);
+      transform: translateY(-1px);
+    }
+    .section--dark .agent-pill {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.85);
+    }
+    .agent-pill__id {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--blue);
+      color: var(--white);
+      padding: 3px 8px;
+      border-radius: var(--r-sm);
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+    }
+    .agent-pill__task {
+      line-height: 1.3;
+    }
+    .prose {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .prose p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--gray-600);
+      margin-bottom: 24px;
+    }
+    .prose p:last-child {
+      margin-bottom: 0;
+    }
+    .section--dark .prose p {
+      color: rgba(255,255,255,0.72);
+    }
+    .prose-lead {
+      font-size: 1.2rem !important;
+      color: var(--gray-800) !important;
+      line-height: 1.65 !important;
+    }
+    .section--dark .prose-lead {
+      color: rgba(255,255,255,0.88) !important;
+    }
+    .pull-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      line-height: 1.45;
+      font-style: italic;
+      color: var(--gray-800);
+      text-align: center;
+      max-width: 660px;
+      margin: 48px auto;
+      padding: 32px 0;
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .section--dark .pull-quote {
+      color: rgba(255,255,255,0.85);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .section--gray .pull-quote {
+      border-color: var(--gray-200);
+    }
+    .credit-block {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .credit-block p {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .credit-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--gray-800);
+      margin-bottom: 4px;
+    }
+    .credit-role {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+    }
+    .recursive-note {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--gray-400);
+      text-align: center;
+      margin-top: 40px;
+      font-style: italic;
+    }
+    @media (max-width: 768px) {
+      .agent-grid {
+        grid-template-columns: 1fr;
+      }
+      .phase-timeline {
+        padding-left: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip Link -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" aria-hidden="true"></div>
+
+  <!-- Site Navigation -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a href="../" class="site-nav__logo">CSD 509J</a>
+      <ul class="site-nav__links">
+        <li><a href="../about/">About</a></li>
+        <li><a href="../schools/">Schools</a></li>
+        <li><a href="../families/">Families</a></li>
+        <li><a href="../community/">Community</a></li>
+        <li><a href="../staff/">Staff</a></li>
+        <li><a href="../departments/">Departments</a></li>
+      </ul>
+      <div class="site-nav__actions">
+        <button class="site-nav__search-btn" aria-label="Search" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="site-nav__hamburger" aria-label="Open menu" aria-expanded="false" type="button">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-overlay" aria-hidden="true"></div>
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav__close" aria-label="Close menu" type="button">&times;</button>
+    <div class="mobile-nav__section">
+      <a href="../" class="mobile-nav__link">Home</a>
+    </div>
+    <div class="mobile-nav__section">
+      <a href="../about/" class="mobile-nav__link">About</a>
+      <a href="../schools/" class="mobile-nav__link">Schools</a>
+      <a href="../families/" class="mobile-nav__link">Families</a>
+      <a href="../community/" class="mobile-nav__link">Community</a>
+      <a href="../staff/" class="mobile-nav__link">Staff</a>
+      <a href="../departments/" class="mobile-nav__link">Departments</a>
+    </div>
+    <div class="mobile-nav__section">
+      <a href="../news/" class="mobile-nav__link">News</a>
+      <a href="../contact/" class="mobile-nav__link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" role="dialog" aria-label="Site search" aria-hidden="true">
+    <div class="search-overlay__box">
+      <input type="text" class="search-overlay__input" placeholder="Search CSD 509J..." autocomplete="off">
+      <div class="search-overlay__results"></div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main">
+
+    <!-- ================================================================
+         1. PAGE HERO — section--dark for dramatic effect
+         ================================================================ -->
+    <section class="section section--dark" style="padding: 180px 0 100px; text-align: center;">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb" style="justify-content: center; display: flex;">
+          <a href="../" style="color: rgba(255,255,255,0.45);">Home</a>
+          <span class="breadcrumb__sep" aria-hidden="true" style="color: rgba(255,255,255,0.2);">/</span>
+          <span aria-current="page" style="color: rgba(255,255,255,0.65);">How It Was Built</span>
+        </nav>
+        <h1 class="reveal" style="font-family: var(--font-display); font-size: clamp(2.2rem, 5.5vw, 3.4rem); color: var(--white); margin-top: 16px; letter-spacing: -0.025em;">How This Site Was Built</h1>
+        <p class="reveal reveal-delay-1" style="font-size: clamp(1rem, 2vw, 1.15rem); color: rgba(255,255,255,0.6); max-width: 640px; margin: 20px auto 0; line-height: 1.6;">A complete school district website&thinsp;&mdash;&thinsp;10 pages, 1,650 lines of CSS, 13 school profiles&thinsp;&mdash;&thinsp;built by coordinated AI agents in a single session.</p>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         2. THE BIG IDEA
+         ================================================================ -->
+    <section class="section section--light" aria-label="The big idea">
+      <div class="container">
+        <div class="section__header reveal">
+          <h2>One Person. Many Agents. Parallel Execution.</h2>
+        </div>
+        <div class="prose reveal">
+          <p class="prose-lead">Imagine a construction site. A foreman does not lay every brick, pull every wire, and weld every joint alone. Instead, the foreman coordinates&thinsp;&mdash;&thinsp;dispatching electricians, plumbers, and framers to work simultaneously on independent tasks. The building goes up fast because the work happens in parallel.</p>
+          <p>Agentic coding applies the same principle to digital work. Instead of one person writing one file at a time, an AI orchestrator dispatches specialized agents to work simultaneously on independent tasks. One agent writes CSS. Another structures data. A third builds the contact page while a fourth builds the schools page. They share a common blueprint&thinsp;&mdash;&thinsp;the design system&thinsp;&mdash;&thinsp;but their work is independent. No agent waits for another.</p>
+          <p>This is not AI replacing a human. This is AI multiplying the capacity of a single person. One teacher. One evening. A complete website.</p>
+        </div>
+        <div class="callout reveal" style="max-width: 720px; margin: 40px auto 0;">
+          The bottleneck in digital work has always been sequential execution. One person, one file, one task at a time. Agentic coding breaks that constraint.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         3. THE NUMBERS — stats bar
+         ================================================================ -->
+    <section class="section section--dark" aria-label="Build statistics">
+      <div class="container--wide">
+        <div class="section__header reveal">
+          <h2>The Numbers</h2>
+          <p>One session, start to finish</p>
+        </div>
+        <div class="stats-bar stats-bar--dark reveal">
+          <div class="stat">
+            <div class="stat__number" data-counter="10">0</div>
+            <div class="stat__label">Pages Built</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number" data-counter="8">0</div>
+            <div class="stat__label">Parallel Agents</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number" data-counter="1650">0</div>
+            <div class="stat__label">Lines of CSS</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number" data-counter="13">0</div>
+            <div class="stat__label">School Profiles</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number">~45 min</div>
+            <div class="stat__label">Total Build Time</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number" data-prefix="$" data-counter="0">$0</div>
+            <div class="stat__label">Production Cost</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         4. HOW IT WORKS — 4-phase build
+         ================================================================ -->
+    <section class="section section--light" aria-label="How it works">
+      <div class="container">
+        <div class="section__header reveal">
+          <h2>The Architecture of Parallel Agent Work</h2>
+          <p>Four phases, from blank directory to deployed site</p>
+        </div>
+
+        <div class="phase-timeline">
+
+          <!-- Phase 1 -->
+          <div class="phase-block reveal">
+            <div class="phase-label">Phase 1</div>
+            <h3 class="phase-title">Foundation (Sequential)</h3>
+            <p class="phase-desc">Before anything can run in parallel, the shared infrastructure must exist. Four agents worked in sequence to lay the groundwork that every subsequent page would depend on.</p>
+            <div class="agent-grid">
+              <div class="agent-pill">
+                <span class="agent-pill__id">A1</span>
+                <span class="agent-pill__task">Design system&thinsp;&mdash;&thinsp;CSS tokens, 32 component classes</span>
+              </div>
+              <div class="agent-pill">
+                <span class="agent-pill__id">A2</span>
+                <span class="agent-pill__task">JavaScript modules&thinsp;&mdash;&thinsp;nav, search, animations</span>
+              </div>
+              <div class="agent-pill">
+                <span class="agent-pill__id">A3</span>
+                <span class="agent-pill__task">Data files&thinsp;&mdash;&thinsp;schools, departments, navigation</span>
+              </div>
+              <div class="agent-pill">
+                <span class="agent-pill__id">A4</span>
+                <span class="agent-pill__task">Deployment pipeline&thinsp;&mdash;&thinsp;GitHub Actions config</span>
+              </div>
+            </div>
+            <div class="callout reveal" style="margin-top: 20px;">
+              <strong>Why sequential?</strong>
+              These are dependencies. The CSS must exist before pages can use its classes. The data files must exist before pages can render school profiles. Everything else builds on this foundation.
+            </div>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="phase-block reveal">
+            <div class="phase-label">Phase 2</div>
+            <h3 class="phase-title">Pages (Parallel)</h3>
+            <p class="phase-desc">This is where the approach pays off. With the foundation in place, eight agents fire simultaneously. Each agent builds one page. Each page uses the same CSS, the same JavaScript, the same footer. No agent depends on another agent's output.</p>
+            <div class="agent-grid">
+              <div class="agent-pill">
+                <span class="agent-pill__id">B1</span>
+                <span class="agent-pill__task">About page</span>
+              </div>
+              <div class="agent-pill">
+                <span class="agent-pill__id">B2</span>
+                <span class="agent-pill__task">Schools page + filter logic</span>
+              </div>
+              <div class="agent-pill">
+                <span class="agent-pill__id">B3</span>
+                <span class="agent-pill__task">Families page + FAQ accordion</span>
+              </div>
+              <div class="agent-pill">
+                <span class="agent-pill__id">B4</span>
+                <span class="agent-pill__task">Community page</span>
+              </div>
+              <div class="agent-pill">
+                <span class="agent-pill__id">B5</span>
+                <span class="agent-pill__task">Staff page</span>
+              </div>
+              <div class="agent-pill">
+                <span class="agent-pill__id">B6</span>
+                <span class="agent-pill__task">Departments page + card grid</span>
+              </div>
+              <div class="agent-pill">
+                <span class="agent-pill__id">B7</span>
+                <span class="agent-pill__task">News page</span>
+              </div>
+              <div class="agent-pill">
+                <span class="agent-pill__id">B8</span>
+                <span class="agent-pill__task">Contact page + accordion directory</span>
+              </div>
+            </div>
+            <div class="callout callout--success reveal" style="margin-top: 20px;">
+              <strong>Why parallel?</strong>
+              Each page is independent. They share a common blueprint&thinsp;&mdash;&thinsp;same CSS, same JS, same nav structure&thinsp;&mdash;&thinsp;but no page reads from or writes to another page. This independence is what makes parallelism safe and correct.
+            </div>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="phase-block reveal">
+            <div class="phase-label">Phase 3</div>
+            <h3 class="phase-title">Quality Audit</h3>
+            <p class="phase-desc">A fresh agent&thinsp;&mdash;&thinsp;one that did not write any of the code&thinsp;&mdash;&thinsp;reads all 10 pages from scratch. It checks structural consistency, path correctness, semantic HTML validity, CSS class usage, and cross-page link integrity. Think of it as an independent code reviewer with no ego and no fatigue.</p>
+            <div class="agent-grid" style="grid-template-columns: 1fr;">
+              <div class="agent-pill">
+                <span class="agent-pill__id">C1</span>
+                <span class="agent-pill__task">Full audit: found and fixed 8 issues across 176KB of HTML</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase 4 -->
+          <div class="phase-block reveal">
+            <div class="phase-label">Phase 4</div>
+            <h3 class="phase-title">Images, SEO, Deploy</h3>
+            <p class="phase-desc">Final production hardening. All images self-hosted to eliminate external CDN dependencies. Schema.org structured data added for search engines. Site deployed via GitHub Pages through a GitHub Actions pipeline. Zero build tools. Zero runtime dependencies.</p>
+            <div class="agent-grid">
+              <div class="agent-pill">
+                <span class="agent-pill__id">D1</span>
+                <span class="agent-pill__task">Self-host 59 images, optimize paths</span>
+              </div>
+              <div class="agent-pill">
+                <span class="agent-pill__id">D2</span>
+                <span class="agent-pill__task">Schema.org + meta tags</span>
+              </div>
+              <div class="agent-pill">
+                <span class="agent-pill__id">D3</span>
+                <span class="agent-pill__task">GitHub Pages deployment via Actions</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /phase-timeline -->
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         5. WHY THIS MATTERS
+         ================================================================ -->
+    <section class="section section--gray" aria-label="Why this matters">
+      <div class="container--wide">
+        <div class="section__header reveal">
+          <h2>The Implications for Digital Work</h2>
+        </div>
+
+        <div class="pull-quote reveal">
+          &ldquo;The question is no longer whether one person can do the work of a team. The question is what that person chooses to build.&rdquo;
+        </div>
+
+        <div class="grid--3">
+          <div class="card reveal">
+            <div class="card__body">
+              <p class="card__tag">Capacity</p>
+              <h3 class="card__title">Capacity Multiplication</h3>
+              <p class="card__desc">One person can now do the work of a small team&thinsp;&mdash;&thinsp;not by working faster, but by orchestrating parallel operations. A single evening produces what traditionally takes a week. The human contribution shifts from execution to judgment: knowing what to build, what quality looks like, and when the output meets the standard.</p>
+            </div>
+          </div>
+          <div class="card reveal reveal-delay-1">
+            <div class="card__body">
+              <p class="card__tag">Quality</p>
+              <h3 class="card__title">Quality Through Specialization</h3>
+              <p class="card__desc">Each agent focuses on one task. The CSS agent only thinks about design systems. The schools page agent only thinks about filter logic and school data. Specialization produces better output than context-switching. A human juggling nine files introduces inconsistencies. Nine agents, each with a single focus, do not.</p>
+            </div>
+          </div>
+          <div class="card reveal reveal-delay-2">
+            <div class="card__body">
+              <p class="card__tag">Access</p>
+              <h3 class="card__title">Accessible to Non-Engineers</h3>
+              <p class="card__desc">The orchestrator&thinsp;&mdash;&thinsp;the human&thinsp;&mdash;&thinsp;does not need to write CSS or JavaScript by hand. They need to understand what good output looks like and how to direct agents toward it. This is project management and editorial judgment, not programming. A teacher can build what previously required a developer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         6. THE BROADER VISION
+         ================================================================ -->
+    <section class="section section--dark" aria-label="The broader vision">
+      <div class="container">
+        <div class="section__header reveal">
+          <h2>Beyond Websites</h2>
+          <p>The same pattern applies to any digital information work</p>
+        </div>
+        <div class="prose reveal">
+          <p class="prose-lead">The plan-parallelize-audit pattern that built this website is not specific to web development. It is a general framework for any work that can be decomposed into independent tasks.</p>
+          <p>Curriculum development: write 16 lesson plans simultaneously, each agent specializing in a single topic, then audit them for consistency and pedagogical alignment. Data analysis: query multiple datasets in parallel, each agent focused on one question, then synthesize the findings. Documentation: generate and cross-reference docs for an entire system in one pass. Communication: draft personalized messages to dozens of stakeholders, each tailored to its audience.</p>
+          <p>The constraint was never computing power. It was the serial nature of human attention. One person can only hold one file, one conversation, one analysis in their head at a time. Agentic orchestration removes that bottleneck. The human provides direction and quality standards. The agents provide throughput.</p>
+        </div>
+
+        <div class="callout reveal" style="max-width: 720px; margin: 48px auto 0; border-color: var(--gold); background: rgba(252,182,68,0.08);">
+          Every school district has one person who could do twice as much&thinsp;&mdash;&thinsp;if the tools let them work in parallel. This is what that looks like.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         7. TECHNICAL DETAILS — accordion
+         ================================================================ -->
+    <section class="section section--light" aria-label="Technical details">
+      <div class="container">
+        <div class="section__header reveal">
+          <h2>Under the Hood</h2>
+          <p>Technical details for those who want to look deeper</p>
+        </div>
+
+        <div class="accordion reveal" style="max-width: 780px; margin: 0 auto;">
+          <details>
+            <summary>Design System</summary>
+            <div class="accordion__content">
+              <p>Built on CSS custom properties with an 8pt spacing grid. Typography uses three font stacks: Playfair Display for display headings, Inter for body text, and JetBrains Mono for data, labels, and code. Shadows follow an Apple-inspired elevation system (xs through xl). The frosted-glass navigation uses <code>backdrop-filter: blur(20px) saturate(180%)</code> for the characteristic translucency effect. Responsive breakpoints at 1024px, 768px, and 480px. 32 reusable component classes&thinsp;&mdash;&thinsp;cards, stats bars, callouts, accordions, filter tabs, buttons, grids&thinsp;&mdash;&thinsp;ensure visual consistency without duplicating styles across pages.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Data Architecture</summary>
+            <div class="accordion__content">
+              <p>School data is stored in a JSON structure with consolidation-resilient status fields, allowing schools to be marked as closing, merging, or transitioning without removing their records from the site. The department directory is similarly data-driven: a single JSON file powers the departments page card grid, the contact page accordion, and the search index. The navigation structure is defined once and rendered identically across all 10 pages. This single-source-of-truth approach means updating a school name or phone number propagates everywhere automatically.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Accessibility</summary>
+            <div class="accordion__content">
+              <p>The site targets WCAG 2.1 AA compliance. Implementations include: skip-to-main-content link on every page, ARIA labels on all interactive regions and landmarks, full keyboard navigation for accordions, search overlay (Cmd/K to open, Escape to close), and mobile navigation drawer. A <code>prefers-reduced-motion</code> media query disables all animations and transitions for users who request it. All text-to-background combinations maintain a minimum 4.5:1 contrast ratio. A print stylesheet strips navigation and chrome, sets readable fonts, and appends URLs to printed links.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Search</summary>
+            <div class="accordion__content">
+              <p>Client-side search implemented as a Cmd/K (or Ctrl+K on Windows) overlay. The search index contains 35 entries spanning all pages, departments, schools, and key resources. Input is debounced at 120ms to prevent excessive re-rendering during fast typing. Matching is case-insensitive substring search across title and description fields, with matched terms highlighted using <code>&lt;mark&gt;</code> elements. Results are categorized by type (page, school, department) with monospaced category labels. The entire search system is a single vanilla JS file with zero dependencies.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Deployment</summary>
+            <div class="accordion__content">
+              <p>Deployed to GitHub Pages via a GitHub Actions workflow triggered on push to the main branch. The site is entirely static&thinsp;&mdash;&thinsp;plain HTML, CSS, and vanilla JavaScript. No build step, no bundler, no package.json, no node_modules. This eliminates an entire category of maintenance burden: there are no dependencies to update, no security patches to apply, no build tools to break. The site loads in under 1 second on a median mobile connection because there is nothing to compile, transpile, or hydrate. It is just files served directly from a CDN.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================================
+         8. CREDITS
+         ================================================================ -->
+    <section class="section section--gray" aria-label="Credits">
+      <div class="container">
+        <div class="credit-block reveal">
+          <p class="credit-name">Andy McAteer</p>
+          <p class="credit-role">CTE Instructor &middot; Crescent Valley High School &middot; Corvallis, OR</p>
+          <p style="margin-top: 24px;">Designed and orchestrated with <a href="https://claude.ai" target="_blank" rel="noopener">Claude Code</a> by Anthropic.</p>
+          <p style="margin-top: 8px;"><a href="https://mr-mcateer.github.io" target="_blank" rel="noopener">mr-mcateer.github.io</a></p>
+        </div>
+
+        <p class="recursive-note reveal">This page is itself part of the site it describes&thinsp;&mdash;&thinsp;recursive proof that the tools work.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container--wide">
+      <div class="footer__grid">
+        <div class="footer__col">
+          <h3>About</h3>
+          <p>Corvallis School District 509J<br>1555 SW 35th Street<br>Corvallis, OR 97333</p>
+          <p style="margin-top: 12px;"><a href="tel:+15417575811">(541) 757-5811</a></p>
+        </div>
+        <div class="footer__col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="../about/">About the District</a></li>
+            <li><a href="../schools/">Our Schools</a></li>
+            <li><a href="../families/">For Families</a></li>
+            <li><a href="../community/">Community</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3>Schools</h3>
+          <ul>
+            <li><a href="../schools/#elementary">Elementary Schools</a></li>
+            <li><a href="../schools/#middle">Middle Schools</a></li>
+            <li><a href="../schools/#high">High Schools</a></li>
+            <li><a href="../schools/#charter">Charter &amp; Alternative</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="../contact/">Contact Directory</a></li>
+            <li><a href="../departments/">Departments</a></li>
+            <li><a href="../staff/">Staff Resources</a></li>
+            <li><a href="../news/">News &amp; Updates</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Corvallis School District 509J. All rights reserved.</p>
+        <p><a href="../how-it-was-built/">How This Site Was Built</a> &middot; <a href="https://www.csd509j.net" target="_blank" rel="noopener">csd509j.net</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/search.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
