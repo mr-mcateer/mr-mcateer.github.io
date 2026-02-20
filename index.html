@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andy McAteer — CTE Program, Crescent Valley High School</title>
-  <meta name="description" content="Digital tools and curriculum for Career & Technical Education at Crescent Valley High School, Corvallis, Oregon.">
+  <title>Andy McAteer — CTE Instructor & Builder, Crescent Valley High School</title>
+  <meta name="description" content="Portfolio of digital tools, curriculum, and agentic web development by Andy McAteer — CTE instructor at Crescent Valley High School, Corvallis, Oregon.">
   <meta name="theme-color" content="#1a1a1a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -335,6 +335,11 @@
       width: 15px;
       height: 15px;
     }
+    .project-card__links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
     /* ===== ALSO BUILT ===== */
     .also-built {
@@ -504,8 +509,8 @@
     <section class="hero" id="top">
       <div class="container reveal">
         <p class="hero__eyebrow">Crescent Valley High School &middot; Corvallis, Oregon</p>
-        <h1>Building the shop program students deserve.</h1>
-        <p class="hero__sub">Digital curriculum, safety systems, and student-facing tools for a CTE program that runs like it was designed this decade.</p>
+        <h1>Building what a modern shop program looks like.</h1>
+        <p class="hero__sub">Digital curriculum, safety systems, and full-scale web projects — built by a CTE instructor using coordinated AI agents and zero frameworks.</p>
         <a href="#projects" class="hero__cta">
           See what we've built
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
@@ -529,7 +534,7 @@
         <div class="belief__text">
           <h2>Shop class shouldn't feel like 1997.</h2>
           <p>Students in our program don't dig through filing cabinets for safety manuals or wait for a handout to learn how insurance works. They open a browser. Every tool has a page. Every lesson has a home. Every procedure is searchable, current, and built for the way they already learn.</p>
-          <p>These aren't templates. They're purpose-built tools, designed by the instructor, for the students in the room.</p>
+          <p>These aren't templates. They're purpose-built tools — and increasingly, they're built by one person directing teams of AI agents. The same methods that produce classroom curriculum can produce an entire district website in a single session.</p>
         </div>
       </div>
     </section>
@@ -539,12 +544,52 @@
       <div class="container--wide">
 
         <div class="projects__header reveal">
-          <h2>What students actually use.</h2>
-          <p>Every project below is live, in production, and accessed by students daily.</p>
+          <h2>What I build.</h2>
+          <p>Production tools, curriculum, and full-scale web projects &mdash; all live, all shipped.</p>
+        </div>
+
+        <!-- PROJECT 0: CSD 509J District Website -->
+        <div class="project-card reveal">
+          <div class="project-card__image">
+            <img
+              src="img/csd509j-redesign.jpg"
+              alt="Modern school district website built by parallel AI agents"
+              width="800" height="600" loading="lazy"
+            >
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__tag">Agentic Web Development</span>
+            <h3 class="project-card__title">CSD 509J District Website</h3>
+            <p class="project-card__desc">One person dispatched 8 specialized AI agents in parallel to produce a complete school district website in a single session. Design system, data architecture, 10 pages, 13 school profiles, WCAG AA compliance &mdash; all from coordinated agents with zero framework dependencies. A proof of concept for what one builder can ship when the tools multiply.</p>
+            <div class="project-card__stats">
+              <div class="stat">
+                <div class="stat__number">10</div>
+                <div class="stat__label">Pages</div>
+              </div>
+              <div class="stat">
+                <div class="stat__number">8</div>
+                <div class="stat__label">Parallel Agents</div>
+              </div>
+              <div class="stat">
+                <div class="stat__number">1,650</div>
+                <div class="stat__label">Lines of CSS</div>
+              </div>
+            </div>
+            <div class="project-card__links">
+              <a href="csd509j-redesign/" class="project-card__link">
+                Explore the site
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+              <a href="csd509j-redesign/how-it-was-built/" class="project-card__link">
+                How it was built
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
+          </div>
         </div>
 
         <!-- PROJECT 1: Consumer Education -->
-        <div class="project-card reveal">
+        <div class="project-card project-card--reverse reveal">
           <div class="project-card__image">
             <img
               src="img/consumer-ed.jpg"
@@ -578,7 +623,7 @@
         </div>
 
         <!-- PROJECT 2: Safety Hub -->
-        <div class="project-card project-card--reverse reveal">
+        <div class="project-card reveal">
           <div class="project-card__image">
             <img
               src="img/engineering-hub.jpg"
@@ -612,7 +657,7 @@
         </div>
 
         <!-- PROJECT 3: Authentic Work -->
-        <div class="project-card reveal">
+        <div class="project-card project-card--reverse reveal">
           <div class="project-card__image">
             <img
               src="img/plasma-sparks.jpg"
