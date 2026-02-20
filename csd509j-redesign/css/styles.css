@@ -589,7 +589,9 @@ input, textarea, select {
 .hero {
   padding: 140px 0 80px;
   text-align: center;
-  background: var(--white);
+  background: linear-gradient(rgba(0,58,107,0.7), rgba(0,58,107,0.7)),
+              url('../images/schools/school-building.jpg') center/cover no-repeat;
+  color: var(--white);
 }
 
 .hero__eyebrow {
@@ -598,7 +600,7 @@ input, textarea, select {
   font-weight: 500;
   text-transform: none;
   letter-spacing: normal;
-  color: var(--gray-600);
+  color: rgba(255,255,255,0.7);
   margin-bottom: 16px;
 }
 
@@ -607,14 +609,14 @@ input, textarea, select {
   font-weight: 700;
   font-size: clamp(2.4rem, 5vw, 3.4rem);
   letter-spacing: -0.02em;
-  color: var(--gray-800);
+  color: var(--white);
   max-width: 780px;
   margin: 0 auto;
 }
 
 .hero__sub {
   font-size: clamp(1rem, 2vw, 1.15rem);
-  color: var(--gray-600);
+  color: rgba(255,255,255,0.85);
   max-width: 580px;
   margin: 16px auto 0;
   line-height: 1.6;
@@ -626,7 +628,8 @@ input, textarea, select {
   gap: 6px;
   font-size: 15px;
   font-weight: 500;
-  color: var(--blue);
+  color: var(--white);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
   margin-top: 28px;
   text-decoration: none;
   transition: gap var(--ease), color var(--ease);
