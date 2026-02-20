@@ -186,31 +186,6 @@
   }
 
   /* ============================================================
-     Sticky Nav Scroll Effect
+     Sticky Nav — no opacity change needed (solid white bg now)
      ============================================================ */
-  var siteNav = document.querySelector('.site-nav');
-
-  if (siteNav) {
-    var navTicking = false;
-
-    function updateNavBackground() {
-      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollY > 80) {
-        siteNav.style.background = 'rgba(255,255,255,0.95)';
-      } else {
-        siteNav.style.background = 'rgba(255,255,255,0.82)';
-      }
-      navTicking = false;
-    }
-
-    window.addEventListener('scroll', function () {
-      if (!navTicking) {
-        requestAnimationFrame(updateNavBackground);
-        navTicking = true;
-      }
-    }, { passive: true });
-
-    /* Set initial state */
-    updateNavBackground();
-  }
 })();

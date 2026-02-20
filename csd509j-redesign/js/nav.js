@@ -165,29 +165,6 @@
   }
 
   /* ============================================================
-     Sticky nav opacity on scroll
+     Sticky nav — no opacity change needed (solid white bg now)
      ============================================================ */
-  if (siteNav) {
-    var ticking = false;
-
-    function updateNavOpacity() {
-      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollY > 80) {
-        siteNav.style.background = 'rgba(255,255,255,0.95)';
-      } else {
-        siteNav.style.background = 'rgba(255,255,255,0.82)';
-      }
-      ticking = false;
-    }
-
-    window.addEventListener('scroll', function () {
-      if (!ticking) {
-        requestAnimationFrame(updateNavOpacity);
-        ticking = true;
-      }
-    }, { passive: true });
-
-    /* Set initial state */
-    updateNavOpacity();
-  }
 })();
