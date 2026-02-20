@@ -9,11 +9,11 @@
 
 :root {
   /* Colors */
-  --navy: #003366;
-  --navy-soft: #004080;
-  --blue: #005A9C;
-  --blue-hover: #00478A;
-  --blue-light: rgba(0,90,156,0.06);
+  --navy: #003a6b;
+  --navy-soft: #004a8d;
+  --blue: #004a8d;
+  --blue-hover: #003d7a;
+  --blue-light: rgba(0,74,141,0.06);
   --gold: #FCB644;
   --cardinal: #C41E3A;
   --white: #FFFFFF;
@@ -345,6 +345,9 @@ input, textarea, select {
 }
 
 .site-nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-body);
   font-weight: 700;
   font-size: 18px;
@@ -356,6 +359,56 @@ input, textarea, select {
 .site-nav__logo:hover {
   text-decoration: none;
   color: var(--navy);
+}
+
+.site-nav__logo-img {
+  height: 32px;
+  width: auto;
+}
+
+/* Footer logo */
+.footer__logo {
+  height: 28px;
+  width: auto;
+  margin-bottom: 16px;
+  opacity: 0.85;
+}
+
+/* Footer social links */
+.footer__social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.footer__social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: rgba(255,255,255,0.5);
+  transition: color var(--ease);
+}
+
+.footer__social a:hover {
+  color: var(--white);
+}
+
+.footer__social svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Footer vision statement */
+.footer__vision {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  font-style: italic;
+  line-height: 1.6;
+  margin-top: 12px;
+  max-width: 260px;
 }
 
 .site-nav__links {
