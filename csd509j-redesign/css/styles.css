@@ -595,7 +595,7 @@ input, textarea, select {
   padding: 140px 0 80px;
   text-align: center;
   background: linear-gradient(rgba(0,58,107,0.7), rgba(0,58,107,0.7)),
-              url('../images/heroes/community.jpg') center/cover no-repeat;
+              url('../images/hero-community.jpg') center/cover no-repeat;
   color: var(--white);
 }
 
