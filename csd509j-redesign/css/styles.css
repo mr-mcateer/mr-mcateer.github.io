@@ -560,10 +560,15 @@ input, textarea, select {
    -------------------------------------------------------------------------- */
 
 .breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
   padding: 12px 0;
   font-size: 13px;
   font-family: var(--font-mono);
   color: rgba(255,255,255,0.6);
+  list-style: none;
 }
 
 .breadcrumb a {
