@@ -560,25 +560,30 @@ input, textarea, select {
    -------------------------------------------------------------------------- */
 
 .breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
   padding: 12px 0;
   font-size: 13px;
   font-family: var(--font-mono);
-  color: var(--gray-400);
+  color: rgba(255,255,255,0.6);
+  list-style: none;
 }
 
 .breadcrumb a {
-  color: var(--gray-400);
+  color: rgba(255,255,255,0.6);
   text-decoration: none;
   transition: color var(--ease);
 }
 
 .breadcrumb a:hover {
-  color: var(--blue);
+  color: var(--white);
 }
 
 .breadcrumb__sep {
   margin: 0 8px;
-  color: var(--gray-200);
+  color: rgba(255,255,255,0.35);
 }
 
 
@@ -589,8 +594,9 @@ input, textarea, select {
 .hero {
   padding: 140px 0 80px;
   text-align: center;
-  background: linear-gradient(rgba(0,58,107,0.7), rgba(0,58,107,0.7)),
-              url('../images/schools/school-building.jpg') center/cover no-repeat;
+  background-color: var(--navy);
+  background: linear-gradient(rgba(0,58,107,0.65), rgba(0,58,107,0.65)),
+              url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1920&q=80') center/cover no-repeat;
   color: var(--white);
 }
 
@@ -657,8 +663,10 @@ input, textarea, select {
 
 .page-hero {
   padding: 120px 0 48px;
-  background: #EBF3FA;
-  color: var(--gray-800);
+  background-color: var(--navy);
+  background: linear-gradient(rgba(0,58,107,0.78), rgba(0,58,107,0.78)),
+              url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80') center/cover no-repeat;
+  color: var(--white);
   text-align: left;
 }
 
@@ -666,13 +674,13 @@ input, textarea, select {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(1.8rem, 4vw, 2.6rem);
-  color: var(--navy);
+  color: var(--white);
   margin-bottom: 8px;
 }
 
 .page-hero__sub {
   font-size: 1.05rem;
-  color: var(--gray-600);
+  color: rgba(255,255,255,0.8);
   max-width: 560px;
   line-height: 1.6;
 }
@@ -806,17 +814,20 @@ input, textarea, select {
   border: 1px solid var(--gray-100);
   border-radius: var(--r-md);
   overflow: hidden;
-  transition: border-color var(--ease);
+  transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
 }
 
 .card:hover {
-  border-color: var(--gray-400);
+  border-color: var(--gray-200);
+  transform: translateY(-3px);
+  box-shadow: var(--sh-md);
 }
 
 .card__image {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  background-color: var(--gray-50);
 }
 
 .card__body {
@@ -975,8 +986,17 @@ input, textarea, select {
   background: var(--white);
 }
 
+.stats-bar--dark {
+  background: transparent;
+  border-color: rgba(255,255,255,0.12);
+}
+
+.stats-bar--dark .stat__number {
+  color: var(--gold);
+}
+
 .stats-bar--dark .stat__label {
-  color: var(--gray-600);
+  color: rgba(255,255,255,0.6);
 }
 
 .stat__number {
@@ -1268,25 +1288,26 @@ input, textarea, select {
    -------------------------------------------------------------------------- */
 
 .reveal {
-  opacity: 1;
-  transform: none;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: none;
+  transform: translateY(0);
 }
 
 .reveal-delay-1 {
-  transition-delay: 0s;
+  transition-delay: 0.1s;
 }
 
 .reveal-delay-2 {
-  transition-delay: 0s;
+  transition-delay: 0.2s;
 }
 
 .reveal-delay-3 {
-  transition-delay: 0s;
+  transition-delay: 0.3s;
 }
 
 
@@ -1697,7 +1718,27 @@ input, textarea, select {
 
 
 /* ==========================================================================
-   31. Reduced Motion
+   31. Focus & Accessibility
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+.skip-link:focus {
+  outline: 3px solid var(--gold);
+  outline-offset: 0;
+}
+
+
+/* ==========================================================================
+   32. Reduced Motion
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
