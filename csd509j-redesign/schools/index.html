@@ -122,7 +122,7 @@
         <div class="grid--auto" id="elementary" role="tabpanel">
 
           <!-- Adams Elementary -->
-          <article class="card school-card reveal" data-type="elementary">
+          <article class="card school-card reveal" data-type="elementary" id="adams">
             <div class="card__body">
               <span class="school-card__type">Elementary</span>
               <h3 class="card__title">Adams Elementary</h3>
@@ -138,7 +138,7 @@
           </article>
 
           <!-- Garfield Elementary -->
-          <article class="card school-card reveal reveal-delay-1" data-type="elementary">
+          <article class="card school-card reveal reveal-delay-1" data-type="elementary" id="garfield">
             <div class="card__body">
               <span class="school-card__type">Elementary</span>
               <h3 class="card__title">Garfield Elementary</h3>
@@ -154,7 +154,7 @@
           </article>
 
           <!-- Hoover Elementary -->
-          <article class="card school-card reveal reveal-delay-2" data-type="elementary">
+          <article class="card school-card reveal reveal-delay-2" data-type="elementary" id="hoover">
             <div class="card__body">
               <span class="school-card__type">Elementary</span>
               <h3 class="card__title">Hoover Elementary</h3>
@@ -169,7 +169,7 @@
           </article>
 
           <!-- Jefferson Elementary -->
-          <article class="card school-card reveal" data-type="elementary">
+          <article class="card school-card reveal" data-type="elementary" id="jefferson">
             <div class="card__body">
               <span class="school-card__type">Elementary</span>
               <h3 class="card__title">Jefferson Elementary</h3>
@@ -184,7 +184,7 @@
           </article>
 
           <!-- Lincoln Elementary -->
-          <article class="card school-card reveal reveal-delay-1" data-type="elementary">
+          <article class="card school-card reveal reveal-delay-1" data-type="elementary" id="lincoln">
             <div class="card__body">
               <span class="school-card__type">Elementary</span>
               <h3 class="card__title">Lincoln Elementary</h3>
@@ -200,7 +200,7 @@
           </article>
 
           <!-- Wilson Elementary -->
-          <article class="card school-card reveal reveal-delay-2" data-type="elementary">
+          <article class="card school-card reveal reveal-delay-2" data-type="elementary" id="wilson">
             <div class="card__body">
               <span class="school-card__type">Elementary</span>
               <h3 class="card__title">Wilson Elementary</h3>
@@ -215,7 +215,7 @@
           </article>
 
           <!-- Cheldelin Middle School -->
-          <article class="card school-card reveal" data-type="middle" id="middle">
+          <article class="card school-card reveal" data-type="middle" id="cheldelin">
             <div class="card__body">
               <span class="school-card__type">Middle</span>
               <h3 class="card__title">Cheldelin Middle School</h3>
@@ -236,7 +236,7 @@
           </div>
 
           <!-- Linus Pauling Middle School -->
-          <article class="card school-card reveal reveal-delay-1" data-type="middle">
+          <article class="card school-card reveal reveal-delay-1" data-type="middle" id="linus-pauling">
             <div class="card__body">
               <span class="school-card__type">Middle</span>
               <h3 class="card__title">Linus Pauling Middle School</h3>
@@ -251,7 +251,7 @@
           </article>
 
           <!-- Corvallis High School -->
-          <article class="card school-card reveal" data-type="high" id="high">
+          <article class="card school-card reveal" data-type="high" id="corvallis-high">
             <div class="card__body">
               <span class="school-card__type">High School</span>
               <h3 class="card__title">Corvallis High School</h3>
@@ -267,7 +267,7 @@
           </article>
 
           <!-- Crescent Valley High School -->
-          <article class="card school-card reveal reveal-delay-1" data-type="high">
+          <article class="card school-card reveal reveal-delay-1" data-type="high" id="crescent-valley">
             <div class="card__body">
               <span class="school-card__type">High School</span>
               <h3 class="card__title">Crescent Valley High School</h3>
@@ -283,7 +283,7 @@
           </article>
 
           <!-- Bridges (Alternative Programs) -->
-          <article class="card school-card reveal reveal-delay-2" data-type="high">
+          <article class="card school-card reveal reveal-delay-2" data-type="high" id="bridges">
             <div class="card__body">
               <span class="school-card__type">High School</span>
               <h3 class="card__title">Bridges (Alternative Programs)</h3>
@@ -298,8 +298,24 @@
             </div>
           </article>
 
+          <!-- Letitia Carson Elementary -->
+          <article class="card school-card reveal reveal-delay-2" data-type="elementary" id="letitia-carson">
+            <div class="card__body">
+              <span class="school-card__type">Elementary</span>
+              <h3 class="card__title">Letitia Carson Elementary</h3>
+              <p class="school-card__grades">Grades K-5</p>
+              <p class="card__desc">3555 NW Walnut Blvd, Corvallis, OR 97330</p>
+              <p class="card__meta">(541) 757-5811</p>
+              <p class="card__desc" style="margin-top: 8px; font-size: 13px; color: var(--danger);">Closing after 2025-26 per Board consolidation vote</p>
+              <a href="https://www.csd509j.net" class="school-card__link">
+                Visit school website
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
           <!-- College Hill K-8 -->
-          <article class="card school-card reveal" data-type="k8" id="charter">
+          <article class="card school-card reveal" data-type="k8" id="college-hill">
             <div class="card__body">
               <span class="school-card__type">K-8</span>
               <h3 class="card__title">College Hill (K-8)</h3>
@@ -315,7 +331,7 @@
           </article>
 
           <!-- Muddy Creek Charter School -->
-          <article class="card school-card reveal reveal-delay-1" data-type="charter">
+          <article class="card school-card reveal reveal-delay-1" data-type="charter" id="muddy-creek">
             <div class="card__body">
               <span class="school-card__type">Charter</span>
               <h3 class="card__title">Muddy Creek Charter School</h3>

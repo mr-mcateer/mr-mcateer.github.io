@@ -20,8 +20,8 @@
       revealElements[r].classList.add('visible');
     }
   } else {
-    /* Immediately reveal hero elements on page load */
-    var heroReveals = document.querySelectorAll('.hero .reveal, .hero.reveal');
+    /* Immediately reveal hero elements on page load (homepage + inner pages) */
+    var heroReveals = document.querySelectorAll('.hero .reveal, .hero.reveal, .page-hero .reveal, .page-hero.reveal');
     for (var h = 0; h < heroReveals.length; h++) {
       heroReveals[h].classList.add('visible');
     }
