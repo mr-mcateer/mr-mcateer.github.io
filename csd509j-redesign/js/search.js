@@ -2,11 +2,18 @@
    search.js — Cmd/Ctrl+K search overlay with client-side
                 fuzzy matching against a static index
    CSD 509J School District
+   ============================================================
+   ✎ CUSTOMIZATION: Update the SEARCH_INDEX array below to match
+   your district's schools, departments, and pages. Each entry
+   needs three fields:
+     - name:    what the user types to find it
+     - section: category label shown in search results
+     - href:    relative URL to the page (from site root)
    ============================================================ */
 (function () {
   'use strict';
 
-  /* ---- Search index ---- */
+  /* ---- Search index — ✎ Edit these entries for your district ---- */
   var SEARCH_INDEX = [
     { name: 'About', section: 'District', href: 'about/' },
     { name: 'Leadership', section: 'District', href: 'about/#leadership' },

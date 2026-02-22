@@ -1,6 +1,11 @@
 /* ==========================================================================
    CSD 509J — Corvallis School District Design System
    Complete CSS for district website redesign
+
+   CUSTOMIZATION: To rebrand this site for your district, you only need to
+   change the 3 brand colors below (--navy, --blue, --gold). Everything else
+   — buttons, links, backgrounds, accents — inherits from these variables.
+   See CUSTOMIZATION-GUIDE.md for full instructions.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -8,14 +13,14 @@
    -------------------------------------------------------------------------- */
 
 :root {
-  /* Colors */
-  --navy: #003a6b;
+  /* ✎ BRAND COLORS — Change these 3 values to match your district */
+  --navy: #003a6b;          /* Darkest color — nav bar, footer, dark sections */
   --navy-soft: #004a8d;
-  --blue: #004a8d;
-  --blue-hover: #003d7a;
+  --blue: #004a8d;          /* Primary color — links, buttons, active states */
+  --blue-hover: #003d7a;    /* Slightly darker than --blue for hover effects */
   --blue-light: rgba(0,74,141,0.06);
-  --gold: #FCB644;
-  --cardinal: #C41E3A;
+  --gold: #FCB644;          /* Accent color — highlights, special callouts */
+  --cardinal: #C41E3A;      /* (unused by default — available for alerts) */
   --white: #FFFFFF;
   --off-white: #FAFAFA;
   --gray-50: #F5F5F7;
