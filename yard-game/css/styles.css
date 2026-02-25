@@ -59,6 +59,18 @@
   --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 
+  /* Type Scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --h3-lg: 1.5rem;
+  --h3: 1.25rem;
+  --h3-sm: 1.1rem;
+
   /* Spacing (8pt grid) */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -656,6 +668,8 @@ input, textarea, select { font-family: inherit; }
   box-shadow: var(--sh-md);
 }
 
+a.card { text-decoration: none; color: inherit; }
+
 .card__image {
   width: 100%;
   height: 220px;
@@ -674,6 +688,8 @@ input, textarea, select { font-family: inherit; }
   color: var(--primary);
   margin-bottom: 8px;
 }
+.card__tag--amber { color: var(--accent); }
+.card__tag--purple { color: var(--accent-alt); }
 
 .card__title {
   font-family: var(--font-display);
@@ -1904,4 +1920,440 @@ input, textarea, select { font-family: inherit; }
   .research-layout { grid-template-columns: 1fr; }
   h1, h2, h3, h4, h5, h6, .card__title, .pricing-card__name { color: #000; }
   p, li, td, .card__desc, .testimonial-card__text { color: #333; }
+}
+
+
+/* ==========================================================================
+   39. Selection Styling
+   ========================================================================== */
+
+::selection { background: rgba(0, 212, 255, 0.3); color: var(--white); }
+::-moz-selection { background: rgba(0, 212, 255, 0.3); color: var(--white); }
+
+
+/* ==========================================================================
+   40. Page Fade-In
+   ========================================================================== */
+
+@keyframes page-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+body { animation: page-enter 0.4s ease both; }
+
+
+/* ==========================================================================
+   41. Section Padding Variants
+   ========================================================================== */
+
+.section--lg { padding: 120px 0; }
+.section--sm { padding: 56px 0; }
+
+
+/* ==========================================================================
+   42. Step Connecting Line
+   ========================================================================== */
+
+.steps {
+  position: relative;
+}
+
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--accent-alt));
+  z-index: 0;
+  opacity: 0.4;
+}
+
+.step { position: relative; z-index: 1; }
+
+.step__number { position: relative; z-index: 2; }
+
+
+/* ==========================================================================
+   43. Multi-Color Step Numbers
+   ========================================================================== */
+
+.step--amber .step__number {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-light);
+  box-shadow: var(--accent-glow);
+}
+
+.step--purple .step__number {
+  color: var(--accent-alt);
+  border-color: var(--accent-alt);
+  background: var(--accent-alt-light);
+  box-shadow: var(--accent-alt-glow);
+}
+
+
+/* ==========================================================================
+   44. Differentiated Hover States
+   ========================================================================== */
+
+.lifestyle-card { transition: border-color 0.4s ease; }
+
+.lifestyle-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--primary-glow);
+}
+
+.pricing-card--featured:hover {
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.35), var(--sh-lg);
+}
+
+.btn--primary:hover {
+  box-shadow: 0 0 32px rgba(0, 212, 255, 0.4);
+}
+
+
+/* ==========================================================================
+   45. Smooth Accordion Animation
+   ========================================================================== */
+
+.accordion details .accordion__content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.accordion details[open] .accordion__content {
+  grid-template-rows: 1fr;
+}
+
+.accordion__content > * {
+  overflow: hidden;
+}
+
+
+/* ==========================================================================
+   46. Cart Item Styles
+   ========================================================================== */
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart-item__name {
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--text);
+}
+
+.cart-item__price {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.cart-item__remove {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  color: var(--text-dim);
+  font-size: 18px;
+  cursor: pointer;
+  transition: color var(--ease), border-color var(--ease);
+  flex-shrink: 0;
+}
+
+.cart-item__remove:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.cart-drawer__empty {
+  color: var(--text-dim);
+  text-align: center;
+  padding: 40px 0;
+}
+
+
+/* ==========================================================================
+   47. Announcement Bar Close
+   ========================================================================== */
+
+.announce-bar {
+  position: relative;
+  padding-right: 40px;
+}
+
+.announce-bar__close {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 18px;
+  cursor: pointer;
+  transition: color var(--ease);
+  line-height: 1;
+}
+
+.announce-bar__close:hover { color: var(--text); }
+
+
+/* ==========================================================================
+   48. Product Page Components (replaces inline styles)
+   ========================================================================== */
+
+.product-tier {
+  border: 1px solid var(--border-light);
+  background: var(--bg-surface);
+  position: relative;
+}
+
+.product-tier .card__body {
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.product-tier__name {
+  font-size: 1.3rem;
+  color: var(--text);
+  margin-bottom: 4px;
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.product-tier__name--accent { color: var(--primary); }
+.product-tier__name--pro { color: var(--accent); }
+
+.product-tier__subtitle {
+  color: var(--text-dim);
+  font-size: var(--text-sm);
+  margin-bottom: 16px;
+}
+
+.product-tier__price {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.4rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.product-tier__price span {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
+.product-tier__features {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 2;
+}
+
+.product-tier--featured {
+  border: 2px solid var(--primary);
+  box-shadow: var(--primary-glow);
+}
+
+.product-tier__badge {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: var(--bg-primary);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 16px;
+  border-radius: 0 0 8px 8px;
+}
+
+.product-detail {
+  background: var(--bg-surface);
+}
+
+.product-detail__title {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.product-detail__price {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.product-detail__price span {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
+.product-detail__desc {
+  color: var(--text-muted);
+}
+
+.color-picker {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+.color-picker .btn { border-radius: var(--r-pill); }
+
+.product-detail__badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.spec-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+}
+
+.spec-card .card__body { text-align: center; }
+
+.spec-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.spec-card .card__title {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.spec-card .card__desc { color: var(--text-muted); }
+
+.feature-section { color: var(--text-muted); }
+.feature-section h3 { color: var(--text); }
+.feature-section ul { color: var(--text-muted); }
+
+
+/* ==========================================================================
+   49. Comparison Table
+   ========================================================================== */
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: var(--text-sm);
+}
+
+.compare-table th {
+  background: var(--bg-elevated);
+  font-weight: 600;
+  text-align: center;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--border-bright);
+  color: var(--text);
+  font-family: var(--font-display);
+}
+
+.compare-table th:first-child {
+  text-align: left;
+}
+
+.compare-table th.compare-table__featured {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.compare-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.compare-table td:first-child {
+  text-align: left;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+.compare-table__check {
+  color: var(--success);
+  font-weight: 700;
+}
+
+.compare-table__highlight td {
+  background: rgba(0, 212, 255, 0.03);
+}
+
+
+/* ==========================================================================
+   50. Additional Responsive Polish
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .feature-block {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .feature-block--reverse { direction: ltr; }
+}
+
+@media (max-width: 1024px) {
+  .bento-grid { gap: 20px; }
+}
+
+@media (max-width: 768px) {
+  .section--lg { padding: 80px 0; }
+  .steps::before { display: none; }
+  .compare-table { font-size: var(--text-xs); }
+  .compare-table th, .compare-table td { padding: 8px 10px; }
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
+  .footer__col:first-child {
+    margin-bottom: 24px;
+  }
+  .footer__col:not(:first-child) {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(33.33% - 12px);
+  }
+}
+
+@media (max-width: 480px) {
+  .footer__col:not(:first-child) {
+    width: 100%;
+    display: block;
+  }
+  .compare-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 }
