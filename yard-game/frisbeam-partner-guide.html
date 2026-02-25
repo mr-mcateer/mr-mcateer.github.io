@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frisbeam -- Go-to-Market Partner Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ========================================
+     FRISBEAM PARTNER GUIDE
+     Product Commercialization Brief
+     Generated: February 2026
+     ======================================== */
+
+  :root {
+    --primary: #00D4FF;
+    --accent: #FF6B2C;
+    --purple: #A855F7;
+    --bg-deep: #0B0F19;
+    --bg-surface: #111827;
+    --bg-elevated: #1E293B;
+    --text-bright: #F1F5F9;
+    --text-muted: #94A3B8;
+    --text-dim: #64748B;
+    --border: #334155;
+    --gradient: linear-gradient(135deg, #00D4FF 0%, #A855F7 100%);
+  }
+
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg-deep);
+    color: var(--text-bright);
+    font-size: 11pt;
+    line-height: 1.55;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ---- PAGE STRUCTURE ---- */
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    padding: 0.7in 0.8in;
+    page-break-after: always;
+    position: relative;
+    background: var(--bg-deep);
+  }
+  .page:last-child { page-break-after: avoid; }
+
+  .page--cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--bg-deep);
+  }
+
+  /* ---- TYPOGRAPHY ---- */
+  h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+
+  h1 {
+    font-size: 28pt;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-size: 18pt;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    color: var(--primary);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 6px;
+  }
+  h3 {
+    font-size: 13pt;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 6px;
+    color: var(--text-bright);
+  }
+  h4 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  p { margin-bottom: 8px; }
+  .text-muted { color: var(--text-muted); }
+  .text-dim { color: var(--text-dim); }
+  .text-cyan { color: var(--primary); }
+  .text-amber { color: var(--accent); }
+  .text-purple { color: var(--purple); }
+
+  .gradient-text {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  strong { font-weight: 700; }
+
+  /* ---- COVER PAGE ---- */
+  .cover-logo {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 40pt;
+    font-weight: 700;
+    color: var(--bg-deep);
+    margin-bottom: 24px;
+  }
+  .cover-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16pt;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+  .cover-title {
+    font-size: 36pt;
+    margin-bottom: 8px;
+  }
+  .cover-subtitle {
+    font-size: 14pt;
+    color: var(--text-muted);
+    margin-bottom: 48px;
+  }
+  .cover-meta {
+    font-size: 9pt;
+    color: var(--text-dim);
+    line-height: 1.8;
+  }
+  .cover-divider {
+    width: 80px;
+    height: 3px;
+    background: var(--gradient);
+    margin: 32px auto;
+    border-radius: 2px;
+  }
+  .cover-confidential {
+    display: inline-block;
+    border: 1px solid var(--border);
+    padding: 4px 16px;
+    border-radius: 4px;
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    margin-top: 24px;
+  }
+
+  /* ---- TABLE OF CONTENTS ---- */
+  .toc { list-style: none; }
+  .toc li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 11pt;
+  }
+  .toc li span:first-child { font-weight: 600; }
+  .toc li span:last-child {
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9pt;
+  }
+  .toc-section {
+    color: var(--primary);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 12pt;
+    padding-top: 12px !important;
+    border-bottom: none !important;
+  }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 14px 0;
+    font-size: 9.5pt;
+  }
+  th, td {
+    padding: 6px 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    background: var(--bg-surface);
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td { color: var(--text-bright); }
+  tr:nth-child(even) td { background: rgba(17, 24, 39, 0.5); }
+  .table-highlight td {
+    background: rgba(0, 212, 255, 0.08) !important;
+    font-weight: 600;
+  }
+
+  /* ---- CALLOUT BOXES ---- */
+  .callout {
+    background: var(--bg-elevated);
+    border-left: 3px solid var(--primary);
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    margin: 12px 0;
+    font-size: 10pt;
+  }
+  .callout--amber { border-left-color: var(--accent); }
+  .callout--purple { border-left-color: var(--purple); }
+  .callout h4 {
+    margin-bottom: 4px;
+    font-size: 9pt;
+  }
+  .callout p { margin-bottom: 4px; font-size: 10pt; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  .bottom-line {
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .bottom-line h4 {
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+
+  /* ---- STATS BAR ---- */
+  .stats-row {
+    display: flex;
+    justify-content: space-between;
+    background: var(--bg-surface);
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin: 14px 0;
+    border: 1px solid var(--border);
+  }
+  .stat-item { text-align: center; flex: 1; }
+  .stat-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20pt;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.1;
+  }
+  .stat-value--amber { color: var(--accent); }
+  .stat-value--purple { color: var(--purple); }
+  .stat-label {
+    font-size: 8pt;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  /* ---- CARDS ---- */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .card-grid--2 { grid-template-columns: 1fr 1fr; }
+
+  .card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .card h3 { font-size: 11pt; margin-bottom: 4px; }
+  .card p { font-size: 9.5pt; color: var(--text-muted); margin-bottom: 0; }
+  .card--cyan { border-top: 3px solid var(--primary); }
+  .card--amber { border-top: 3px solid var(--accent); }
+  .card--purple { border-top: 3px solid var(--purple); }
+
+  /* ---- PERSONA CARDS ---- */
+  .persona {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .persona-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .persona-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 11pt;
+  }
+  .persona-share {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9pt;
+    color: var(--primary);
+  }
+  .persona-detail {
+    font-size: 9pt;
+    color: var(--text-muted);
+  }
+
+  /* ---- COLOR SWATCHES ---- */
+  .swatch-row {
+    display: flex;
+    gap: 12px;
+    margin: 10px 0;
+  }
+  .swatch {
+    flex: 1;
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+  }
+  .swatch-color {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 auto 6px auto;
+  }
+  .swatch-name {
+    font-weight: 600;
+    font-size: 10pt;
+    margin-bottom: 2px;
+  }
+  .swatch-hex {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: var(--text-dim);
+  }
+
+  /* ---- FUNNEL ---- */
+  .funnel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin: 14px 0;
+  }
+  .funnel-step {
+    text-align: center;
+    flex: 1;
+    padding: 10px 4px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    font-size: 8.5pt;
+  }
+  .funnel-step:first-child { border-radius: 6px 0 0 6px; }
+  .funnel-step:last-child { border-radius: 0 6px 6px 0; }
+  .funnel-rate {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12pt;
+    font-weight: 700;
+    color: var(--primary);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .funnel-label {
+    font-size: 7.5pt;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .funnel-arrow {
+    color: var(--text-dim);
+    font-size: 14pt;
+    padding: 0 2px;
+  }
+
+  /* ---- PIE CHART (CSS) ---- */
+  .budget-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 10px 0;
+  }
+  .budget-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 9.5pt;
+    padding: 4px 0;
+  }
+  .budget-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .budget-pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9pt;
+    color: var(--text-dim);
+    min-width: 30px;
+  }
+
+  /* ---- RISK TABLE ---- */
+  .risk-item {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 9.5pt;
+  }
+  .risk-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .risk-badge--high {
+    background: rgba(255, 107, 44, 0.15);
+    color: var(--accent);
+  }
+  .risk-badge--med {
+    background: rgba(168, 85, 247, 0.15);
+    color: var(--purple);
+  }
+
+  /* ---- PAGE HEADER ---- */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-header-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 8pt;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .page-header-section {
+    font-size: 8pt;
+    color: var(--text-dim);
+  }
+
+  /* ---- FOOTER ---- */
+  .page-footer {
+    position: absolute;
+    bottom: 0.5in;
+    left: 0.8in;
+    right: 0.8in;
+    display: flex;
+    justify-content: space-between;
+    font-size: 7pt;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+    padding-top: 6px;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol {
+    margin-left: 18px;
+    margin-bottom: 8px;
+  }
+  li {
+    margin-bottom: 3px;
+    font-size: 10pt;
+  }
+  li::marker { color: var(--primary); }
+
+  /* ---- SECTION SPACING ---- */
+  .section-intro {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 10pt;
+    margin-bottom: 10px;
+  }
+  .mb-sm { margin-bottom: 8px; }
+  .mb-md { margin-bottom: 14px; }
+  .mb-lg { margin-bottom: 20px; }
+  .mt-sm { margin-top: 8px; }
+  .mt-md { margin-top: 14px; }
+
+  /* ---- TWO-COL LAYOUT ---- */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .do-dont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 8px 0;
+    font-size: 9.5pt;
+  }
+  .do-box, .dont-box {
+    padding: 10px 12px;
+    border-radius: 6px;
+  }
+  .do-box {
+    background: rgba(0, 212, 255, 0.08);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+  }
+  .dont-box {
+    background: rgba(255, 107, 44, 0.08);
+    border: 1px solid rgba(255, 107, 44, 0.2);
+  }
+  .do-box h4 { color: var(--primary); }
+  .dont-box h4 { color: var(--accent); }
+
+  /* ---- NEXT STEPS ---- */
+  .milestone {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .milestone-marker {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--bg-elevated);
+    border: 2px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9pt;
+    font-weight: 700;
+    color: var(--primary);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .milestone-content h4 {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 10pt;
+    color: var(--text-bright);
+  }
+  .milestone-content p {
+    font-size: 9pt;
+    color: var(--text-muted);
+    margin-bottom: 0;
+  }
+
+  @media print {
+    body { background: var(--bg-deep); }
+    .page { break-after: page; }
+    .page:last-child { break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     PAGE 1: COVER
+     ============================================================ -->
+<div class="page page--cover">
+  <div class="cover-logo">F</div>
+  <div class="cover-brand">Frisbeam</div>
+  <h1 class="cover-title"><span class="gradient-text">Go-to-Market</span><br>Blueprint</h1>
+  <p class="cover-subtitle">Product Commercialization Brief</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    February 2026 -- Version 1.0<br>
+    Prepared for Frisbeam Founding Partners
+  </div>
+  <div class="cover-confidential">Confidential</div>
+</div>
+
+<!-- ============================================================
+     PAGE 2: TABLE OF CONTENTS
+     ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">Frisbeam</span>
+    <span class="page-header-section">Table of Contents</span>
+  </div>
+
+  <h2 style="border-bottom: none; margin-bottom: 4px;">Contents</h2>
+  <p class="text-muted mb-md" style="font-size: 10pt;">This brief distills nine research deliverables into a single document. Each section references the full deliverable available on the Frisbeam framework site.</p>
+
+  <ul class="toc">
+    <li class="toc-section"><span>Overview</span><span></span></li>
+    <li><span>1. Executive Summary</span><span>3</span></li>
+    <li><span>2. The Product</span><span>4</span></li>
+    <li class="toc-section"><span>Phase 1: Audience & Market</span><span></span></li>
+    <li><span>3. Who Buys This</span><span>5</span></li>
+    <li><span>4. Market Opportunity</span><span>7</span></li>
+    <li><span>5. Unit Economics</span><span>9</span></li>
+    <li class="toc-section"><span>Phase 2: Brand & Digital</span><span></span></li>
+    <li><span>6. Brand Identity</span><span>11</span></li>
+    <li><span>7. Digital Strategy</span><span>12</span></li>
+    <li class="toc-section"><span>Phase 3: Campaign & Acquisition</span><span></span></li>
+    <li><span>8. Marketing Plan</span><span>14</span></li>
+    <li><span>9. Risks & Next Steps</span><span>16</span></li>
+  </ul>
+
+  <div class="callout mt-md">
+    <h4>How to Read This Document</h4>
+    <p>This is a <strong>Product Commercialization Brief</strong> -- the standard format used by product accelerators and launch teams to present a new product's market case. If you encounter an unfamiliar term, look for the gray callout boxes throughout. They explain industry terms in plain language.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Frisbeam -- Go-to-Market Blueprint</span>
+    <span>Page 2</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 3: EXECUTIVE SUMMARY
+     ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">Frisbeam</span>
+    <span class="page-header-section">1. Executive Summary</span>
+  </div>
+
+  <h2>1. Executive Summary</h2>
+
+  <h3>What Is Frisbeam?</h3>
+  <p>Frisbeam is an LED-powered disc game designed for nighttime outdoor play. Think frisbee meets cornhole, but it glows. Players throw illuminated discs at lit-up ground targets, turning any backyard, beach, or campsite into a game venue after dark.</p>
+
+  <p>Three product tiers serve different customer needs: <strong>Starter</strong> ($129), <strong>Glow</strong> ($199, our flagship), and <strong>Pro</strong> ($299). All sets feature integrated LED lighting, durable construction, and portable carrying cases.</p>
+
+  <h3 class="mt-md">The Opportunity</h3>
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="stat-value">$85M</div>
+      <div class="stat-label">Market Size</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">12%</div>
+      <div class="stat-label">Annual Growth</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">71%</div>
+      <div class="stat-label">Gross Margin</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value stat-value--amber">8.2:1</div>
+      <div class="stat-label">Return on Spend</div>
+    </div>
+  </div>
+
+  <p>The illuminated yard games market is worth roughly $85 million and growing at 12% per year. No existing product combines integrated LED lighting, structured game mechanics, premium build quality, and true portability. That gap is where Frisbeam sits.</p>
+
+  <p>Our unit economics are strong: a blended 71% gross margin means we keep $141 on every $199 sale after manufacturing costs. For every dollar we spend acquiring a customer, we project $8.20 back in revenue over their lifetime -- well above the 3:1 ratio considered healthy in direct-to-consumer businesses.</p>
+
+  <h3 class="mt-md">Three-Phase Strategy</h3>
+  <div class="card-grid">
+    <div class="card card--cyan">
+      <h4>Phase 1</h4>
+      <h3>Audience & Market Intelligence</h3>
+      <p>Who buys this, why, and how big the opportunity is. Five buyer personas, jobs-to-be-done analysis, and competitive landscape.</p>
+    </div>
+    <div class="card card--amber">
+      <h4>Phase 2</h4>
+      <h3>Brand & Digital Architecture</h3>
+      <p>The visual identity, website conversion strategy, and user experience design that turn visitors into buyers.</p>
+    </div>
+    <div class="card card--purple">
+      <h4>Phase 3</h4>
+      <h3>Campaign & Acquisition</h3>
+      <p>The $180K marketing plan, influencer partnerships, and channel strategy that drive customer acquisition.</p>
+    </div>
+  </div>
+
+  <div class="bottom-line">
+    <h4>The Bottom Line</h4>
+    <p>Frisbeam has identified a clear gap in a growing market, designed a product with strong margins, and built a detailed plan to reach customers efficiently. This brief walks through every layer of that strategy.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Frisbeam -- Go-to-Market Blueprint</span>
+    <span>Page 3</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 4: THE PRODUCT
+     ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">Frisbeam</span>
+    <span class="page-header-section">2. The Product</span>
+  </div>
+
+  <h2>2. The Product</h2>
+  <p class="section-intro">What we're building, what makes it different, and how the lineup is structured.</p>
+
+  <h3>What Makes Frisbeam Different</h3>
+  <p>Existing night games fall into two camps: traditional games you can't play after sunset (cornhole, frisbee), or cheap LED accessories (glow sticks, light-up balls) that don't offer real gameplay. Frisbeam is the first product that combines all four of these elements:</p>
+
+  <div class="card-grid" style="grid-template-columns: 1fr 1fr;">
+    <div class="card card--cyan">
+      <h3>Integrated LED System</h3>
+      <p>LEDs are built into the discs and targets -- not glued on, not retrofitted. The glow is the product.</p>
+    </div>
+    <div class="card card--cyan">
+      <h3>Structured Game</h3>
+      <p>Real rules, scoring, and team play. Not just a glowing toy -- a competitive game you get better at.</p>
+    </div>
+    <div class="card card--cyan">
+      <h3>Premium Build</h3>
+      <p>Aircraft-grade materials and weather-resistant construction. Built to last seasons, not a single party.</p>
+    </div>
+    <div class="card card--cyan">
+      <h3>True Portability</h3>
+      <p>Everything fits in one carrying case. Set up in under two minutes at any location.</p>
+    </div>
+  </div>
+
+  <h3 class="mt-md">Product Lineup</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Starter -- $129</th>
+        <th>Glow -- $199</th>
+        <th>Pro -- $299</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>LED Discs</td><td>2 (single color)</td><td>4 (multi-color)</td><td>6 (multi-color + pulse)</td></tr>
+      <tr><td>Targets</td><td>2 standard</td><td>2 LED-lit</td><td>2 LED-lit (reactive)</td></tr>
+      <tr><td>Players</td><td>2-4</td><td>2-8</td><td>2-8</td></tr>
+      <tr><td>LED Modes</td><td>1</td><td>6</td><td>6 + reactive</td></tr>
+      <tr><td>Battery Life</td><td>6 hours</td><td>8+ hours</td><td>12+ hours</td></tr>
+      <tr><td>Carry Case</td><td>Drawstring bag</td><td>Padded case</td><td>Hard-shell case</td></tr>
+      <tr><td>Shipping</td><td>$8</td><td>Free</td><td>Free</td></tr>
+    </tbody>
+  </table>
+
+  <p>The <strong>Glow set at $199</strong> is our flagship. It hits the sweet spot between value and features, and we expect it to account for the majority of sales. The Starter provides an accessible entry point, while the Pro serves competitive players and premium buyers.</p>
+
+  <div class="callout">
+    <h4>Why Three Tiers?</h4>
+    <p>In product pricing, offering three options at different price points (called "tiered pricing") helps customers self-select. Most people gravitate toward the middle option -- which is exactly where we want them, because the Glow set delivers our strongest combination of margin and customer satisfaction.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Frisbeam -- Go-to-Market Blueprint</span>
+    <span>Page 4</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 5: WHO BUYS THIS (1/2)
+     ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">Frisbeam</span>
+    <span class="page-header-section">3. Who Buys This</span>
+  </div>
+
+  <h2>3. Who Buys This</h2>
+  <p class="section-intro">Sourced from: Psychographic Cohort Map & Jobs-to-Be-Done Profile</p>
+
+  <h3>Five Buyer Personas</h3>
+  <p>Based on survey data from 1,200 outdoor game buyers, we identified five distinct customer types. Here's who they are and what they care about:</p>
+
+  <div class="persona">
+    <div class="persona-header">
+      <span class="persona-name">1. The Night Owl</span>
+      <span class="persona-share">28% of market -- 24% of spend</span>
+    </div>
+    <p class="persona-detail"><strong>Who they are:</strong> Ages 22-30, urban/suburban, income $45K-$85K. Social butterflies who host gatherings and want their events to stand out.</p>
+    <p class="persona-detail"><strong>What they care about:</strong> Does it look good in photos? Will it make my event feel special? They spend $89-$129 per purchase.</p>
+    <p class="persona-detail"><strong>Biggest worry:</strong> "It'll look lame in person or won't photograph well."</p>
+  </div>
+
+  <div class="persona">
+    <div class="persona-header">
+      <span class="persona-name">2. The Experience Collector <span class="text-amber">(Highest Value)</span></span>
+      <span class="persona-share">22% of market -- 29% of spend</span>
+    </div>
+    <p class="persona-detail"><strong>Who they are:</strong> Ages 25-35, suburban homeowners, income $85K-$150K+. They invest in experiences and quality gear for entertaining.</p>
+    <p class="persona-detail"><strong>What they care about:</strong> Quality, durability, and "does this feel premium?" Highest average order at $149-$219.</p>
+    <p class="persona-detail"><strong>Biggest worry:</strong> "Is this a gimmick that'll break after two uses?"</p>
+  </div>
+
+  <div class="persona">
+    <div class="persona-header">
+      <span class="persona-name">3. The Active Social</span>
+      <span class="persona-share">25% of market -- 22% of spend</span>
+    </div>
+    <p class="persona-detail"><strong>Who they are:</strong> Ages 21-32, coastal/college town, income $50K-$95K. Athletic, social, and always looking for the next group activity.</p>
+    <p class="persona-detail"><strong>What they care about:</strong> Real gameplay and competition. They want a sport, not a toy. Spend $99-$149.</p>
+    <p class="persona-detail"><strong>Biggest worry:</strong> "This feels like a novelty, not real sports equipment."</p>
+  </div>
+
+  <div class="two-col mt-sm">
+    <div class="persona" style="margin-bottom: 0;">
+      <div class="persona-header">
+        <span class="persona-name">4. The Gift Buyer</span>
+        <span class="persona-share">15% / 15%</span>
+      </div>
+      <p class="persona-detail"><strong>Ages 30-50.</strong> Buys for others -- housewarming, Father's Day, holidays. Spends $99-$169. Worries the gift will collect dust.</p>
+    </div>
+    <div class="persona" style="margin-bottom: 0;">
+      <div class="persona-header">
+        <span class="persona-name">5. The Competitive Player</span>
+        <span class="persona-share">10% / 10%</span>
+      </div>
+      <p class="persona-detail"><strong>Ages 24-38.</strong> Tournament-minded. Wants pro-grade gear and cares about game balance. Spends $169-$249. Worries about amateur quality.</p>
+    </div>
+  </div>
+
+  <div class="bottom-line mt-md">
+    <h4>Where to Focus</h4>
+    <p>The <strong>Night Owl</strong> and <strong>Experience Collector</strong> together represent 50% of the market but <strong>53% of total spending</strong>. Our marketing should speak to these two groups first -- LED glow and shareable aesthetics are the top messaging drivers for both.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Frisbeam -- Go-to-Market Blueprint</span>
+    <span>Page 5</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 6: WHO BUYS THIS (2/2)
+     ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">Frisbeam</span>
+    <span class="page-header-section">3. Who Buys This (continued)</span>
+  </div>
+
+  <h3>Why People Buy LED Outdoor Games</h3>
+  <p>Beyond demographics, we studied the underlying motivations -- the "jobs" customers are trying to accomplish when they buy a product like Frisbeam:</p>
+
+  <div class="callout--purple callout">
+    <h4>What is a "Jobs-to-Be-Done" Framework?</h4>
+    <p>Instead of asking "who is our customer?", this approach asks <strong>"what problem are they trying to solve?"</strong> A classic example: people don't buy a drill because they want a drill. They buy it because they want a hole in the wall. Understanding the real "job" helps us build and market the right product.</p>
+  </div>
+
+  <h4 class="mt-md">The Core Job</h4>
+  <p style="font-size: 12pt; font-weight: 600; color: var(--text-bright); margin-bottom: 12px;">"Help me create memorable social experiences that extend into the night."</p>
+  <p>LED glow isn't just a feature -- it's the mechanism that unlocks an entirely new window for outdoor play. Every other yard game stops working when the sun goes down. Frisbeam starts working.</p>
+
+  <h3 class="mt-md">Three Types of Needs</h3>
+
+  <div class="card-grid">
+    <div class="card card--cyan">
+      <h4>Functional</h4>
+      <h3>It Has to Work</h3>
+      <p>Sets up in under 2 minutes. Plays in complete darkness. Handles groups of 2-10+. 8+ hour battery. Survives weather and rough use.</p>
+    </div>
+    <div class="card card--amber">
+      <h4>Emotional</h4>
+      <h3>It Has to Feel Right</h3>
+      <p>Makes the host feel like they elevated the gathering. Creates "wow" moments when the LEDs turn on. Provides a screen-free group activity.</p>
+    </div>
+    <div class="card card--purple">
+      <h4>Social</h4>
+      <h3>It Has to Look Good</h3>
+      <p>Makes you "the fun friend." Creates Instagram-worthy moments. Gives groups something to do together instead of fragmenting.</p>
+    </div>
+  </div>
+
+  <h3 class="mt-md">What Triggers a Purchase</h3>
+  <p>Four moments when customers are most likely to buy:</p>
+  <ol>
+    <li><strong>Boredom with current options</strong> -- "We always just sit around the fire. There's nothing to do."</li>
+    <li><strong>Seeing it at someone else's event</strong> -- The single most powerful trigger. Word-of-mouth in action.</li>
+    <li><strong>Seasonal shift to warm weather</strong> -- Spring planning begins in March-April.</li>
+    <li><strong>Gift-giving occasions</strong> -- Housewarming, Father's Day, Christmas.</li>
+  </ol>
+
+  <div class="callout mt-sm">
+    <h4>Timing Insight</h4>
+    <p>The <strong>Thursday-to-Saturday planning window</strong> shows the highest purchase intent. People plan their weekend activities mid-week. Our ad spend should be heaviest during this window.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Frisbeam -- Go-to-Market Blueprint</span>
+    <span>Page 6</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 7: MARKET OPPORTUNITY (1/2)
+     ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">Frisbeam</span>
+    <span class="page-header-section">4. Market Opportunity</span>
+  </div>
+
+  <h2>4. Market Opportunity</h2>
+  <p class="section-intro">Sourced from: Demand Landscape Analysis</p>
+
+  <h3>Market Size & Growth</h3>
+  <p>The illuminated yard games segment sits within the broader $887 billion global outdoor recreation market. Our addressable slice -- LED-enhanced outdoor games -- is approximately <strong>$85 million</strong> and growing at <strong>12% annually</strong> (CAGR).</p>
+
+  <div class="callout">
+    <h4>What is CAGR?</h4>
+    <p><strong>Compound Annual Growth Rate</strong> -- the average yearly growth rate over a period of time. A 12% CAGR means the market is roughly doubling every six years. This indicates strong, sustained demand rather than a passing trend.</p>
+  </div>
+
+  <h3 class="mt-md">Competitive Landscape</h3>
+  <p>Six products currently serve adjacent needs. None of them do what Frisbeam does:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Competitor</th>
+        <th>Category</th>
+        <th>LED?</th>
+        <th>Price</th>
+        <th>Key Limitation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Kan Jam</strong></td><td>Disc target</td><td>No</td><td>$40-60</td><td>No lighting; feels disposable</td></tr>
+      <tr><td><strong>Bottle Bash</strong></td><td>Disc target</td><td>No</td><td>$50-70</td><td>No LED; niche awareness</td></tr>
+      <tr><td><strong>GlowCity</strong></td><td>LED sports</td><td>Yes</td><td>$15-30</td><td>Accessories only, no game</td></tr>
+      <tr><td><strong>Flashflight</strong></td><td>LED frisbee</td><td>Yes</td><td>$15-25</td><td>Standalone disc, no game system</td></tr>
+      <tr><td><strong>LED Cornhole Kits</strong></td><td>Retrofit</td><td>Retrofit</td><td>$30-80</td><td>Bolt-on strips, not integrated</td></tr>
+      <tr><td><strong>Spikeball</strong></td><td>Roundnet</td><td>No</td><td>$60-90</td><td>Different mechanic, no LED</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-md">The White Space</h3>
+  <p>No single competitor combines all four of Frisbeam's core elements. This creates a clear positioning opportunity:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Capability</th>
+        <th>Kan Jam</th>
+        <th>GlowCity</th>
+        <th>Flashflight</th>
+        <th>Spikeball</th>
+        <th style="color: var(--primary);">Frisbeam</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Integrated LED</td><td>--</td><td>Partial</td><td>Partial</td><td>--</td><td style="color: var(--primary); font-weight: 700;">Yes</td></tr>
+      <tr><td>Structured Game</td><td>Yes</td><td>--</td><td>--</td><td>Yes</td><td style="color: var(--primary); font-weight: 700;">Yes</td></tr>
+      <tr><td>Premium Build</td><td>--</td><td>--</td><td>--</td><td>Moderate</td><td style="color: var(--primary); font-weight: 700;">Yes</td></tr>
+      <tr><td>Portable</td><td>Moderate</td><td>Yes</td><td>Yes</td><td>Yes</td><td style="color: var(--primary); font-weight: 700;">Yes</td></tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <span>Frisbeam -- Go-to-Market Blueprint</span>
+    <span>Page 7</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 8: MARKET OPPORTUNITY (2/2)
+     ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">Frisbeam</span>
+    <span class="page-header-section">4. Market Opportunity (continued)</span>
+  </div>
+
+  <h3>Seasonal Demand Pattern</h3>
+  <p>Outdoor game sales follow predictable seasonal cycles. Understanding this pattern is critical for inventory planning and marketing spend timing:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Quarter</th>
+        <th>Months</th>
+        <th>% of Sales</th>
+        <th>Key Drivers</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Q1</strong></td><td>Jan-Mar</td><td>8%</td><td>Winter trough -- lowest demand</td></tr>
+      <tr><td><strong>Q2</strong></td><td>Apr-Jun</td><td>32%</td><td>Spring ramp, graduation parties, Memorial Day</td></tr>
+      <tr class="table-highlight"><td><strong>Q3</strong></td><td>Jul-Sep</td><td>38%</td><td>Peak summer, July 4th, festivals, Labor Day</td></tr>
+      <tr><td><strong>Q4</strong></td><td>Oct-Dec</td><td>22%</td><td>Holiday gifting, Black Friday, tailgate season</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Key takeaway:</strong> 70% of annual sales happen between April and September. Our marketing budget, inventory, and influencer campaigns should be heaviest during this window.</p>
+
+  <h3 class="mt-md">Sales Channels</h3>
+  <p>We plan to sell through four channels, each serving a different purpose:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Channel</th>
+        <th>% of Sales</th>
+        <th>Margin</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-highlight"><td><strong>Our Website (DTC)</strong></td><td>45%</td><td>55-65%</td><td>Brand storytelling, highest margins</td></tr>
+      <tr><td><strong>Amazon</strong></td><td>30%</td><td>18-25%</td><td>Discovery engine, volume driver</td></tr>
+      <tr><td><strong>Specialty Retail</strong></td><td>15%</td><td>40-50%</td><td>Credibility, hands-on demos</td></tr>
+      <tr><td><strong>Events & Partnerships</strong></td><td>10%</td><td>Variable</td><td>Brand awareness, user content</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <h4>What is DTC?</h4>
+    <p><strong>Direct-to-Consumer</strong> -- selling through our own website rather than through retailers. DTC gives us higher margins (we keep more of each sale), direct customer relationships, and control over the brand experience. It's the primary channel for most modern product launches.</p>
+  </div>
+
+  <h3 class="mt-md">Pricing Strategy</h3>
+  <p>Our research shows the LED premium justifies pricing 2-3x above non-LED alternatives. The market segments into two tiers:</p>
+  <ul>
+    <li><strong>Casual/Social buyers ($129-$199):</strong> Price-aware but willing to pay for quality. This is our volume segment -- the Starter and Glow sets.</li>
+    <li><strong>Premium/Competitive buyers ($249-$299):</strong> Performance-focused, less price-sensitive. The Pro set, which also serves as a brand halo product.</li>
+  </ul>
+  <p>The $199 Glow set is the <strong>sweet spot</strong> -- high enough to signal quality, low enough for impulse-friendly purchasing.</p>
+
+  <div class="page-footer">
+    <span>Frisbeam -- Go-to-Market Blueprint</span>
+    <span>Page 8</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 9: UNIT ECONOMICS (1/2)
+     ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">Frisbeam</span>
+    <span class="page-header-section">5. Unit Economics</span>
+  </div>
+
+  <h2>5. Unit Economics</h2>
+  <p class="section-intro">Sourced from: CAC vs. Lifetime Value Model</p>
+
+  <p>This section answers two fundamental business questions: <strong>How much do we make per sale?</strong> and <strong>How much does it cost to get a customer?</strong></p>
+
+  <div class="callout--purple callout mb-md">
+    <h4>What are CAC and LTV?</h4>
+    <p><strong>CAC (Customer Acquisition Cost)</strong> = the average amount we spend in marketing to get one new customer. <strong>LTV (Lifetime Value)</strong> = the total revenue we expect from that customer over time. The ratio between these two numbers tells us whether our business model works. A healthy DTC business has an LTV-to-CAC ratio of at least 3:1. Ours is 8.2:1.</p>
+  </div>
+
+  <h3>What We Make Per Sale</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>SKU</th>
+        <th>Price</th>
+        <th>Cost to Make</th>
+        <th>Gross Margin</th>
+        <th>Margin %</th>
+        <th>Shipping</th>
+        <th>Net Margin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Starter</strong></td><td>$129</td><td>$38</td><td>$91</td><td>71%</td><td>$8</td><td>$83</td></tr>
+      <tr><td><strong>Glow</strong></td><td>$199</td><td>$58</td><td>$141</td><td>71%</td><td>Free</td><td>$141</td></tr>
+      <tr><td><strong>Pro</strong></td><td>$299</td><td>$92</td><td>$207</td><td>69%</td><td>Free</td><td>$207</td></tr>
+      <tr class="table-highlight"><td><strong>Blended Avg</strong></td><td>$199</td><td>--</td><td>--</td><td>71%</td><td>--</td><td><strong>$141</strong></td></tr>
+    </tbody>
+  </table>
+
+  <p>A 71% gross margin is strong for a physical product. For comparison, most consumer electronics run 25-40%. Our margin creates significant room to invest in marketing while remaining profitable.</p>
+
+  <h3 class="mt-md">What It Costs to Get a Customer</h3>
+  <p>We plan to acquire customers through seven channels, each with different costs and strengths:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Channel</th>
+        <th>Cost Per Customer</th>
+        <th>% of Budget</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Instagram/TikTok Ads</td><td>$42</td><td>28%</td><td>Primary visual channel</td></tr>
+      <tr><td>Google Search (branded)</td><td>$18</td><td>15%</td><td>Captures people searching for us</td></tr>
+      <tr><td>Google Search (non-branded)</td><td>$65</td><td>12%</td><td>Captures people searching for games</td></tr>
+      <tr><td>Influencer partnerships</td><td>$35</td><td>20%</td><td>Trusted recommendations</td></tr>
+      <tr><td>Organic social/content</td><td>$12</td><td>10%</td><td>Free traffic from our own posts</td></tr>
+      <tr><td>Email marketing</td><td>$8</td><td>5%</td><td>Repeat purchases, retention</td></tr>
+      <tr><td>Events/festivals</td><td>$55</td><td>10%</td><td>In-person demos</td></tr>
+      <tr class="table-highlight"><td><strong>Blended Average</strong></td><td><strong>$38</strong></td><td>100%</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <span>Frisbeam -- Go-to-Market Blueprint</span>
+    <span>Page 9</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 10: UNIT ECONOMICS (2/2)
+     ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">Frisbeam</span>
+    <span class="page-header-section">5. Unit Economics (continued)</span>
+  </div>
+
+  <h3>The Math: Return on Every Dollar Spent</h3>
+
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="stat-value">$312</div>
+      <div class="stat-label">3-Year Customer Value</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value stat-value--amber">$38</div>
+      <div class="stat-label">Cost to Acquire</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">8.2:1</div>
+      <div class="stat-label">LTV-to-CAC Ratio</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value stat-value--purple">&lt;1 mo</div>
+      <div class="stat-label">Payback Period</div>
+    </div>
+  </div>
+
+  <p>Put simply: <strong>for every $1 we spend on marketing, we project $8.20 back in revenue.</strong> The industry benchmark for a healthy business is 3:1. We're nearly three times that.</p>
+
+  <p>The payback period -- how long it takes to earn back the cost of acquiring a customer -- is less than one month. This means our marketing spend pays for itself almost immediately rather than tying up cash.</p>
+
+  <h3 class="mt-md">Three Scenarios</h3>
+  <p>To stress-test these numbers, we modeled conservative, base, and optimistic outcomes:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Scenario</th>
+        <th>Conversion Rate</th>
+        <th>Customer Cost</th>
+        <th>3-Year Value</th>
+        <th>Return Ratio</th>
+        <th>Assessment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Conservative</strong></td><td>2.0%</td><td>$45</td><td>$265</td><td>5.9:1</td><td><span class="text-amber">Strong</span></td></tr>
+      <tr class="table-highlight"><td><strong>Base Case</strong></td><td>2.8%</td><td>$38</td><td>$312</td><td>8.2:1</td><td><span class="text-cyan">Excellent</span></td></tr>
+      <tr><td><strong>Optimistic</strong></td><td>3.5%</td><td>$32</td><td>$380</td><td>11.9:1</td><td><span class="text-purple">Exceptional</span></td></tr>
+    </tbody>
+  </table>
+
+  <p>Even in the conservative scenario -- where conversion rates are 30% lower than expected and acquisition costs are 18% higher -- the economics remain strong at 5.9:1.</p>
+
+  <h3 class="mt-md">Break-Even Analysis</h3>
+
+  <div class="two-col">
+    <div>
+      <table>
+        <thead><tr><th colspan="2">Monthly Break-Even</th></tr></thead>
+        <tbody>
+          <tr><td>Monthly fixed costs</td><td><strong>$15,000</strong></td></tr>
+          <tr><td>Net margin per order</td><td><strong>$141</strong></td></tr>
+          <tr class="table-highlight"><td>Orders to break even</td><td><strong>107/month</strong></td></tr>
+          <tr><td>Target by month 6</td><td><strong>200+ orders</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="callout">
+        <h4>What This Means</h4>
+        <p>We need approximately <strong>107 orders per month</strong> to cover fixed costs (rent, software, salaries). That's roughly 3-4 orders per day. Our target is to exceed this by month 6 of launch, reaching 200+ monthly orders by the end of year one.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Frisbeam -- Go-to-Market Blueprint</span>
+    <span>Page 10</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 11: BRAND IDENTITY
+     ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">Frisbeam</span>
+    <span class="page-header-section">6. Brand Identity</span>
+  </div>
+
+  <h2>6. Brand Identity</h2>
+  <p class="section-intro">Sourced from: Brand Guidelines</p>
+
+  <p>The Frisbeam brand is built around one idea: <strong>nighttime social energy.</strong> The visual system uses dark backgrounds with electric color accents to mirror the real-world experience of glowing discs against a night sky.</p>
+
+  <h3>Tagline</h3>
+  <p style="font-size: 18pt; font-family: 'Space Grotesk', sans-serif; font-weight: 700; margin-bottom: 14px;">"<span class="gradient-text">Light up the night.</span>"</p>
+
+  <h3>Color System</h3>
+  <div class="swatch-row">
+    <div class="swatch" style="background: var(--bg-elevated);">
+      <div class="swatch-color" style="background: #00D4FF;"></div>
+      <div class="swatch-name" style="color: #00D4FF;">Electric Cyan</div>
+      <div class="swatch-hex">#00D4FF</div>
+      <p style="font-size: 8pt; color: var(--text-dim); margin-top: 4px;">Primary actions, CTAs, "The Beam"</p>
+    </div>
+    <div class="swatch" style="background: var(--bg-elevated);">
+      <div class="swatch-color" style="background: #FF6B2C;"></div>
+      <div class="swatch-name" style="color: #FF6B2C;">Amber</div>
+      <div class="swatch-hex">#FF6B2C</div>
+      <p style="font-size: 8pt; color: var(--text-dim); margin-top: 4px;">Energy, warmth, urgency</p>
+    </div>
+    <div class="swatch" style="background: var(--bg-elevated);">
+      <div class="swatch-color" style="background: #A855F7;"></div>
+      <div class="swatch-name" style="color: #A855F7;">Electric Purple</div>
+      <div class="swatch-hex">#A855F7</div>
+      <p style="font-size: 8pt; color: var(--text-dim); margin-top: 4px;">Nightlife, premium feel</p>
+    </div>
+    <div class="swatch" style="background: var(--bg-elevated);">
+      <div class="swatch-color" style="background: var(--gradient);"></div>
+      <div class="swatch-name"><span class="gradient-text">Brand Gradient</span></div>
+      <div class="swatch-hex">Cyan to Purple</div>
+      <p style="font-size: 8pt; color: var(--text-dim); margin-top: 4px;">Logo, headlines, special moments</p>
+    </div>
+  </div>
+
+  <h3 class="mt-sm">Typography</h3>
+  <p><strong style="font-family: 'Space Grotesk', sans-serif; font-size: 13pt;">Space Grotesk</strong> for headlines and display text. <strong>DM Sans</strong> for body copy and descriptions. <strong style="font-family: 'JetBrains Mono', monospace;">JetBrains Mono</strong> for specs and data.</p>
+
+  <h3 class="mt-md">Voice & Tone</h3>
+  <div class="do-dont">
+    <div class="do-box">
+      <h4>How We Sound</h4>
+      <p style="margin-bottom: 4px; font-size: 9.5pt;">"Your backyard deserves a better game."</p>
+      <p style="margin-bottom: 4px; font-size: 9.5pt;">"Sets up in 30 seconds. Battery lasts all night."</p>
+      <p style="margin-bottom: 0; font-size: 9.5pt;">"Frisbeam turns any night into an event."</p>
+    </div>
+    <div class="dont-box">
+      <h4>How We Never Sound</h4>
+      <p style="margin-bottom: 4px; font-size: 9.5pt;">"REVOLUTIONARY game that will CHANGE your life!!!"</p>
+      <p style="margin-bottom: 4px; font-size: 9.5pt;">"Our proprietary system leverages innovative technology."</p>
+      <p style="margin-bottom: 0; font-size: 9.5pt;">"Purchase our premium LED game ecosystem."</p>
+    </div>
+  </div>
+
+  <p class="mt-sm">Short sentences (20 words max). Active voice. Specific details over vague claims. Natural humor -- true, not forced. We say "you" and "your," never "consumers" or "leverage."</p>
+
+  <h3 class="mt-md">Photography Direction</h3>
+  <p><strong>Always:</strong> Real people, natural expressions, nighttime or golden hour, warm color grading, groups of 4-8, diverse representation.</p>
+  <p><strong>Never:</strong> Stock photo poses, studio setups, daytime-only, solo product on white background.</p>
+  <p><strong>The Glow Aesthetic:</strong> LED visible but not overwhelming. People are the subject, glow is the atmosphere. Think campfire energy -- the light draws people together.</p>
+
+  <div class="page-footer">
+    <span>Frisbeam -- Go-to-Market Blueprint</span>
+    <span>Page 11</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 12: DIGITAL STRATEGY (1/2)
+     ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">Frisbeam</span>
+    <span class="page-header-section">7. Digital Strategy</span>
+  </div>
+
+  <h2>7. Digital Strategy</h2>
+  <p class="section-intro">Sourced from: CRO Blueprint & UI/UX User Flows</p>
+
+  <p>This section covers how we turn website visitors into customers. In e-commerce, this discipline is called <strong>conversion rate optimization</strong> -- systematically removing the reasons people leave without buying.</p>
+
+  <h3>The Customer Journey (Simplified)</h3>
+  <p>Here's the path from first impression to purchase, with the percentage of people who make it through each stage:</p>
+
+  <div class="funnel">
+    <div class="funnel-step">
+      <span class="funnel-rate">100%</span>
+      <span class="funnel-label">See Ad</span>
+    </div>
+    <span class="funnel-arrow">></span>
+    <div class="funnel-step">
+      <span class="funnel-rate">3.2%</span>
+      <span class="funnel-label">Visit Site</span>
+    </div>
+    <span class="funnel-arrow">></span>
+    <div class="funnel-step">
+      <span class="funnel-rate">65%</span>
+      <span class="funnel-label">View Product</span>
+    </div>
+    <span class="funnel-arrow">></span>
+    <div class="funnel-step">
+      <span class="funnel-rate">18%</span>
+      <span class="funnel-label">Add to Cart</span>
+    </div>
+    <span class="funnel-arrow">></span>
+    <div class="funnel-step">
+      <span class="funnel-rate">72%</span>
+      <span class="funnel-label">Checkout</span>
+    </div>
+    <span class="funnel-arrow">></span>
+    <div class="funnel-step" style="border-color: var(--primary);">
+      <span class="funnel-rate" style="color: var(--accent);">2.8%</span>
+      <span class="funnel-label">Purchase</span>
+    </div>
+  </div>
+
+  <p>A 2.8% overall conversion rate is strong for a DTC product launch. The industry average is 1.5-2%. Our strategy focuses on removing friction at each stage.</p>
+
+  <h3 class="mt-md">Four Conversion Killers (and How We Fix Them)</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Friction Point</th>
+        <th>Impact</th>
+        <th>How We Solve It</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>"Is the LED a gimmick?"</strong></td>
+        <td><span class="text-amber">High</span></td>
+        <td>Real nighttime gameplay video above the fold. User-generated clips showing brightness and durability.</td>
+      </tr>
+      <tr>
+        <td><strong>Price confusion</strong></td>
+        <td><span class="text-amber">High</span></td>
+        <td>Clear tier comparison table with "Most Popular" badge. Cost-per-use framing: "Less than $1 per night of fun."</td>
+      </tr>
+      <tr>
+        <td><strong>Shipping uncertainty</strong></td>
+        <td><span class="text-purple">Medium</span></td>
+        <td>"Free shipping" displayed on every page. Delivery date estimates. "Ships today if ordered by 2 PM."</td>
+      </tr>
+      <tr>
+        <td><strong>Gift buyer hesitation</strong></td>
+        <td><span class="text-purple">Medium</span></td>
+        <td>Gift wrap option at checkout. "Perfect for" badges (housewarming, Father's Day). Gift message field.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-md">Five Tests We'll Run First</h3>
+  <p>Before scaling ad spend, we'll run A/B tests to optimize the site. These are our highest-priority experiments:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Priority</th>
+        <th>Test</th>
+        <th>Expected Lift</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="text-amber">P1</span></td><td>Hero video vs. static image on landing page</td><td>+15% click-through</td></tr>
+      <tr><td><span class="text-amber">P1</span></td><td>30-day money-back guarantee badge</td><td>+8% add-to-cart</td></tr>
+      <tr><td><span class="text-amber">P1</span></td><td>"Per night of fun" micro-price framing</td><td>+12% add-to-cart</td></tr>
+      <tr><td><span class="text-purple">P2</span></td><td>Social proof above vs. below fold</td><td>+10% engagement</td></tr>
+      <tr><td><span class="text-purple">P2</span></td><td>Single vs. dual call-to-action buttons</td><td>+5% conversion</td></tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <span>Frisbeam -- Go-to-Market Blueprint</span>
+    <span>Page 12</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 13: DIGITAL STRATEGY (2/2)
+     ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">Frisbeam</span>
+    <span class="page-header-section">7. Digital Strategy (continued)</span>
+  </div>
+
+  <h3>Site Architecture</h3>
+  <p>The website is designed with a flat structure -- meaning customers can reach any page in two clicks or fewer. This reduces drop-off and keeps the path to purchase short:</p>
+
+  <div class="card-grid" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
+    <div class="card card--cyan" style="text-align: center;">
+      <h3>Home</h3>
+      <p>Gateway with hero video, social proof, and product preview</p>
+    </div>
+    <div class="card card--cyan" style="text-align: center;">
+      <h3>Shop</h3>
+      <p>Product detail, gallery, tier comparison, reviews</p>
+    </div>
+    <div class="card" style="text-align: center;">
+      <h3>Our Story</h3>
+      <p>Brand narrative, values, team</p>
+    </div>
+    <div class="card" style="text-align: center;">
+      <h3>How to Play</h3>
+      <p>Rules, scoring, strategy, variations</p>
+    </div>
+  </div>
+
+  <p class="mt-sm"><strong>Primary conversion path:</strong> Home > Shop > Cart Drawer > Checkout. Three steps. No account creation required. Apple Pay, Google Pay, and Shop Pay for one-tap checkout.</p>
+
+  <h3 class="mt-md">Mobile-First Design</h3>
+  <p>We expect <strong>70%+ of traffic on mobile devices</strong>. The entire site is designed mobile-first with these key patterns:</p>
+
+  <div class="card-grid" style="grid-template-columns: 1fr 1fr;">
+    <div class="card">
+      <h4>Thumb-Zone Design</h4>
+      <p>The "Add to Cart" button stays fixed at the bottom of the screen, always within thumb reach. All touch targets are at least 44x44 pixels.</p>
+    </div>
+    <div class="card">
+      <h4>Express Checkout</h4>
+      <p>Apple Pay and Google Pay as primary mobile options. Single-page checkout on mobile. Autofill optimization on all form fields.</p>
+    </div>
+    <div class="card">
+      <h4>Fast Loading</h4>
+      <p>Pages load in under 2 seconds on 4G networks. Zero JavaScript frameworks -- just clean, fast HTML and CSS.</p>
+    </div>
+    <div class="card">
+      <h4>Accessible</h4>
+      <p>WCAG 2.1 Level AA compliant. Keyboard navigable. Screen reader support. High contrast (15.4:1 ratio).</p>
+    </div>
+  </div>
+
+  <div class="callout mt-md">
+    <h4>What is WCAG?</h4>
+    <p><strong>Web Content Accessibility Guidelines</strong> -- the international standard for making websites usable by people with disabilities (visual, motor, cognitive). Level AA is the standard most businesses target. Meeting it means our site works for screen readers, keyboard navigation, and users with low vision. It's also increasingly a legal requirement.</p>
+  </div>
+
+  <h3 class="mt-md">Performance Philosophy</h3>
+  <p>The Frisbeam site runs on <strong>zero frameworks, zero build tools, and zero dependencies.</strong> Three static files (HTML, CSS, JavaScript) plus images and fonts. This means:</p>
+  <ul>
+    <li>Faster page loads (no framework bloat)</li>
+    <li>Lower hosting costs (static files are nearly free to serve)</li>
+    <li>Better search engine ranking (Google rewards fast sites)</li>
+    <li>Easier maintenance (no complex build pipeline to break)</li>
+  </ul>
+
+  <div class="page-footer">
+    <span>Frisbeam -- Go-to-Market Blueprint</span>
+    <span>Page 13</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 14: MARKETING PLAN (1/2)
+     ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">Frisbeam</span>
+    <span class="page-header-section">8. Marketing Plan</span>
+  </div>
+
+  <h2>8. Marketing Plan</h2>
+  <p class="section-intro">Sourced from: Media Mix Strategy & Influencer Partnership Ledger</p>
+
+  <h3>Annual Budget: $180,000</h3>
+  <p>Here's how we plan to allocate the first-year marketing budget across seven channels:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Channel</th>
+        <th>Budget</th>
+        <th>% of Total</th>
+        <th>Why This Channel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Instagram / Reels</strong></td><td>$45,000</td><td>25%</td><td>Primary visual channel -- nighttime gameplay looks incredible in Reels</td></tr>
+      <tr><td><strong>TikTok</strong></td><td>$39,600</td><td>22%</td><td>Viral potential -- glowing discs are inherently shareable content</td></tr>
+      <tr><td><strong>Google Ads</strong></td><td>$32,400</td><td>18%</td><td>Captures people actively searching for outdoor games</td></tr>
+      <tr><td><strong>Influencer Partnerships</strong></td><td>$27,000</td><td>15%</td><td>Trusted recommendations from creators audiences already follow</td></tr>
+      <tr><td><strong>Email / SMS</strong></td><td>$14,400</td><td>8%</td><td>Retention, seasonal pushes, lowest cost per customer ($8)</td></tr>
+      <tr><td><strong>Events / Festivals</strong></td><td>$12,600</td><td>7%</td><td>In-person demos where the product sells itself</td></tr>
+      <tr><td><strong>Content / SEO</strong></td><td>$9,000</td><td>5%</td><td>Blog, YouTube -- organic search traffic that compounds over time</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-md">Seasonal Spend Calendar</h3>
+  <p>Marketing spend follows the seasonal demand pattern -- we spend the most when people are most likely to buy:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Quarter</th>
+        <th>Spend</th>
+        <th>% of Budget</th>
+        <th>Focus</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Q1</strong> (Jan-Mar)</td><td>$27,000</td><td>15%</td><td>Brand awareness, email list building, creative production</td></tr>
+      <tr><td><strong>Q2</strong> (Apr-Jun)</td><td>$54,000</td><td>30%</td><td>Launch campaigns, influencer seeding, Memorial Day push</td></tr>
+      <tr class="table-highlight"><td><strong>Q3</strong> (Jul-Sep)</td><td>$63,000</td><td>35%</td><td>Peak season, maximum ad spend, July 4th, festivals</td></tr>
+      <tr><td><strong>Q4</strong> (Oct-Dec)</td><td>$36,000</td><td>20%</td><td>Holiday gifting, Black Friday/Cyber Monday, tailgate season</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Key rule:</strong> 65% of the annual budget deploys between April and September. All creative assets and influencer partnerships need to be locked by March 15.</p>
+
+  <h3 class="mt-md">Content Strategy: The 60/20/20 Rule</h3>
+  <div class="card-grid">
+    <div class="card card--cyan">
+      <h4>60% -- Glow Moments</h4>
+      <h3>Show the Magic</h3>
+      <p>Nighttime gameplay footage, LED disc trails, group fun under lights. This is our flagship content. If it doesn't glow, it doesn't post.</p>
+    </div>
+    <div class="card card--amber">
+      <h4>20% -- Behind the Beam</h4>
+      <h3>Build Trust</h3>
+      <p>LED technology deep-dives, durability demos, design process, founder story. Shows we're serious about quality.</p>
+    </div>
+    <div class="card card--purple">
+      <h4>20% -- Community</h4>
+      <h3>Social Proof</h3>
+      <p>User-submitted photos/videos, tournament recaps, tips and tricks, hashtag campaigns. Real people playing.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Frisbeam -- Go-to-Market Blueprint</span>
+    <span>Page 14</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 15: MARKETING PLAN (2/2)
+     ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">Frisbeam</span>
+    <span class="page-header-section">8. Marketing Plan (continued)</span>
+  </div>
+
+  <h3>Influencer Strategy</h3>
+  <p>Rather than paying a few big-name creators, we invest <strong>75% of the influencer budget in smaller creators</strong> (under 50K followers) who have higher engagement and more authentic connections with their audiences.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Creator Tier</th>
+        <th>Followers</th>
+        <th>Cost Per Post</th>
+        <th>Engagement</th>
+        <th>% of Budget</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Nano</strong></td><td>1K-10K</td><td>$50-150 + free product</td><td>5-8%</td><td>40%</td></tr>
+      <tr><td><strong>Micro</strong></td><td>10K-50K</td><td>$200-500 + free product</td><td>3-5%</td><td>35%</td></tr>
+      <tr><td><strong>Mid-Tier</strong></td><td>50K-250K</td><td>$500-2,000</td><td>2-4%</td><td>20%</td></tr>
+      <tr><td><strong>Macro</strong></td><td>250K+</td><td>$2,000-5,000</td><td>1-3%</td><td>5%</td></tr>
+    </tbody>
+  </table>
+
+  <h4 class="mt-md">Five Creator Types We Target</h4>
+  <div class="card-grid" style="grid-template-columns: 1fr 1fr; gap: 8px;">
+    <div class="card">
+      <h3>The Party Host</h3>
+      <p>Films house parties and group hangs. "Wait until you see this at night" -- natural product placement.</p>
+    </div>
+    <div class="card">
+      <h3>The Outdoor Explorer</h3>
+      <p>Camping, beach, and adventure content. Dramatic LED effect at campfire transitions.</p>
+    </div>
+    <div class="card">
+      <h3>The Game Reviewer</h3>
+      <p>Unboxing, build quality breakdown, and real gameplay. Drives high-intent traffic.</p>
+    </div>
+    <div class="card">
+      <h3>The Festival Goer</h3>
+      <p>Music festival and nightlife content. Glowing discs at dusk feel completely native.</p>
+    </div>
+  </div>
+
+  <h3 class="mt-md">Year 1 Targets</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Target</th>
+        <th>Why It Matters</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Instagram followers</td><td>15,000</td><td>Social proof for new visitors</td></tr>
+      <tr><td>TikTok followers</td><td>25,000</td><td>Organic reach for viral content</td></tr>
+      <tr><td>Email subscribers</td><td>12,000</td><td>Owned audience for direct communication</td></tr>
+      <tr><td>Site conversion rate</td><td>2.8%</td><td>Visitors who actually purchase</td></tr>
+      <tr><td>Blended CAC</td><td>$38</td><td>Average cost to acquire a customer</td></tr>
+      <tr class="table-highlight"><td>Total paid customers</td><td>~4,700</td><td>Year 1 customer base</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout mt-sm">
+    <h4>Rebalancing Rule</h4>
+    <p>We review channel performance quarterly. If any channel's customer acquisition cost runs 20%+ above target for two consecutive months, we shift 10% of its budget to the highest-performing channel. This keeps the overall marketing machine efficient.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Frisbeam -- Go-to-Market Blueprint</span>
+    <span>Page 15</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE 16: RISKS & NEXT STEPS
+     ============================================================ -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-brand">Frisbeam</span>
+    <span class="page-header-section">9. Risks & Next Steps</span>
+  </div>
+
+  <h2>9. Risks & Next Steps</h2>
+
+  <h3>Key Risks and How We Manage Them</h3>
+  <p>Every product launch carries risk. Here are the four biggest threats to the Frisbeam plan, along with our mitigation strategy for each:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Risk</th>
+        <th>Severity</th>
+        <th>What Could Happen</th>
+        <th>How We Mitigate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Seasonal concentration</strong></td>
+        <td><span class="risk-badge risk-badge--high">High</span></td>
+        <td>40-60% revenue drop in Q1 during winter</td>
+        <td>Holiday gifting campaigns, indoor play content, pre-season email nurturing</td>
+      </tr>
+      <tr>
+        <td><strong>Rising ad costs</strong></td>
+        <td><span class="risk-badge risk-badge--high">High</span></td>
+        <td>Social ad costs increasing 15-20% year-over-year</td>
+        <td>Invest in organic content flywheel, email list, and influencer relationships that reduce dependence on paid ads</td>
+      </tr>
+      <tr>
+        <td><strong>Competitor entry</strong></td>
+        <td><span class="risk-badge risk-badge--med">Medium</span></td>
+        <td>Established game company copies the LED concept within 12-18 months</td>
+        <td>Build brand equity and community early. Patent-pending design. First-mover advantage in customer relationships</td>
+      </tr>
+      <tr>
+        <td><strong>LED supply chain</strong></td>
+        <td><span class="risk-badge risk-badge--med">Medium</span></td>
+        <td>8-10 week lead times for LED components, potential shortages</td>
+        <td>Qualify secondary supplier. Maintain 6-week safety stock. Order ahead of peak season</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-md">Recommended Next Steps</h3>
+
+  <div class="milestone">
+    <div class="milestone-marker">1</div>
+    <div class="milestone-content">
+      <h4>Finalize Product Manufacturing</h4>
+      <p>Confirm LED component supplier, produce initial run of Glow sets for influencer seeding and photography.</p>
+    </div>
+  </div>
+  <div class="milestone">
+    <div class="milestone-marker">2</div>
+    <div class="milestone-content">
+      <h4>Build Content Library</h4>
+      <p>Shoot nighttime gameplay footage, product photography, and founder story content. This feeds all marketing channels.</p>
+    </div>
+  </div>
+  <div class="milestone">
+    <div class="milestone-marker">3</div>
+    <div class="milestone-content">
+      <h4>Launch Influencer Seeding</h4>
+      <p>Send free Glow sets to 20-30 nano/micro creators. No obligations -- let them experience the product and create organically.</p>
+    </div>
+  </div>
+  <div class="milestone">
+    <div class="milestone-marker">4</div>
+    <div class="milestone-content">
+      <h4>Soft Launch (DTC Website)</h4>
+      <p>Go live with the consumer site. Begin paid ads at 25% of planned budget to test and optimize before scaling.</p>
+    </div>
+  </div>
+  <div class="milestone">
+    <div class="milestone-marker">5</div>
+    <div class="milestone-content">
+      <h4>Scale & Optimize</h4>
+      <p>Ramp ad spend based on A/B test results. Expand to Amazon. Begin specialty retail outreach for fall/holiday season.</p>
+    </div>
+  </div>
+
+  <div class="bottom-line mt-md">
+    <h4>In Summary</h4>
+    <p>Frisbeam has identified a clear gap in a growing market, designed a product with strong margins, and built a detailed plan to reach customers efficiently. The research is thorough, the economics are favorable, and the strategy is actionable. The next step is execution.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>Frisbeam -- Go-to-Market Blueprint</span>
+    <span>Page 16</span>
+  </div>
+</div>
+
+</body>
+</html>
