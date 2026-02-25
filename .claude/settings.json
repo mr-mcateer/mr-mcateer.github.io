@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "command": "echo 'File written: ready for git staging'"
+      }
+    ]
+  }
+}
