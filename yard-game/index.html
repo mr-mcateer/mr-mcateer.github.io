@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frisbeam -- Light Up the Night</title>
+  <meta name="description" content="Frisbeam is the LED-powered outdoor game that turns any night into an event. Glow discs, precision targets, and unforgettable moments.">
+  <meta name="theme-color" content="#0B0F19">
+  <meta property="og:title" content="Frisbeam -- Light Up the Night">
+  <meta property="og:description" content="The LED-powered outdoor game that turns any night into an event.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Announcement Bar -->
+  <div class="announce-bar">
+    Free shipping on all orders over $99 -- <a href="pages/product.html">Shop Now</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a href="index.html" class="site-nav__logo" aria-label="Frisbeam home">
+        <span class="site-nav__logo-icon" aria-hidden="true">F</span>
+        Frisbeam
+      </a>
+      <ul class="site-nav__links">
+        <li><a href="pages/product.html">Shop</a></li>
+        <li><a href="pages/story.html">Our Story</a></li>
+        <li><a href="pages/play.html">How to Play</a></li>
+        <li><a href="research/index.html">Research</a></li>
+      </ul>
+      <div class="site-nav__cta">
+        <button class="site-nav__cart" aria-label="Open cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="site-nav__cart-count">0</span>
+        </button>
+        <button class="site-nav__hamburger" aria-label="Open menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-overlay" aria-hidden="true"></div>
+  <div class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav__close" aria-label="Close menu">&times;</button>
+    <a href="index.html" class="mobile-nav__link active">Home</a>
+    <a href="pages/product.html" class="mobile-nav__link">Shop</a>
+    <a href="pages/story.html" class="mobile-nav__link">Our Story</a>
+    <a href="pages/play.html" class="mobile-nav__link">How to Play</a>
+    <a href="research/index.html" class="mobile-nav__link">Research</a>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay mobile-overlay" aria-hidden="true"></div>
+  <aside class="cart-drawer" aria-label="Shopping cart">
+    <div class="cart-drawer__header">
+      <h3>Your Cart</h3>
+      <button class="cart-drawer__close" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-drawer__items">
+      <p style="color: var(--text-dim); text-align: center; padding: 40px 0;">Your cart is empty.</p>
+    </div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__total">
+        <span>Total</span>
+        <span>$0.00</span>
+      </div>
+      <button class="btn btn--primary btn--full">Checkout</button>
+    </div>
+  </aside>
+
+  <main id="main">
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+      <div class="hero__bg">
+        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1600&q=80" alt="Friends playing outdoors under colorful lights at night" loading="eager">
+      </div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <p class="hero__eyebrow reveal">LED-Powered Outdoor Game</p>
+        <h1 class="reveal reveal-delay-1">Light Up<br><span class="gradient-text">the Night</span></h1>
+        <p class="hero__sub reveal reveal-delay-2">Frisbeam turns any evening into an event. Glow discs, precision targets, and the kind of nights people actually remember.</p>
+        <div class="hero__actions reveal reveal-delay-3">
+          <a href="pages/product.html" class="btn btn--primary btn--large">Shop Now</a>
+          <a href="pages/play.html" class="btn btn--ghost">How to Play</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SOCIAL PROOF BAR ========== -->
+    <div class="section--light">
+      <div class="container--wide">
+        <div class="stats-bar stats-bar--bordered">
+          <div class="reveal">
+            <div class="stat__number" data-counter="5000" data-suffix="+">0</div>
+            <div class="stat__label">Games Sold</div>
+          </div>
+          <div class="reveal reveal-delay-1">
+            <div class="stat__number">4.8</div>
+            <div class="stat__label">Star Rating</div>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="stat__number" data-counter="48" data-suffix=" States">0</div>
+            <div class="stat__label">Shipped Nationwide</div>
+          </div>
+          <div class="reveal reveal-delay-3">
+            <div class="stat__number" data-counter="30" data-suffix=" Sec">0</div>
+            <div class="stat__label">Setup Time</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== PRODUCT SHOWCASE ========== -->
+    <section class="section section--light">
+      <div class="container--wide">
+        <div class="feature-block reveal">
+          <div class="feature-block__image">
+            <img src="https://images.unsplash.com/photo-1506485338023-6ce5f36692df?w=800&q=80" alt="Friends playing an outdoor game at dusk with warm lighting" loading="lazy">
+          </div>
+          <div class="feature-block__text">
+            <h3>Engineered for After Dark</h3>
+            <p>Every Frisbeam set is designed to perform when the sun goes down. Integrated LED systems, durable game components, and weatherproof construction mean the party never stops at sunset.</p>
+            <ul>
+              <li>Multi-color LED glow system with 6+ modes</li>
+              <li>Rechargeable battery lasting 8+ hours per charge</li>
+              <li>All-weather materials rated for outdoor use</li>
+              <li>Sets up in under 30 seconds</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== BUILT FOR MOMENTS ========== -->
+    <section class="section section--gray">
+      <div class="container--wide">
+        <div class="section__header reveal">
+          <h2>Your Game. Your Scene.</h2>
+          <p>From rooftop parties to beach bonfires, Frisbeam fits wherever the night takes you.</p>
+        </div>
+        <div class="bento-grid">
+          <div class="lifestyle-card reveal">
+            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt="Friends at an outdoor night event with lights" loading="lazy">
+            <div class="lifestyle-card__overlay">
+              <span class="lifestyle-card__label">After Hours</span>
+              <span class="lifestyle-card__title">Night Games</span>
+            </div>
+          </div>
+          <div class="lifestyle-card reveal reveal-delay-1">
+            <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=600&q=80" alt="Beach bonfire gathering at sunset" loading="lazy">
+            <div class="lifestyle-card__overlay">
+              <span class="lifestyle-card__label">Golden Hour</span>
+              <span class="lifestyle-card__title">Beach & Bonfire</span>
+            </div>
+          </div>
+          <div class="lifestyle-card reveal reveal-delay-2">
+            <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&q=80" alt="Rooftop party with city lights in the background" loading="lazy">
+            <div class="lifestyle-card__overlay">
+              <span class="lifestyle-card__label">Elevated</span>
+              <span class="lifestyle-card__title">Rooftop Sessions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <section class="section section--light">
+      <div class="container">
+        <div class="section__header reveal">
+          <h2>Three Steps to Game Time</h2>
+          <p>No assembly manual required. Seriously.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step__number">1</div>
+            <h3>Pick Your Set</h3>
+            <p>Choose the Frisbeam that fits your vibe -- from casual glow games to competition-grade gear.</p>
+          </div>
+          <div class="step reveal reveal-delay-1">
+            <div class="step__number">2</div>
+            <h3>Power Up</h3>
+            <p>Hit the switch and watch it light up. Six LED modes let you match the mood -- from chill to full send.</p>
+          </div>
+          <div class="step reveal reveal-delay-2">
+            <div class="step__number">3</div>
+            <h3>Game On</h3>
+            <p>Grab your crew. First to 21 wins. The glow handles the atmosphere, you handle the trash talk.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PRICING TIERS ========== -->
+    <section class="section section--gray" id="shop">
+      <div class="container--wide">
+        <div class="section__header reveal">
+          <h2>Find Your Frisbeam</h2>
+          <p>Every set ships free with everything you need to play tonight.</p>
+        </div>
+        <div class="pricing-grid">
+          <!-- Starter -->
+          <div class="pricing-card reveal">
+            <div class="pricing-card__name">Starter</div>
+            <div class="pricing-card__price">$129 <span>USD</span></div>
+            <div class="pricing-card__desc">Perfect for casual play and getting started.</div>
+            <ul class="pricing-card__features">
+              <li>Complete game set for 2-4 players</li>
+              <li>Single-color LED mode</li>
+              <li>Rechargeable battery (6 hrs)</li>
+              <li>Carrying bag included</li>
+              <li>Official Frisbeam rules card</li>
+            </ul>
+            <a href="pages/product.html" class="btn btn--outline-dark btn--full">Choose Starter</a>
+          </div>
+          <!-- Glow (Featured) -->
+          <div class="pricing-card pricing-card--featured reveal reveal-delay-1">
+            <div class="pricing-card__name">Glow</div>
+            <div class="pricing-card__price">$199 <span>USD</span></div>
+            <div class="pricing-card__desc">The full LED experience. Our most popular set.</div>
+            <ul class="pricing-card__features">
+              <li>Complete game set for 2-8 players</li>
+              <li>Multi-color LED with 6 modes</li>
+              <li>Extended battery (8+ hrs)</li>
+              <li>Premium weather-resistant build</li>
+              <li>Padded carrying case</li>
+              <li>Spare batteries included</li>
+            </ul>
+            <a href="pages/product.html" class="btn btn--primary btn--full">Choose Glow</a>
+          </div>
+          <!-- Pro -->
+          <div class="pricing-card reveal reveal-delay-2">
+            <div class="pricing-card__name">Pro</div>
+            <div class="pricing-card__price">$299 <span>USD</span></div>
+            <div class="pricing-card__desc">Competition-grade for serious players.</div>
+            <ul class="pricing-card__features">
+              <li>Tournament-spec game set</li>
+              <li>Reactive LED system (scores trigger effects)</li>
+              <li>All-day battery (12+ hrs)</li>
+              <li>Aircraft-grade aluminum frame</li>
+              <li>Hard-shell travel case</li>
+              <li>Bluetooth speaker mount</li>
+              <li>Official tournament rules book</li>
+            </ul>
+            <a href="pages/product.html" class="btn btn--outline-dark btn--full">Choose Pro</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="section section--light">
+      <div class="container--wide">
+        <div class="section__header reveal">
+          <h2>What Players Are Saying</h2>
+        </div>
+        <div class="grid--3">
+          <div class="testimonial-card reveal">
+            <div class="testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="testimonial-card__text">"We brought Frisbeam to a beach bonfire and it was the only thing anyone wanted to do. The glow effect at night is unreal -- everyone kept asking where we got it."</p>
+            <div class="testimonial-card__author">Jake R.</div>
+            <div class="testimonial-card__role">Austin, TX</div>
+          </div>
+          <div class="testimonial-card reveal reveal-delay-1">
+            <div class="testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="testimonial-card__text">"The build quality is legit. We have had ours for three months of weekly rooftop games and it still looks brand new. The LED modes are addicting to cycle through."</p>
+            <div class="testimonial-card__author">Sarah M.</div>
+            <div class="testimonial-card__role">Nashville, TN</div>
+          </div>
+          <div class="testimonial-card reveal reveal-delay-2">
+            <div class="testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="testimonial-card__text">"Bought this for a camping trip and now it comes to every trip. The battery lasts all night and the glow makes it playable way past sunset. Best purchase this year."</p>
+            <div class="testimonial-card__author">Marcus T.</div>
+            <div class="testimonial-card__role">Columbus, OH</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EMAIL CAPTURE ========== -->
+    <section class="section section--brand">
+      <div class="container text-center">
+        <h2 class="reveal" style="margin-bottom: 12px;">Join the <span class="gradient-text">Glow</span></h2>
+        <p class="reveal reveal-delay-1" style="color: var(--text-muted); margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto;">Get early access to new drops, tournament invites, and exclusive deals. No spam, just good nights.</p>
+        <form class="email-capture reveal reveal-delay-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='You are in!'; this.querySelector('input').disabled=true;">
+          <input type="email" class="email-capture__input" placeholder="your@email.com" required aria-label="Email address">
+          <button type="submit" class="btn btn--primary">Sign Up</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container--wide">
+      <div class="footer__grid">
+        <div class="footer__col">
+          <a href="index.html" class="site-nav__logo" aria-label="Frisbeam home">
+            <span class="site-nav__logo-icon" aria-hidden="true">F</span>
+            Frisbeam
+          </a>
+          <p class="footer__brand-desc">The LED-powered outdoor game that turns any night into an event.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="TikTok">TK</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h3>Shop</h3>
+          <ul>
+            <li><a href="pages/product.html">Starter Set</a></li>
+            <li><a href="pages/product.html">Glow Set</a></li>
+            <li><a href="pages/product.html">Pro Set</a></li>
+            <li><a href="pages/product.html">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="pages/story.html">Our Story</a></li>
+            <li><a href="pages/play.html">How to Play</a></li>
+            <li><a href="research/index.html">Research</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">Shipping & Returns</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Warranty</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Frisbeam. All rights reserved.</p>
+        <p>Designed in the USA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

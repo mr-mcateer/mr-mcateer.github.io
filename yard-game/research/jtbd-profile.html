@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jobs-to-Be-Done Profile - Frisbeam Research</title>
+  <meta name="description" content="What job is the customer hiring Frisbeam to do? A deep dive into the functional, emotional, and social jobs behind LED outdoor disc game purchases.">
+  <meta name="theme-color" content="#0B0F19">
+  <meta property="og:title" content="Jobs-to-Be-Done Profile - Frisbeam Research">
+  <meta property="og:description" content="Functional, emotional, and social jobs analysis for the LED outdoor disc game market.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Announcement Bar -->
+  <div class="announce-bar">
+    Free shipping on all orders over $99 - <a href="../pages/product.html">Shop Now</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a href="../index.html" class="site-nav__logo" aria-label="Frisbeam home">
+        <span class="site-nav__logo-icon" aria-hidden="true">F</span>
+        Frisbeam
+      </a>
+      <ul class="site-nav__links">
+        <li><a href="../pages/product.html">Shop</a></li>
+        <li><a href="../pages/story.html">Our Story</a></li>
+        <li><a href="../pages/play.html">How to Play</a></li>
+        <li><a href="index.html" class="active">Research</a></li>
+      </ul>
+      <div class="site-nav__cta">
+        <button class="site-nav__cart" aria-label="Open cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="site-nav__cart-count">0</span>
+        </button>
+        <button class="site-nav__hamburger" aria-label="Open menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-overlay" aria-hidden="true"></div>
+  <div class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav__close" aria-label="Close menu">&times;</button>
+    <a href="../index.html" class="mobile-nav__link">Home</a>
+    <a href="../pages/product.html" class="mobile-nav__link">Shop</a>
+    <a href="../pages/story.html" class="mobile-nav__link">Our Story</a>
+    <a href="../pages/play.html" class="mobile-nav__link">How to Play</a>
+    <a href="index.html" class="mobile-nav__link active">Research</a>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay mobile-overlay" aria-hidden="true"></div>
+  <aside class="cart-drawer" aria-label="Shopping cart">
+    <div class="cart-drawer__header">
+      <h3>Your Cart</h3>
+      <button class="cart-drawer__close" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-drawer__items">
+      <p style="color: var(--text-dim); text-align: center; padding: 40px 0;">Your cart is empty.</p>
+    </div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__total">
+        <span>Total</span>
+        <span>$0.00</span>
+      </div>
+      <button class="btn btn--primary btn--full">Checkout</button>
+    </div>
+  </aside>
+
+  <main id="main">
+
+    <!-- ========== PAGE HERO ========== -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <a href="index.html">Research</a>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <span>JTBD Profile</span>
+        </nav>
+        <h1 class="reveal reveal-delay-1">Jobs-to-Be-Done Profile</h1>
+        <p class="page-hero__sub reveal reveal-delay-2">What job is the customer hiring Frisbeam to do? A framework for understanding the LED outdoor disc game market through the lens of customer progress.</p>
+      </div>
+    </section>
+
+    <!-- ========== RESEARCH BODY ========== -->
+    <section class="section section--light">
+      <div class="container--wide">
+        <div class="research-layout">
+
+          <!-- Sidebar Navigation -->
+          <nav class="research-nav" aria-label="Research documents">
+            <p class="research-nav__title">Research Docs</p>
+            <ul class="research-nav__list">
+              <li><a href="psychographic-map.html">Psychographic Map</a></li>
+              <li><a href="jtbd-profile.html" class="active">JTBD Profile</a></li>
+              <li><a href="demand-landscape.html">Demand Landscape</a></li>
+              <li><a href="cro-blueprint.html">CRO Blueprint</a></li>
+              <li><a href="brand-guidelines.html">Brand Guidelines</a></li>
+              <li><a href="ui-ux-flows.html">UI/UX Flows</a></li>
+              <li><a href="cac-ltv-model.html">CAC/LTV Model</a></li>
+              <li><a href="media-mix.html">Media Mix</a></li>
+              <li><a href="influencer-ledger.html">Influencer Ledger</a></li>
+            </ul>
+          </nav>
+
+          <!-- Main Content -->
+          <div class="research-content">
+
+            <!-- 1. Core Job Statement -->
+            <h2>Core Job Statement</h2>
+            <p>The Jobs-to-Be-Done framework asks one question: what progress is the customer trying to make? People do not buy LED disc games. They hire a solution to a social problem. Frisbeam exists at the intersection of nighttime play, group bonding, and the desire to be the person who makes gatherings unforgettable.</p>
+
+            <div class="callout">
+              <strong>Primary Job</strong>
+              "Help me create memorable social experiences that extend into the night."
+            </div>
+
+            <p>This is the core hiring criteria. Every product decision, marketing message, and customer touchpoint should ladder back to this job. The LED glow is not a feature. It is the mechanism that unlocks an entirely new window of outdoor play that competitors cannot touch. When the sun goes down, most outdoor games stop. Frisbeam starts.</p>
+
+            <div class="data-table--scroll">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Job Dimension</th>
+                    <th>What It Means</th>
+                    <th>Why It Matters for Frisbeam</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Situation</strong></td>
+                    <td>Hosting an outdoor gathering that will continue after sunset</td>
+                    <td>Most social events peak in the evening. Frisbeam is purpose-built for this moment.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Desired Progress</strong></td>
+                    <td>Keep the group engaged, active, and together</td>
+                    <td>The LED visual spectacle draws people in rather than letting them drift to their phones</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Expected Outcome</strong></td>
+                    <td>Be remembered as the host who created something special</td>
+                    <td>Glowing discs at night are inherently shareable and memorable. The product markets itself.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- 2. Functional Jobs -->
+            <h2>Functional Jobs</h2>
+            <p>Functional jobs describe what the product physically needs to accomplish. These are the practical, measurable requirements that determine whether Frisbeam can actually get the job done. For an LED outdoor game, the bar is higher than a standard daytime product because the technology must perform reliably in conditions most games never face.</p>
+
+            <ul>
+              <li><strong>Set up quickly (under 2 minutes)</strong> - The game needs to go from trunk to play-ready before the group loses interest. No tools, no complicated assembly, no hunting for batteries. LED components should activate with a single switch or automatic motion sensor.</li>
+              <li><strong>Play in low-light and complete darkness</strong> - This is the primary functional differentiator. The LED system must produce enough brightness to track the disc in flight, illuminate the target zone, and create a visible play area without external lighting. Performance in darkness is not a bonus feature. It is the entire value proposition.</li>
+              <li><strong>Accommodate varying group sizes (2 to 10+)</strong> - The game must scale from a casual two-person toss to a full party rotation. Rules should support teams, tournaments, and drop-in/drop-out play so nobody is left standing on the sideline watching.</li>
+              <li><strong>Transport easily to different locations</strong> - LED games add weight and fragility compared to standard outdoor equipment. The carrying solution must protect electronic components while staying light enough that one person can haul it from the car to the park, beach, or campsite.</li>
+              <li><strong>Last through weather and repeated use</strong> - Outdoor play means exposure to dew, light rain, sand, dirt, and temperature swings. The LED system, battery housing, and disc materials must be weather-resistant. A product that dies after one wet evening fails the job permanently.</li>
+            </ul>
+
+            <div class="callout callout--warning">
+              <strong>Functional Threshold</strong>
+              Battery life is the silent deal-breaker. If the LEDs dim or die mid-game, the entire value proposition collapses. Target minimum: 8 hours of continuous play on a single charge. Customers should never have to think about power during a single evening event.
+            </div>
+
+            <!-- 3. Emotional Jobs -->
+            <h2>Emotional Jobs</h2>
+            <p>Emotional jobs describe how the buyer wants to feel during and after using the product. These internal, personal feelings drive satisfaction far beyond functional performance. For an LED game, the emotional stakes are amplified because the visual spectacle creates stronger reactions than a standard yard game ever could.</p>
+
+            <ul>
+              <li><strong>Feel like the person who elevates the gathering</strong> - The buyer wants to be the one who transforms a regular evening into something special. Pulling out glowing discs after dark is a deliberate hosting move that signals effort, creativity, and generosity. The game is an extension of their identity as someone who makes things better.</li>
+              <li><strong>Create "wow" moments</strong> - There is a specific instant when the LEDs first light up in the dark and the group collectively reacts. That moment of surprise and delight is what the customer is actually purchasing. Every design decision should protect and amplify that initial reaction.</li>
+              <li><strong>Feel connected to friends and family</strong> - Screens isolate. Outdoor LED games do the opposite. The buyer wants to feel present, engaged, and genuinely connected to the people around them. The glow creates a shared focal point that pulls everyone into the same experience.</li>
+              <li><strong>Escape screen time</strong> - There is a growing guilt and fatigue around phone use at social events. Frisbeam offers a guilt-free alternative that is genuinely more entertaining than scrolling. The buyer wants to feel like they chose something real over something digital.</li>
+            </ul>
+
+            <div class="data-table--scroll">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Emotional Job</th>
+                    <th>Internal Feeling</th>
+                    <th>Product Moment That Delivers It</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Elevate the gathering</strong></td>
+                    <td>"I planned something great."</td>
+                    <td>Guests notice the glow and start asking questions before the first throw</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Create "wow" moments</strong></td>
+                    <td>"Did you see that?"</td>
+                    <td>First disc thrown in the dark, trailing light across the yard</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Feel connected</strong></td>
+                    <td>"This is what I needed."</td>
+                    <td>Laughter around the glow ring, phones forgotten in pockets</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Escape screens</strong></td>
+                    <td>"Nobody is looking at their phone."</td>
+                    <td>The visual spectacle is more interesting than any app notification</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- 4. Social Jobs -->
+            <h2>Social Jobs</h2>
+            <p>Social jobs describe how the buyer wants to be perceived by others. These are external, identity-driven motivations that influence which solution gets hired. LED games have an outsized advantage here because they are inherently visible, photogenic, and conversation-starting.</p>
+
+            <ul>
+              <li><strong>Be seen as the fun and creative host</strong> - Owning an LED disc game signals that this person prioritizes memorable experiences and knows how to curate them. It communicates the same values as a quality speaker system or a well-stocked cooler: this person puts thought into how their guests feel.</li>
+              <li><strong>Give groups a shared activity</strong> - Large gatherings fragment. People cluster into small conversations, drift to their phones, or leave early. The buyer wants a tool that gives the entire group a reason to stay together, interact, and participate in something communal.</li>
+              <li><strong>Create shareable social media moments</strong> - Glowing discs in the dark are inherently photogenic and video-friendly. The buyer wants content that performs well on Instagram and TikTok without staging or editing. The product should look impressive in a casual phone video shot from 20 feet away.</li>
+              <li><strong>Build traditions and repeat experiences</strong> - The buyer wants Frisbeam to become "the thing we always do" at family reunions, annual camping trips, or weekly neighborhood hangouts. The game should create rituals and inside jokes that compound over time.</li>
+            </ul>
+
+            <div class="callout callout--success">
+              <strong>Social Multiplier</strong>
+              Every social media post featuring Frisbeam at night is free advertising with built-in "wow" factor. The product's visual distinctiveness means organic content performs better than paid ads from competitors selling non-illuminated games. Design the product to look spectacular on camera without effort.
+            </div>
+
+            <!-- 5. Consumption Chain -->
+            <h2>Consumption Chain</h2>
+            <p>The consumption chain maps every stage of the customer journey from first awareness through advocacy. Each stage presents friction points where the customer might abandon the process and opportunities where Frisbeam can outperform every alternative in the LED outdoor game space.</p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">Awareness</div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step">Consideration</div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step flow-step--active">Purchase</div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step">Unboxing</div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step">First Game</div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step">Repeat Play</div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step">Advocacy</div>
+            </div>
+
+            <div class="data-table--scroll">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Stage</th>
+                    <th>What Happens</th>
+                    <th>Friction Points</th>
+                    <th>Frisbeam Opportunity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Awareness</strong></td>
+                    <td>Customer sees glowing discs at a friend's party, in a TikTok video, or through word-of-mouth recommendation</td>
+                    <td>LED game category is still niche. Most people do not know products like this exist.</td>
+                    <td>The nighttime visual is so distinctive that a single social post or in-person sighting creates instant awareness. Invest in content that showcases the "after dark" moment.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Consideration</strong></td>
+                    <td>Customer compares Frisbeam to alternatives: regular frisbee, other LED games, cornhole, or doing nothing</td>
+                    <td>Uncertainty about LED durability, battery life, and whether the glow actually looks good in person</td>
+                    <td>Video-heavy product pages, transparent specs, and authentic night-game footage that proves the product delivers on the visual promise</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Purchase</strong></td>
+                    <td>Customer buys via DTC site, often triggered by an upcoming event, seasonal shift, or gift occasion</td>
+                    <td>Price hesitation for an LED game compared to a $15 basic frisbee. Shipping anxiety if an event is approaching.</td>
+                    <td>Frame price as cost-per-evening over years of use. Fast shipping guarantees. Clear return policy that eliminates risk.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Unboxing</strong></td>
+                    <td>Customer opens the package, charges or activates LEDs, and gets familiar with the product</td>
+                    <td>Confusing LED activation, unclear charging instructions, or underwhelming initial impression</td>
+                    <td>Premium unboxing that feels like opening a gadget, not a toy. Pre-charged LEDs so the customer can test immediately. QR code to a 30-second setup video.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>First Game</strong></td>
+                    <td>Customer plays for the first time, usually at the event that triggered the purchase</td>
+                    <td>Rules confusion, LED brightness insufficient, or game not engaging enough to hold group attention</td>
+                    <td>Simple printed rules on the carrying case. Multiple brightness modes. Game variations for different group sizes printed on included card.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Repeat Play</strong></td>
+                    <td>Product becomes a regular fixture at gatherings, stored between uses</td>
+                    <td>Battery degradation over time, LED failure, or the novelty wearing off</td>
+                    <td>Rechargeable batteries with 500+ cycle lifespan. Modular LED replacement. Seasonal game variation guides to keep play fresh.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Advocacy</strong></td>
+                    <td>Customer recommends to friends, posts on social media, or buys as a gift</td>
+                    <td>No easy way to share brand info. Night photos can be hard to capture without proper camera settings.</td>
+                    <td>Referral program with real incentives. "Night Mode" camera tips included in packaging. Branded product visible in any photo or video.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- 6. Competitive Alternatives -->
+            <h2>Competitive Alternatives</h2>
+            <p>From a JTBD perspective, competition includes anything the customer could hire to solve the same job: creating memorable social experiences that extend into the night. The competitive set is broader than other LED games. It includes every option a host considers when planning evening entertainment.</p>
+
+            <div class="data-table--scroll">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Alternative Hired</th>
+                    <th>Why People Hire It</th>
+                    <th>Where It Falls Short</th>
+                    <th>Frisbeam Advantage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Regular frisbee</strong></td>
+                    <td>Free or cheap, everyone knows how to throw one, no rules needed</td>
+                    <td>No glow, completely unusable after dark. Limited to daylight hours. No structure or scoring to sustain group interest.</td>
+                    <td>Frisbeam extends play past sunset with full LED visibility. Structured scoring adds competitive depth that a basic disc cannot provide.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Cornhole</strong></td>
+                    <td>Well-known rules, established social game, works at any gathering</td>
+                    <td>No LED capability (standard sets). Boards are heavy and bulky to transport. Not visually exciting after dark even with add-on lights.</td>
+                    <td>Frisbeam is lighter, more portable, and purpose-built for nighttime play. The flying LED disc creates a visual experience that stationary boards cannot match.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Phone games (group apps)</strong></td>
+                    <td>Zero setup, everyone has a phone, hundreds of options available</td>
+                    <td>Not social enough. Everyone stares at their own screen. No physical activity. Feels like giving up on real interaction.</td>
+                    <td>Frisbeam gets people on their feet, looking at each other, and interacting physically. It is the antidote to the screen-time problem phone games perpetuate.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bonfire sitting</strong></td>
+                    <td>Low effort, naturally social, good atmosphere</td>
+                    <td>Completely passive. Conversations stall after an hour. No activity for restless guests. Limited to locations where fires are allowed.</td>
+                    <td>Frisbeam pairs perfectly with a bonfire or replaces it entirely. Active play keeps energy levels up and gives people something to do between conversations.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Glow sticks / glow accessories</strong></td>
+                    <td>Cheap, fun visual effect, festive atmosphere</td>
+                    <td>Disposable and wasteful. Not a game. Glow fades within hours. No replay value. Creates waste that needs cleanup.</td>
+                    <td>Frisbeam is rechargeable and reusable across hundreds of sessions. It provides the glow aesthetic plus an actual structured game. Zero single-use waste.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout callout--success mt-xl">
+              <strong>Key Competitive Insight</strong>
+              Frisbeam's most dangerous competitor is not another game. It is inaction: the customer deciding that "we will just hang out and see what happens" is good enough. Every marketing message should make the case that a gathering with Frisbeam after dark is a fundamentally different experience than one without it. The LED glow is the wedge that separates Frisbeam from every non-illuminated alternative.
+            </div>
+
+            <!-- 7. Switching Triggers -->
+            <h2>Switching Triggers</h2>
+            <p>Switching triggers are the specific moments and circumstances that push a customer from their current solution (or non-consumption) toward purchasing Frisbeam. Understanding these triggers allows us to time marketing, position messaging, and design the purchase experience around the exact moment demand is highest.</p>
+
+            <div class="data-table--scroll">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Trigger</th>
+                    <th>Customer Thought</th>
+                    <th>Marketing Implication</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Boredom with current options</strong></td>
+                    <td>"We always do the same thing at these get-togethers. I want something new."</td>
+                    <td>Position Frisbeam as the upgrade from stale routines. Messaging: "Same friends, completely different night."</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Seeing it at someone else's event</strong></td>
+                    <td>"Where did you get that? I need one."</td>
+                    <td>The most powerful trigger. Invest in making the in-person experience so striking that every guest becomes a lead. Include referral cards in every box.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Seasonal shift to outdoor weather</strong></td>
+                    <td>"Spring is here. We need outdoor activities for the patio/yard/beach."</td>
+                    <td>Ramp paid media and email campaigns 4-6 weeks before warm weather in each region. Align product launches with the seasonal itch to get outside.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Gift-giving occasion</strong></td>
+                    <td>"This would be a perfect gift for someone who has everything."</td>
+                    <td>Father's Day, weddings, housewarmings, and holidays are peak gifting windows. Create gift-specific landing pages, bundles, and packaging options.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout">
+              <strong>Trigger Timing</strong>
+              The highest-intent moment is Thursday through Saturday when customers are planning weekend gatherings. Schedule email sends, retargeting, and social posts to land during this window. A customer who sees Frisbeam on Thursday afternoon and has a Saturday barbecue planned is the ideal conversion scenario.
+            </div>
+
+            <!-- 8. Barriers to Adoption -->
+            <h2>Barriers to Adoption</h2>
+            <p>Barriers are the anxieties, uncertainties, and habits that prevent a customer from switching to Frisbeam even after a trigger event. Overcoming these barriers is not about convincing the customer the product is good. It is about reducing the perceived risk of making a bad purchase decision.</p>
+
+            <div class="data-table--scroll">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Barrier</th>
+                    <th>Customer Anxiety</th>
+                    <th>How to Overcome It</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Price uncertainty</strong></td>
+                    <td>"Is an LED disc game really worth $60-80 when a regular frisbee is $10?"</td>
+                    <td>Reframe value as cost-per-evening. At 50+ uses over its lifespan, Frisbeam costs less than $1.50 per night of entertainment. Compare to a single restaurant outing for a group.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>"Is it just a gimmick?"</strong></td>
+                    <td>"Will the novelty wear off after one use? Is it actually fun or just flashy?"</td>
+                    <td>Showcase repeat usage through customer testimonials and long-term reviews. Highlight game depth with scoring variations and tournament formats that sustain interest past the first session.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Battery life concerns</strong></td>
+                    <td>"What if the LEDs die in the middle of the game? How long does it actually last?"</td>
+                    <td>Lead with battery specs prominently on the product page. Provide real-world test data, not just lab estimates. Include a low-battery indicator and publish charging time clearly.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Group adoption uncertainty</strong></td>
+                    <td>"What if I buy it and nobody wants to play? What if it is too complicated?"</td>
+                    <td>Emphasize the 60-second rule explanation. Show diverse groups playing in marketing content: kids, adults, mixed ages, competitive players, casual tossers. Prove universality.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout callout--warning mt-xl">
+              <strong>Barrier Priority</strong>
+              "Is it just a gimmick?" is the most dangerous barrier because it attacks the core value proposition. Every piece of content must demonstrate that the LED experience gets better with repeated play, not worse. Testimonials from customers on their 20th or 50th game are more valuable than first-impression reviews.
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container--wide">
+      <div class="footer__grid">
+        <div class="footer__col">
+          <a href="../index.html" class="site-nav__logo" style="color: var(--white); margin-bottom: 8px;">
+            <span class="site-nav__logo-icon" aria-hidden="true">F</span>
+            Frisbeam
+          </a>
+          <p class="footer__brand-desc">The LED-powered outdoor disc game built for nighttime play, backyard gatherings, and after-dark adventures.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="TikTok">TK</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h3>Shop</h3>
+          <ul>
+            <li><a href="../pages/product.html">Starter Set</a></li>
+            <li><a href="../pages/product.html">Pro Set</a></li>
+            <li><a href="../pages/product.html">Tournament Set</a></li>
+            <li><a href="../pages/product.html">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="../pages/story.html">Our Story</a></li>
+            <li><a href="../pages/play.html">How to Play</a></li>
+            <li><a href="index.html">Research</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">Shipping & Returns</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Warranty</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Frisbeam. All rights reserved.</p>
+        <p>Made with care in the USA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
