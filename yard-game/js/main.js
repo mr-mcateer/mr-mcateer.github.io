@@ -309,7 +309,7 @@
   for (var th = 0; th < thumbs.length; th++) {
     thumbs[th].addEventListener('click', function () {
       if (mainImg) {
-        mainImg.src = this.src;
+        mainImg.src = this.src.replace(/w=200/, 'w=800');
         mainImg.alt = this.alt;
       }
       for (var at = 0; at < thumbs.length; at++) {
