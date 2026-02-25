@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAC vs. LTV Model -- Frisbeam GTM Research</title>
+  <meta name="description" content="Unit economics, customer acquisition cost by channel, lifetime value projections, and scenario modeling for Frisbeam LED disc game.">
+  <meta name="theme-color" content="#0B0F19">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Announcement Bar -->
+  <div class="announce-bar">
+    Free shipping on all Glow &amp; Pro orders -- <a href="../pages/product.html">Shop Now</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a href="../index.html" class="site-nav__logo" aria-label="Frisbeam home">
+        <span class="site-nav__logo-icon" aria-hidden="true">F</span>
+        Frisbeam
+      </a>
+      <ul class="site-nav__links">
+        <li><a href="../pages/product.html">Shop</a></li>
+        <li><a href="../pages/story.html">Our Story</a></li>
+        <li><a href="../pages/play.html">How to Play</a></li>
+        <li><a href="index.html" class="active">Research</a></li>
+      </ul>
+      <div class="site-nav__cta">
+        <button class="site-nav__cart" aria-label="Open cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="site-nav__cart-count">0</span>
+        </button>
+        <button class="site-nav__hamburger" aria-label="Open menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-overlay" aria-hidden="true"></div>
+  <div class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav__close" aria-label="Close menu">&times;</button>
+    <a href="../index.html" class="mobile-nav__link">Home</a>
+    <a href="../pages/product.html" class="mobile-nav__link">Shop</a>
+    <a href="../pages/story.html" class="mobile-nav__link">Our Story</a>
+    <a href="../pages/play.html" class="mobile-nav__link">How to Play</a>
+    <a href="index.html" class="mobile-nav__link active">Research</a>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay mobile-overlay" aria-hidden="true"></div>
+  <aside class="cart-drawer" aria-label="Shopping cart">
+    <div class="cart-drawer__header">
+      <h3>Your Cart</h3>
+      <button class="cart-drawer__close" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-drawer__items">
+      <p style="color: var(--text-dim); text-align: center; padding: 40px 0;">Your cart is empty.</p>
+    </div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__total">
+        <span>Total</span>
+        <span>$0.00</span>
+      </div>
+      <button class="btn btn--primary btn--full">Checkout</button>
+    </div>
+  </aside>
+
+  <main id="main">
+
+    <!-- ========== PAGE HERO ========== -->
+    <section class="page-hero">
+      <div class="container--wide">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Research</a>
+          <span class="breadcrumb__sep">/</span>
+          <span>CAC/LTV Model</span>
+        </nav>
+        <h1 class="reveal">CAC vs. Lifetime Value Model</h1>
+        <p class="page-hero__sub reveal reveal-delay-1">Unit economics, acquisition costs by channel, and payback period analysis for Frisbeam LED disc game</p>
+      </div>
+    </section>
+
+    <!-- ========== RESEARCH BODY ========== -->
+    <section class="section section--light">
+      <div class="container--wide">
+        <div class="research-layout">
+
+          <!-- Sidebar Nav -->
+          <aside class="research-nav">
+            <p class="research-nav__title">GTM Research</p>
+            <ul class="research-nav__list">
+              <li><a href="psychographic-map.html">Psychographic Cohort Map</a></li>
+              <li><a href="jtbd-profile.html">JTBD Profile</a></li>
+              <li><a href="demand-landscape.html">Demand Landscape</a></li>
+              <li><a href="cro-blueprint.html">CRO Blueprint</a></li>
+              <li><a href="brand-guidelines.html">Brand Guidelines</a></li>
+              <li><a href="ui-ux-flows.html">UI/UX Flows</a></li>
+              <li><a href="cac-ltv-model.html" class="active">CAC/LTV Model</a></li>
+              <li><a href="media-mix.html">Media Mix</a></li>
+              <li><a href="influencer-ledger.html">Influencer Ledger</a></li>
+            </ul>
+          </aside>
+
+          <!-- Main Content -->
+          <div class="research-content">
+
+            <!-- 1. Unit Economics -->
+            <h2 class="reveal">1. Unit Economics</h2>
+            <p class="reveal">Per-SKU cost structure for the three Frisbeam LED disc sets. All figures reflect DTC fulfillment with LED component sourcing at current contracted rates.</p>
+
+            <div class="data-table--scroll reveal">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>SKU</th>
+                    <th>Price</th>
+                    <th>COGS</th>
+                    <th>Gross Margin</th>
+                    <th>GM %</th>
+                    <th>Shipping</th>
+                    <th>Net Margin</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Starter</strong></td>
+                    <td>$129</td>
+                    <td>$38</td>
+                    <td>$91</td>
+                    <td>71%</td>
+                    <td>$8</td>
+                    <td>$83</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Glow</strong></td>
+                    <td>$199</td>
+                    <td>$58</td>
+                    <td>$141</td>
+                    <td>71%</td>
+                    <td>$0 (free)</td>
+                    <td>$141</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Pro</strong></td>
+                    <td>$299</td>
+                    <td>$92</td>
+                    <td>$207</td>
+                    <td>69%</td>
+                    <td>$0 (free)</td>
+                    <td>$207</td>
+                  </tr>
+                  <tr style="background: var(--bg-elevated); font-weight: 600;">
+                    <td><strong>Blended</strong></td>
+                    <td>$199 AOV</td>
+                    <td>--</td>
+                    <td>--</td>
+                    <td>71%</td>
+                    <td>--</td>
+                    <td><strong>$141</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout callout--success reveal">
+              <strong>Strong Margin Structure</strong>
+              A blended 71% gross margin with $141 net per order creates significant headroom for paid acquisition. The Glow set at $199 captures the bulk of volume and delivers the highest net margin after free shipping.
+            </div>
+
+            <!-- 2. Customer Acquisition Cost by Channel -->
+            <h2 class="reveal">2. Customer Acquisition Cost by Channel</h2>
+            <p class="reveal">Projected CAC and budget allocation across seven acquisition channels. Estimates are based on comparable DTC outdoor product launches and current platform benchmarks for the sporting goods vertical.</p>
+
+            <div class="data-table--scroll reveal">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Channel</th>
+                    <th>Estimated CAC</th>
+                    <th>Budget Share</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Instagram / TikTok Ads</strong></td>
+                    <td>$42</td>
+                    <td>28%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Google Search (branded)</strong></td>
+                    <td>$18</td>
+                    <td>15%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Google Search (non-branded)</strong></td>
+                    <td>$65</td>
+                    <td>12%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Influencer partnerships</strong></td>
+                    <td>$35</td>
+                    <td>20%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Organic social / content</strong></td>
+                    <td>$12</td>
+                    <td>10%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Email marketing</strong></td>
+                    <td>$8</td>
+                    <td>5%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Events / festivals</strong></td>
+                    <td>$55</td>
+                    <td>10%</td>
+                  </tr>
+                  <tr style="background: var(--bg-elevated); font-weight: 600;">
+                    <td><strong>Blended CAC</strong></td>
+                    <td><strong>$38</strong></td>
+                    <td>100%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="reveal">CAC by Channel</h3>
+
+            <!-- Bar Chart: CAC by Channel -->
+            <div class="bar-chart reveal">
+              <div class="bar-chart__row">
+                <span class="bar-chart__label">IG / TikTok</span>
+                <div class="bar-chart__track">
+                  <div class="bar-chart__fill" style="width: 65%;"></div>
+                </div>
+                <span class="bar-chart__value">$42</span>
+              </div>
+              <div class="bar-chart__row">
+                <span class="bar-chart__label">Google (branded)</span>
+                <div class="bar-chart__track">
+                  <div class="bar-chart__fill" style="width: 28%;"></div>
+                </div>
+                <span class="bar-chart__value">$18</span>
+              </div>
+              <div class="bar-chart__row">
+                <span class="bar-chart__label">Google (non-brand)</span>
+                <div class="bar-chart__track">
+                  <div class="bar-chart__fill" style="width: 100%;"></div>
+                </div>
+                <span class="bar-chart__value">$65</span>
+              </div>
+              <div class="bar-chart__row">
+                <span class="bar-chart__label">Influencer</span>
+                <div class="bar-chart__track">
+                  <div class="bar-chart__fill" style="width: 54%;"></div>
+                </div>
+                <span class="bar-chart__value">$35</span>
+              </div>
+              <div class="bar-chart__row">
+                <span class="bar-chart__label">Organic / content</span>
+                <div class="bar-chart__track">
+                  <div class="bar-chart__fill" style="width: 18%;"></div>
+                </div>
+                <span class="bar-chart__value">$12</span>
+              </div>
+              <div class="bar-chart__row">
+                <span class="bar-chart__label">Email</span>
+                <div class="bar-chart__track">
+                  <div class="bar-chart__fill" style="width: 12%;"></div>
+                </div>
+                <span class="bar-chart__value">$8</span>
+              </div>
+              <div class="bar-chart__row">
+                <span class="bar-chart__label">Events</span>
+                <div class="bar-chart__track">
+                  <div class="bar-chart__fill" style="width: 85%;"></div>
+                </div>
+                <span class="bar-chart__value">$55</span>
+              </div>
+            </div>
+
+            <div class="callout reveal">
+              <strong>Blended CAC Target: $38</strong>
+              Weighted toward lower-cost owned channels (organic social, email, influencer seeding) with paid social and events providing scale. Branded search captures high-intent traffic at the lowest paid CAC.
+            </div>
+
+            <!-- 3. LTV:CAC Ratio -->
+            <h2 class="reveal">3. LTV:CAC Ratio</h2>
+            <p class="reveal">Lifetime value tracks cumulative revenue per customer over a three-year horizon, including repeat purchases from accessories, gift buying, and product upgrades.</p>
+
+            <div class="data-table--scroll reveal">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Period</th>
+                    <th>Cumulative Orders</th>
+                    <th>Driver</th>
+                    <th>Cumulative LTV</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Year 1</strong></td>
+                    <td>1.0</td>
+                    <td>Initial purchase</td>
+                    <td>$199</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Year 2</strong></td>
+                    <td>1.3</td>
+                    <td>Accessories, gift purchases</td>
+                    <td>$258</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Year 3</strong></td>
+                    <td>1.6</td>
+                    <td>Upgrades, replacements, gifts</td>
+                    <td>$312</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="stats-bar stats-bar--bordered reveal">
+              <div>
+                <div class="stat__number">$312</div>
+                <div class="stat__label">3-Year LTV</div>
+              </div>
+              <div>
+                <div class="stat__number">$38</div>
+                <div class="stat__label">Blended CAC</div>
+              </div>
+              <div>
+                <div class="stat__number" style="color: var(--success); text-shadow: 0 0 24px rgba(34,197,94,0.25);">8.2:1</div>
+                <div class="stat__label">LTV:CAC Ratio</div>
+              </div>
+              <div>
+                <div class="stat__number">&lt;1 mo</div>
+                <div class="stat__label">Payback Period</div>
+              </div>
+            </div>
+
+            <div class="callout callout--success reveal">
+              <strong>Exceptional Unit Economics</strong>
+              An 8.2:1 LTV:CAC ratio far exceeds the 3:1 benchmark for healthy DTC growth. The high first-order margin ($141 net vs. $38 CAC) means Frisbeam recovers acquisition cost on the very first purchase with a payback period under one month.
+            </div>
+
+            <!-- 4. Scenario Modeling -->
+            <h2 class="reveal">4. Scenario Modeling</h2>
+            <p class="reveal">Three scenarios stress-test the unit economics across different conversion rates, acquisition costs, and lifetime value projections to bound the range of expected outcomes.</p>
+
+            <div class="data-table--scroll reveal">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Scenario</th>
+                    <th>Conversion Rate</th>
+                    <th>Blended CAC</th>
+                    <th>3-Year LTV</th>
+                    <th>LTV:CAC</th>
+                    <th>Assessment</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="badge badge--warning">Conservative</span></td>
+                    <td>2.0%</td>
+                    <td>$45</td>
+                    <td>$265</td>
+                    <td><strong>5.9:1</strong></td>
+                    <td>Strong -- well above 3:1 floor</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge badge--success">Base Case</span></td>
+                    <td>2.8%</td>
+                    <td>$38</td>
+                    <td>$312</td>
+                    <td><strong>8.2:1</strong></td>
+                    <td>Excellent -- room to scale aggressively</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge badge--primary">Optimistic</span></td>
+                    <td>3.5%</td>
+                    <td>$32</td>
+                    <td>$380</td>
+                    <td><strong>11.9:1</strong></td>
+                    <td>Exceptional -- reinvest into brand</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="reveal">Even the <strong>conservative scenario</strong> (5.9:1) delivers nearly double the 3:1 minimum threshold for sustainable DTC growth. The base case reflects the most likely outcome given comparable LED product launches and current platform CPMs. The optimistic case assumes viral TikTok content and strong influencer-driven word-of-mouth reduce paid CAC while accessories and gift purchases push LTV higher.</p>
+
+            <!-- 5. Break-Even Analysis -->
+            <h2 class="reveal">5. Break-Even Analysis</h2>
+            <p class="reveal">Fixed operating costs and the monthly order volume required to reach profitability, assuming the blended net margin of $141 per order.</p>
+
+            <div class="data-table--scroll reveal">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Line Item</th>
+                    <th>Monthly Cost</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Team (founder + contractor)</strong></td>
+                    <td>$8,000</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tools &amp; software</strong></td>
+                    <td>$3,500</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hosting &amp; infrastructure</strong></td>
+                    <td>$1,500</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Insurance &amp; misc</strong></td>
+                    <td>$2,000</td>
+                  </tr>
+                  <tr style="background: var(--bg-elevated); font-weight: 600;">
+                    <td><strong>Total fixed costs</strong></td>
+                    <td><strong>$15,000 / month</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="stats-bar reveal">
+              <div>
+                <div class="stat__number">107</div>
+                <div class="stat__label">Orders / month to break even</div>
+              </div>
+              <div>
+                <div class="stat__number" style="color: var(--accent); text-shadow: 0 0 24px rgba(255,107,44,0.25);">200+</div>
+                <div class="stat__label">Target orders by month 6</div>
+              </div>
+              <div>
+                <div class="stat__number">$141</div>
+                <div class="stat__label">Blended net margin / order</div>
+              </div>
+            </div>
+
+            <div class="callout reveal">
+              <strong>Break-Even Math</strong>
+              $15,000 fixed costs &divide; $141 blended net margin = 107 orders per month. At the base-case blended CAC of $38, reaching 200+ monthly orders by month 6 would generate roughly $13,200 in monthly operating profit after fixed costs and acquisition spend.
+            </div>
+
+            <!-- 6. Key Assumptions & Risks -->
+            <h2 class="reveal">6. Key Assumptions &amp; Risks</h2>
+            <p class="reveal">The projections above depend on several assumptions that carry downside risk. Each is monitored and has a defined mitigation path.</p>
+
+            <div class="callout callout--warning reveal">
+              <strong>Seasonal Demand Concentration</strong>
+              Outdoor games skew heavily toward spring and summer. Q4/Q1 revenue may drop 40-60% from peak. Mitigation: build holiday gifting campaigns and indoor-play content for shoulder seasons. LED glow effect gives Frisbeam a natural advantage in dark winter evenings.
+            </div>
+
+            <div class="callout callout--warning reveal">
+              <strong>Rising Ad Costs</strong>
+              Meta and TikTok CPMs trend upward 15-20% year-over-year. If paid CAC rises above $55, the conservative scenario ratio drops below 5:1. Mitigation: invest early in organic flywheel (SEO, email, referral program) to reduce paid channel dependency over time.
+            </div>
+
+            <div class="callout callout--warning reveal">
+              <strong>Competitor Entry</strong>
+              The LED outdoor game segment is nascent. Success will attract fast-followers and knock-offs within 12-18 months. Mitigation: build brand equity and community before competitors can replicate. Patent-pending LED disc design provides a defensibility window.
+            </div>
+
+            <div class="callout callout--warning reveal">
+              <strong>Supply Chain for LED Components</strong>
+              LED modules and rechargeable battery packs are sourced from a single supplier. Lead times are currently 8-10 weeks. Mitigation: qualify a secondary supplier by month 3 and maintain 6-week safety stock to buffer against disruptions.
+            </div>
+
+          </div><!-- /.research-content -->
+        </div><!-- /.research-layout -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container--wide">
+      <div class="footer__grid">
+        <div class="footer__col">
+          <a href="../index.html" class="site-nav__logo" style="color: var(--white); margin-bottom: 8px;">
+            <span class="site-nav__logo-icon" aria-hidden="true">F</span>
+            Frisbeam
+          </a>
+          <p class="footer__brand-desc">The LED-powered disc game built for backyards, beaches, and after-dark rivalries.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="TikTok">TK</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h3>Shop</h3>
+          <ul>
+            <li><a href="../pages/product.html">Starter Set</a></li>
+            <li><a href="../pages/product.html">Glow Set</a></li>
+            <li><a href="../pages/product.html">Pro Set</a></li>
+            <li><a href="../pages/product.html">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="../pages/story.html">Our Story</a></li>
+            <li><a href="../pages/play.html">How to Play</a></li>
+            <li><a href="index.html">Research</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">Shipping &amp; Returns</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Warranty</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Frisbeam. All rights reserved.</p>
+        <p>Made with care in the USA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

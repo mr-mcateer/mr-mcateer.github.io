@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRO Blueprint -- Frisbeam Research</title>
+  <meta name="description" content="Conversion rate optimization blueprint for the Frisbeam launch. Funnel strategy, friction point analysis, A/B test roadmap, and page-level recommendations.">
+  <meta name="theme-color" content="#0B0F19">
+  <meta property="og:title" content="CRO Blueprint -- Frisbeam Research">
+  <meta property="og:description" content="Funnel strategy, friction analysis, and A/B test roadmap for Frisbeam's LED disc game launch.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Announcement Bar -->
+  <div class="announce-bar">
+    Free shipping on all orders over $99 -- <a href="../pages/product.html">Shop Now</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a href="../index.html" class="site-nav__logo" aria-label="Frisbeam home">
+        <span class="site-nav__logo-icon" aria-hidden="true">F</span>
+        Frisbeam
+      </a>
+      <ul class="site-nav__links">
+        <li><a href="../pages/product.html">Shop</a></li>
+        <li><a href="../pages/story.html">Our Story</a></li>
+        <li><a href="../pages/play.html">How to Play</a></li>
+        <li><a href="index.html" class="active">Research</a></li>
+      </ul>
+      <div class="site-nav__cta">
+        <button class="site-nav__cart" aria-label="Open cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="site-nav__cart-count">0</span>
+        </button>
+        <button class="site-nav__hamburger" aria-label="Open menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-overlay" aria-hidden="true"></div>
+  <div class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav__close" aria-label="Close menu">&times;</button>
+    <a href="../index.html" class="mobile-nav__link">Home</a>
+    <a href="../pages/product.html" class="mobile-nav__link">Shop</a>
+    <a href="../pages/story.html" class="mobile-nav__link">Our Story</a>
+    <a href="../pages/play.html" class="mobile-nav__link">How to Play</a>
+    <a href="index.html" class="mobile-nav__link active">Research</a>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay mobile-overlay" aria-hidden="true"></div>
+  <aside class="cart-drawer" aria-label="Shopping cart">
+    <div class="cart-drawer__header">
+      <h3>Your Cart</h3>
+      <button class="cart-drawer__close" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-drawer__items">
+      <p style="color: var(--text-dim); text-align: center; padding: 40px 0;">Your cart is empty.</p>
+    </div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__total">
+        <span>Total</span>
+        <span>$0.00</span>
+      </div>
+      <button class="btn btn--primary btn--full">Checkout</button>
+    </div>
+  </aside>
+
+  <main id="main">
+
+    <!-- ========== PAGE HERO ========== -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <a href="index.html">Research</a>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <span>CRO Blueprint</span>
+        </nav>
+        <h1 class="reveal reveal-delay-1">CRO Blueprint</h1>
+        <p class="page-hero__sub reveal reveal-delay-2">The click-by-click path from ad impression to purchase</p>
+      </div>
+    </section>
+
+    <!-- ========== RESEARCH BODY ========== -->
+    <section class="section section--light">
+      <div class="container--wide">
+        <div class="research-layout">
+
+          <!-- Sidebar Navigation -->
+          <nav class="research-nav" aria-label="Research documents">
+            <p class="research-nav__title">Research Docs</p>
+            <ul class="research-nav__list">
+              <li><a href="psychographic-map.html">Psychographic Map</a></li>
+              <li><a href="jtbd-profile.html">JTBD Profile</a></li>
+              <li><a href="demand-landscape.html">Demand Landscape</a></li>
+              <li><a href="cro-blueprint.html" class="active">CRO Blueprint</a></li>
+              <li><a href="brand-guidelines.html">Brand Guidelines</a></li>
+              <li><a href="ui-ux-flows.html">UI/UX Flows</a></li>
+              <li><a href="cac-ltv-model.html">CAC/LTV Model</a></li>
+              <li><a href="media-mix.html">Media Mix</a></li>
+              <li><a href="influencer-ledger.html">Influencer Ledger</a></li>
+            </ul>
+          </nav>
+
+          <!-- Main Content -->
+          <div class="research-content">
+
+            <!-- ===== 1. CONVERSION FUNNEL ===== -->
+            <h2>Conversion Funnel</h2>
+            <p>Every dollar spent on ads must travel a six-step journey before it becomes revenue. The funnel below maps the full path from first impression to confirmed purchase. Optimizing each handoff -- even by a single percentage point -- compounds into dramatically higher return on ad spend.</p>
+
+            <div class="flow-diagram">
+              <div class="flow-step">
+                <strong>Social / Ad Impression</strong>
+                <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 4px;">Paid + Organic</div>
+              </div>
+              <span class="flow-arrow">&rarr;</span>
+              <div class="flow-step">
+                <strong>Landing Page</strong>
+                <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 4px;">3.2% CTR Target</div>
+              </div>
+              <span class="flow-arrow">&rarr;</span>
+              <div class="flow-step">
+                <strong>Product Page</strong>
+                <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 4px;">65% of Landers</div>
+              </div>
+              <span class="flow-arrow">&rarr;</span>
+              <div class="flow-step flow-step--active">
+                <strong>Add to Cart</strong>
+                <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 4px;">18% of Viewers</div>
+              </div>
+              <span class="flow-arrow">&rarr;</span>
+              <div class="flow-step">
+                <strong>Checkout</strong>
+                <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 4px;">72% of Carts</div>
+              </div>
+              <span class="flow-arrow">&rarr;</span>
+              <div class="flow-step flow-step--active">
+                <strong>Purchase</strong>
+                <div style="font-size: 0.8rem; color: var(--text-dim); margin-top: 4px;">2.8% Overall</div>
+              </div>
+            </div>
+
+            <p>The funnel is not linear for every visitor. Retargeting, email sequences, and organic return visits create loops that recapture dropped users at each stage. The targets above represent first-session benchmarks for a well-optimized DTC experience selling an LED outdoor game in the $50 - $150 range.</p>
+
+
+            <!-- ===== 2. FUNNEL METRICS ===== -->
+            <h2>Funnel Metrics</h2>
+            <p>These benchmarks are calibrated against DTC sporting goods and outdoor recreation brands. Targets represent month-six maturity after initial optimization passes.</p>
+
+            <div class="data-table--scroll">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Funnel Stage</th>
+                    <th>Volume (Indexed)</th>
+                    <th>Stage Conversion</th>
+                    <th>Cumulative</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Impressions</strong></td>
+                    <td>100%</td>
+                    <td>--</td>
+                    <td>100%</td>
+                    <td>Paid social, search, and organic reach combined</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Landing Page</strong></td>
+                    <td>3.2%</td>
+                    <td>3.2% CTR</td>
+                    <td>3.2%</td>
+                    <td>Video ads outperform static by 40 - 60%</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Product Page</strong></td>
+                    <td>2.08%</td>
+                    <td>65% of landers</td>
+                    <td>2.08%</td>
+                    <td>Above-fold CTA and social proof critical</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Add to Cart</strong></td>
+                    <td>0.37%</td>
+                    <td>18% of product viewers</td>
+                    <td>0.37%</td>
+                    <td>Gallery quality and LED glow demo drive this</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Checkout</strong></td>
+                    <td>0.27%</td>
+                    <td>72% of carts</td>
+                    <td>0.27%</td>
+                    <td>Free shipping threshold is the biggest lever</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Purchase</strong></td>
+                    <td>0.27%</td>
+                    <td>~100% checkout completion</td>
+                    <td><strong>2.8% target</strong></td>
+                    <td>Guest checkout + express pay are table stakes</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout mt-lg">
+              <strong>Why 2.8%?</strong>
+              The 2.8% overall conversion target sits above the 2.0% industry average for DTC outdoor recreation. The LED glow factor gives Frisbeam a natural visual advantage in ad creative and product pages -- the product demonstrates itself. That built-in "wow factor" should translate to above-average click-through and add-to-cart rates compared to static product categories.
+            </div>
+
+
+            <!-- ===== 3. KEY FRICTION POINTS ===== -->
+            <h2>Key Friction Points</h2>
+            <p>These are the four most likely conversion killers specific to Frisbeam, ranked by revenue impact. Each has a specific, testable mitigation strategy.</p>
+
+            <div class="persona-card reveal">
+              <div class="persona-card__header">
+                <div class="persona-card__avatar" style="font-size: 1.2rem;">?!</div>
+                <div>
+                  <div class="persona-card__name">"Is the LED a gimmick?"</div>
+                  <div class="persona-card__subtitle"><span class="badge badge--primary">High Impact</span></div>
+                </div>
+              </div>
+              <p><strong>The Problem:</strong> First-time visitors will question whether the LED feature is durable, bright enough outdoors, and worth the premium over a basic disc game. Skepticism about electronics in outdoor products is deeply ingrained.</p>
+              <p><strong>The Solution:</strong> Social proof video showing real gameplay footage at dusk and after dark. UGC clips from early adopters demonstrating brightness, battery life, and durability after repeated use. Place this content above the fold on the product page -- do not make visitors scroll to find proof that the core feature works.</p>
+            </div>
+
+            <div class="persona-card reveal">
+              <div class="persona-card__header">
+                <div class="persona-card__avatar" style="font-size: 1.2rem;">$$</div>
+                <div>
+                  <div class="persona-card__name">Price Anchor Confusion</div>
+                  <div class="persona-card__subtitle"><span class="badge badge--primary">High Impact</span></div>
+                </div>
+              </div>
+              <p><strong>The Problem:</strong> Visitors compare Frisbeam to $20 disc sets on Amazon and experience sticker shock. Without clear differentiation, the LED premium feels arbitrary. Multiple product tiers without clear guidance lead to decision paralysis.</p>
+              <p><strong>The Solution:</strong> Clear tier comparison table with a prominent "Most Popular" badge on the Glow set. Anchor messaging around what you get ("120+ hours of LED playtime") rather than what it costs. Show the per-use value: "Less than $1 per night of backyard fun."</p>
+            </div>
+
+            <div class="persona-card reveal">
+              <div class="persona-card__header">
+                <div class="persona-card__avatar" style="font-size: 1.2rem;">&#128666;</div>
+                <div>
+                  <div class="persona-card__name">Shipping Uncertainty</div>
+                  <div class="persona-card__subtitle"><span class="badge badge--warning">Medium Impact</span></div>
+                </div>
+              </div>
+              <p><strong>The Problem:</strong> Unclear shipping costs and delivery timelines are the number-one driver of cart abandonment across DTC e-commerce. Buyers planning for an event need confidence their order will arrive on time.</p>
+              <p><strong>The Solution:</strong> "Free shipping" messaging above the fold on every page. Delivery date estimate shown in the cart and at checkout based on zip code. Real-time "Ships today if ordered by 2 PM" urgency signal on the product page.</p>
+            </div>
+
+            <div class="persona-card reveal">
+              <div class="persona-card__header">
+                <div class="persona-card__avatar" style="font-size: 1.2rem;">&#127873;</div>
+                <div>
+                  <div class="persona-card__name">Gift Buyer Hesitation</div>
+                  <div class="persona-card__subtitle"><span class="badge badge--warning">Medium Impact</span></div>
+                </div>
+              </div>
+              <p><strong>The Problem:</strong> Gift buyers need extra confidence that the recipient will actually use and enjoy the product. They also worry about presentation -- an outdoor game arriving in a plain brown box feels like a letdown.</p>
+              <p><strong>The Solution:</strong> Gift wrap option at checkout with premium unboxing experience. "Perfect for" badges on the product page (housewarming, Father's Day, bachelor party, family reunion). Gift message field and option to ship directly to the recipient with a branded gift note.</p>
+            </div>
+
+
+            <!-- ===== 4. A/B TEST HYPOTHESES ===== -->
+            <h2>A/B Test Hypotheses</h2>
+            <p>These five experiments should be run sequentially during the first 90 days post-launch. Each test requires a minimum of 1,000 sessions per variant for statistical significance at 95% confidence.</p>
+
+            <div class="callout callout--success">
+              <strong>Test 1: Hero Video vs. Static Image</strong>
+              A 15-second autoplay loop of LED gameplay at night will outperform a static lifestyle photo on the landing page. The LED glow is Frisbeam's strongest visual differentiator -- motion brings it to life. Expected lift: +15% scroll depth and landing-to-product click-through rate.
+            </div>
+
+            <div class="callout">
+              <strong>Test 2: "Try Before You Buy" 30-Day Guarantee Badge</strong>
+              Adding a prominent 30-day money-back guarantee badge near the add-to-cart button will reduce purchase anxiety for first-time buyers skeptical of the LED feature. Testing this badge against the standard layout without the guarantee callout. Expected lift: +8% add-to-cart rate.
+            </div>
+
+            <div class="callout callout--warning">
+              <strong>Test 3: Single CTA vs. Dual CTA on Product Page</strong>
+              A single "Add to Cart" button will outperform a layout with both "Add to Cart" and "Buy Now" buttons. Decision simplicity reduces friction for a single-SKU product. Expected lift: +5% conversion from product page to cart.
+            </div>
+
+            <div class="callout">
+              <strong>Test 4: Social Proof Placement</strong>
+              Moving the top three customer reviews and star rating above the fold (directly below the product hero) will build trust faster than the standard placement below product specifications. First impressions drive the decision to scroll or bounce. Expected lift: +10% product page engagement.
+            </div>
+
+            <div class="callout callout--success">
+              <strong>Test 5: Price Anchoring -- "Per Night of Fun" Micro-Price</strong>
+              Displaying the price as "$0.83 per night of backyard fun" alongside the flat price will reduce sticker shock and reframe the purchase as an investment in ongoing entertainment rather than a single expense. Expected lift: +12% add-to-cart rate among first-time visitors.
+            </div>
+
+            <div class="data-table--scroll">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Test</th>
+                    <th>Primary Metric</th>
+                    <th>Expected Lift</th>
+                    <th>Priority</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Hero video vs. static image</strong></td>
+                    <td>Landing-to-product CTR</td>
+                    <td>+15%</td>
+                    <td><span class="badge badge--primary">P1</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>30-day guarantee badge</strong></td>
+                    <td>Add-to-cart rate</td>
+                    <td>+8%</td>
+                    <td><span class="badge badge--primary">P1</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Single vs. dual CTA</strong></td>
+                    <td>Product-to-cart conversion</td>
+                    <td>+5%</td>
+                    <td><span class="badge badge--warning">P2</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Social proof: above vs. below fold</strong></td>
+                    <td>Product page engagement</td>
+                    <td>+10%</td>
+                    <td><span class="badge badge--warning">P2</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>"Per night of fun" micro-price</strong></td>
+                    <td>Add-to-cart rate</td>
+                    <td>+12%</td>
+                    <td><span class="badge badge--primary">P1</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+            <!-- ===== 5. PAGE-LEVEL CRO RECOMMENDATIONS ===== -->
+            <h2>Page-Level CRO Recommendations</h2>
+
+            <h3>Landing Page</h3>
+            <p>The landing page exists for one purpose: move visitors to the product page. Every element should serve that single conversion goal.</p>
+            <ul>
+              <li><strong>Above-fold hero video</strong> with autoplay loop showing Frisbeam in action at night. The LED glow sells itself when visitors can see it. No stock photography.</li>
+              <li><strong>Social proof strip</strong> immediately below the hero -- star rating, review count, and "As seen on" press logos.</li>
+              <li><strong>Single primary CTA</strong> ("See the Game" or "Shop Now") with no competing navigation distractions. One button, one action.</li>
+              <li><strong>"Free shipping" banner</strong> visible above the fold without scrolling. Removes the biggest objection before it forms.</li>
+              <li><strong>Scroll-triggered micro-animations</strong> that reveal product features as the visitor scrolls. Keep engagement high without slowing page load.</li>
+              <li><strong>Exit-intent popup</strong> offering 10% off first order for email capture. Last chance to convert a bouncing visitor into a lead.</li>
+            </ul>
+
+            <h3>Product Page</h3>
+            <p>This is where the sale happens. The product page must answer every objection and make adding to cart feel effortless.</p>
+            <ul>
+              <li><strong>Image gallery</strong> with 5+ images: hero night shot with LED glow, daytime lifestyle shot, close-up of LED mechanism, scale reference with people, and action shot of disc in flight.</li>
+              <li><strong>LED demo video</strong> embedded in the gallery showing brightness levels, color modes, and battery life indicator. The LED feature needs motion to sell.</li>
+              <li><strong>Trust badges</strong> in a horizontal strip: 30-day money-back guarantee, free shipping, 120+ hour battery life, weather-resistant rating.</li>
+              <li><strong>Tier comparison module</strong> with "Most Popular" badge on the Glow set. Clear feature differentiation between tiers so visitors self-select without decision paralysis.</li>
+              <li><strong>Customer reviews</strong> with photo uploads showing real nighttime gameplay. Star distribution breakdown and "most helpful" sorting. Prioritize reviews that mention durability and LED brightness.</li>
+              <li><strong>Cross-sell module</strong>: "Complete your setup" with replacement discs, carrying bag, and extra battery packs.</li>
+            </ul>
+
+            <h3>Checkout</h3>
+            <p>Checkout should feel fast, safe, and predictable. Eliminate every possible point of friction between "Add to Cart" and "Confirm Purchase."</p>
+            <ul>
+              <li><strong>Guest checkout default</strong> -- never require account creation to complete a purchase. Offer account creation post-purchase with an incentive.</li>
+              <li><strong>Apple Pay and Shop Pay</strong> as first-priority express payment options. Google Pay as secondary. One-tap checkout reduces mobile abandonment dramatically.</li>
+              <li><strong>Three-step max</strong> progress indicator (Shipping, Payment, Confirmation). Show where the buyer is at all times.</li>
+              <li><strong>No surprises</strong>: display total with tax and shipping before the payment step. Hidden costs are the top abandonment driver in DTC e-commerce.</li>
+              <li><strong>Gift options visible</strong>: gift wrap checkbox, gift message field, and "Ship to a different address" option prominently displayed -- not hidden behind a dropdown.</li>
+              <li><strong>Trust reinforcement</strong>: SSL lock icon, money-back guarantee reminder, and "Secure checkout powered by Shopify" near the pay button.</li>
+            </ul>
+
+
+            <!-- ===== 6. MOBILE CRO ===== -->
+            <h2>Mobile CRO</h2>
+            <p>Over 70% of DTC traffic arrives on mobile, but desktop still converts at nearly 2x the rate. Closing that gap is the single highest-leverage CRO opportunity for Frisbeam's launch.</p>
+
+            <div class="stats-bar stats-bar--bordered reveal">
+              <div>
+                <div class="stat__number">70%+</div>
+                <div class="stat__label">Mobile Traffic Share</div>
+              </div>
+              <div>
+                <div class="stat__number">2x</div>
+                <div class="stat__label">Desktop Conversion Advantage</div>
+              </div>
+              <div>
+                <div class="stat__number">48px</div>
+                <div class="stat__label">Min Touch Target Height</div>
+              </div>
+              <div>
+                <div class="stat__number">&lt; 2s</div>
+                <div class="stat__label">Target LCP (Mobile)</div>
+              </div>
+            </div>
+
+            <h3>Thumb-Zone CTA Placement</h3>
+            <p>Primary actions must sit in the natural thumb arc -- the bottom-center of the screen where one-handed use is most comfortable. The add-to-cart button should never require a stretch to the top of the viewport.</p>
+            <ul>
+              <li><strong>Sticky ATC bar</strong> -- a fixed bottom bar appears once the user scrolls past the primary call-to-action. Always visible, always one tap away. Includes the price and a single "Add to Cart" button.</li>
+              <li><strong>Larger touch targets</strong> -- all buttons minimum 48px height with 8px spacing between tappable elements. No tiny links, no hover-dependent interactions.</li>
+              <li><strong>Bottom-anchored navigation</strong> -- key actions (cart, back to top, chat support) are pinned to the bottom 20% of the screen where thumbs naturally rest.</li>
+            </ul>
+
+            <h3>Simplified Checkout</h3>
+            <p>Mobile checkout must reduce form fields to the absolute minimum. Every extra field is a chance for the buyer to abandon.</p>
+            <ul>
+              <li><strong>Apple Pay / Google Pay integration</strong> -- reduces mobile checkout to a single biometric confirmation. No typing required. This should be the default checkout path on mobile, not a secondary option.</li>
+              <li><strong>Autofill optimization</strong> -- all form fields use correct autocomplete attributes so mobile browsers can pre-fill name, address, and email automatically.</li>
+              <li><strong>Single-page checkout</strong> -- collapse shipping and payment into one scrollable view on mobile. The three-step desktop flow becomes a single vertical page with inline validation.</li>
+              <li><strong>Persistent order summary</strong> -- collapsible mini-summary at the top of mobile checkout showing item, price, and shipping. Tap to expand for full details.</li>
+            </ul>
+
+            <h3>Mobile Performance Targets</h3>
+            <div class="data-table--scroll">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>Target</th>
+                    <th>Why It Matters</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Largest Contentful Paint</strong></td>
+                    <td>&lt; 2.0s</td>
+                    <td>Every 100ms of delay costs approximately 1% in conversion</td>
+                  </tr>
+                  <tr>
+                    <td><strong>First Input Delay</strong></td>
+                    <td>&lt; 100ms</td>
+                    <td>Sluggish tap response signals an untrustworthy site</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Cumulative Layout Shift</strong></td>
+                    <td>&lt; 0.1</td>
+                    <td>Layout shifts cause mis-taps and erode trust</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Total Page Weight</strong></td>
+                    <td>&lt; 1.5 MB</td>
+                    <td>Critical for users on cellular connections at outdoor events</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout callout--success mt-lg">
+              <strong>The LED Advantage on Mobile</strong>
+              Frisbeam's glowing product imagery naturally pops on mobile screens -- bright LEDs against dark backgrounds create thumb-stopping content in social feeds. Lean into this by using night-mode product shots as the default on mobile landing pages. The dark background also reduces battery drain on OLED screens, giving Frisbeam an inadvertent UX benefit over competitors using white-background product photography.
+            </div>
+
+          </div><!-- /.research-content -->
+        </div><!-- /.research-layout -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container--wide">
+      <div class="footer__grid">
+        <div class="footer__col">
+          <a href="../index.html" class="site-nav__logo" style="color: var(--white); margin-bottom: 8px;">
+            <span class="site-nav__logo-icon" aria-hidden="true">F</span>
+            Frisbeam
+          </a>
+          <p class="footer__brand-desc">The LED-powered outdoor game that turns any night into an event.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="TikTok">TK</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h3>Shop</h3>
+          <ul>
+            <li><a href="../pages/product.html">Backyard Set</a></li>
+            <li><a href="../pages/product.html">Glow Set</a></li>
+            <li><a href="../pages/product.html">Tournament Set</a></li>
+            <li><a href="../pages/product.html">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="../pages/story.html">Our Story</a></li>
+            <li><a href="../pages/play.html">How to Play</a></li>
+            <li><a href="index.html">Research</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">Shipping &amp; Returns</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Warranty</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Frisbeam. All rights reserved.</p>
+        <p>Made with care in the USA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

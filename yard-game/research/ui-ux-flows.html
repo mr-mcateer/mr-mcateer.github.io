@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI/UX User Flows -- Frisbeam Research</title>
+  <meta name="description" content="Sitemap architecture, user journey flows, mobile-first design patterns, interaction specs, accessibility checklist, and performance budgets for the Frisbeam product site.">
+  <meta name="theme-color" content="#0B0F19">
+  <meta property="og:title" content="UI/UX User Flows -- Frisbeam Research">
+  <meta property="og:description" content="Mobile-first design architecture, interaction patterns, and accessibility standards for the Frisbeam LED outdoor game site.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Announcement Bar -->
+  <div class="announce-bar">
+    Free shipping on all orders over $99 -- <a href="../pages/product.html">Shop Now</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a href="../index.html" class="site-nav__logo" aria-label="Frisbeam home">
+        <span class="site-nav__logo-icon" aria-hidden="true">F</span>
+        Frisbeam
+      </a>
+      <ul class="site-nav__links">
+        <li><a href="../pages/product.html">Shop</a></li>
+        <li><a href="../pages/story.html">Our Story</a></li>
+        <li><a href="../pages/play.html">How to Play</a></li>
+        <li><a href="index.html" class="active">Research</a></li>
+      </ul>
+      <div class="site-nav__cta">
+        <button class="site-nav__cart" aria-label="Open cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="site-nav__cart-count">0</span>
+        </button>
+        <button class="site-nav__hamburger" aria-label="Open menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-overlay" aria-hidden="true"></div>
+  <div class="mobile-nav" aria-label="Mobile navigation">
+    <button class="mobile-nav__close" aria-label="Close menu">&times;</button>
+    <a href="../index.html" class="mobile-nav__link">Home</a>
+    <a href="../pages/product.html" class="mobile-nav__link">Shop</a>
+    <a href="../pages/story.html" class="mobile-nav__link">Our Story</a>
+    <a href="../pages/play.html" class="mobile-nav__link">How to Play</a>
+    <a href="index.html" class="mobile-nav__link active">Research</a>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay mobile-overlay" aria-hidden="true"></div>
+  <aside class="cart-drawer" aria-label="Shopping cart">
+    <div class="cart-drawer__header">
+      <h3>Your Cart</h3>
+      <button class="cart-drawer__close" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-drawer__items">
+      <p style="color: var(--text-dim); text-align: center; padding: 40px 0;">Your cart is empty.</p>
+    </div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__total">
+        <span>Total</span>
+        <span>$0.00</span>
+      </div>
+      <button class="btn btn--primary btn--full">Checkout</button>
+    </div>
+  </aside>
+
+  <main id="main">
+
+    <!-- ========== PAGE HERO ========== -->
+    <section class="page-hero">
+      <div class="container--wide">
+        <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <a href="index.html">Research</a>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <span>UI/UX Flows</span>
+        </nav>
+        <h1 class="reveal reveal-delay-1">UI/UX User Flows</h1>
+        <p class="page-hero__sub reveal reveal-delay-2">Mobile-first design architecture for maximum conversion</p>
+      </div>
+    </section>
+
+    <!-- ========== RESEARCH BODY ========== -->
+    <section class="section section--light">
+      <div class="container--wide">
+        <div class="research-layout">
+
+          <!-- Sidebar Nav -->
+          <nav class="research-nav" aria-label="Research navigation">
+            <p class="research-nav__title">Research</p>
+            <ul class="research-nav__list">
+              <li><a href="psychographic-map.html">Psychographic Map</a></li>
+              <li><a href="jtbd-profile.html">JTBD Profile</a></li>
+              <li><a href="demand-landscape.html">Demand Landscape</a></li>
+              <li><a href="cro-blueprint.html">CRO Blueprint</a></li>
+              <li><a href="brand-guidelines.html">Brand Guidelines</a></li>
+              <li><a href="ui-ux-flows.html" class="active">UI/UX Flows</a></li>
+              <li><a href="cac-ltv-model.html">CAC/LTV Model</a></li>
+              <li><a href="media-mix.html">Media Mix</a></li>
+              <li><a href="influencer-ledger.html">Influencer Ledger</a></li>
+            </ul>
+          </nav>
+
+          <!-- Main Content -->
+          <div class="research-content">
+
+            <!-- ==================== 1. SITEMAP ==================== -->
+            <h2 class="reveal">1. Sitemap</h2>
+            <p class="reveal">The Frisbeam site follows a flat architecture designed to minimize clicks-to-purchase. Every page is reachable within two clicks from the homepage.</p>
+
+            <div class="reveal" style="background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--r-lg); padding: var(--space-xl); margin: var(--space-xl) 0;">
+              <p style="font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; color: var(--primary); margin-bottom: var(--space-lg);">Site Hierarchy</p>
+              <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: var(--space-lg);">
+                  <strong style="color: var(--text); font-size: 1rem;">Home</strong>
+                  <span style="color: var(--text-dim); font-size: 0.85rem; margin-left: 8px;">Landing page</span>
+                  <ul style="list-style: none; padding-left: 24px; margin-top: var(--space-sm); border-left: 2px solid var(--border-light);">
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Hero with dual CTAs</li>
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Social proof stats bar</li>
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Product showcase features</li>
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Pricing tiers</li>
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Testimonials</li>
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Email capture</li>
+                  </ul>
+                </li>
+                <li style="margin-bottom: var(--space-lg);">
+                  <strong style="color: var(--text); font-size: 1rem;">Shop</strong>
+                  <span style="color: var(--text-dim); font-size: 0.85rem; margin-left: 8px;">Product detail</span>
+                  <ul style="list-style: none; padding-left: 24px; margin-top: var(--space-sm); border-left: 2px solid var(--border-light);">
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Image gallery with thumbnails</li>
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Specs and features</li>
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Tier comparison</li>
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">FAQ accordion</li>
+                  </ul>
+                </li>
+                <li style="margin-bottom: var(--space-lg);">
+                  <strong style="color: var(--text); font-size: 1rem;">Our Story</strong>
+                  <span style="color: var(--text-dim); font-size: 0.85rem; margin-left: 8px;">Brand narrative</span>
+                  <ul style="list-style: none; padding-left: 24px; margin-top: var(--space-sm); border-left: 2px solid var(--border-light);">
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Origin story</li>
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Brand values</li>
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Team</li>
+                  </ul>
+                </li>
+                <li style="margin-bottom: var(--space-lg);">
+                  <strong style="color: var(--text); font-size: 1rem;">How to Play</strong>
+                  <span style="color: var(--text-dim); font-size: 0.85rem; margin-left: 8px;">Rules and guides</span>
+                  <ul style="list-style: none; padding-left: 24px; margin-top: var(--space-sm); border-left: 2px solid var(--border-light);">
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Quick start guide</li>
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Scoring breakdown</li>
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Pro tips and strategy</li>
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">Tournament rules</li>
+                    <li style="color: var(--text-muted); padding: 4px 0; font-size: 0.9rem;">House rules / variations</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong style="color: var(--text); font-size: 1rem;">Research Hub</strong>
+                  <span style="color: var(--text-dim); font-size: 0.85rem; margin-left: 8px;">9 deliverables</span>
+                  <ul style="list-style: none; padding-left: 24px; margin-top: var(--space-sm); border-left: 2px solid var(--border-light);">
+                    <li style="color: var(--primary); padding: 4px 0; font-size: 0.9rem;">Phase 1: Psychographic Map, JTBD Profile, Demand Landscape</li>
+                    <li style="color: var(--accent); padding: 4px 0; font-size: 0.9rem;">Phase 2: CRO Blueprint, Brand Guidelines, UI/UX Flows</li>
+                    <li style="color: var(--accent-alt); padding: 4px 0; font-size: 0.9rem;">Phase 3: CAC/LTV Model, Media Mix, Influencer Ledger</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <p class="reveal">The primary conversion path is <strong>Home &rarr; Shop &rarr; Cart Drawer &rarr; Checkout</strong>. Secondary paths include story-driven discovery (Our Story &rarr; Shop) and rules-driven discovery (How to Play &rarr; Shop). The Research Hub serves as a trust and transparency layer for prospective partners and press.</p>
+
+
+            <!-- ==================== 2. USER JOURNEY FLOWS ==================== -->
+            <h2 class="reveal">2. User Journey Flows</h2>
+            <p class="reveal">Three primary user journeys cover the majority of site traffic. Each flow is optimized to reduce friction and keep the purchase path as short as possible.</p>
+
+            <h3 class="reveal">Discovery Flow</h3>
+            <p class="reveal" style="color: var(--text-muted); margin-bottom: var(--space-md);">First-time visitors arriving from paid social or organic search.</p>
+            <div class="flow-diagram reveal">
+              <div class="flow-step" style="border-color: var(--accent);">
+                <strong>Social Ad</strong>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step flow-step--active">
+                <strong>Landing</strong>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step">
+                <strong>Scroll</strong><br>
+                <small style="color: var(--text-dim);">Social proof</small>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step">
+                <strong>Product</strong>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step">
+                <strong>Add to Cart</strong>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step" style="border-color: var(--success);">
+                <strong>Checkout</strong>
+              </div>
+            </div>
+
+            <h3 class="reveal">Return Visitor Flow</h3>
+            <p class="reveal" style="color: var(--text-muted); margin-bottom: var(--space-md);">Repeat visitors who have already been exposed to the brand through ads or word of mouth.</p>
+            <div class="flow-diagram reveal">
+              <div class="flow-step" style="border-color: var(--accent-alt);">
+                <strong>Direct / Email</strong>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step flow-step--active">
+                <strong>Landing</strong>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step">
+                <strong>Product</strong>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step" style="border-color: var(--success);">
+                <strong>Purchase</strong>
+              </div>
+            </div>
+
+            <h3 class="reveal">Research Flow</h3>
+            <p class="reveal" style="color: var(--text-muted); margin-bottom: var(--space-md);">Visitors exploring deeper content before making a purchase decision. Common for partners and press.</p>
+            <div class="flow-diagram reveal">
+              <div class="flow-step" style="border-color: var(--accent);">
+                <strong>Search</strong>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step flow-step--active">
+                <strong>Research Hub</strong>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step">
+                <strong>Individual Docs</strong>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+              <div class="flow-step">
+                <strong>Back to Product</strong>
+              </div>
+            </div>
+
+
+            <!-- ==================== 3. MOBILE-FIRST DESIGN PATTERNS ==================== -->
+            <h2 class="reveal">3. Mobile-First Design Patterns</h2>
+            <p class="reveal">Every design decision starts at 375px and scales up. The outdoor games category skews heavily mobile, especially during peak buying season when customers browse while at events, parks, and tailgates.</p>
+
+            <div class="reveal" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-lg); margin: var(--space-xl) 0;">
+              <div style="background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--r-lg); padding: var(--space-xl);">
+                <p style="font-family: var(--font-display); font-weight: 600; color: var(--primary); margin-bottom: var(--space-sm);">Sticky Nav</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Hamburger menu triggers at 768px breakpoint. Transparent on load, solid on scroll with backdrop-filter blur.</p>
+              </div>
+              <div style="background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--r-lg); padding: var(--space-xl);">
+                <p style="font-family: var(--font-display); font-weight: 600; color: var(--accent); margin-bottom: var(--space-sm);">Bottom CTA</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Bottom-anchored add-to-cart button on product page. Stays in thumb zone for one-handed mobile use.</p>
+              </div>
+              <div style="background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--r-lg); padding: var(--space-xl);">
+                <p style="font-family: var(--font-display); font-weight: 600; color: var(--accent-alt); margin-bottom: var(--space-sm);">Swipeable Gallery</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Product image gallery supports horizontal swipe on touch devices. Thumbnail nav on desktop, dots on mobile.</p>
+              </div>
+              <div style="background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--r-lg); padding: var(--space-xl);">
+                <p style="font-family: var(--font-display); font-weight: 600; color: var(--primary); margin-bottom: var(--space-sm);">Collapsible Sidebar</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Research page sidebar nav collapses into an accordion on mobile. Expands above main content on tap.</p>
+              </div>
+              <div style="background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--r-lg); padding: var(--space-xl);">
+                <p style="font-family: var(--font-display); font-weight: 600; color: var(--accent); margin-bottom: var(--space-sm);">Touch Targets</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">All interactive elements meet WCAG 2.1 minimum of 44x44px. Accordion toggles, nav links, and form inputs all sized for fingers.</p>
+              </div>
+            </div>
+
+
+            <!-- ==================== 4. INTERACTION PATTERNS ==================== -->
+            <h2 class="reveal">4. Interaction Patterns</h2>
+            <p class="reveal">A small set of carefully considered interaction patterns keeps the experience consistent across all pages while maintaining performance.</p>
+
+            <div class="data-table--scroll reveal">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Pattern</th>
+                    <th>Behavior</th>
+                    <th>Implementation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Scroll reveal</strong></td>
+                    <td>Elements fade up on viewport entry</td>
+                    <td>IntersectionObserver with 0.08 threshold, 24px translateY, 0.7s ease-out</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Counter animation</strong></td>
+                    <td>Stats count up from zero on scroll</td>
+                    <td>Ease-out cubic interpolation, triggered by IntersectionObserver on the stats bar</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Cart drawer</strong></td>
+                    <td>Slide from right with overlay backdrop</td>
+                    <td>Fixed panel at right: -420px, slides to right: 0 with .open class; semi-transparent overlay</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Accordion</strong></td>
+                    <td>One-open-at-a-time within group</td>
+                    <td>Native &lt;details&gt;/&lt;summary&gt; with JS toggle that closes siblings on open</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Product gallery</strong></td>
+                    <td>Thumbnail click swaps main image</td>
+                    <td>Click handler on .product-gallery__thumb sets main img src; active border on selected</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Email capture</strong></td>
+                    <td>Inline validation on blur</td>
+                    <td>Regex email pattern check on blur, success/error states via CSS class toggle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Buttons</strong></td>
+                    <td>Lift on hover, snap back on press</td>
+                    <td>translateY(-1px) on :hover, reset to translateY(0) on :active via CSS transition</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Navigation</strong></td>
+                    <td>Transparent to solid on scroll</td>
+                    <td>Sticky nav with backdrop-filter blur, .site-nav--scrolled class on scroll &gt; 10px</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+            <!-- ==================== 5. ACCESSIBILITY CHECKLIST ==================== -->
+            <h2 class="reveal">5. Accessibility Checklist</h2>
+            <p class="reveal">Frisbeam targets WCAG 2.1 Level AA compliance across all pages. The dark theme requires extra attention to contrast ratios and focus indicator visibility.</p>
+
+            <div class="data-table--scroll reveal">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Requirement</th>
+                    <th>Status</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Skip link</strong></td>
+                    <td><span class="badge badge--success">Implemented</span></td>
+                    <td>Hidden anchor revealed on focus, jumps to #main content area</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Keyboard navigation</strong></td>
+                    <td><span class="badge badge--success">Implemented</span></td>
+                    <td>All interactive elements reachable via Tab; accordions operable with Enter/Space</td>
+                  </tr>
+                  <tr>
+                    <td><strong>ARIA labels</strong></td>
+                    <td><span class="badge badge--success">Implemented</span></td>
+                    <td>Nav, cart button, mobile menu, hamburger, breadcrumbs all labeled</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Reduced motion</strong></td>
+                    <td><span class="badge badge--success">Implemented</span></td>
+                    <td>prefers-reduced-motion media query disables all transitions and scroll animations</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Color contrast</strong></td>
+                    <td><span class="badge badge--success">WCAG AA</span></td>
+                    <td>Light text on dark backgrounds meets AA. --text (#F1F5F9) on --bg-primary (#0B0F19) = 15.4:1</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Focus indicators</strong></td>
+                    <td><span class="badge badge--success">Implemented</span></td>
+                    <td>2px cyan (#00D4FF) outline on :focus-visible with 2px offset for high visibility on dark</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Screen reader support</strong></td>
+                    <td><span class="badge badge--success">Implemented</span></td>
+                    <td>Semantic HTML with proper heading hierarchy, landmark roles, sr-only class for hidden text</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Alt text on images</strong></td>
+                    <td><span class="badge badge--success">Implemented</span></td>
+                    <td>Descriptive alt on content images; decorative images use aria-hidden="true"</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+            <!-- ==================== 6. PERFORMANCE BUDGET ==================== -->
+            <h2 class="reveal">6. Performance Budget</h2>
+            <p class="reveal">Speed is a conversion variable. Every 100ms of additional load time costs roughly 1% in conversion rate. The Frisbeam site is designed to meet aggressive Core Web Vitals targets.</p>
+
+            <div class="data-table--scroll reveal">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Asset</th>
+                    <th>Budget</th>
+                    <th>Strategy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>HTML</strong></td>
+                    <td>&lt;50KB per page</td>
+                    <td>Semantic markup, no framework bloat, flat component structure</td>
+                  </tr>
+                  <tr>
+                    <td><strong>CSS</strong></td>
+                    <td>&lt;30KB single file</td>
+                    <td>Design token architecture for minimal redundancy, no utility framework</td>
+                  </tr>
+                  <tr>
+                    <td><strong>JavaScript</strong></td>
+                    <td>&lt;5KB single file</td>
+                    <td>Vanilla JS only, IntersectionObserver for lazy features, no libraries</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Images</strong></td>
+                    <td>Lazy loaded, CDN-optimized</td>
+                    <td>Unsplash CDN with width params (e.g., ?w=800), native loading="lazy" on below-fold images</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Fonts</strong></td>
+                    <td>Google Fonts CDN</td>
+                    <td>display=swap prevents FOIT, preconnect hints reduce connection overhead</td>
+                  </tr>
+                  <tr>
+                    <td><strong>LCP target</strong></td>
+                    <td>&lt;1.5s on 4G, &lt;3s on 3G</td>
+                    <td>Hero image optimized and served from CDN, critical CSS path kept minimal</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout reveal">
+              <strong>Performance philosophy:</strong> Zero frameworks, zero build tools, zero dependencies. The entire site ships as three static files (HTML, CSS, JS) plus CDN-hosted images and fonts. This keeps the attack surface small, the load times fast, and the maintenance burden close to zero.
+            </div>
+
+          </div><!-- /.research-content -->
+        </div><!-- /.research-layout -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container--wide">
+      <div class="footer__grid">
+        <div class="footer__col">
+          <a href="../index.html" class="site-nav__logo" aria-label="Frisbeam home">
+            <span class="site-nav__logo-icon" aria-hidden="true">F</span>
+            Frisbeam
+          </a>
+          <p class="footer__brand-desc">The LED-powered outdoor game that turns any night into an event.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="TikTok">TK</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h3>Shop</h3>
+          <ul>
+            <li><a href="../pages/product.html">Starter Set</a></li>
+            <li><a href="../pages/product.html">Glow Set</a></li>
+            <li><a href="../pages/product.html">Pro Set</a></li>
+            <li><a href="../pages/product.html">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="../pages/story.html">Our Story</a></li>
+            <li><a href="../pages/play.html">How to Play</a></li>
+            <li><a href="index.html">Research</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">Shipping &amp; Returns</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Warranty</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Frisbeam. All rights reserved.</p>
+        <p>Designed in the USA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
