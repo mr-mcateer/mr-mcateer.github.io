@@ -1,6 +1,7 @@
 /* ============================================================
    main.js -- Frisbeam Yard Game
-   Scroll reveal, counters, nav, mobile drawer, accordion, cart
+   Scroll reveal, counters, nav, mobile drawer, accordion, cart,
+   hero parallax, dismissible announcement bar
    ============================================================ */
 (function () {
   'use strict';
@@ -122,6 +123,27 @@
   }
 
   /* ============================================================
+     Hero Parallax
+     ============================================================ */
+  var heroBg = document.querySelector('.hero__bg img');
+  if (heroBg && !prefersReducedMotion) {
+    var parallaxTicking = false;
+    window.addEventListener('scroll', function () {
+      if (!parallaxTicking) {
+        requestAnimationFrame(function () {
+          var scrollY = window.pageYOffset;
+          if (scrollY < window.innerHeight) {
+            heroBg.style.transform = 'translateY(' + (scrollY * 0.3) + 'px) scale(1.1)';
+          }
+          parallaxTicking = false;
+        });
+        parallaxTicking = true;
+      }
+    }, { passive: true });
+    heroBg.style.transform = 'scale(1.1)';
+  }
+
+  /* ============================================================
      Mobile Navigation
      ============================================================ */
   var hamburger = document.querySelector('.site-nav__hamburger');
@@ -169,12 +191,85 @@
   }
 
   /* ============================================================
-     Cart Drawer
+     Cart System (localStorage-backed)
      ============================================================ */
   var cartBtn = document.querySelector('.site-nav__cart');
   var cartDrawer = document.querySelector('.cart-drawer');
   var cartClose = document.querySelector('.cart-drawer__close');
   var cartOverlay = document.querySelector('.cart-overlay');
+  var cartItemsEl = document.querySelector('.cart-drawer__items');
+  var cartTotalEl = document.querySelector('.cart-drawer__total span:last-child');
+  var cartCountEls = document.querySelectorAll('.site-nav__cart-count');
+
+  function getCart() {
+    try { return JSON.parse(localStorage.getItem('frisbeam_cart')) || []; }
+    catch (e) { return []; }
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem('frisbeam_cart', JSON.stringify(cart));
+  }
+
+  function renderCart() {
+    var cart = getCart();
+    var total = 0;
+    var count = 0;
+
+    if (!cartItemsEl) return;
+
+    if (cart.length === 0) {
+      cartItemsEl.innerHTML = '<p class="cart-drawer__empty">Your cart is empty.</p>';
+    } else {
+      var html = '';
+      for (var i = 0; i < cart.length; i++) {
+        var item = cart[i];
+        total += item.price * item.qty;
+        count += item.qty;
+        html += '<div class="cart-item" data-index="' + i + '">' +
+          '<div class="cart-item__info">' +
+            '<div class="cart-item__name">' + item.name + '</div>' +
+            '<div class="cart-item__price">$' + item.price + ' x ' + item.qty + '</div>' +
+          '</div>' +
+          '<button class="cart-item__remove" aria-label="Remove ' + item.name + '">&times;</button>' +
+        '</div>';
+      }
+      cartItemsEl.innerHTML = html;
+
+      var removeBtns = cartItemsEl.querySelectorAll('.cart-item__remove');
+      for (var rb = 0; rb < removeBtns.length; rb++) {
+        removeBtns[rb].addEventListener('click', function () {
+          var idx = parseInt(this.parentElement.getAttribute('data-index'), 10);
+          var c = getCart();
+          c.splice(idx, 1);
+          saveCart(c);
+          renderCart();
+        });
+      }
+    }
+
+    if (cartTotalEl) cartTotalEl.textContent = '$' + total.toFixed(2);
+    for (var ce = 0; ce < cartCountEls.length; ce++) {
+      cartCountEls[ce].textContent = count;
+    }
+  }
+
+  function addToCart(name, price) {
+    var cart = getCart();
+    var found = false;
+    for (var i = 0; i < cart.length; i++) {
+      if (cart[i].name === name) {
+        cart[i].qty += 1;
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      cart.push({ name: name, price: price, qty: 1 });
+    }
+    saveCart(cart);
+    renderCart();
+    openCart();
+  }
 
   function openCart() {
     if (cartDrawer) cartDrawer.classList.add('open');
@@ -191,6 +286,19 @@
   if (cartBtn) cartBtn.addEventListener('click', openCart);
   if (cartClose) cartClose.addEventListener('click', closeCart);
   if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
+
+  // Wire up all Add to Cart buttons
+  var addBtns = document.querySelectorAll('[data-add-cart]');
+  for (var ab = 0; ab < addBtns.length; ab++) {
+    addBtns[ab].addEventListener('click', function () {
+      var name = this.getAttribute('data-product');
+      var price = parseFloat(this.getAttribute('data-price'));
+      if (name && price) addToCart(name, price);
+    });
+  }
+
+  // Render cart on page load
+  renderCart();
 
   /* ============================================================
      Product Gallery -- thumbnail click swap
@@ -209,6 +317,24 @@
       }
       this.classList.add('active');
     });
+  }
+
+  /* ============================================================
+     Dismissible Announcement Bar
+     ============================================================ */
+  var announceBar = document.querySelector('.announce-bar');
+  if (announceBar) {
+    if (localStorage.getItem('frisbeam_announce_dismissed') === '1') {
+      announceBar.style.display = 'none';
+    } else {
+      var closeBtn = announceBar.querySelector('.announce-bar__close');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+          announceBar.style.display = 'none';
+          localStorage.setItem('frisbeam_announce_dismissed', '1');
+        });
+      }
+    }
   }
 
 })();

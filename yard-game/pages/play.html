@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to Play - Frisbeam</title>
+  <title>How to Play -- Frisbeam</title>
   <meta name="description" content="Learn how to play Frisbeam in 60 seconds. LED targets, glow zones, and disc throws that light up the night. Official rules, scoring, pro tips, and house rules.">
   <meta name="theme-color" content="#0B0F19">
-  <meta property="og:title" content="How to Play - Frisbeam">
+  <meta property="og:title" content="How to Play -- Frisbeam">
   <meta property="og:description" content="Learn the rules, master the throws, and dominate game night. LED targets + flying discs = the best yard game after dark.">
   <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -20,7 +21,8 @@
 
   <!-- Announcement Bar -->
   <div class="announce-bar">
-    Free shipping on all orders over $99 - <a href="product.html">Shop Now</a>
+    Free shipping on all orders over $99 -- <a href="product.html">Shop Now</a>
+    <button class="announce-bar__close" aria-label="Dismiss">&times;</button>
   </div>
 
   <!-- Navigation -->
@@ -31,10 +33,10 @@
         Frisbeam
       </a>
       <ul class="site-nav__links">
-        <li><a href="product.html">Shop</a></li>
-        <li><a href="story.html">Our Story</a></li>
+        <li><a href="../research/index.html">Framework</a></li>
+        <li><a href="product.html">Product Demo</a></li>
+        <li><a href="story.html">Story</a></li>
         <li><a href="play.html" class="active">How to Play</a></li>
-        <li><a href="../research/index.html">Research</a></li>
       </ul>
       <div class="site-nav__cta">
         <button class="site-nav__cart" aria-label="Open cart">
@@ -53,10 +55,10 @@
   <div class="mobile-nav" aria-label="Mobile navigation">
     <button class="mobile-nav__close" aria-label="Close menu">&times;</button>
     <a href="../index.html" class="mobile-nav__link">Home</a>
-    <a href="product.html" class="mobile-nav__link">Shop</a>
-    <a href="story.html" class="mobile-nav__link">Our Story</a>
+    <a href="../research/index.html" class="mobile-nav__link">Framework</a>
+    <a href="product.html" class="mobile-nav__link">Product Demo</a>
+    <a href="story.html" class="mobile-nav__link">Story</a>
     <a href="play.html" class="mobile-nav__link active">How to Play</a>
-    <a href="../research/index.html" class="mobile-nav__link">Research</a>
   </div>
 
   <!-- Cart Drawer -->
@@ -67,7 +69,7 @@
       <button class="cart-drawer__close" aria-label="Close cart">&times;</button>
     </div>
     <div class="cart-drawer__items">
-      <p style="color: var(--text-dim); text-align: center; padding: 40px 0;">Your cart is empty.</p>
+      <p class="cart-drawer__empty">Your cart is empty.</p>
     </div>
     <div class="cart-drawer__footer">
       <div class="cart-drawer__total">
@@ -104,14 +106,14 @@
           <div class="step reveal">
             <div class="step__number">1</div>
             <h3>Set Up</h3>
-            <p>Place the LED targets on level ground, space them out, and power on the lights. The glow zones activate instantly - you will know when it is ready.</p>
+            <p>Place the LED targets on level ground, space them out, and power on the lights. The glow zones activate instantly -- you will know when it is ready.</p>
           </div>
-          <div class="step reveal reveal-delay-1">
+          <div class="step step--amber reveal reveal-delay-1">
             <div class="step__number">2</div>
             <h3>Choose Teams</h3>
             <p>Pair up for 2v2 or go free-for-all. Frisbeam works with any group size, so nobody sits on the sideline. More players, more energy.</p>
           </div>
-          <div class="step reveal reveal-delay-2">
+          <div class="step step--purple reveal reveal-delay-2">
             <div class="step__number">3</div>
             <h3>Throw</h3>
             <p>Aim for the glow zones and let it fly. When your disc connects with a lit target, you will see it and hear it. That is the moment everyone plays for.</p>
@@ -131,7 +133,7 @@
         <div class="reveal">
           <div class="callout">
             <strong>Beam Shot = 3 Points</strong>
-            A direct hit on the center target - the beam zone - scores three points. This is the money throw. When you nail it, the whole field knows.
+            A direct hit on the center target -- the beam zone -- scores three points. This is the money throw. When you nail it, the whole field knows.
           </div>
         </div>
 
@@ -191,7 +193,7 @@
             <div class="card__body">
               <div class="card__tag">Strategy</div>
               <h3 class="card__title">The Power Play</h3>
-              <p class="card__desc">Go aggressive early. Stack beam shots in the first half to build a lead, then force your opponents into risky throws trying to catch up. Momentum wins games - put the pressure on before they find their rhythm.</p>
+              <p class="card__desc">Go aggressive early. Stack beam shots in the first half to build a lead, then force your opponents into risky throws trying to catch up. Momentum wins games -- put the pressure on before they find their rhythm.</p>
             </div>
           </div>
         </div>
@@ -208,7 +210,7 @@
 
         <div class="reveal">
           <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px;">
-            A Frisbeam tournament uses a <strong style="color: var(--text);">double-elimination bracket</strong>. Every team gets two chances - lose once and you drop to the losers bracket. Lose twice and you are out. Each match is best 2 out of 3 games, so comebacks happen all the time.
+            A Frisbeam tournament uses a <strong style="color: var(--text);">double-elimination bracket</strong>. Every team gets two chances -- lose once and you drop to the losers bracket. Lose twice and you are out. Each match is best 2 out of 3 games, so comebacks happen all the time.
           </p>
           <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 32px;">
             Grab at least 4 teams (8 or 16 is ideal), seed them randomly or by signup order, and let the brackets do the rest. One evening under the glow, one champion, and plenty of stories to tell afterward.
@@ -219,7 +221,7 @@
           <details>
             <summary>How many teams do I need?</summary>
             <div class="accordion__content">
-              <p>You can run a tournament with as few as 4 teams, but 8 or 16 makes for the best bracket. Odd numbers work too - just give the top seed a first-round bye.</p>
+              <p>You can run a tournament with as few as 4 teams, but 8 or 16 makes for the best bracket. Odd numbers work too -- just give the top seed a first-round bye.</p>
             </div>
           </details>
           <details>
@@ -262,13 +264,13 @@
           <details>
             <summary>Night Mode</summary>
             <div class="accordion__content">
-              <p>Kill every light except the LED targets. No porch lights, no phone flashlights, nothing. The only thing you can see is the glow zones, and the only thing guiding your throw is instinct. It completely changes the feel of the game - throws you thought you had dialed in suddenly become a challenge all over again. This is Frisbeam the way it was meant to be played.</p>
+              <p>Kill every light except the LED targets. No porch lights, no phone flashlights, nothing. The only thing you can see is the glow zones, and the only thing guiding your throw is instinct. It completely changes the feel of the game -- throws you thought you had dialed in suddenly become a challenge all over again. This is Frisbeam the way it was meant to be played.</p>
             </div>
           </details>
           <details>
             <summary>Speed Round</summary>
             <div class="accordion__content">
-              <p>Set a 30-second shot clock for each player's turn. Once the timer starts, you throw as fast as you can. No time to overthink - just pure instinct. Use a phone timer and watch the pressure build. The crowd gets loud, the throws get wild, and the scores get unpredictable.</p>
+              <p>Set a 30-second shot clock for each player's turn. Once the timer starts, you throw as fast as you can. No time to overthink -- just pure instinct. Use a phone timer and watch the pressure build. The crowd gets loud, the throws get wild, and the scores get unpredictable.</p>
             </div>
           </details>
           <details>
@@ -280,7 +282,7 @@
           <details>
             <summary>Team Swap</summary>
             <div class="accordion__content">
-              <p>After every game, partners shuffle and form new teams. You will end up playing with everyone and against everyone. Great for parties where not everyone knows each other - by the end of the night, they will. It keeps the energy fresh and the rivalries unpredictable.</p>
+              <p>After every game, partners shuffle and form new teams. You will end up playing with everyone and against everyone. Great for parties where not everyone knows each other -- by the end of the night, they will. It keeps the energy fresh and the rivalries unpredictable.</p>
             </div>
           </details>
         </div>
@@ -290,8 +292,8 @@
     <!-- ========== CTA ========== -->
     <section class="section section--brand">
       <div class="container text-center">
-        <h2 class="reveal" style="color: var(--white); margin-bottom: 12px;">Got the Rules Down?</h2>
-        <p class="reveal reveal-delay-1" style="color: rgba(255,255,255,0.85); margin-bottom: 32px; max-width: 520px; margin-left: auto; margin-right: auto;">Now all you need is the game. Grab a Frisbeam set, charge the targets, and light up your next get-together.</p>
+        <h2 class="reveal" style="margin-bottom: 12px;">Got the Rules Down?</h2>
+        <p class="reveal reveal-delay-1" style="color: var(--text-muted); margin-bottom: 32px; max-width: 520px; margin-left: auto; margin-right: auto;">Now all you need is the game. Grab a Frisbeam set, charge the targets, and light up your next get-together.</p>
         <div class="reveal reveal-delay-2">
           <a href="product.html" class="btn btn--primary btn--large">Shop Frisbeam</a>
         </div>
@@ -305,16 +307,16 @@
     <div class="container--wide">
       <div class="footer__grid">
         <div class="footer__col">
-          <a href="../index.html" class="site-nav__logo" style="color: var(--white); margin-bottom: 8px;">
+          <a href="../index.html" class="site-nav__logo" aria-label="Frisbeam home">
             <span class="site-nav__logo-icon" aria-hidden="true">F</span>
             Frisbeam
           </a>
-          <p class="footer__brand-desc">The LED-powered disc game built for backyard battles, rooftop tournaments, and nights that go way too late.</p>
+          <p class="footer__brand-desc">The LED-powered outdoor game that turns any night into an event.</p>
           <div class="footer__social">
-            <a href="#" aria-label="Instagram">IG</a>
-            <a href="#" aria-label="TikTok">TK</a>
-            <a href="#" aria-label="Facebook">FB</a>
-            <a href="#" aria-label="YouTube">YT</a>
+            <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
           </div>
         </div>
         <div class="footer__col">
@@ -329,9 +331,9 @@
         <div class="footer__col">
           <h3>Company</h3>
           <ul>
-            <li><a href="story.html">Our Story</a></li>
-            <li><a href="play.html">How to Play</a></li>
-            <li><a href="../research/index.html">Research</a></li>
+            <li><a href="../research/index.html">Framework</a></li>
+            <li><a href="product.html">Product Demo</a></li>
+            <li><a href="story.html">Story</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
         </div>
@@ -347,7 +349,7 @@
       </div>
       <div class="footer__bottom">
         <p>&copy; 2026 Frisbeam. All rights reserved.</p>
-        <p>Made with care in the USA</p>
+        <p>Designed in the USA</p>
       </div>
     </div>
   </footer>

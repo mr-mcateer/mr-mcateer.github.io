@@ -9,6 +9,7 @@
   <meta property="og:title" content="Our Story -- Frisbeam">
   <meta property="og:description" content="How a late-night idea became your new favorite way to play.">
   <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -21,6 +22,7 @@
   <!-- Announcement Bar -->
   <div class="announce-bar">
     Free shipping on all orders over $99 -- <a href="product.html">Shop Now</a>
+    <button class="announce-bar__close" aria-label="Dismiss">&times;</button>
   </div>
 
   <!-- Navigation -->
@@ -31,10 +33,10 @@
         Frisbeam
       </a>
       <ul class="site-nav__links">
-        <li><a href="product.html">Shop</a></li>
-        <li><a href="story.html" class="active">Our Story</a></li>
+        <li><a href="../research/index.html">Framework</a></li>
+        <li><a href="product.html">Product Demo</a></li>
+        <li><a href="story.html" class="active">Story</a></li>
         <li><a href="play.html">How to Play</a></li>
-        <li><a href="../research/index.html">Research</a></li>
       </ul>
       <div class="site-nav__cta">
         <button class="site-nav__cart" aria-label="Open cart">
@@ -53,10 +55,10 @@
   <div class="mobile-nav" aria-label="Mobile navigation">
     <button class="mobile-nav__close" aria-label="Close menu">&times;</button>
     <a href="../index.html" class="mobile-nav__link">Home</a>
-    <a href="product.html" class="mobile-nav__link">Shop</a>
-    <a href="story.html" class="mobile-nav__link active">Our Story</a>
+    <a href="../research/index.html" class="mobile-nav__link">Framework</a>
+    <a href="product.html" class="mobile-nav__link">Product Demo</a>
+    <a href="story.html" class="mobile-nav__link active">Story</a>
     <a href="play.html" class="mobile-nav__link">How to Play</a>
-    <a href="../research/index.html" class="mobile-nav__link">Research</a>
   </div>
 
   <!-- Cart Drawer -->
@@ -67,7 +69,7 @@
       <button class="cart-drawer__close" aria-label="Close cart">&times;</button>
     </div>
     <div class="cart-drawer__items">
-      <p style="color: var(--text-dim); text-align: center; padding: 40px 0;">Your cart is empty.</p>
+      <p class="cart-drawer__empty">Your cart is empty.</p>
     </div>
     <div class="cart-drawer__footer">
       <div class="cart-drawer__total">
@@ -84,7 +86,9 @@
     <section class="page-hero">
       <div class="container">
         <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="../index.html">Home</a> / <span>Our Story</span>
+          <a href="../index.html">Home</a>
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+          <span>Our Story</span>
         </nav>
         <h1 class="reveal">Our Story</h1>
         <p class="page-hero__sub reveal reveal-delay-1">How a late-night idea became your new favorite way to play</p>
@@ -165,10 +169,10 @@
     <!-- ========== CTA ========== -->
     <section class="section section--brand">
       <div class="container text-center">
-        <h2 class="reveal" style="color: var(--text); margin-bottom: 12px;">Ready to Light Up?</h2>
+        <h2 class="reveal" style="margin-bottom: 12px;">Ready to Light Up?</h2>
         <p class="reveal reveal-delay-1" style="color: var(--text-muted); margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto;">Join the players who have made Frisbeam their go-to after-dark game. Your next great night starts here.</p>
         <div class="reveal reveal-delay-2">
-          <a href="product.html" class="btn btn--secondary btn--large">Shop Now</a>
+          <a href="product.html" class="btn btn--primary btn--large">Shop Now</a>
         </div>
       </div>
     </section>
@@ -180,16 +184,16 @@
     <div class="container--wide">
       <div class="footer__grid">
         <div class="footer__col">
-          <a href="../index.html" class="site-nav__logo" style="color: var(--text); margin-bottom: 8px;">
+          <a href="../index.html" class="site-nav__logo" aria-label="Frisbeam home">
             <span class="site-nav__logo-icon" aria-hidden="true">F</span>
             Frisbeam
           </a>
           <p class="footer__brand-desc">The LED-powered outdoor game that turns any night into an event.</p>
           <div class="footer__social">
-            <a href="#" aria-label="Instagram">IG</a>
-            <a href="#" aria-label="TikTok">TK</a>
-            <a href="#" aria-label="Facebook">FB</a>
-            <a href="#" aria-label="YouTube">YT</a>
+            <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
           </div>
         </div>
         <div class="footer__col">
@@ -204,9 +208,9 @@
         <div class="footer__col">
           <h3>Company</h3>
           <ul>
-            <li><a href="story.html">Our Story</a></li>
-            <li><a href="play.html">How to Play</a></li>
-            <li><a href="../research/index.html">Research</a></li>
+            <li><a href="../research/index.html">Framework</a></li>
+            <li><a href="product.html">Product Demo</a></li>
+            <li><a href="story.html">Story</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
         </div>
@@ -222,7 +226,7 @@
       </div>
       <div class="footer__bottom">
         <p>&copy; 2026 Frisbeam. All rights reserved.</p>
-        <p>Made with care in the USA</p>
+        <p>Designed in the USA</p>
       </div>
     </div>
   </footer>
