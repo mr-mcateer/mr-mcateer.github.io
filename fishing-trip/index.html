@@ -68,11 +68,8 @@
       --danger-light: rgba(255, 107, 107, 0.08);
     }
     [data-theme="dark"] .site-nav {
-      background: rgba(29, 29, 31, 0.82);
-      border-bottom-color: var(--gray-100);
-    }
-    [data-theme="dark"] .site-nav.nav-scrolled {
-      background: rgba(29, 29, 31, 0.95);
+      background: rgba(29, 29, 31, 0.15);
+      border-color: rgba(255, 255, 255, 0.06);
     }
 
     /* ===== RESET ===== */
@@ -89,6 +86,20 @@
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
+
+    /* ===== NOISE TEXTURE OVERLAY ===== */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+    [data-theme="dark"] body::after { opacity: 0.05; }
 
     /* ===== ACCESSIBILITY ===== */
     .skip-link {
@@ -131,64 +142,81 @@
     /* ===== SCROLL REVEAL ===== */
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+      transform: translateY(32px);
+      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-d1 { transition-delay: 0.1s; }
-    .reveal-d2 { transition-delay: 0.2s; }
-    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d1 { transition-delay: 0.12s; }
+    .reveal-d2 { transition-delay: 0.24s; }
+    .reveal-d3 { transition-delay: 0.36s; }
+    .reveal-d4 { transition-delay: 0.48s; }
 
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
     }
 
-    /* ===== NAV ===== */
+    /* ===== NAV (Floating Pill) ===== */
     .site-nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 100;
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid transparent;
-      transition: background 0.3s, border-color 0.3s;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: saturate(120%) blur(8px);
+      -webkit-backdrop-filter: saturate(120%) blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 980px;
+      transition: all 0.5s var(--ease-out);
+      max-width: 720px;
+      width: calc(100% - 32px);
     }
     .site-nav.nav-scrolled {
-      background: rgba(255, 255, 255, 0.92);
-      border-bottom-color: var(--gray-100);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-color: rgba(0, 0, 0, 0.06);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+    [data-theme="dark"] .site-nav.nav-scrolled {
+      background: rgba(29, 29, 31, 0.88);
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     }
     .site-nav__inner {
-      max-width: var(--max-width-wide);
-      margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 52px;
+      height: 48px;
     }
     .site-nav__logo {
       font-family: var(--font-body);
       font-weight: 600;
-      font-size: 15px;
-      color: var(--gray-800);
+      font-size: 14px;
+      color: #fff;
       letter-spacing: -0.01em;
+      transition: color 0.5s var(--ease-out);
     }
+    .site-nav.nav-scrolled .site-nav__logo { color: var(--gray-800); }
     .site-nav__logo:hover { color: var(--accent); }
     .site-nav__links {
       display: flex;
-      gap: 24px;
+      gap: 20px;
       list-style: none;
     }
     .site-nav__links a {
       font-size: 13px;
       font-weight: 500;
-      color: var(--gray-600);
+      color: rgba(255, 255, 255, 0.7);
       letter-spacing: 0.01em;
-      transition: color 0.2s;
+      transition: color 0.5s var(--ease-out);
     }
-    .site-nav__links a:hover { color: var(--gray-800); }
-    .site-nav__links a.active { color: var(--accent); }
+    .site-nav.nav-scrolled .site-nav__links a { color: var(--gray-600); }
+    .site-nav__links a:hover { color: #fff; }
+    .site-nav.nav-scrolled .site-nav__links a:hover { color: var(--gray-800); }
+    .site-nav__links a.active { color: #fff; }
+    .site-nav.nav-scrolled .site-nav__links a.active { color: var(--accent); }
     .site-nav__right {
       display: flex;
       align-items: center;
@@ -199,12 +227,14 @@
       border: none;
       cursor: pointer;
       font-size: 18px;
-      color: var(--gray-600);
+      color: rgba(255, 255, 255, 0.7);
       padding: 4px;
       line-height: 1;
-      transition: color 0.2s;
+      transition: color 0.5s var(--ease-out);
     }
-    .theme-toggle:hover { color: var(--gray-800); }
+    .site-nav.nav-scrolled .theme-toggle { color: var(--gray-600); }
+    .theme-toggle:hover { color: #fff; }
+    .site-nav.nav-scrolled .theme-toggle:hover { color: var(--gray-800); }
     .hamburger {
       display: none;
       background: none;
@@ -285,76 +315,106 @@
     body.view-traveler .planner-only { display: none; }
     body.view-traveler .planner-note { display: none; }
 
-    /* ===== HERO ===== */
+    /* ===== HERO (Cinematic Full-Height) ===== */
     .hero {
-      padding: 140px 0 80px;
-      text-align: center;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
       position: relative;
       overflow: hidden;
+      padding: 0;
     }
     .hero__bg {
       position: absolute;
       inset: 0;
-      background: linear-gradient(160deg, rgba(10, 61, 46, 0.06) 0%, rgba(45, 127, 166, 0.06) 50%, rgba(196, 154, 60, 0.04) 100%);
+      background:
+        linear-gradient(180deg, rgba(8, 32, 28, 0.1) 0%, rgba(8, 32, 28, 0.6) 55%, rgba(8, 32, 28, 0.92) 100%),
+        linear-gradient(135deg, #0a3d2e 0%, #1a5c3a 25%, #2d7fa6 50%, #1a3a4a 75%, #0a2a20 100%);
       z-index: 0;
     }
     [data-theme="dark"] .hero__bg {
-      background: linear-gradient(160deg, rgba(10, 61, 46, 0.2) 0%, rgba(45, 127, 166, 0.15) 50%, rgba(196, 154, 60, 0.08) 100%);
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.65) 55%, rgba(0, 0, 0, 0.95) 100%),
+        linear-gradient(135deg, #0a2a1e 0%, #0f3d28 25%, #1a4f6a 50%, #0a2a38 75%, #060f0a 100%);
     }
-    .hero .container { position: relative; z-index: 1; }
+    .hero .container {
+      position: relative;
+      z-index: 1;
+      padding-bottom: 80px;
+      padding-top: 120px;
+      text-align: left;
+    }
     .hero__eyebrow {
       font-family: var(--font-body);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--forest);
-      margin-bottom: 16px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 20px;
     }
     .hero h1 {
-      font-size: clamp(36px, 5.5vw, 58px);
-      letter-spacing: -0.025em;
-      color: var(--black);
+      font-size: clamp(44px, 8vw, 96px);
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      color: #fff;
       margin-bottom: 20px;
-      max-width: 750px;
-      margin-left: auto;
-      margin-right: auto;
+      line-height: 0.95;
+      max-width: 800px;
     }
     .hero__sub {
-      font-size: clamp(17px, 2vw, 20px);
-      color: var(--gray-600);
-      max-width: 620px;
-      margin: 0 auto 32px;
+      font-size: clamp(16px, 1.8vw, 19px);
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 520px;
+      margin: 0 0 40px;
       line-height: 1.6;
     }
     .hero__stats {
       display: flex;
-      gap: 48px;
-      justify-content: center;
-      margin: 32px 0 40px;
+      gap: 40px;
+      justify-content: flex-start;
+      margin: 0 0 40px;
       flex-wrap: wrap;
     }
-    .stat { text-align: center; }
+    .stat { text-align: left; }
     .stat__number {
       font-family: var(--font-display);
       font-size: 36px;
       font-weight: 700;
-      color: var(--black);
+      color: #fff;
       line-height: 1.1;
     }
     .stat__label {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
-      color: var(--gray-600);
+      color: rgba(255, 255, 255, 0.45);
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       margin-top: 4px;
     }
     .hero__cta-group {
       display: flex;
       gap: 16px;
-      justify-content: center;
+      justify-content: flex-start;
       flex-wrap: wrap;
+    }
+    .hero .view-toggle {
+      margin: 0 0 24px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .hero .view-toggle__btn {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .hero .view-toggle__btn.active {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      box-shadow: none;
+    }
+    .hero .view-toggle__btn:hover:not(.active) {
+      color: rgba(255, 255, 255, 0.8);
     }
 
     /* ===== BUTTONS ===== */
@@ -367,14 +427,31 @@
       font-weight: 600;
       padding: 14px 28px;
       border-radius: 980px;
-      transition: all 0.25s var(--ease-out);
+      transition: all 0.35s var(--ease-spring);
       cursor: pointer;
       border: none;
     }
     .btn--primary { background: var(--accent); color: #fff; }
-    .btn--primary:hover { background: var(--accent-hover); color: #fff; transform: scale(1.02); }
+    .btn--primary:hover { background: var(--accent-hover); color: #fff; transform: scale(1.03); }
     .btn--secondary { background: var(--gray-50); color: var(--gray-800); }
-    .btn--secondary:hover { background: var(--gray-100); color: var(--gray-800); }
+    .btn--secondary:hover { background: var(--gray-100); color: var(--gray-800); transform: scale(1.03); }
+    .hero .btn--primary {
+      background: #fff;
+      color: #1d1d1f;
+    }
+    .hero .btn--primary:hover {
+      background: rgba(255, 255, 255, 0.9);
+      color: #1d1d1f;
+    }
+    .hero .btn--secondary {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+    .hero .btn--secondary:hover {
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+    }
     .btn--small { padding: 8px 18px; font-size: 13px; }
     .btn--forest { background: var(--forest); color: #fff; }
     .btn--forest:hover { opacity: 0.9; color: #fff; }
@@ -408,8 +485,8 @@
     .planner-note {
       background: var(--planner-bg);
       border-left: 4px solid var(--amber);
-      border-radius: 0 12px 12px 0;
-      padding: 20px 24px;
+      border-radius: 0 2rem 2rem 0;
+      padding: 24px 28px;
       margin: 24px 0;
       font-size: 15px;
       line-height: 1.6;
@@ -425,8 +502,8 @@
 
     /* ===== WARNING CALLOUT ===== */
     .callout {
-      border-radius: 12px;
-      padding: 20px 24px;
+      border-radius: 2rem;
+      padding: 24px 28px;
       margin: 24px 0;
       font-size: 15px;
       line-height: 1.6;
@@ -461,13 +538,13 @@
     .card {
       background: var(--white);
       border: 1px solid var(--gray-100);
-      border-radius: 18px;
+      border-radius: 2rem;
       padding: 32px 28px;
-      transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+      transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-out);
     }
     .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
     }
     .card__icon {
       font-size: 28px;
@@ -552,18 +629,18 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 16px 20px;
+      padding: 18px 24px;
       background: var(--gray-50);
-      border-radius: 12px;
+      border-radius: 2rem;
       color: var(--gray-800);
       font-size: 15px;
       font-weight: 500;
-      transition: background 0.2s, transform 0.2s;
+      transition: all 0.35s var(--ease-spring);
     }
     .quick-link:hover {
       background: var(--gray-100);
       color: var(--gray-800);
-      transform: translateY(-2px);
+      transform: translateY(-3px) scale(1.02);
     }
     .quick-link__icon { font-size: 20px; flex-shrink: 0; }
 
@@ -599,9 +676,9 @@
     }
 
     .checklist__category {
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       border: 1px solid var(--gray-100);
-      border-radius: 14px;
+      border-radius: 2rem;
       overflow: hidden;
     }
     .checklist__heading {
@@ -726,7 +803,7 @@
     .compare-card {
       background: var(--white);
       border: 1px solid var(--gray-100);
-      border-radius: 18px;
+      border-radius: 2rem;
       padding: 28px 24px;
       position: relative;
     }
@@ -771,7 +848,7 @@
     .prompt-block {
       background: var(--gray-50);
       border: 1px solid var(--gray-100);
-      border-radius: 14px;
+      border-radius: 2rem;
       overflow: hidden;
       margin: 24px 0;
     }
@@ -899,9 +976,13 @@
     }
     .species-card {
       background: var(--gray-50);
-      border-radius: 14px;
-      padding: 20px;
+      border-radius: 2rem;
+      padding: 24px;
       text-align: center;
+      transition: transform 0.35s var(--ease-spring);
+    }
+    .species-card:hover {
+      transform: translateY(-3px) scale(1.02);
     }
     .species-card__icon { font-size: 32px; margin-bottom: 8px; }
     .species-card h4 {
@@ -954,8 +1035,8 @@
     }
     .contact-card {
       background: var(--gray-50);
-      border-radius: 14px;
-      padding: 24px;
+      border-radius: 2rem;
+      padding: 28px;
     }
     .contact-card__name {
       font-family: var(--font-body);
@@ -1012,7 +1093,8 @@
     }
     @media (max-width: 768px) {
       section { padding: 72px 0; }
-      .hero { padding: 110px 0 60px; }
+      .hero .container { padding-bottom: 60px; }
+      .site-nav { max-width: calc(100% - 24px); }
       .site-nav__links { display: none; }
       .hamburger { display: flex; }
       .hero__stats { gap: 24px; }
@@ -1028,8 +1110,8 @@
       .compare-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
-      .hero h1 { font-size: 2rem; }
-      .hero__cta-group { flex-direction: column; align-items: center; }
+      .hero h1 { font-size: clamp(36px, 10vw, 52px); }
+      .hero__cta-group { flex-direction: column; align-items: stretch; }
       .hero__cta-group .btn { width: 100%; justify-content: center; }
       .hero__stats { flex-direction: column; gap: 16px; }
       .view-toggle { width: 100%; max-width: 300px; }
@@ -1046,7 +1128,8 @@
       body { font-size: 11pt; color: #000; background: #fff; }
       section { padding: 24px 0; }
       .container, .container--wide { max-width: 100%; padding: 0 16px; }
-      .checklist__category { break-inside: avoid; border: 1px solid #ccc; }
+      body::after { display: none !important; }
+      .checklist__category { break-inside: avoid; border: 1px solid #ccc; border-radius: 8px !important; }
       .checklist__category.open .checklist__items,
       .checklist__items { max-height: none !important; }
       .checklist__heading::after { display: none; }
@@ -1103,8 +1186,8 @@
       <div class="hero__bg"></div>
       <div class="container">
         <p class="hero__eyebrow reveal">August 15 - 21, 2026</p>
-        <h1 class="reveal reveal-d1">Hakai Pass<br>Fishing Expedition</h1>
-        <p class="hero__sub reveal reveal-d2">Your complete travel dossier for our group trip to Joe's Salmon Lodge on the central coast of British Columbia.</p>
+        <h1 class="reveal reveal-d1">Hakai Pass</h1>
+        <p class="hero__sub reveal reveal-d2">Your complete travel dossier for six days at Joe's Salmon Lodge on the central coast of British Columbia.</p>
         <div class="hero__stats reveal reveal-d2">
           <div class="stat">
             <div class="stat__number">6</div>
@@ -1123,7 +1206,7 @@
           <button class="view-toggle__btn active" data-view="all">Full Dossier</button>
           <button class="view-toggle__btn" data-view="traveler">Traveler View</button>
         </div>
-        <div class="hero__cta-group reveal reveal-d3" style="margin-top: 28px;">
+        <div class="hero__cta-group reveal reveal-d3" style="margin-top: 20px;">
           <a href="#packing" class="btn btn--primary">Packing Checklist</a>
           <a href="#overview" class="btn btn--secondary">Trip Overview</a>
         </div>
@@ -1185,7 +1268,7 @@
             <li>All meals: breakfast buffet, packed lunch, dinner buffet, beverages</li>
             <li>17-foot Boston Whaler with GPS, fish finder, VHF radio (one per pair)</li>
             <li>All fishing gear: rods, reels, tackle, bait, coolers</li>
-            <li>Heavy-duty Wetskin raingear and rubber boots</li>
+            <li>Rubber boots</li>
             <li>Professional fish processing: filleted, vacuum sealed, flash frozen, boxed</li>
           </ul>
         </div>
@@ -1222,7 +1305,7 @@
 
         <div class="callout callout--info reveal" style="margin-bottom: 24px;">
           <div class="callout__title">The lodge provides</div>
-          Raingear (Wetskin jacket and pants), rubber boots, all fishing rods/reels/tackle/bait, coolers, fish processing, and packed lunches. You do not need to bring these.
+          Rubber boots, all fishing rods/reels/tackle/bait, coolers, fish processing, and packed lunches. You do not need to bring these. <strong>Note:</strong> The lodge no longer provides raingear. Bring your own waterproof rain jacket and rain pants.
         </div>
 
         <div class="packing-progress reveal">
@@ -1261,7 +1344,8 @@
             <ul class="checklist__items">
               <li class="checklist__item"><label><input type="checkbox" data-item="base-layers"><span class="checklist__check"></span><span class="checklist__text">Base layers (merino or synthetic) x2<span class="checklist__hint">Top and bottom; mornings on the water are cold</span></span></label></li>
               <li class="checklist__item"><label><input type="checkbox" data-item="fleece"><span class="checklist__check"></span><span class="checklist__text">Mid-layer fleece or wool sweater x2</span></label></li>
-              <li class="checklist__item"><label><input type="checkbox" data-item="rain-jacket"><span class="checklist__check"></span><span class="checklist__text">Personal rain jacket<span class="checklist__hint">Lodge provides Wetskin; bring your own as a backup layer</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="rain-jacket"><span class="checklist__check"></span><span class="checklist__text">Waterproof rain jacket<span class="checklist__hint">Essential. Lodge no longer provides raingear.</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="rain-pants"><span class="checklist__check"></span><span class="checklist__text">Waterproof rain pants<span class="checklist__hint">You will get soaked on the boat without these</span></span></label></li>
               <li class="checklist__item"><label><input type="checkbox" data-item="quick-dry-pants"><span class="checklist__check"></span><span class="checklist__text">Quick-dry pants x2-3</span></label></li>
               <li class="checklist__item"><label><input type="checkbox" data-item="wool-socks"><span class="checklist__check"></span><span class="checklist__text">Wool socks x5 pairs<span class="checklist__hint">Never cotton; wool stays warm when wet</span></span></label></li>
               <li class="checklist__item"><label><input type="checkbox" data-item="warm-hat"><span class="checklist__check"></span><span class="checklist__text">Warm beanie/toque</span></label></li>
