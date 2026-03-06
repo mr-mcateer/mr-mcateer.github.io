@@ -2106,6 +2106,7 @@ Output: Generate the 3 best synchronized itinerary options. For each option, lis
       localStorage.setItem('theme', next);
       document.querySelector('.theme-toggle__icon').textContent = next === 'dark' ? '\u2600' : '\u263E';
     }
+    document.querySelector('.theme-toggle').addEventListener('click', toggleTheme);
     (function() {
       var saved = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', saved);
