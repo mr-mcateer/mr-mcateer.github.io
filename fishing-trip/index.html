@@ -859,63 +859,6 @@
       flex-shrink: 0;
     }
 
-    /* ===== INSURANCE GRID ===== */
-    .insurance-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 32px;
-    }
-    .insurance-card {
-      background: var(--white);
-      border: 1px solid var(--gray-100);
-      border-radius: 18px;
-      padding: 32px 24px;
-      position: relative;
-    }
-    .insurance-card--featured {
-      border-color: var(--forest);
-    }
-    .insurance-card__tier {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--forest);
-      margin-bottom: 8px;
-    }
-    .insurance-card__price {
-      font-family: var(--font-display);
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--black);
-      margin-bottom: 20px;
-    }
-    .insurance-card__price span {
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--gray-400);
-    }
-    .insurance-card ul {
-      list-style: none;
-    }
-    .insurance-card li {
-      padding: 8px 0;
-      font-size: 14px;
-      color: var(--gray-600);
-      border-bottom: 1px solid var(--gray-50);
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-    .insurance-card li:last-child { border-bottom: none; }
-    .insurance-card li::before {
-      content: '\2713';
-      color: var(--forest);
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
 
     /* ===== SCHEDULE ===== */
     .schedule {
@@ -1065,7 +1008,6 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .compare-grid { grid-template-columns: 1fr; }
-      .insurance-grid { grid-template-columns: 1fr; max-width: 420px; }
       .card-grid--3 { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
@@ -1127,7 +1069,6 @@
         <li><a href="#packing">Packing</a></li>
         <li><a href="#booking">Booking</a></li>
         <li><a href="#flights">Flights</a></li>
-        <li><a href="#insurance">Insurance</a></li>
         <li><a href="#lodge">Lodge</a></li>
         <li><a href="#documents">Docs</a></li>
       </ul>
@@ -1149,7 +1090,6 @@
     <a href="#packing">Packing Checklist</a>
     <a href="#booking">Booking Strategy</a>
     <a href="#flights">Flight Logistics</a>
-    <a href="#insurance">Travel Insurance</a>
     <a href="#lodge">Lodge Experience</a>
     <a href="#return">Return Logistics</a>
     <a href="#documents">Documents</a>
@@ -1252,7 +1192,7 @@
 
         <div class="callout callout--warn reveal" style="margin-top: 24px;">
           <div class="callout__title">Not included</div>
-          Bar tab (beer ~$6 CAD, cocktails ~$10 CAD), gratuities, fishing license, travel insurance, and flights to/from Vancouver.
+          Bar tab (beer ~$6 CAD, cocktails ~$10 CAD), gratuities, fishing license, and flights to/from Vancouver.
         </div>
 
         <h3 class="inter reveal" style="margin-top: 48px; margin-bottom: 8px;">Quick Navigation</h3>
@@ -1260,7 +1200,6 @@
           <a href="#packing" class="quick-link"><span class="quick-link__icon">&#127890;</span> Packing Checklist</a>
           <a href="#booking" class="quick-link"><span class="quick-link__icon">&#128203;</span> Booking Strategy</a>
           <a href="#flights" class="quick-link"><span class="quick-link__icon">&#9992;&#65039;</span> Flight Logistics</a>
-          <a href="#insurance" class="quick-link"><span class="quick-link__icon">&#128737;&#65039;</span> Travel Insurance</a>
           <a href="#lodge" class="quick-link"><span class="quick-link__icon">&#127969;</span> Lodge Experience</a>
           <a href="#return" class="quick-link"><span class="quick-link__icon">&#128230;</span> Return Logistics</a>
           <a href="#documents" class="quick-link"><span class="quick-link__icon">&#128196;</span> Documents &amp; Regs</a>
@@ -1305,10 +1244,10 @@
             <ul class="checklist__items">
               <li class="checklist__item"><label><input type="checkbox" data-item="passport"><span class="checklist__check"></span><span class="checklist__text">Valid passport<span class="checklist__hint">Must not expire before Feb 2027</span></span></label></li>
               <li class="checklist__item"><label><input type="checkbox" data-item="fishing-license"><span class="checklist__check"></span><span class="checklist__text">BC non-resident fishing license<span class="checklist__hint">Purchase online before trip</span></span></label></li>
-              <li class="checklist__item"><label><input type="checkbox" data-item="insurance-cards"><span class="checklist__check"></span><span class="checklist__text">Travel insurance cards (printed copy)</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="insurance-cards"><span class="checklist__check"></span><span class="checklist__text">Flight insurance confirmation (printed copy)</span></label></li>
               <li class="checklist__item"><label><input type="checkbox" data-item="flight-confirms"><span class="checklist__check"></span><span class="checklist__text">Flight confirmations (printed copies)</span></label></li>
               <li class="checklist__item"><label><input type="checkbox" data-item="hotel-confirm"><span class="checklist__check"></span><span class="checklist__text">Hotel reservation confirmation</span></label></li>
-              <li class="checklist__item"><label><input type="checkbox" data-item="emergency-contacts"><span class="checklist__check"></span><span class="checklist__text">Emergency contact card<span class="checklist__hint">Lodge number, insurance hotline, embassy</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="emergency-contacts"><span class="checklist__check"></span><span class="checklist__text">Emergency contact card<span class="checklist__hint">Lodge number, embassy, key phone numbers</span></span></label></li>
             </ul>
           </div>
 
@@ -1562,64 +1501,6 @@ Output: Generate the 3 best synchronized itinerary options. For each option, lis
       </div>
     </section>
 
-    <!-- ==================== INSURANCE ==================== -->
-    <section id="insurance" class="section--alt">
-      <div class="container--wide">
-        <p class="section-eyebrow reveal">Travel Insurance</p>
-        <h2 class="section-title reveal">Protecting Your Investment</h2>
-        <p class="section-sub reveal">Hakai Pass is completely remote. US health insurance does not cover a $30,000+ Canadian helicopter medevac.</p>
-
-        <div class="callout callout--danger reveal" style="margin-top: 24px;">
-          <div class="callout__title">The $123 BC private insurance only covers Pacific Coastal regional flights</div>
-          It does not cover your $5,870/person lodge investment, your major airline flights, or remote medical evacuation. The group needs comprehensive third-party coverage.
-        </div>
-
-        <div class="insurance-grid reveal" style="margin-top: 32px;">
-          <div class="insurance-card">
-            <div class="insurance-card__tier">Comprehensive</div>
-            <div class="insurance-card__price">$280 - $700 <span>/ person</span></div>
-            <ul>
-              <li>Trip cancellation (100% of trip cost)</li>
-              <li>Trip interruption coverage</li>
-              <li>Emergency medical and evacuation</li>
-              <li>Baggage loss and delay</li>
-              <li>Travel delay reimbursement</li>
-            </ul>
-          </div>
-          <div class="insurance-card insurance-card--featured">
-            <div class="card__badge">Most Flexible</div>
-            <div class="insurance-card__tier">CFAR Upgrade</div>
-            <div class="insurance-card__price">$450 - $800+ <span>/ person</span></div>
-            <ul>
-              <li>Everything in Comprehensive</li>
-              <li>Cancel For Any Reason (50-75% refund)</li>
-              <li>Must purchase within 14-21 days of first deposit</li>
-              <li>Highest cost but maximum flexibility</li>
-            </ul>
-          </div>
-          <div class="insurance-card">
-            <div class="insurance-card__tier">Medical Only</div>
-            <div class="insurance-card__price">~$139 <span>/ person</span></div>
-            <ul>
-              <li>Emergency medical coverage</li>
-              <li>Helicopter medevac from remote area</li>
-              <li>Global Rescue short-term membership</li>
-              <li>No trip cancellation coverage</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="planner-note reveal" style="margin-top: 32px;">
-          <div class="planner-note__label">Planner Note: Pre-existing Conditions</div>
-          <p>If anyone in the group has a pre-existing medical condition (heart medication, recent surgery, etc.), the policy must include a Pre-Existing Medical Condition Waiver. Most insurers (Allianz, Travel Guard) require purchase within <strong>14-21 days of making the very first trip deposit</strong>. If the $16,000 lodge deposit was paid months ago, many standard providers will deny claims. Use aggregators like InsureMyTrip.com or Squaremouth.com to compare quotes from multiple providers.</p>
-        </div>
-
-        <div class="planner-note reveal">
-          <div class="planner-note__label">Planner Note: What Influences Price</div>
-          <p><strong>Age is the biggest variable.</strong> A 40-year-old traveler will pay closer to 4-5% of trip cost (~$300). A 65-year-old traveler will pay 8-10% (~$600+). Estimated total trip cost per person: ~$7,000 minimum (Lodge $5,870 + Flights ~$600 + Hotels ~$300 + Incidentals).</p>
-        </div>
-      </div>
-    </section>
 
     <!-- ==================== LODGE EXPERIENCE ==================== -->
     <section id="lodge">
@@ -1795,9 +1676,9 @@ Output: Generate the 3 best synchronized itinerary options. For each option, lis
                 <td>Purchase online before the trip</td>
               </tr>
               <tr>
-                <td>Travel Insurance</td>
-                <td>Comprehensive policy recommended. Print your policy card and carry a copy. Include emergency hotline number.</td>
-                <td>Purchase ASAP for pre-existing condition coverage</td>
+                <td>Flight Insurance</td>
+                <td>The $123 BC private insurance covers Pacific Coastal regional flights. Consider additional flight insurance for your major airline legs.</td>
+                <td>Review when booking flights</td>
               </tr>
               <tr>
                 <td>Flight Confirmations</td>
