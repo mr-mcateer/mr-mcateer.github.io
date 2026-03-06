@@ -329,14 +329,14 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(8, 32, 28, 0.1) 0%, rgba(8, 32, 28, 0.6) 55%, rgba(8, 32, 28, 0.92) 100%),
-        linear-gradient(135deg, #0a3d2e 0%, #1a5c3a 25%, #2d7fa6 50%, #1a3a4a 75%, #0a2a20 100%);
+        linear-gradient(180deg, rgba(8, 32, 28, 0.25) 0%, rgba(8, 32, 28, 0.5) 40%, rgba(8, 32, 28, 0.92) 100%),
+        url('img/hero-fishing.jpg') center 30% / cover no-repeat;
       z-index: 0;
     }
     [data-theme="dark"] .hero__bg {
       background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.65) 55%, rgba(0, 0, 0, 0.95) 100%),
-        linear-gradient(135deg, #0a2a1e 0%, #0f3d28 25%, #1a4f6a 50%, #0a2a38 75%, #060f0a 100%);
+        linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 40%, rgba(0, 0, 0, 0.96) 100%),
+        url('img/hero-fishing.jpg') center 30% / cover no-repeat;
     }
     .hero .container {
       position: relative;
@@ -1074,6 +1074,115 @@
       flex-shrink: 0;
     }
 
+    /* ===== PHOTO SECTIONS ===== */
+    .photo-break {
+      position: relative;
+      height: 50vh;
+      min-height: 320px;
+      overflow: hidden;
+    }
+    .photo-break__img {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .photo-break__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, var(--white) 0%, transparent 15%, transparent 85%, var(--white) 100%);
+    }
+    .section--alt .photo-break__overlay,
+    .photo-break--from-alt .photo-break__overlay {
+      background: linear-gradient(180deg, var(--off-white) 0%, transparent 15%, transparent 85%, var(--white) 100%);
+    }
+    .photo-break--to-alt .photo-break__overlay {
+      background: linear-gradient(180deg, var(--white) 0%, transparent 15%, transparent 85%, var(--off-white) 100%);
+    }
+    .photo-break__caption {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 980px;
+      z-index: 1;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 32px;
+      border-radius: 2rem;
+      overflow: hidden;
+    }
+    .photo-grid__item {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+    .photo-grid__item--tall { aspect-ratio: 3 / 4; grid-row: span 2; }
+    .photo-grid__item--wide { grid-column: span 2; }
+    .photo-grid__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-out);
+    }
+    .photo-grid__item:hover img {
+      transform: scale(1.04);
+    }
+    .photo-grid__item figcaption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 32px 16px 12px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .photo-grid__item:hover figcaption { opacity: 1; }
+
+    .inline-photo {
+      border-radius: 2rem;
+      overflow: hidden;
+      margin: 32px 0;
+    }
+    .inline-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .inline-photo--constrained {
+      max-width: 600px;
+    }
+    .inline-photo figcaption {
+      font-size: 13px;
+      color: var(--gray-400);
+      padding: 12px 4px 0;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .photo-grid { grid-template-columns: 1fr 1fr; }
+      .photo-grid__item--tall { grid-row: span 1; aspect-ratio: 4 / 3; }
+      .photo-break { height: 35vh; min-height: 240px; }
+    }
+    @media (max-width: 480px) {
+      .photo-grid { grid-template-columns: 1fr; }
+    }
+
     /* ===== FOOTER ===== */
     .site-footer {
       padding: 40px 0;
@@ -1290,6 +1399,13 @@
         </div>
       </div>
     </section>
+
+    <!-- Photo break: dock catch -->
+    <div class="photo-break reveal" aria-hidden="true">
+      <div class="photo-break__img" style="background-image: url('img/dock-catch.jpg'); background-position: center 35%;"></div>
+      <div class="photo-break__overlay photo-break--from-alt"></div>
+      <span class="photo-break__caption">Previous trip at Joe's Salmon Lodge</span>
+    </div>
 
     <!-- ==================== PACKING CHECKLIST ==================== -->
     <section id="packing">
@@ -1593,7 +1709,27 @@ Output: Generate the 3 best synchronized itinerary options. For each option, lis
         <h2 class="section-title reveal">Life at Joe's Salmon Lodge</h2>
         <p class="section-sub reveal">A floating, self-contained resort anchored at the head of a protected inlet on Nalau Island. Self-guided fishing in the heart of Hakai Pass.</p>
 
-        <h3 class="inter reveal" style="margin-top: 40px; margin-bottom: 8px;">A Typical Day</h3>
+        <!-- Lodge photo gallery -->
+        <div class="photo-grid reveal">
+          <figure class="photo-grid__item photo-grid__item--wide">
+            <img src="img/lodge-group.jpg" alt="Group photo in front of Joe's Salmon Lodge" loading="lazy">
+            <figcaption>The crew at Joe's Salmon Lodge</figcaption>
+          </figure>
+          <figure class="photo-grid__item photo-grid__item--tall">
+            <img src="img/raingear-catch.jpg" alt="Holding a fresh salmon catch on the boat" loading="lazy">
+            <figcaption>Fresh catch on Hakai Pass</figcaption>
+          </figure>
+          <figure class="photo-grid__item">
+            <img src="img/salmon-catch.jpg" alt="Salmon catch from the bow of the Boston Whaler" loading="lazy">
+            <figcaption>Boston Whaler fishing</figcaption>
+          </figure>
+          <figure class="photo-grid__item">
+            <img src="img/boat-17.jpg" alt="Fishing from boat 17 at Joe's Salmon Lodge" loading="lazy">
+            <figcaption>Boat 17 on the water</figcaption>
+          </figure>
+        </div>
+
+        <h3 class="inter reveal" style="margin-top: 48px; margin-bottom: 8px;">A Typical Day</h3>
         <div class="schedule reveal">
           <div class="schedule__item">
             <div class="schedule__time">5:00 AM</div>
@@ -1679,6 +1815,18 @@ Output: Generate the 3 best synchronized itinerary options. For each option, lis
           </div>
         </div>
 
+        <!-- Trophy + catch photos -->
+        <div class="card-grid card-grid--2 reveal" style="margin-top: 32px;">
+          <figure class="inline-photo" style="margin: 0;">
+            <img src="img/trophy-hall.jpg" alt="Joe's Trophy Hall of Fame - Chinook salmon over 50 lbs" loading="lazy">
+            <figcaption>Joe's Trophy Hall of Fame: Chinook over 50 lbs</figcaption>
+          </figure>
+          <figure class="inline-photo" style="margin: 0;">
+            <img src="img/lingcod-cooler.jpg" alt="Lingcod haul from Hakai Pass" loading="lazy">
+            <figcaption>A haul of lingcod from the reef</figcaption>
+          </figure>
+        </div>
+
         <h3 class="inter reveal" style="margin-top: 40px; margin-bottom: 8px;">Lodge Rules to Know</h3>
         <div class="card-grid reveal">
           <div class="card">
@@ -1699,6 +1847,13 @@ Output: Generate the 3 best synchronized itinerary options. For each option, lis
         </div>
       </div>
     </section>
+
+    <!-- Photo break: on the dock -->
+    <div class="photo-break photo-break--to-alt reveal" aria-hidden="true">
+      <div class="photo-break__img" style="background-image: url('img/lodge-dock.jpg'); background-position: center 25%;"></div>
+      <div class="photo-break__overlay"></div>
+      <span class="photo-break__caption">On the dock at the lodge</span>
+    </div>
 
     <!-- ==================== RETURN LOGISTICS ==================== -->
     <section id="return" class="section--alt">
