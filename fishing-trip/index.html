@@ -1,0 +1,2042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hakai Pass 2026 | Joe's Salmon Lodge Travel Dossier</title>
+  <meta name="description" content="Complete travel planning dossier for our August 2026 fishing trip to Joe's Salmon Lodge at Hakai Pass, British Columbia.">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      --white: #ffffff;
+      --off-white: #fafafa;
+      --gray-50: #f5f5f7;
+      --gray-100: #e8e8ed;
+      --gray-200: #d2d2d7;
+      --gray-400: #86868b;
+      --gray-600: #6e6e73;
+      --gray-800: #1d1d1f;
+      --black: #000000;
+      --accent: #0071e3;
+      --accent-hover: #0077ed;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --max-width: 980px;
+      --max-width-wide: 1120px;
+      --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+      /* Nature palette */
+      --forest: #1a5c3a;
+      --forest-light: rgba(26, 92, 58, 0.08);
+      --amber: #c49a3c;
+      --amber-light: rgba(196, 154, 60, 0.1);
+      --river: #2d7fa6;
+      --river-light: rgba(45, 127, 166, 0.08);
+      --planner-bg: #fffbf0;
+      --planner-border: #e8d5b0;
+      --danger: #d44a3a;
+      --danger-light: rgba(212, 74, 58, 0.08);
+    }
+
+    /* ===== DARK MODE ===== */
+    [data-theme="dark"] {
+      --white: #1d1d1f;
+      --off-white: #161618;
+      --gray-50: #2a2a2c;
+      --gray-100: #3a3a3c;
+      --gray-200: #48484a;
+      --gray-400: #98989d;
+      --gray-600: #aeaeb2;
+      --gray-800: #f5f5f7;
+      --black: #ffffff;
+      --accent: #2997ff;
+      --accent-hover: #64b5f6;
+      --forest: #4ecdc4;
+      --forest-light: rgba(78, 205, 196, 0.08);
+      --amber: #f0c27f;
+      --amber-light: rgba(240, 194, 127, 0.1);
+      --river: #64b5f6;
+      --river-light: rgba(100, 181, 246, 0.08);
+      --planner-bg: #2a2520;
+      --planner-border: #4a3f2f;
+      --danger: #ff6b6b;
+      --danger-light: rgba(255, 107, 107, 0.08);
+    }
+    [data-theme="dark"] .site-nav {
+      background: rgba(29, 29, 31, 0.82);
+      border-bottom-color: var(--gray-100);
+    }
+    [data-theme="dark"] .site-nav.nav-scrolled {
+      background: rgba(29, 29, 31, 0.95);
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--gray-800);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ===== ACCESSIBILITY ===== */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 0 0 8px 8px;
+      z-index: 200;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.15; }
+    h3.inter { font-family: var(--font-body); font-weight: 600; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s var(--ease-out);
+    }
+    a:hover { color: var(--accent-hover); }
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ===== GLOBAL LAYOUT ===== */
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+    .container--wide { max-width: var(--max-width-wide); margin: 0 auto; padding: 0 24px; }
+    section { padding: 100px 0; }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ===== NAV ===== */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .site-nav.nav-scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom-color: var(--gray-100);
+    }
+    .site-nav__inner {
+      max-width: var(--max-width-wide);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+    .site-nav__logo {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--gray-800);
+      letter-spacing: -0.01em;
+    }
+    .site-nav__logo:hover { color: var(--accent); }
+    .site-nav__links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .site-nav__links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-600);
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .site-nav__links a:hover { color: var(--gray-800); }
+    .site-nav__links a.active { color: var(--accent); }
+    .site-nav__right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: var(--gray-600);
+      padding: 4px;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .theme-toggle:hover { color: var(--gray-800); }
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-800);
+    }
+    .hamburger svg { width: 22px; height: 22px; }
+
+    /* Mobile nav */
+    .mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 98;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-overlay.open { opacity: 1; pointer-events: auto; }
+    .mobile-nav {
+      position: fixed;
+      top: 0; right: 0;
+      width: 280px;
+      height: 100%;
+      background: var(--white);
+      z-index: 99;
+      transform: translateX(100%);
+      transition: transform 0.3s var(--ease-out);
+      padding: 72px 24px 24px;
+      overflow-y: auto;
+    }
+    .mobile-nav.open { transform: translateX(0); }
+    .mobile-nav a {
+      display: block;
+      padding: 14px 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--gray-800);
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .mobile-nav a:hover { color: var(--accent); }
+
+    /* ===== VIEW TOGGLE ===== */
+    .view-toggle {
+      display: flex;
+      gap: 4px;
+      background: var(--gray-50);
+      border-radius: 980px;
+      padding: 4px;
+      width: fit-content;
+      margin: 0 auto 0;
+    }
+    .view-toggle__btn {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 18px;
+      border-radius: 980px;
+      border: none;
+      background: transparent;
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: all 0.2s var(--ease-out);
+    }
+    .view-toggle__btn.active {
+      background: var(--white);
+      color: var(--gray-800);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.04);
+    }
+    .view-toggle__btn:hover:not(.active) { color: var(--gray-800); }
+
+    /* Hide planner content in traveler view */
+    body.view-traveler .planner-only { display: none; }
+    body.view-traveler .planner-note { display: none; }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 140px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(10, 61, 46, 0.06) 0%, rgba(45, 127, 166, 0.06) 50%, rgba(196, 154, 60, 0.04) 100%);
+      z-index: 0;
+    }
+    [data-theme="dark"] .hero__bg {
+      background: linear-gradient(160deg, rgba(10, 61, 46, 0.2) 0%, rgba(45, 127, 166, 0.15) 50%, rgba(196, 154, 60, 0.08) 100%);
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero__eyebrow {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 5.5vw, 58px);
+      letter-spacing: -0.025em;
+      color: var(--black);
+      margin-bottom: 20px;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero__sub {
+      font-size: clamp(17px, 2vw, 20px);
+      color: var(--gray-600);
+      max-width: 620px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+    .hero__stats {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      margin: 32px 0 40px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat__number {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.1;
+    }
+    .stat__label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-600);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 4px;
+    }
+    .hero__cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 980px;
+      transition: all 0.25s var(--ease-out);
+      cursor: pointer;
+      border: none;
+    }
+    .btn--primary { background: var(--accent); color: #fff; }
+    .btn--primary:hover { background: var(--accent-hover); color: #fff; transform: scale(1.02); }
+    .btn--secondary { background: var(--gray-50); color: var(--gray-800); }
+    .btn--secondary:hover { background: var(--gray-100); color: var(--gray-800); }
+    .btn--small { padding: 8px 18px; font-size: 13px; }
+    .btn--forest { background: var(--forest); color: #fff; }
+    .btn--forest:hover { opacity: 0.9; color: #fff; }
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    /* ===== SECTION HEADERS ===== */
+    .section-eyebrow {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 18px;
+      color: var(--gray-600);
+      max-width: 620px;
+      line-height: 1.6;
+    }
+    .section--alt { background: var(--off-white); }
+
+    /* ===== PLANNER NOTE ===== */
+    .planner-note {
+      background: var(--planner-bg);
+      border-left: 4px solid var(--amber);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin: 24px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .planner-note__label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 6px;
+    }
+
+    /* ===== WARNING CALLOUT ===== */
+    .callout {
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 24px 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .callout--warn {
+      background: var(--amber-light);
+      border: 1px solid var(--amber);
+    }
+    .callout--info {
+      background: var(--river-light);
+      border: 1px solid var(--river);
+    }
+    .callout--danger {
+      background: var(--danger-light);
+      border: 1px solid var(--danger);
+    }
+    .callout__title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    /* ===== CARDS ===== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .card-grid--2 { grid-template-columns: repeat(2, 1fr); }
+    .card-grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 18px;
+      padding: 32px 28px;
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+    }
+    .card__icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .card__tag {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 6px;
+    }
+    .card h3 {
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .card p {
+      font-size: 15px;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+    .card--featured {
+      border-color: var(--forest);
+      position: relative;
+    }
+    .card__badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: var(--forest);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 980px;
+    }
+
+    /* ===== OVERVIEW TIMELINE ===== */
+    .timeline {
+      list-style: none;
+      margin-top: 32px;
+    }
+    .timeline__item {
+      display: flex;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--gray-100);
+      align-items: flex-start;
+    }
+    .timeline__date {
+      min-width: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--forest);
+      flex-shrink: 0;
+    }
+    .timeline__title {
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+    .timeline__desc {
+      font-size: 15px;
+      color: var(--gray-600);
+    }
+
+    /* ===== QUICK LINKS ===== */
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .quick-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: var(--gray-50);
+      border-radius: 12px;
+      color: var(--gray-800);
+      font-size: 15px;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .quick-link:hover {
+      background: var(--gray-100);
+      color: var(--gray-800);
+      transform: translateY(-2px);
+    }
+    .quick-link__icon { font-size: 20px; flex-shrink: 0; }
+
+    /* ===== PACKING CHECKLIST ===== */
+    .packing-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .packing-progress {
+      margin-bottom: 40px;
+    }
+    .packing-progress__bar {
+      height: 8px;
+      background: var(--gray-100);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .packing-progress__fill {
+      height: 100%;
+      background: var(--forest);
+      border-radius: 4px;
+      transition: width 0.4s var(--ease-out);
+      width: 0%;
+    }
+    .packing-progress__text {
+      font-size: 14px;
+      color: var(--gray-600);
+    }
+
+    .checklist__category {
+      margin-bottom: 8px;
+      border: 1px solid var(--gray-100);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .checklist__heading {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--black);
+      padding: 18px 24px;
+      background: var(--gray-50);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .checklist__heading:hover { background: var(--gray-100); }
+    .checklist__heading::after {
+      content: '';
+      margin-left: auto;
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid var(--gray-400);
+      border-bottom: 2px solid var(--gray-400);
+      transform: rotate(45deg);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .checklist__category.open .checklist__heading::after {
+      transform: rotate(-135deg);
+    }
+    .checklist__count {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-400);
+      margin-left: auto;
+      margin-right: 12px;
+    }
+    .checklist__icon { font-size: 18px; flex-shrink: 0; }
+    .checklist__items {
+      list-style: none;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s var(--ease-out);
+    }
+    .checklist__category.open .checklist__items {
+      max-height: 2000px;
+    }
+    .checklist__item {
+      padding: 0 24px;
+    }
+    .checklist__item label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gray-50);
+      cursor: pointer;
+    }
+    .checklist__item:last-child label { border-bottom: none; }
+    .checklist__item input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .checklist__check {
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--gray-200);
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s var(--ease-out);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .checklist__item input:checked + .checklist__check {
+      background: var(--forest);
+      border-color: var(--forest);
+    }
+    .checklist__item input:checked + .checklist__check::after {
+      content: '\2713';
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .checklist__item input:focus-visible + .checklist__check {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .checklist__text {
+      font-size: 15px;
+      color: var(--gray-800);
+      line-height: 1.5;
+      transition: color 0.2s, opacity 0.2s;
+    }
+    .checklist__item input:checked ~ .checklist__text {
+      color: var(--gray-400);
+      text-decoration: line-through;
+    }
+    .checklist__hint {
+      display: block;
+      font-size: 13px;
+      color: var(--gray-400);
+      margin-top: 2px;
+      font-style: italic;
+      text-decoration: none !important;
+    }
+    .checklist__item input:checked ~ .checklist__text .checklist__hint {
+      text-decoration: none;
+    }
+
+    /* ===== COMPARE CARDS ===== */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .compare-card {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 18px;
+      padding: 28px 24px;
+      position: relative;
+    }
+    .compare-card--rec {
+      border-color: var(--forest);
+    }
+    .compare-card h4 {
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+    .compare-card__features {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+    .compare-card__features li {
+      padding: 6px 0;
+      font-size: 15px;
+      color: var(--gray-600);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .compare-card__features li::before {
+      flex-shrink: 0;
+      font-size: 14px;
+      margin-top: 2px;
+    }
+    .compare-card__features .pro::before { content: '\2713'; color: var(--forest); }
+    .compare-card__features .con::before { content: '\00D7'; color: var(--danger); font-size: 16px; }
+    .compare-card__price {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-400);
+      padding-top: 16px;
+      border-top: 1px solid var(--gray-100);
+    }
+
+    /* ===== PROMPT BLOCK ===== */
+    .prompt-block {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+    .prompt-block__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: var(--gray-100);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-600);
+    }
+    .prompt-block__copy {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 980px;
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .prompt-block__copy:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .prompt-block__code {
+      padding: 20px;
+      font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--gray-800);
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-x: auto;
+    }
+
+    /* ===== JOURNEY TIMELINE ===== */
+    .journey {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+    .journey__step {
+      text-align: center;
+      padding: 20px 16px;
+      flex: 0 1 auto;
+    }
+    .journey__icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--forest-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin: 0 auto 10px;
+      border: 2px solid var(--forest);
+    }
+    .journey__step--final .journey__icon {
+      background: var(--forest);
+      color: #fff;
+      border-color: var(--forest);
+    }
+    .journey__label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+    .journey__detail {
+      font-size: 12px;
+      color: var(--gray-400);
+    }
+    .journey__arrow {
+      font-size: 20px;
+      color: var(--gray-200);
+      flex-shrink: 0;
+    }
+
+    /* ===== INSURANCE GRID ===== */
+    .insurance-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .insurance-card {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 18px;
+      padding: 32px 24px;
+      position: relative;
+    }
+    .insurance-card--featured {
+      border-color: var(--forest);
+    }
+    .insurance-card__tier {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 8px;
+    }
+    .insurance-card__price {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 20px;
+    }
+    .insurance-card__price span {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--gray-400);
+    }
+    .insurance-card ul {
+      list-style: none;
+    }
+    .insurance-card li {
+      padding: 8px 0;
+      font-size: 14px;
+      color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-50);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .insurance-card li:last-child { border-bottom: none; }
+    .insurance-card li::before {
+      content: '\2713';
+      color: var(--forest);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ===== SCHEDULE ===== */
+    .schedule {
+      margin-top: 32px;
+    }
+    .schedule__item {
+      display: flex;
+      gap: 24px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--gray-100);
+      align-items: flex-start;
+    }
+    .schedule__time {
+      min-width: 80px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--forest);
+      flex-shrink: 0;
+    }
+    .schedule__event h4 {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+    .schedule__event p {
+      font-size: 14px;
+      color: var(--gray-600);
+    }
+
+    /* ===== SPECIES CARDS ===== */
+    .species-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .species-card {
+      background: var(--gray-50);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+    }
+    .species-card__icon { font-size: 32px; margin-bottom: 8px; }
+    .species-card h4 {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+    .species-card p {
+      font-size: 13px;
+      color: var(--gray-400);
+    }
+
+    /* ===== DATA TABLE ===== */
+    .doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+    }
+    .doc-table th {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--gray-200);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--gray-400);
+    }
+    .doc-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--gray-100);
+      font-size: 15px;
+      color: var(--gray-600);
+      vertical-align: top;
+    }
+    .doc-table td:first-child {
+      font-weight: 600;
+      color: var(--gray-800);
+      white-space: nowrap;
+    }
+
+    /* ===== CONTACT CARDS ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .contact-card {
+      background: var(--gray-50);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .contact-card__name {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .contact-card p {
+      font-size: 14px;
+      color: var(--gray-600);
+      margin-bottom: 4px;
+    }
+    .contact-card a {
+      font-size: 14px;
+    }
+
+    /* ===== INCLUDED LIST ===== */
+    .included-list {
+      list-style: none;
+      margin-top: 16px;
+    }
+    .included-list li {
+      padding: 8px 0;
+      font-size: 15px;
+      color: var(--gray-600);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .included-list li::before {
+      content: '\2713';
+      color: var(--forest);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--gray-100);
+      text-align: center;
+    }
+    .site-footer p {
+      font-size: 13px;
+      color: var(--gray-400);
+    }
+    .site-footer a { color: var(--gray-600); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .compare-grid { grid-template-columns: 1fr; }
+      .insurance-grid { grid-template-columns: 1fr; max-width: 420px; }
+      .card-grid--3 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 72px 0; }
+      .hero { padding: 110px 0 60px; }
+      .site-nav__links { display: none; }
+      .hamburger { display: flex; }
+      .hero__stats { gap: 24px; }
+      .journey { flex-direction: column; }
+      .journey__arrow { transform: rotate(90deg); }
+      .timeline__item { flex-direction: column; gap: 4px; }
+      .timeline__date { min-width: auto; }
+      .schedule__item { flex-direction: column; gap: 4px; }
+      .schedule__time { min-width: auto; }
+      .doc-table { font-size: 14px; }
+      .doc-table td:first-child { white-space: normal; }
+      .card-grid--2 { grid-template-columns: 1fr; }
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+      .hero__cta-group { flex-direction: column; align-items: center; }
+      .hero__cta-group .btn { width: 100%; justify-content: center; }
+      .hero__stats { flex-direction: column; gap: 16px; }
+      .view-toggle { width: 100%; max-width: 300px; }
+      .view-toggle__btn { flex: 1; text-align: center; }
+      .species-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ===== PRINT ===== */
+    @media print {
+      .site-nav, .mobile-nav, .mobile-overlay, .site-footer,
+      .view-toggle, .packing-progress, .hero, .quick-links,
+      .hero__cta-group, .prompt-block__copy, .hamburger,
+      .skip-link { display: none !important; }
+      body { font-size: 11pt; color: #000; background: #fff; }
+      section { padding: 24px 0; }
+      .container, .container--wide { max-width: 100%; padding: 0 16px; }
+      .checklist__category { break-inside: avoid; border: 1px solid #ccc; }
+      .checklist__category.open .checklist__items,
+      .checklist__items { max-height: none !important; }
+      .checklist__heading::after { display: none; }
+      .card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+      a { color: #000; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a href="../" class="site-nav__logo">Hakai 2026</a>
+      <ul class="site-nav__links">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#packing">Packing</a></li>
+        <li><a href="#booking">Booking</a></li>
+        <li><a href="#flights">Flights</a></li>
+        <li><a href="#insurance">Insurance</a></li>
+        <li><a href="#lodge">Lodge</a></li>
+        <li><a href="#documents">Docs</a></li>
+      </ul>
+      <div class="site-nav__right">
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-toggle__icon">&#9790;</span>
+        </button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile nav -->
+  <div class="mobile-overlay" aria-hidden="true"></div>
+  <div class="mobile-nav" aria-label="Mobile navigation">
+    <a href="#overview">Trip Overview</a>
+    <a href="#packing">Packing Checklist</a>
+    <a href="#booking">Booking Strategy</a>
+    <a href="#flights">Flight Logistics</a>
+    <a href="#insurance">Travel Insurance</a>
+    <a href="#lodge">Lodge Experience</a>
+    <a href="#return">Return Logistics</a>
+    <a href="#documents">Documents</a>
+    <a href="#emergency">Emergency Contacts</a>
+  </div>
+
+  <main id="main">
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
+      <div class="hero__bg"></div>
+      <div class="container">
+        <p class="hero__eyebrow reveal">August 15 - 21, 2026</p>
+        <h1 class="reveal reveal-d1">Hakai Pass<br>Fishing Expedition</h1>
+        <p class="hero__sub reveal reveal-d2">Your complete travel dossier for our group trip to Joe's Salmon Lodge on the central coast of British Columbia.</p>
+        <div class="hero__stats reveal reveal-d2">
+          <div class="stat">
+            <div class="stat__number">6</div>
+            <div class="stat__label">Travelers</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number">5</div>
+            <div class="stat__label">Fishing Days</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number">1</div>
+            <div class="stat__label">Epic Lodge</div>
+          </div>
+        </div>
+        <div class="view-toggle reveal reveal-d3" role="group" aria-label="View mode">
+          <button class="view-toggle__btn active" data-view="all">Full Dossier</button>
+          <button class="view-toggle__btn" data-view="traveler">Traveler View</button>
+        </div>
+        <div class="hero__cta-group reveal reveal-d3" style="margin-top: 28px;">
+          <a href="#packing" class="btn btn--primary">Packing Checklist</a>
+          <a href="#overview" class="btn btn--secondary">Trip Overview</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== OVERVIEW ==================== -->
+    <section id="overview" class="section--alt">
+      <div class="container--wide">
+        <p class="section-eyebrow reveal">Trip Overview</p>
+        <h2 class="section-title reveal">The Itinerary</h2>
+        <p class="section-sub reveal">Six days from Idaho and Oregon to one of the most productive salmon fisheries on earth.</p>
+
+        <ul class="timeline reveal">
+          <li class="timeline__item">
+            <div class="timeline__date">Sat, Aug 15</div>
+            <div>
+              <div class="timeline__title">Fly to Vancouver (YVR)</div>
+              <div class="timeline__desc">5 from Idaho Falls (IDA), 1 from Eugene (EUG). Arrive afternoon. Overnight at hotel near YVR.</div>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__date">Sun, Aug 16</div>
+            <div>
+              <div class="timeline__title">Vancouver to Joe's Salmon Lodge</div>
+              <div class="timeline__desc">Fly Pacific Coastal Airlines from YVR South Terminal to Bella Bella (ZEL). Water taxi to the lodge. Orientation and first evening at the lodge.</div>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__date">Mon - Thu</div>
+            <div>
+              <div class="timeline__title">Aug 17 - 20: Fish Hakai Pass</div>
+              <div class="timeline__desc">Four full days on the water in Boston Whalers. Chinook, Coho, Halibut, Lingcod. Self-guided with GPS, radio, and daily tips from lodge staff.</div>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__date">Fri, Aug 21</div>
+            <div>
+              <div class="timeline__title">Final fishing day and return to Vancouver</div>
+              <div class="timeline__desc">Morning fish, then charter flight back to YVR. Fish boxes travel with you. Overnight at hotel (fish freezer storage).</div>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__date">Sat, Aug 22</div>
+            <div>
+              <div class="timeline__title">Fly home</div>
+              <div class="timeline__desc">Morning flights back to IDA and EUG with your frozen salmon.</div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="reveal" style="margin-top: 48px;">
+          <h3 class="inter" style="margin-bottom: 8px;">What's included in your lodge package</h3>
+          <p style="font-size: 15px; color: var(--gray-600); margin-bottom: 12px;">Joe's Salmon Lodge is all-inclusive. Your $5,870/person covers:</p>
+          <ul class="included-list">
+            <li>Charter flights: YVR to Bella Bella and return</li>
+            <li>Water taxi transfer to and from the lodge</li>
+            <li>Shared room (2-3 per room, private half-bath, heaters, WiFi, USB)</li>
+            <li>All meals: breakfast buffet, packed lunch, dinner buffet, beverages</li>
+            <li>17-foot Boston Whaler with GPS, fish finder, VHF radio (one per pair)</li>
+            <li>All fishing gear: rods, reels, tackle, bait, coolers</li>
+            <li>Heavy-duty Wetskin raingear and rubber boots</li>
+            <li>Professional fish processing: filleted, vacuum sealed, flash frozen, boxed</li>
+          </ul>
+        </div>
+
+        <div class="callout callout--warn reveal" style="margin-top: 24px;">
+          <div class="callout__title">Not included</div>
+          Bar tab (beer ~$6 CAD, cocktails ~$10 CAD), gratuities, fishing license, travel insurance, and flights to/from Vancouver.
+        </div>
+
+        <h3 class="inter reveal" style="margin-top: 48px; margin-bottom: 8px;">Quick Navigation</h3>
+        <div class="quick-links reveal">
+          <a href="#packing" class="quick-link"><span class="quick-link__icon">&#127890;</span> Packing Checklist</a>
+          <a href="#booking" class="quick-link"><span class="quick-link__icon">&#128203;</span> Booking Strategy</a>
+          <a href="#flights" class="quick-link"><span class="quick-link__icon">&#9992;&#65039;</span> Flight Logistics</a>
+          <a href="#insurance" class="quick-link"><span class="quick-link__icon">&#128737;&#65039;</span> Travel Insurance</a>
+          <a href="#lodge" class="quick-link"><span class="quick-link__icon">&#127969;</span> Lodge Experience</a>
+          <a href="#return" class="quick-link"><span class="quick-link__icon">&#128230;</span> Return Logistics</a>
+          <a href="#documents" class="quick-link"><span class="quick-link__icon">&#128196;</span> Documents &amp; Regs</a>
+          <a href="#emergency" class="quick-link"><span class="quick-link__icon">&#128222;</span> Emergency Contacts</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PACKING CHECKLIST ==================== -->
+    <section id="packing">
+      <div class="container--wide">
+        <div class="packing-header">
+          <div>
+            <p class="section-eyebrow reveal">Packing Checklist</p>
+            <h2 class="section-title reveal">What to Bring</h2>
+          </div>
+          <button class="btn btn--secondary btn--small reveal" onclick="window.print()">&#128424; Print Checklist</button>
+        </div>
+        <p class="section-sub reveal" style="margin-bottom: 8px;">Based on Joe's Salmon Lodge recommendations. Check off items as you pack. Your progress saves automatically.</p>
+
+        <div class="callout callout--info reveal" style="margin-bottom: 24px;">
+          <div class="callout__title">The lodge provides</div>
+          Raingear (Wetskin jacket and pants), rubber boots, all fishing rods/reels/tackle/bait, coolers, fish processing, and packed lunches. You do not need to bring these.
+        </div>
+
+        <div class="packing-progress reveal">
+          <div class="packing-progress__bar">
+            <div class="packing-progress__fill" id="progressFill"></div>
+          </div>
+          <p class="packing-progress__text" id="progressText">0 of 0 items packed</p>
+        </div>
+
+        <div class="checklist" id="checklist">
+
+          <!-- Documents -->
+          <div class="checklist__category open" data-category="documents">
+            <h3 class="checklist__heading">
+              <span class="checklist__icon">&#128196;</span>
+              Documents &amp; ID
+              <span class="checklist__count"></span>
+            </h3>
+            <ul class="checklist__items">
+              <li class="checklist__item"><label><input type="checkbox" data-item="passport"><span class="checklist__check"></span><span class="checklist__text">Valid passport<span class="checklist__hint">Must not expire before Feb 2027</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="fishing-license"><span class="checklist__check"></span><span class="checklist__text">BC non-resident fishing license<span class="checklist__hint">Purchase online before trip</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="insurance-cards"><span class="checklist__check"></span><span class="checklist__text">Travel insurance cards (printed copy)</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="flight-confirms"><span class="checklist__check"></span><span class="checklist__text">Flight confirmations (printed copies)</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="hotel-confirm"><span class="checklist__check"></span><span class="checklist__text">Hotel reservation confirmation</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="emergency-contacts"><span class="checklist__check"></span><span class="checklist__text">Emergency contact card<span class="checklist__hint">Lodge number, insurance hotline, embassy</span></span></label></li>
+            </ul>
+          </div>
+
+          <!-- Clothing -->
+          <div class="checklist__category open" data-category="clothing">
+            <h3 class="checklist__heading">
+              <span class="checklist__icon">&#129509;</span>
+              Clothing &amp; Layers
+              <span class="checklist__count"></span>
+            </h3>
+            <ul class="checklist__items">
+              <li class="checklist__item"><label><input type="checkbox" data-item="base-layers"><span class="checklist__check"></span><span class="checklist__text">Base layers (merino or synthetic) x2<span class="checklist__hint">Top and bottom; mornings on the water are cold</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="fleece"><span class="checklist__check"></span><span class="checklist__text">Mid-layer fleece or wool sweater x2</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="rain-jacket"><span class="checklist__check"></span><span class="checklist__text">Personal rain jacket<span class="checklist__hint">Lodge provides Wetskin; bring your own as a backup layer</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="quick-dry-pants"><span class="checklist__check"></span><span class="checklist__text">Quick-dry pants x2-3</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="wool-socks"><span class="checklist__check"></span><span class="checklist__text">Wool socks x5 pairs<span class="checklist__hint">Never cotton; wool stays warm when wet</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="warm-hat"><span class="checklist__check"></span><span class="checklist__text">Warm beanie/toque</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="sun-hat"><span class="checklist__check"></span><span class="checklist__text">Sun hat or ball cap</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="gloves"><span class="checklist__check"></span><span class="checklist__text">Gloves (thin liner pair + warm pair)<span class="checklist__hint">Essential for early morning boat runs</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="buff"><span class="checklist__check"></span><span class="checklist__text">Neck gaiter / buff</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="camp-shoes"><span class="checklist__check"></span><span class="checklist__text">Camp shoes or sandals<span class="checklist__hint">For evenings at the lodge</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="casual-clothes"><span class="checklist__check"></span><span class="checklist__text">Casual clothes for lodge evenings x2-3 sets</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="swimsuit"><span class="checklist__check"></span><span class="checklist__text">Swimsuit (optional)</span></label></li>
+            </ul>
+          </div>
+
+          <!-- Personal Items -->
+          <div class="checklist__category open" data-category="personal">
+            <h3 class="checklist__heading">
+              <span class="checklist__icon">&#127890;</span>
+              Personal Items
+              <span class="checklist__count"></span>
+            </h3>
+            <ul class="checklist__items">
+              <li class="checklist__item"><label><input type="checkbox" data-item="sunscreen"><span class="checklist__check"></span><span class="checklist__text">Sunscreen SPF 50+<span class="checklist__hint">Sun reflecting off the water is intense</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="polarized-glasses"><span class="checklist__check"></span><span class="checklist__text">Polarized sunglasses (bring a backup pair)<span class="checklist__hint">Essential for seeing fish; easy to lose overboard</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="motion-sickness"><span class="checklist__check"></span><span class="checklist__text">Motion sickness medication<span class="checklist__hint">Dramamine, Bonine, or Sea-Bands</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="medications"><span class="checklist__check"></span><span class="checklist__text">Personal prescription medications<span class="checklist__hint">No pharmacy nearby; bring more than you need</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="toiletries"><span class="checklist__check"></span><span class="checklist__text">Toiletries (toothbrush, deodorant, etc.)<span class="checklist__hint">There is no store at the lodge</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="headlamp"><span class="checklist__check"></span><span class="checklist__text">Headlamp or small flashlight</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="dry-bag"><span class="checklist__check"></span><span class="checklist__text">Dry bag (small, for phone/wallet on the boat)</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="water-bottle"><span class="checklist__check"></span><span class="checklist__text">Reusable water bottle</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="lip-balm"><span class="checklist__check"></span><span class="checklist__text">Lip balm with SPF</span></label></li>
+            </ul>
+          </div>
+
+          <!-- Electronics -->
+          <div class="checklist__category" data-category="electronics">
+            <h3 class="checklist__heading">
+              <span class="checklist__icon">&#128247;</span>
+              Electronics
+              <span class="checklist__count"></span>
+            </h3>
+            <ul class="checklist__items">
+              <li class="checklist__item"><label><input type="checkbox" data-item="camera"><span class="checklist__check"></span><span class="checklist__text">Camera + waterproof case or GoPro</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="phone-charger"><span class="checklist__check"></span><span class="checklist__text">Phone + charger cable<span class="checklist__hint">Rooms have USB ports and WiFi</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="battery-pack"><span class="checklist__check"></span><span class="checklist__text">Portable battery pack<span class="checklist__hint">Long days on the water with no outlets</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="memory-cards"><span class="checklist__check"></span><span class="checklist__text">Extra memory cards</span></label></li>
+            </ul>
+          </div>
+
+          <!-- Optional Fishing Gear -->
+          <div class="checklist__category" data-category="fishing">
+            <h3 class="checklist__heading">
+              <span class="checklist__icon">&#127907;</span>
+              Optional Fishing Gear
+              <span class="checklist__count"></span>
+            </h3>
+            <ul class="checklist__items">
+              <li class="checklist__item"><label><input type="checkbox" data-item="personal-rod"><span class="checklist__check"></span><span class="checklist__text">Personal rod and reel (optional)<span class="checklist__hint">Lodge provides all gear; bring your own only if you have a preferred setup</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="fav-lures"><span class="checklist__check"></span><span class="checklist__text">Favorite lures or tackle</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="fish-gripper"><span class="checklist__check"></span><span class="checklist__text">Fish gripper / Boga grip</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="fishing-gloves"><span class="checklist__check"></span><span class="checklist__text">Fingerless fishing gloves</span></label></li>
+            </ul>
+          </div>
+
+          <!-- Snacks & Misc -->
+          <div class="checklist__category" data-category="snacks">
+            <h3 class="checklist__heading">
+              <span class="checklist__icon">&#127860;</span>
+              Snacks &amp; Miscellaneous
+              <span class="checklist__count"></span>
+            </h3>
+            <ul class="checklist__items">
+              <li class="checklist__item"><label><input type="checkbox" data-item="trail-mix"><span class="checklist__check"></span><span class="checklist__text">Trail mix / energy bars<span class="checklist__hint">For snacking on the boat between meals</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="cards"><span class="checklist__check"></span><span class="checklist__text">Playing cards or travel games</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="book"><span class="checklist__check"></span><span class="checklist__text">Book or Kindle</span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="earplugs"><span class="checklist__check"></span><span class="checklist__text">Earplugs<span class="checklist__hint">Shared rooms; light sleepers take note</span></span></label></li>
+              <li class="checklist__item"><label><input type="checkbox" data-item="small-daypack"><span class="checklist__check"></span><span class="checklist__text">Small daypack for travel days</span></label></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="callout callout--danger reveal" style="margin-top: 24px;">
+          <div class="callout__title">Important: No outside liquor</div>
+          Joe's Salmon Lodge operates under a BC Liquor License. Outside alcohol is not permitted at the lodge. Beer and cocktails are available at the lodge bar.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BOOKING METHODOLOGY ==================== -->
+    <section id="booking" class="section--alt planner-only">
+      <div class="container--wide">
+        <p class="section-eyebrow reveal">Booking Strategy</p>
+        <h2 class="section-title reveal">The Planner's Playbook</h2>
+        <p class="section-sub reveal">A systematic approach to booking flights, hotels, and logistics. This section is for the trip organizer.</p>
+
+        <div class="callout callout--warn reveal" style="margin-top: 24px;">
+          <div class="callout__title">Book Vancouver hotels FIRST</div>
+          The hardest part of this trip is securing two rooms near YVR that offer fish freezer storage for the return leg (Aug 21). This is the bottleneck. Lock it down before flights.
+        </div>
+
+        <h3 class="inter reveal" style="margin-top: 40px; margin-bottom: 8px;">Hotel Comparison</h3>
+        <p class="reveal" style="font-size: 15px; color: var(--gray-600); margin-bottom: 8px;">You need two rooms for two nights: Aug 15 (arrival) and Aug 21 (return with fish).</p>
+
+        <div class="compare-grid reveal">
+          <div class="compare-card compare-card--rec">
+            <div class="card__badge">Recommended</div>
+            <h4>River Rock Casino Resort</h4>
+            <ul class="compare-card__features">
+              <li class="pro">Complimentary dedicated fish freezer storage</li>
+              <li class="pro">Close to YVR South Terminal (10 min drive)</li>
+              <li class="pro">Canada Line train stop at the resort</li>
+              <li class="pro">Pool, 10 restaurants, Starbucks, casino</li>
+              <li class="pro">Use promo code "Fishing" when booking</li>
+              <li class="con">In Richmond, not at the airport terminal</li>
+            </ul>
+            <div class="compare-card__price">~$180 - $220 CAD / night</div>
+          </div>
+          <div class="compare-card">
+            <h4>Fairmont Vancouver Airport</h4>
+            <ul class="compare-card__features">
+              <li class="pro">Located inside the YVR main terminal</li>
+              <li class="pro">Zero travel time to/from flights</li>
+              <li class="pro">Premium amenities and service</li>
+              <li class="con">Significantly higher nightly rate</li>
+              <li class="con">Fish storage may incur additional fees</li>
+              <li class="con">Main terminal (not South Terminal for Pacific Coastal)</li>
+            </ul>
+            <div class="compare-card__price">~$350 - $450 CAD / night</div>
+          </div>
+        </div>
+
+        <h3 class="inter reveal" style="margin-top: 48px; margin-bottom: 8px;">Flight Synchronization</h3>
+        <p class="reveal" style="font-size: 15px; color: var(--gray-600); margin-bottom: 16px;">5 from Idaho Falls (IDA) + 1 from Eugene (EUG). Both groups must land at YVR within ~2 hours of each other on Aug 15.</p>
+
+        <div class="card-grid card-grid--2 reveal">
+          <div class="card">
+            <div class="card__tag">Recommended</div>
+            <h3>The Airline Loyalty Hedge</h3>
+            <p>If anyone in the group holds a Delta SkyMiles Amex, United Explorer, or Alaska Airlines Visa, use that card for the entire group booking. Waiving checked bag fees for 6 people bringing 50lb fish coolers home saves the group $500 to $800 total.</p>
+          </div>
+          <div class="card">
+            <div class="card__tag">Alternative</div>
+            <h3>Absolute Lowest Fare</h3>
+            <p>Booking the cheapest option on Expedia or Kayak across mixed carriers. Trade-off: you will face heavy checked bag and oversize fees at the counter on the way home for the fish boxes, likely wiping out any upfront ticket savings.</p>
+          </div>
+        </div>
+
+        <div class="callout callout--info reveal" style="margin-top: 24px;">
+          <div class="callout__title">Layover rules</div>
+          Minimum 1 hour 15 minutes for any connection. Stick to major hubs: SEA, SLC, or DEN. Do not book a 45-minute layover.
+        </div>
+
+        <h3 class="inter reveal" style="margin-top: 40px; margin-bottom: 8px;">AI Flight Research Prompt</h3>
+        <p class="reveal" style="font-size: 15px; color: var(--gray-600); margin-bottom: 8px;">Copy and paste this into ChatGPT, Claude, or Gemini to crunch flight schedules.</p>
+
+        <div class="prompt-block reveal">
+          <div class="prompt-block__header">
+            <span>Flight Research Prompt</span>
+            <button class="prompt-block__copy" id="copyPromptBtn">Copy</button>
+          </div>
+          <pre class="prompt-block__code" id="promptCode">Act as an expert executive travel consultant. I need you to find synchronized flight itineraries for a group of 6 people traveling to Vancouver (YVR) and returning. Search real airline databases for the dates provided.
+
+The Parameters:
+- Origin 1 (5 passengers): Idaho Falls (IDA)
+- Origin 2 (1 passenger): Eugene (EUG)
+- Destination: Vancouver (YVR)
+
+Dates and Timing constraints:
+- Departure Date: Saturday, August 15, 2026.
+  The EUG passenger and the IDA group must land at YVR within 2 hours of each other in the afternoon/evening.
+- Return Date: Saturday, August 22, 2026.
+  ALL passengers must depart YVR in the morning (between 6:00 AM and 10:00 AM) to connect through SEA, SLC, or DEN.
+
+Strict Rules:
+1. Minimum layover time for ANY connection is 1 hour and 15 minutes. Exclude any flights with shorter layovers.
+2. Stick to major alliance carriers (Delta, United, Alaska).
+
+Output: Generate the 3 best synchronized itinerary options. For each option, list the trade-offs (e.g., "Option 1 is cheapest but has the longest travel time"). Format clearly with Flight Numbers, Layover Airports, and arrival times.</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FLIGHTS ==================== -->
+    <section id="flights">
+      <div class="container--wide">
+        <p class="section-eyebrow reveal">Flight Logistics</p>
+        <h2 class="section-title reveal">Getting There</h2>
+        <p class="section-sub reveal">From your home airport to the remote waters of Hakai Pass in three flights and a water taxi.</p>
+
+        <div class="journey reveal">
+          <div class="journey__step">
+            <div class="journey__icon">&#9992;&#65039;</div>
+            <div class="journey__label">Home Airport</div>
+            <div class="journey__detail">IDA or EUG</div>
+          </div>
+          <div class="journey__arrow">&#8594;</div>
+          <div class="journey__step">
+            <div class="journey__icon">&#127961;&#65039;</div>
+            <div class="journey__label">Vancouver (YVR)</div>
+            <div class="journey__detail">Overnight hotel</div>
+          </div>
+          <div class="journey__arrow">&#8594;</div>
+          <div class="journey__step">
+            <div class="journey__icon">&#127748;</div>
+            <div class="journey__label">Bella Bella (ZEL)</div>
+            <div class="journey__detail">Pacific Coastal Airlines</div>
+          </div>
+          <div class="journey__arrow">&#8594;</div>
+          <div class="journey__step journey__step--final">
+            <div class="journey__icon">&#127907;</div>
+            <div class="journey__label">Joe's Salmon Lodge</div>
+            <div class="journey__detail">Water taxi ~60 min</div>
+          </div>
+        </div>
+
+        <div class="card-grid reveal" style="margin-top: 40px;">
+          <div class="card">
+            <span class="card__icon">&#127748;</span>
+            <h3>Pacific Coastal Airlines</h3>
+            <p>Departs from YVR South Terminal (separate from the main terminal). Flight time to Bella Bella is approximately 1.5 hours. Check-in required 2 hours prior. Checked bags: 23kg (50 lbs) max per piece.</p>
+          </div>
+          <div class="card">
+            <span class="card__icon">&#9200;</span>
+            <h3>Build in Buffer Time</h3>
+            <p>On the return, allow a 4-5 hour cushion for potential weather delays. Fog at Bella Bella can push flights late. This is why you book a Vancouver hotel night on Aug 21 rather than trying to connect same-day.</p>
+          </div>
+          <div class="card">
+            <span class="card__icon">&#129483;</span>
+            <h3>Fish Box Logistics</h3>
+            <p>The lodge fillets, vacuum seals, flash freezes, and boxes all your fish. Boxes fly with you on the charter back to YVR. For the final leg home, each box counts as a checked bag (expect ~50 lbs each).</p>
+          </div>
+        </div>
+
+        <div class="planner-note reveal" style="margin-top: 32px;">
+          <div class="planner-note__label">Planner Note</div>
+          <strong>Pacific Coastal baggage fees:</strong> 1st bag $36.75 (prepaid) or $47.25 (at counter). 2nd bag $57.75/$68.25. Fishing rods in hard cases ship as part of your checked bag allowance with oversize fees waived. Contact Pacific Coastal at 1-800-663-2872 for current fish box policies.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== INSURANCE ==================== -->
+    <section id="insurance" class="section--alt">
+      <div class="container--wide">
+        <p class="section-eyebrow reveal">Travel Insurance</p>
+        <h2 class="section-title reveal">Protecting Your Investment</h2>
+        <p class="section-sub reveal">Hakai Pass is completely remote. US health insurance does not cover a $30,000+ Canadian helicopter medevac.</p>
+
+        <div class="callout callout--danger reveal" style="margin-top: 24px;">
+          <div class="callout__title">The $123 BC private insurance only covers Pacific Coastal regional flights</div>
+          It does not cover your $5,870/person lodge investment, your major airline flights, or remote medical evacuation. The group needs comprehensive third-party coverage.
+        </div>
+
+        <div class="insurance-grid reveal" style="margin-top: 32px;">
+          <div class="insurance-card">
+            <div class="insurance-card__tier">Comprehensive</div>
+            <div class="insurance-card__price">$280 - $700 <span>/ person</span></div>
+            <ul>
+              <li>Trip cancellation (100% of trip cost)</li>
+              <li>Trip interruption coverage</li>
+              <li>Emergency medical and evacuation</li>
+              <li>Baggage loss and delay</li>
+              <li>Travel delay reimbursement</li>
+            </ul>
+          </div>
+          <div class="insurance-card insurance-card--featured">
+            <div class="card__badge">Most Flexible</div>
+            <div class="insurance-card__tier">CFAR Upgrade</div>
+            <div class="insurance-card__price">$450 - $800+ <span>/ person</span></div>
+            <ul>
+              <li>Everything in Comprehensive</li>
+              <li>Cancel For Any Reason (50-75% refund)</li>
+              <li>Must purchase within 14-21 days of first deposit</li>
+              <li>Highest cost but maximum flexibility</li>
+            </ul>
+          </div>
+          <div class="insurance-card">
+            <div class="insurance-card__tier">Medical Only</div>
+            <div class="insurance-card__price">~$139 <span>/ person</span></div>
+            <ul>
+              <li>Emergency medical coverage</li>
+              <li>Helicopter medevac from remote area</li>
+              <li>Global Rescue short-term membership</li>
+              <li>No trip cancellation coverage</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="planner-note reveal" style="margin-top: 32px;">
+          <div class="planner-note__label">Planner Note: Pre-existing Conditions</div>
+          <p>If anyone in the group has a pre-existing medical condition (heart medication, recent surgery, etc.), the policy must include a Pre-Existing Medical Condition Waiver. Most insurers (Allianz, Travel Guard) require purchase within <strong>14-21 days of making the very first trip deposit</strong>. If the $16,000 lodge deposit was paid months ago, many standard providers will deny claims. Use aggregators like InsureMyTrip.com or Squaremouth.com to compare quotes from multiple providers.</p>
+        </div>
+
+        <div class="planner-note reveal">
+          <div class="planner-note__label">Planner Note: What Influences Price</div>
+          <p><strong>Age is the biggest variable.</strong> A 40-year-old traveler will pay closer to 4-5% of trip cost (~$300). A 65-year-old traveler will pay 8-10% (~$600+). Estimated total trip cost per person: ~$7,000 minimum (Lodge $5,870 + Flights ~$600 + Hotels ~$300 + Incidentals).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== LODGE EXPERIENCE ==================== -->
+    <section id="lodge">
+      <div class="container--wide">
+        <p class="section-eyebrow reveal">The Lodge</p>
+        <h2 class="section-title reveal">Life at Joe's Salmon Lodge</h2>
+        <p class="section-sub reveal">A floating, self-contained resort anchored at the head of a protected inlet on Nalau Island. Self-guided fishing in the heart of Hakai Pass.</p>
+
+        <h3 class="inter reveal" style="margin-top: 40px; margin-bottom: 8px;">A Typical Day</h3>
+        <div class="schedule reveal">
+          <div class="schedule__item">
+            <div class="schedule__time">5:00 AM</div>
+            <div class="schedule__event">
+              <h4>Wake Up</h4>
+              <p>Early morning coffee available in the common area.</p>
+            </div>
+          </div>
+          <div class="schedule__item">
+            <div class="schedule__time">5:30 AM</div>
+            <div class="schedule__event">
+              <h4>Breakfast Buffet</h4>
+              <p>Full hot breakfast. Fill out your packed lunch sandwich form the night before and it is waiting at your door.</p>
+            </div>
+          </div>
+          <div class="schedule__item">
+            <div class="schedule__time">6:00 AM</div>
+            <div class="schedule__event">
+              <h4>Head Out to Fish</h4>
+              <p>Your boat is fueled, cleaned, and stocked with bait, rods, tackle, GPS, radio, and cooler. Grab your lunch box and go.</p>
+            </div>
+          </div>
+          <div class="schedule__item">
+            <div class="schedule__time">All Day</div>
+            <div class="schedule__event">
+              <h4>Fish at Your Own Pace</h4>
+              <p>Unlimited fishing time. Self-guided with GPS waypoints. Return to the lodge anytime for a break, snack, or bait refill.</p>
+            </div>
+          </div>
+          <div class="schedule__item">
+            <div class="schedule__time">5:00 PM</div>
+            <div class="schedule__event">
+              <h4>Return and Unwind</h4>
+              <p>Staff cleans and fuels your boat. Your catch goes to the fish house for processing. Shower and relax before dinner.</p>
+            </div>
+          </div>
+          <div class="schedule__item">
+            <div class="schedule__time">6:30 PM</div>
+            <div class="schedule__event">
+              <h4>Dinner and Evening</h4>
+              <p>Full dinner buffet. Then drinks at the bar, stories on the sun deck, and prep for tomorrow. Fill out your lunch form.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="inter reveal" style="margin-top: 48px; margin-bottom: 8px;">Self-Guided Fishing</h3>
+        <div class="callout callout--info reveal">
+          <div class="callout__title">This is not a guided charter</div>
+          Joe's Salmon Lodge is a self-guided operation. Each pair of fishermen shares a 17-foot Boston Whaler with 60hp outboard and explores independently. The boat comes with a pre-programmed GPS, fish finder, VHF radio, and all safety equipment. You receive an orientation on arrival covering fishing areas, safety procedures, and equipment. A dinner placemat serves as your primary fishing area map. Staff provide tips and advice, but you run your own day on the water.
+        </div>
+
+        <h3 class="inter reveal" style="margin-top: 40px; margin-bottom: 8px;">Target Species</h3>
+        <div class="species-grid reveal">
+          <div class="species-card">
+            <div class="species-card__icon">&#128031;</div>
+            <h4>Chinook (King)</h4>
+            <p>Peak: 3rd week of August. Tyee-class runs through Hakai Pass.</p>
+          </div>
+          <div class="species-card">
+            <div class="species-card__icon">&#128031;</div>
+            <h4>Coho (Silver)</h4>
+            <p>Size increases through August. Some reach 15-25 lbs.</p>
+          </div>
+          <div class="species-card">
+            <div class="species-card__icon">&#128031;</div>
+            <h4>Sockeye</h4>
+            <p>Migrate through Hakai Pass in large runs during summer.</p>
+          </div>
+          <div class="species-card">
+            <div class="species-card__icon">&#128031;</div>
+            <h4>Pink Salmon</h4>
+            <p>Abundant in odd years; present in even years too.</p>
+          </div>
+          <div class="species-card">
+            <div class="species-card__icon">&#128031;</div>
+            <h4>Halibut</h4>
+            <p>Deep water. Check DFO regulations; season may be restricted.</p>
+          </div>
+          <div class="species-card">
+            <div class="species-card__icon">&#128031;</div>
+            <h4>Lingcod</h4>
+            <p>Aggressive strikes. Found near rocky structure.</p>
+          </div>
+        </div>
+
+        <h3 class="inter reveal" style="margin-top: 40px; margin-bottom: 8px;">Lodge Rules to Know</h3>
+        <div class="card-grid reveal">
+          <div class="card">
+            <span class="card__icon">&#127866;</span>
+            <h3>No Outside Liquor</h3>
+            <p>BC Liquor License requirement. Beer ~$6 CAD/can, cocktails ~$10 CAD. Bar tab is settled on checkout day.</p>
+          </div>
+          <div class="card">
+            <span class="card__icon">&#128221;</span>
+            <h3>Lunch Form</h3>
+            <p>Fill out the sandwich order form each evening. Your packed lunch is delivered to your door before breakfast.</p>
+          </div>
+          <div class="card">
+            <span class="card__icon">&#128290;</span>
+            <h3>Your Number</h3>
+            <p>You are assigned a number at the start. That number is your room AND your boat for the trip.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== RETURN LOGISTICS ==================== -->
+    <section id="return" class="section--alt">
+      <div class="container--wide">
+        <p class="section-eyebrow reveal">Return Logistics</p>
+        <h2 class="section-title reveal">Getting Your Fish Home</h2>
+        <p class="section-sub reveal">Your catch is professionally processed at the lodge. Here is how it gets from Hakai Pass to your home freezer.</p>
+
+        <div class="card-grid reveal" style="margin-top: 32px;">
+          <div class="card">
+            <span class="card__icon">&#129483;</span>
+            <h3>Lodge Fish Processing</h3>
+            <p>Joe's staff fillets, vacuum seals, flash freezes, and boxes all your fish. The boxes fly with you on the charter flight back to YVR. Your fish arrives in perfect condition.</p>
+          </div>
+          <div class="card">
+            <span class="card__icon">&#10052;&#65039;</span>
+            <h3>Hotel Fish Storage</h3>
+            <p>River Rock Casino Resort offers complimentary fish freezer storage for guests. Book with promo code "Fishing" or call 604-247-8900. Fresh ice available for repackaging.</p>
+          </div>
+          <div class="card">
+            <span class="card__icon">&#128706;</span>
+            <h3>Crossing the Border</h3>
+            <p>Declare all fish at US Customs. Keep fish in original vacuum-sealed packaging. Retain your BC fishing license as proof of legal catch. Know your DFO possession limits.</p>
+          </div>
+        </div>
+
+        <div class="planner-note reveal" style="margin-top: 24px;">
+          <div class="planner-note__label">Planner Note: Fish Box Airline Fees</div>
+          Each fish box counts as a checked bag on your flight home. Expect 50 lbs per box. If you used the airline loyalty card strategy, checked bag fees may be waived. Otherwise, budget $40-$80 per person each way for baggage fees. This is where the loyalty card strategy pays for itself.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== DOCUMENTS ==================== -->
+    <section id="documents">
+      <div class="container--wide">
+        <p class="section-eyebrow reveal">Documents &amp; Regulations</p>
+        <h2 class="section-title reveal">What You Need</h2>
+        <p class="section-sub reveal">Required documents and fishing regulations for US citizens traveling to BC.</p>
+
+        <div class="reveal" style="overflow-x: auto;">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Document</th>
+                <th>Details</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Passport</td>
+                <td>Must be valid for at least 6 months beyond your return date (after Feb 2027). Required for entry into Canada.</td>
+                <td>Verify expiration date now</td>
+              </tr>
+              <tr>
+                <td>BC Fishing License</td>
+                <td>Non-resident tidal waters license required. Basic license + salmon stamp. Available for 1-day, 3-day, 5-day, or annual terms.</td>
+                <td>Purchase online before the trip</td>
+              </tr>
+              <tr>
+                <td>Travel Insurance</td>
+                <td>Comprehensive policy recommended. Print your policy card and carry a copy. Include emergency hotline number.</td>
+                <td>Purchase ASAP for pre-existing condition coverage</td>
+              </tr>
+              <tr>
+                <td>Flight Confirmations</td>
+                <td>Print copies of all flight itineraries: home to YVR, Pacific Coastal to Bella Bella, and return flights.</td>
+                <td>Print before departure</td>
+              </tr>
+              <tr>
+                <td>Customs Declaration</td>
+                <td>Declare all fish when re-entering the US. Personal consumption amounts are generally allowed. Keep your fishing license as proof.</td>
+                <td>Be prepared at the border</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout--warn reveal" style="margin-top: 32px;">
+          <div class="callout__title">DFO Area 7/107 Regulations</div>
+          Hakai Pass falls under DFO Fisheries Area 7 (subareas 7 and 107). Catch limits are subject to in-season changes via DFO Fishery Notices. As of the last check, halibut retention was closed in these areas. Monitor the DFO website closer to your travel date for current regulations. The lodge staff will also brief you on arrival.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== EMERGENCY CONTACTS ==================== -->
+    <section id="emergency" class="section--alt">
+      <div class="container--wide">
+        <p class="section-eyebrow reveal">Emergency Contacts</p>
+        <h2 class="section-title reveal">Important Numbers</h2>
+        <p class="section-sub reveal">Save these before you leave. Cell service at Hakai Pass is limited to nonexistent.</p>
+
+        <div class="contact-grid reveal">
+          <div class="contact-card">
+            <div class="contact-card__name">Joe's Salmon Lodge</div>
+            <p>Phone: 1-888-452-8822</p>
+            <p>Email: doug@joessalmonlodge.com</p>
+            <p>VHF Radio: Contact lodge directly</p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card__name">VHF Weather</div>
+            <p>Channel 21B</p>
+            <p>Monitor before heading out each morning for sea conditions and fog forecasts.</p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card__name">Canadian Coast Guard</div>
+            <p>VHF Channel 16 (emergency)</p>
+            <p>Phone: 1-800-267-6687</p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card__name">River Rock Casino Resort</div>
+            <p>Phone: 604-247-8900</p>
+            <p>Toll-free: 1-866-748-3718</p>
+            <p>Promo code: "Fishing"</p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card__name">Pacific Coastal Airlines</div>
+            <p>Phone: 1-800-663-2872</p>
+            <p>YVR South Terminal departures</p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card__name">US Embassy Vancouver</div>
+            <p>Phone: 604-685-4311</p>
+            <p>For US citizen emergencies abroad</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Hakai 2026 Travel Dossier. Joe's Salmon Lodge, Hakai Pass, British Columbia.</p>
+      <p style="margin-top: 4px;"><a href="../">promptaisolutions.com</a></p>
+    </div>
+  </footer>
+
+  <script>
+    /* ===== DARK MODE ===== */
+    function toggleTheme() {
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      document.querySelector('.theme-toggle__icon').textContent = next === 'dark' ? '\u2600' : '\u263E';
+    }
+    (function() {
+      var saved = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', saved);
+      if (saved === 'dark') document.querySelector('.theme-toggle__icon').textContent = '\u2600';
+    })();
+
+    /* ===== SCROLL REVEAL ===== */
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+
+    /* ===== NAV SCROLL ===== */
+    var siteNav = document.querySelector('.site-nav');
+    window.addEventListener('scroll', function() {
+      siteNav.classList.toggle('nav-scrolled', window.scrollY > 10);
+    });
+
+    /* ===== ACTIVE NAV LINK ===== */
+    var sections = document.querySelectorAll('section[id]');
+    var navLinks = document.querySelectorAll('.site-nav__links a');
+    var activeObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.getAttribute('id');
+          navLinks.forEach(function(link) {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { threshold: 0, rootMargin: '-30% 0px -60% 0px' });
+    sections.forEach(function(s) { activeObserver.observe(s); });
+
+    /* ===== MOBILE NAV ===== */
+    var hamburger = document.querySelector('.hamburger');
+    var mobileNav = document.querySelector('.mobile-nav');
+    var mobileOverlay = document.querySelector('.mobile-overlay');
+
+    function openMobileNav() {
+      mobileNav.classList.add('open');
+      mobileOverlay.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileNav() {
+      mobileNav.classList.remove('open');
+      mobileOverlay.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    hamburger.addEventListener('click', function() {
+      if (mobileNav.classList.contains('open')) closeMobileNav();
+      else openMobileNav();
+    });
+    mobileOverlay.addEventListener('click', closeMobileNav);
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', closeMobileNav);
+    });
+
+    /* ===== VIEW TOGGLE ===== */
+    var viewBtns = document.querySelectorAll('.view-toggle__btn');
+    function setView(view) {
+      document.body.classList.toggle('view-traveler', view === 'traveler');
+      viewBtns.forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-view') === view);
+      });
+      localStorage.setItem('hakai2026_view', view);
+    }
+    viewBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        setView(this.getAttribute('data-view'));
+      });
+    });
+    (function() {
+      var savedView = localStorage.getItem('hakai2026_view') || 'all';
+      setView(savedView);
+    })();
+
+    /* ===== PACKING CHECKLIST ===== */
+    var PACK_KEY = 'hakai2026_packing';
+    function loadPacking() {
+      try { return JSON.parse(localStorage.getItem(PACK_KEY)) || {}; }
+      catch(e) { return {}; }
+    }
+    function savePacking(state) {
+      localStorage.setItem(PACK_KEY, JSON.stringify(state));
+    }
+
+    var packingState = loadPacking();
+    var allCheckboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
+
+    // Restore state
+    allCheckboxes.forEach(function(cb) {
+      var key = cb.getAttribute('data-item');
+      if (packingState[key]) cb.checked = true;
+    });
+
+    // Update progress
+    function updateProgress() {
+      var total = allCheckboxes.length;
+      var checked = 0;
+      allCheckboxes.forEach(function(cb) { if (cb.checked) checked++; });
+      var pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressText').textContent = checked + ' of ' + total + ' items packed (' + pct + '%)';
+
+      // Update category counts
+      document.querySelectorAll('.checklist__category').forEach(function(cat) {
+        var items = cat.querySelectorAll('input[type="checkbox"]');
+        var catChecked = 0;
+        items.forEach(function(i) { if (i.checked) catChecked++; });
+        var countEl = cat.querySelector('.checklist__count');
+        if (countEl) countEl.textContent = catChecked + '/' + items.length;
+      });
+    }
+    updateProgress();
+
+    // Listen for changes
+    allCheckboxes.forEach(function(cb) {
+      cb.addEventListener('change', function() {
+        packingState[this.getAttribute('data-item')] = this.checked;
+        savePacking(packingState);
+        updateProgress();
+      });
+    });
+
+    // Category accordion
+    document.querySelectorAll('.checklist__heading').forEach(function(heading) {
+      heading.addEventListener('click', function() {
+        this.parentElement.classList.toggle('open');
+      });
+    });
+
+    /* ===== COPY PROMPT ===== */
+    var copyBtn = document.getElementById('copyPromptBtn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function() {
+        var code = document.getElementById('promptCode').textContent;
+        navigator.clipboard.writeText(code).then(function() {
+          copyBtn.textContent = 'Copied!';
+          setTimeout(function() { copyBtn.textContent = 'Copy'; }, 2000);
+        }).catch(function() {
+          copyBtn.textContent = 'Failed';
+          setTimeout(function() { copyBtn.textContent = 'Copy'; }, 2000);
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>

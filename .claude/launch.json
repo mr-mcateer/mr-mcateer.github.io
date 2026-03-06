@@ -12,6 +12,18 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8081"],
       "port": 8081
+    },
+    {
+      "name": "education-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8082", "--directory", "/Users/andrewmcateer/prompt-ai-education"],
+      "port": 8082
+    },
+    {
+      "name": "fishing-trip",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8083", "--directory", "fishing-trip"],
+      "port": 8083
     }
   ]
 }
