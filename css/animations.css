@@ -316,17 +316,20 @@
 /* TYPEWRITER CURSOR */
 .typewriter-cursor {
   display: inline-block;
-  width: 1.5px;
-  height: 1.1em;
-  background-color: var(--black);
-  margin-left: 2px;
-  vertical-align: middle;
-  animation: blink 0.8s step-end infinite;
-  opacity: 0;
+  width: 0px;
+  position: relative;
+  vertical-align: baseline;
 }
 
-.typewriter-cursor.active {
-  opacity: 1;
+.typewriter-cursor.active::after {
+  content: '';
+  position: absolute;
+  left: 1px;
+  bottom: 0.1em;
+  height: 1.1em;
+  width: 2.5px;
+  background-color: var(--black);
+  animation: blink 0.8s step-end infinite;
 }
 
 @keyframes blink {
@@ -341,7 +344,7 @@
   }
 }
 
-[data-theme="dark"] .typewriter-cursor {
+[data-theme="dark"] .typewriter-cursor.active::after {
   background-color: var(--white);
 }
 
