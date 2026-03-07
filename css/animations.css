@@ -1,0 +1,262 @@
+/* css/animations.css */
+
+/* SCENE 1: Hero Section Load */
+.hero__eyebrow {
+  opacity: 0;
+  animation: hero-fade-in 0.3s ease-out forwards;
+}
+.hero h1 {
+  /* text hidden by default; revealed via logic in JS */
+}
+.hero__sub {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: hero-fade-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) 1.8s forwards;
+}
+.hero__cta-group {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: hero-scale-in 0.3s ease-out 2.2s forwards;
+}
+
+@keyframes hero-fade-in {
+  to { opacity: 1; }
+}
+@keyframes hero-fade-up {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-scale-in {
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* SCENE 2: Services Grid */
+.service-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --card-index: 0;
+}
+.service-card:nth-child(1) { --card-index: 0; }
+.service-card:nth-child(2) { --card-index: 1; }
+.service-card:nth-child(3) { --card-index: 2; }
+.service-card:nth-child(4) { --card-index: 3; }
+
+.service-card__icon {
+  display: inline-block;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.service-card.animate-in {
+  /* Using important because the base transition handles hover as well */
+  transition-delay: calc(var(--card-index) * 150ms);
+}
+.service-card.animate-in .service-card__icon {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: calc((var(--card-index) * 150ms) + 100ms);
+}
+
+/* Services card hover interaction over-ride */
+.service-card.animate-in:hover {
+  transform: translateY(-4px);
+  transition-delay: 0s;
+}
+
+/* SCENE 3: How It Works */
+.approach-steps {
+  position: relative;
+  list-style: none;
+  counter-reset: none !important;
+}
+.approach-steps li::before {
+  display: none !important;
+}
+.approach-steps li {
+  border-bottom: none !important;
+  padding: 0 !important;
+}
+.step-item {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 0 0 40px 0 !important;
+}
+.step-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 36px;
+}
+.step-circle {
+  width: 36px;
+  height: 36px;
+}
+.step-circle-path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-dasharray: 113.097; /* 2 * pi * 18 */
+  stroke-dashoffset: 113.097;
+  transition: stroke-dashoffset 0.5s ease-in-out;
+}
+.step-number-text {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  fill: var(--accent);
+  text-anchor: middle;
+  dominant-baseline: central;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.3s;
+}
+.step-content {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.step-connector {
+  width: 2px;
+  height: calc(100% - 36px);
+  background: var(--gray-200);
+  position: absolute;
+  top: 36px;
+  left: 17px;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-item.animate-in .step-circle-path { stroke-dashoffset: 0; }
+.step-item.animate-in .step-number-text { opacity: 1; }
+.step-item.animate-in .step-content { opacity: 1; transform: translateX(0); }
+.step-item.animate-in .step-connector { transform: scaleY(1); }
+
+/* SCENE 4: Flow Diagram Cascade */
+.flow-anim {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+.flow-arrow-anim {
+  opacity: 0;
+  transform: scaleY(0);
+  display: inline-block;
+  transform-origin: top;
+  transition: opacity 0.2s linear, transform 0.2s linear;
+}
+.flow-final {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+@keyframes flow-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.flow-anim.animate-in { opacity: 1; transform: translateY(0); }
+.flow-arrow-anim.animate-in { opacity: 1; transform: scaleY(1); }
+.flow-final.animate-in { opacity: 1; transform: scale(1); animation: flow-pulse 0.6s ease-out 0.4s 1 forwards; }
+
+.flow-anim:nth-child(1) { transition-delay: 0ms; }
+.flow-arrow-anim:nth-child(2) { transition-delay: 300ms; }
+.flow-anim:nth-child(3) { transition-delay: 500ms; }
+.flow-arrow-anim:nth-child(4) { transition-delay: 800ms; }
+.flow-anim:nth-child(5) { transition-delay: 1000ms; }
+.flow-arrow-anim:nth-child(6) { transition-delay: 1300ms; }
+.flow-final:nth-child(7) { transition-delay: 1500ms; }
+
+/* SCENE 5: Project Cards Hover */
+.case-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease;
+  --card-index: 0;
+}
+.case-card:nth-child(1) { --card-index: 0; }
+.case-card:nth-child(2) { --card-index: 1; }
+.case-card:nth-child(3) { --card-index: 2; }
+.case-card.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--card-index) * 150ms), calc(var(--card-index) * 150ms), 0ms;
+}
+
+.case-card.animate-in:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.case-card__link {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.case-card.animate-in:hover .case-card__link {
+  transform: translateX(4px);
+}
+.case-card.animate-in:hover .case-card__tag {
+  filter: brightness(1.2);
+}
+
+/* TYPEWRITER CURSOR */
+.typewriter-cursor {
+  display: inline-block;
+  width: 1.5px;
+  height: 1.1em;
+  background-color: var(--black);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 0.8s step-end infinite;
+  opacity: 0;
+}
+.typewriter-cursor.active { opacity: 1; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+[data-theme="dark"] .typewriter-cursor {
+  background-color: var(--white);
+}
+
+/* Reduced Motion and Mobile Adjustments */
+@media (max-width: 768px) {
+  .service-card.animate-in {
+    transition-delay: calc(var(--card-index) * 75ms);
+  }
+  .service-card.animate-in .service-card__icon {
+    transition-delay: calc((var(--card-index) * 75ms) + 50ms);
+  }
+  .case-card.animate-in {
+    transition-delay: calc(var(--card-index) * 75ms), calc(var(--card-index) * 75ms), 0ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero__eyebrow, .hero h1, .hero__sub, .hero__cta-group,
+  .service-card, .service-card__icon,
+  .step-number-text, .step-content,
+  .flow-anim, .flow-arrow-anim, .flow-final,
+  .case-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .step-circle-path { stroke-dashoffset: 0 !important; }
+  .step-connector { transform: scaleY(1) !important; }
+}
