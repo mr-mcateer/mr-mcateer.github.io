@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pole Strike | Outlast the Night</title>
-<meta name="description" content="Premium LED-integrated yard game. Stay in the loop for product availability and crowdfunding.">
-<meta name="color-scheme" content="dark light">
+<meta name="description" content="Premium LED-integrated yard game. Sign up for product availability.">
+<meta name="color-scheme" content="dark">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,29 +41,6 @@
   --radius:16px;
   --radius-sm:12px;
   color-scheme:dark;
-}
-
-/* --- Light Theme --- */
-[data-theme="light"]{
-  --bg:#FFFFFF;
-  --bg-card:#F5F5F7;
-  --text:#1D1D1F;
-  --text-secondary:#86868B;
-  --accent:#0071E3;
-  --border:rgba(0,0,0,0.06);
-  --input-bg:rgba(0,0,0,0.03);
-  --input-placeholder:rgba(0,0,0,0.22);
-  --focus-ring:rgba(0,113,227,0.1);
-  --focus-border:rgba(0,113,227,0.5);
-  --card-glow:rgba(0,113,227,0.03);
-  --hero-gradient-mid:rgba(255,255,255,0.5);
-  --hero-gradient-light:rgba(255,255,255,0.1);
-  --hero-gradient-top:rgba(255,255,255,0.3);
-  --noise-opacity:0.015;
-  --footer-legal:rgba(0,0,0,0.3);
-  --toggle-bg:rgba(0,0,0,0.05);
-  --toggle-border:rgba(0,0,0,0.08);
-  color-scheme:light;
 }
 
 /* Theme transition */
@@ -146,39 +123,6 @@ a{color:inherit;text-decoration:none}
 /* --- Layout --- */
 .page{display:flex;flex-direction:column;min-height:100dvh}
 
-/* --- Theme Toggle --- */
-.theme-toggle{
-  position:fixed;
-  top:1.5rem;right:1.5rem;
-  z-index:10000;
-  width:40px;height:40px;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--toggle-bg);
-  border:1px solid var(--toggle-border);
-  border-radius:50%;
-  cursor:pointer;
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  transition:background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
-}
-.theme-toggle:hover{transform:scale(1.06)}
-.theme-toggle:active{transform:scale(0.94)}
-
-.theme-toggle svg{
-  width:18px;height:18px;
-  fill:none;
-  stroke:var(--text);
-  stroke-width:1.5;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  transition:stroke 0.3s ease;
-}
-
-.theme-toggle .icon-sun{display:none}
-.theme-toggle .icon-moon{display:block}
-[data-theme="light"] .theme-toggle .icon-sun{display:block}
-[data-theme="light"] .theme-toggle .icon-moon{display:none}
-
 /* --- Hero --- */
 .hero{
   position:relative;
@@ -227,10 +171,6 @@ a{color:inherit;text-decoration:none}
   filter:drop-shadow(0 0 30px rgba(41,151,255,0.08));
   transition:color 0.4s ease, filter 0.4s ease;
 }
-[data-theme="light"] .hero-logo-svg{
-  filter:drop-shadow(0 2px 8px rgba(0,0,0,0.06));
-}
-
 .hero-sub{
   font-size:clamp(1rem,2.2vw,1.25rem);
   font-weight:300;
@@ -278,7 +218,7 @@ a{color:inherit;text-decoration:none}
 
 /* --- Form Section --- */
 .form-section{
-  padding:5rem 1.5rem 8rem;
+  padding:5rem 1.5rem 4rem;
   display:flex;
   justify-content:center;
 }
@@ -294,10 +234,6 @@ a{color:inherit;text-decoration:none}
   overflow:hidden;
   opacity:0;
   transform:translateY(24px);
-}
-
-[data-theme="light"] .form-card{
-  box-shadow:0 2px 16px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.03);
 }
 
 .form-card::before{
@@ -460,34 +396,23 @@ a{color:inherit;text-decoration:none}
 
 /* --- Footer --- */
 footer{
-  padding:2rem 1.5rem;
+  padding:2.5rem 1.5rem;
   text-align:center;
   border-top:1px solid var(--border);
 }
 
-.footer-inner{
-  max-width:480px;
-  margin:0 auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.footer-brand{
-  font-size:0.75rem;
-  font-weight:600;
-  letter-spacing:2px;
+.footer-patent{
+  font-size:0.85rem;
+  font-weight:500;
+  letter-spacing:1px;
   text-transform:uppercase;
   color:var(--text-secondary);
+  margin-bottom:0.75rem;
 }
 
 .footer-legal{
-  margin-top:0.75rem;
   font-size:0.7rem;
   color:var(--footer-legal);
-  text-align:center;
-  max-width:480px;
-  margin-left:auto;margin-right:auto;
 }
 
 /* --- Responsive --- */
@@ -496,8 +421,6 @@ footer{
   .hero-logo-svg{width:min(220px,55vw)}
   .form-card{padding:2rem 1.5rem}
   .field-row{grid-template-columns:1fr}
-  .footer-inner{flex-direction:column;gap:0.5rem}
-  .theme-toggle{top:1rem;right:1rem}
 }
 </style>
 </head>
@@ -515,26 +438,6 @@ footer{
   <rect width="100%" height="100%" filter="url(#noise)"/>
 </svg>
 
-<!-- Theme toggle -->
-<button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode">
-  <!-- Moon (shown in dark mode) -->
-  <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-  </svg>
-  <!-- Sun (shown in light mode) -->
-  <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-    <circle cx="12" cy="12" r="5"/>
-    <line x1="12" y1="1" x2="12" y2="3"/>
-    <line x1="12" y1="21" x2="12" y2="23"/>
-    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-    <line x1="1" y1="12" x2="3" y2="12"/>
-    <line x1="21" y1="12" x2="23" y2="12"/>
-    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-  </svg>
-</button>
-
 <div class="page">
 
   <!-- ======= HERO ======= -->
@@ -548,7 +451,7 @@ footer{
         <svg class="hero-logo-svg" viewBox="0 0 1000000 783154" aria-label="Pole Strike" role="img" xmlns="http://www.w3.org/2000/svg"><defs><style>.L{stroke:currentColor;stroke-width:6332;fill:none;stroke-linecap:round;stroke-linejoin:round}</style></defs><g fill-rule="evenodd"><path d="M960253 711258l-51520 191-5055 18086 68548 298-20765 21696-84617-162 27335-98808 105531 68-31028 22750-50733-78-4570 16571 52498 185-5625 19203" class="L"/><path d="M834127 701295l26913 49791-35634 367-23149-42805-11567 42457-31366 64 27479-98343 30784-192-10145 39858 42585-39849 36455 288-52353 48364" class="L"/><path d="M743889 750956l-31332 149 27806-98388 30283-16-26757 98255" class="L"/><path d="M653658 713716c216-4032 2585-11470 3953-15550l23573-1155c3483-171 10666-19436 5758-21453l-33240-223-20575 75744-30611-158 27559-97990 78078 316c9003 36 14102 9007 12301 16484-6665 22176-4566 42207-32664 45431l17673 36022-33762-39-18041-37429" class="L"/><path d="M563238 750839l-30591 300 20742-75638-32344-426 14710-22154 89806-18-15277 22441-26522 61-20525 75433" class="L"/><path d="M384125 708133c-12866 2315-24867 656-38289 1058l-5043 17263 54341 344-20237 22635-69128-126 25179-96966 86882 40-16176 22697-47071-129-4048 14966 45300 306c-1394 5822-4218 16563-11709 17911" class="L"/><path d="M301299 726423l-6178 23062-62718-100 25057-96749 29534-227-18504 73528 32809 485" class="L"/><path d="M201238 749008c-18757 812-36860 633-55014 202-9064-215-15690-8234-13447-16886l15546-59991c2662-10274 11591-18353 22983-18899 18372-880 36749-739 55176-119 9173 308 15248 9116 13073 17569l-14805 57534c-2776 10787-10732 20037-23511 20590" class="L"/><path d="M189931 727551l-20794 277c-1883 25-5366-3586-4898-5449l10359-41263c2417-9627 23323-5515 33855-5078l-10852 44005c-663 2689-4503 7466-7670 7508" class="L"/><path d="M512300 725326c-3744 15179-15002 26462-31503 27378l-96165 5338 28404-30985 61786-2223c4319-4465 6574-12061 6332-18288l-50602-12150c-8001-1921-13621-8888-11539-17153 3102-12309 5639-24037 10406-35975 4135-10354 16922-18495 28615-18516l92711-168-31432 27731-51350 274c-9416 50-11151 11180-10876 18739l52501 14147c6961 1876 10940 8488 9205 15521l-6494 26328" class="L"/><path d="M53118 719072l-10320 42397-42507 21685 35084-136626 9268-1896-28785-23326 121080-197c2479-4 6298 2042 7550 3653 1253 1611 2109 6680 1558 8815l-16220 62782c-3378 13073-17814 21456-30858 22168-15265 833-28807 572-45848 545" class="L"/><path d="M500033 470500c-17422-494-33977-1430-50922-6621l-27754-8503c16293 13778 35252 21386 56342 24465-1050 3454-3666 7499-6577 9267-87132-12765-163829-65397-196503-147922-12789-32301-16633-64927-12144-99370 10418-79936 61849-148544 135396-181705 133315-60111 296435 10638 332139 154515 27821 112112-36655 212301-137276 258962-20437 9477-40674 16677-62076 23637-24110 7841-44751 18684-67418 32329l36794-59054" class="L"/><path d="M98844 682213c-1369 5190-5451 7334-10909 7283l-27952-261 9736-38331 37418-128-8292 31437" class="L"/><path d="M610785 448386c-28660 22410-62008 33349-98198 37311l27109-43267c-29141 9329-58069 15913-88516 9158-39347-8729-74261-29814-102679-58246-67186-67219-71457-170502-17024-245593 37521-51759 95609-81268 159527-82364 19613-336 37863 878 57085 4940 77857 16453 138916 76999 153753 155616 20065 106315-54005 200153-154255 225577l-9590 16373c25832-2291 48015-12275 72787-19505" class="L"/><path d="M566229 287999l-203-80329c-22660-3979-42823-4924-64629-5012-22814 135-45077 1150-67870 4752l-1168 80581c45187-1607 88616-1225 133870 8" class="L"/><path d="M565863 200357l14-55792c-359-10974-6232-19257-16479-23461-32674-11740-68203-11980-101114-618-8346 3758-14442 10654-14512 20131l-439 59539c44702-6255 88228-5974 132531 201" class="L"/><path d="M525027 388721c881-4891 1124-10878 3028-14111 7308-12408 15390-22847 24282-33931 14199-17698 15001-19124 13577-45901l-132869 51 3 18407c1 5561 2878 12371 6328 16762l26177 33324c5788 7369 7988 16081 9331 25166 16912 2804 33408 2938 50143 233" class="L"/><path d="M524552 408404c-18883 2929-31602 2490-49225-339-2171-169-4648 4980-4158 7023 3412 14226 53180 13973 56634 1480 701-2534-948-8522-3251-8164" class="L"/><path d="M526757 402981c4006-2617 699-11742-3281-11120-14744 2303-28403 3156-43025 232-4641-928-8186-88-9155 4597-624 3020 1348 7041 5004 7897 12591 2950 39524 5537 50456-1606" class="L"/></g></svg>
       </div>
       <p class="hero-sub" id="heroSub">
-        Premium LED-integrated yard game. Sign up for availability and crowdfunding updates.
+        Premium LED-integrated yard game. Sign up for product availability updates.
       </p>
     </div>
 
@@ -571,11 +474,11 @@ footer{
         <div class="field-row">
           <div class="field">
             <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName" placeholder="Andrew" autocomplete="given-name" required aria-required="true">
+            <input type="text" id="firstName" name="firstName" placeholder="First" autocomplete="given-name" required aria-required="true">
           </div>
           <div class="field">
             <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" placeholder="McAteer" autocomplete="family-name">
+            <input type="text" id="lastName" name="lastName" placeholder="Last" autocomplete="family-name">
           </div>
         </div>
         <div class="field">
@@ -605,10 +508,8 @@ footer{
 
   <!-- ======= FOOTER ======= -->
   <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">Pole Strike</div>
-    </div>
-    <div class="footer-legal">&copy; 2026 Outdoor Apparatus Inc. Patent Pending.</div>
+    <div class="footer-patent">Patent Pending</div>
+    <div class="footer-legal">&copy; 2026 Pole Strike. All rights reserved.</div>
   </footer>
 
 </div>
@@ -618,41 +519,6 @@ footer{
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 (function(){
-  /* --- Theme toggle --- */
-  var html = document.documentElement;
-  var toggle = document.getElementById('themeToggle');
-  var stored = localStorage.getItem('ps-theme');
-
-  /* Respect system preference if no stored choice */
-  if(!stored){
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-  } else {
-    html.setAttribute('data-theme', stored);
-  }
-
-  function updateLabel(){
-    var isDark = html.getAttribute('data-theme') === 'dark';
-    toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-  }
-  updateLabel();
-
-  toggle.addEventListener('click', function(){
-    var current = html.getAttribute('data-theme');
-    var next = current === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('ps-theme', next);
-    updateLabel();
-  });
-
-  /* Listen for system preference changes */
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e){
-    if(!localStorage.getItem('ps-theme')){
-      html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-      updateLabel();
-    }
-  });
-
   /* --- Animations (skip if reduced motion) --- */
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
