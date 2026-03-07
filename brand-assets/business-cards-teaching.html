@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Teaching Business Cards</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap');
+
+        :root {
+            --white: #ffffff;
+            --gray-200: #d2d2d7;
+            --gray-400: #86868b;
+            --gray-600: #6e6e73;
+            --gray-800: #1d1d1f;
+            --accent: #0071e3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: 3.75in 2.25in;
+            margin: 0;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            width: 3.75in;
+            height: 2.25in;
+            page-break-after: always;
+            position: relative;
+            overflow: hidden;
+            background: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0.35in;
+        }
+
+        /* CARD BACK: DARK */
+        .card-back {
+            background-color: var(--gray-800);
+            color: var(--white);
+        }
+
+        .card-back-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 14pt;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            margin-bottom: 4pt;
+        }
+
+        .card-back-sub {
+            font-size: 8pt;
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-400);
+            letter-spacing: 0.05em;
+        }
+
+        /* CARD FRONT: LIGHT */
+        .card-front {
+            background-color: var(--white);
+            color: var(--gray-800);
+            align-items: stretch;
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .front-header {
+            margin-top: 0.05in;
+            margin-bottom: 0.25in;
+        }
+
+        .name-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 15pt;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--black);
+        }
+
+        .name-sub {
+            font-size: 7pt;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 2pt;
+        }
+
+        .line {
+            height: 1px;
+            background-color: var(--gray-200);
+            margin-bottom: 0.15in;
+            width: 100%;
+        }
+
+        .info-grid {
+            display: flex;
+            justify-content: space-between;
+            font-size: 7pt;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-600);
+        }
+
+        .col-left {
+            width: 50%;
+        }
+
+        .col-right {
+            width: 50%;
+            text-align: right;
+        }
+
+        .strong-text {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CARD 1 (BACK LOGO) -->
+    <div class="page card-back">
+        <div class="card-back-title">Crescent Valley High School</div>
+        <div class="card-back-sub">CTE METALS & FABRICATION PROGRAM</div>
+    </div>
+
+    <!-- CARD 2 (FRONT CONTACT) -->
+    <div class="page card-front">
+        <div class="front-header">
+            <div class="name-title">Andy McAteer</div>
+            <div class="name-sub">CTE Instructor &amp; Fabrication</div>
+        </div>
+        <div class="line"></div>
+        <div class="info-grid">
+            <div class="col-left">
+                <div>4444 NW Highland Dr</div>
+                <div>Corvallis, OR 97330</div>
+                <div>United States</div>
+            </div>
+            <div class="col-right">
+                <div><span class="strong-text">Corvallis School District 509J</span></div>
+                <div>andrew.mcateer@corvallis.k12.or.us</div>
+                <div><span class="strong-text">cvhs.csd509j.net</span></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
