@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pole Strike | Outlast the Night</title>
+<meta name="description" content="Premium LED-integrated yard game. Stay in the loop for product availability and crowdfunding.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;700&family=Instrument+Serif:ital@1&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* =============================================
+   POLESTRIKE - Premium Contact Page
+   Cinematic dark mode. One shot.
+   ============================================= */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#0A0A0F;
+  --bg-card:#12121A;
+  --text:#F2F0ED;
+  --text-dim:#6B6B78;
+  --accent:#00D4FF;
+  --accent-warm:#FF6B00;
+  --border:rgba(255,255,255,0.06);
+  --radius:2rem;
+  --radius-sm:1.25rem;
+}
+
+/* --- Noise Overlay --- */
+.noise{
+  position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0.035;
+}
+
+/* --- Base --- */
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  min-height:100dvh;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* --- Layout --- */
+.page{
+  display:flex;
+  flex-direction:column;
+  min-height:100dvh;
+}
+
+/* --- Hero --- */
+.hero{
+  position:relative;
+  height:100dvh;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.hero-img{
+  position:absolute;inset:0;
+  background:url('assets/hero.png') center/cover no-repeat;
+  transform:scale(1.08);
+  will-change:transform;
+}
+
+.hero-gradient{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to top, var(--bg) 0%, rgba(10,10,15,0.6) 40%, rgba(10,10,15,0.2) 70%, rgba(10,10,15,0.4) 100%);
+  z-index:1;
+}
+
+.hero-content{
+  position:relative;z-index:2;
+  width:100%;
+  max-width:720px;
+  padding:0 1.5rem 4rem;
+  text-align:center;
+}
+
+.hero-logo-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.75rem;
+  margin-bottom:2rem;
+  opacity:0;
+  transform:translateY(20px);
+}
+
+.hero-icon{
+  width:100px;height:100px;
+  mix-blend-mode:lighten;
+  filter:drop-shadow(0 0 30px rgba(0,212,255,0.2));
+}
+
+.hero-brand{
+  font-family:'Oswald',sans-serif;
+  font-weight:700;
+  font-size:clamp(1.8rem,5vw,2.5rem);
+  letter-spacing:8px;
+  text-transform:uppercase;
+  background:linear-gradient(135deg,#00D4FF,#FF6B00,#FF2A7F,#7B61FF,#00D4FF);
+  background-size:200% 200%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer 6s ease infinite;
+}
+
+@keyframes shimmer{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.hero-tagline{
+  font-family:'Oswald',sans-serif;
+  font-weight:700;
+  font-size:clamp(1rem,2.5vw,1.25rem);
+  letter-spacing:6px;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:1rem;
+  opacity:0;
+  transform:translateY(20px);
+}
+
+.hero-headline{
+  font-size:clamp(2.2rem,6vw,3.8rem);
+  line-height:1.1;
+  font-weight:400;
+  margin-bottom:0.75rem;
+  opacity:0;
+  transform:translateY(20px);
+}
+
+.hero-headline .sans{
+  font-family:'Oswald',sans-serif;
+  font-weight:700;
+  display:block;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.hero-headline .serif{
+  font-family:'Instrument Serif',serif;
+  font-style:italic;
+  display:block;
+  font-size:1.3em;
+  color:var(--accent);
+}
+
+.hero-sub{
+  font-size:1rem;
+  color:var(--text-dim);
+  line-height:1.6;
+  max-width:480px;
+  margin:0 auto;
+  opacity:0;
+  transform:translateY(20px);
+}
+
+/* Scroll indicator */
+.scroll-hint{
+  position:absolute;
+  bottom:1.25rem;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:3;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.5rem;
+  opacity:0;
+}
+
+.scroll-hint span{
+  font-family:'Fira Code',monospace;
+  font-size:0.65rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--text-dim);
+}
+
+.scroll-line{
+  width:1px;height:32px;
+  background:linear-gradient(to bottom,var(--accent),transparent);
+  animation:scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse{
+  0%,100%{opacity:0.3;transform:scaleY(0.6)}
+  50%{opacity:1;transform:scaleY(1)}
+}
+
+/* --- Form Section --- */
+.form-section{
+  padding:6rem 1.5rem 8rem;
+  display:flex;
+  justify-content:center;
+}
+
+.form-card{
+  width:100%;
+  max-width:520px;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:3rem 2.5rem;
+  position:relative;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(30px);
+}
+
+/* Subtle glow behind form */
+.form-card::before{
+  content:'';
+  position:absolute;
+  top:-80px;left:50%;
+  transform:translateX(-50%);
+  width:300px;height:300px;
+  background:radial-gradient(circle,rgba(0,212,255,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+.form-header{
+  text-align:center;
+  margin-bottom:2.5rem;
+  position:relative;
+}
+
+.form-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  font-family:'Fira Code',monospace;
+  font-size:0.7rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--accent);
+  background:rgba(0,212,255,0.08);
+  border:1px solid rgba(0,212,255,0.15);
+  padding:0.4rem 1rem;
+  border-radius:2rem;
+  margin-bottom:1.25rem;
+}
+
+.form-badge .dot{
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--accent);
+  animation:pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  0%,100%{opacity:0.4;transform:scale(0.8)}
+  50%{opacity:1;transform:scale(1.2)}
+}
+
+.form-title{
+  font-family:'Oswald',sans-serif;
+  font-weight:700;
+  font-size:1.5rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:0.5rem;
+}
+
+.form-desc{
+  font-size:0.9rem;
+  color:var(--text-dim);
+  line-height:1.5;
+}
+
+/* Input fields */
+.field{
+  margin-bottom:1.25rem;
+}
+
+.field label{
+  display:block;
+  font-family:'Fira Code',monospace;
+  font-size:0.7rem;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--text-dim);
+  margin-bottom:0.5rem;
+}
+
+.field input{
+  width:100%;
+  padding:0.9rem 1.25rem;
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-size:0.95rem;
+  outline:none;
+  transition:border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.field input::placeholder{
+  color:rgba(255,255,255,0.15);
+}
+
+.field input:focus{
+  border-color:rgba(0,212,255,0.4);
+  box-shadow:0 0 0 3px rgba(0,212,255,0.08);
+}
+
+.field-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+}
+
+/* Submit button */
+.btn-submit{
+  width:100%;
+  margin-top:0.5rem;
+  padding:1rem 2rem;
+  background:var(--accent);
+  color:var(--bg);
+  border:none;
+  border-radius:var(--radius-sm);
+  font-family:'Oswald',sans-serif;
+  font-size:1rem;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  transition:transform 0.25s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.25s ease;
+}
+
+.btn-submit:hover{
+  transform:scale(1.03);
+  box-shadow:0 8px 32px rgba(0,212,255,0.25);
+}
+
+.btn-submit:active{
+  transform:scale(0.98);
+}
+
+/* Sliding background layer */
+.btn-submit .btn-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--accent),#00F0FF);
+  transform:translateX(-101%);
+  transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+.btn-submit:hover .btn-bg{
+  transform:translateX(0);
+}
+
+.btn-submit span{
+  position:relative;z-index:1;
+}
+
+/* Success state */
+.form-success{
+  display:none;
+  text-align:center;
+  padding:2rem 0;
+}
+
+.form-success.active{
+  display:block;
+}
+
+.form-success h3{
+  font-family:'Oswald',sans-serif;
+  font-size:1.3rem;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:0.75rem;
+}
+
+.form-success p{
+  color:var(--text-dim);
+  font-size:0.9rem;
+}
+
+.form-success .check{
+  width:48px;height:48px;
+  margin:0 auto 1rem;
+  border-radius:50%;
+  background:rgba(0,212,255,0.1);
+  display:flex;align-items:center;justify-content:center;
+}
+
+.form-success .check svg{
+  width:24px;height:24px;
+  stroke:var(--accent);
+  fill:none;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+/* --- Footer --- */
+footer{
+  padding:2rem 1.5rem;
+  text-align:center;
+  border-top:1px solid var(--border);
+}
+
+.footer-inner{
+  max-width:520px;
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.footer-brand{
+  font-family:'Oswald',sans-serif;
+  font-weight:700;
+  font-size:0.85rem;
+  letter-spacing:3px;
+  color:var(--text-dim);
+}
+
+.footer-status{
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+  font-family:'Fira Code',monospace;
+  font-size:0.65rem;
+  letter-spacing:1px;
+  color:var(--text-dim);
+}
+
+.footer-status .status-dot{
+  width:6px;height:6px;
+  border-radius:50%;
+  background:#30D158;
+  animation:pulse 2s ease-in-out infinite;
+}
+
+.footer-legal{
+  margin-top:1rem;
+  font-size:0.7rem;
+  color:rgba(255,255,255,0.2);
+  text-align:center;
+  max-width:520px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* --- Responsive --- */
+@media(max-width:600px){
+  .hero-content{padding:0 1.25rem 3rem}
+  .hero-logo{width:160px}
+  .form-card{padding:2rem 1.5rem}
+  .field-row{grid-template-columns:1fr}
+  .footer-inner{flex-direction:column;gap:0.75rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Noise texture overlay -->
+<svg class="noise" width="100%" height="100%">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#noise)"/>
+</svg>
+
+<div class="page">
+
+  <!-- ======= HERO ======= -->
+  <section class="hero">
+    <div class="hero-img" id="heroImg"></div>
+    <div class="hero-gradient"></div>
+
+    <div class="hero-content">
+      <div class="hero-logo-wrap" id="heroLogo">
+        <img src="assets/icon.png" alt="Pole Strike" class="hero-icon">
+        <div class="hero-brand">Pole Strike</div>
+      </div>
+      <div class="hero-tagline" id="heroTag">Available Soon</div>
+      <h1 class="hero-headline" id="heroHead">
+        <span class="sans">Outlast the</span>
+        <span class="serif">Night.</span>
+      </h1>
+      <p class="hero-sub" id="heroSub">
+        Premium LED-integrated yard game engineered for the obsessed.
+        Sign up for product availability and crowdfunding updates.
+      </p>
+    </div>
+
+    <div class="scroll-hint" id="scrollHint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ======= FORM ======= -->
+  <section class="form-section" id="formSection">
+    <div class="form-card" id="formCard">
+      <div class="form-header">
+        <div class="form-badge"><span class="dot"></span> Pre-Launch</div>
+        <h2 class="form-title">Stay in the Loop</h2>
+        <p class="form-desc">Enter your info to get the latest on product availability and crowdfunding.</p>
+      </div>
+
+      <form id="contactForm" action="https://formspree.io/f/xpwzgvkl" method="POST">
+        <div class="field-row">
+          <div class="field">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Andrew" required>
+          </div>
+          <div class="field">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="McAteer">
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000">
+        </div>
+        <button type="submit" class="btn-submit">
+          <span class="btn-bg"></span>
+          <span>Join Waitlist</span>
+        </button>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <div class="check">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>You're on the List</h3>
+        <p>We'll notify you when Pole Strike launches.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= FOOTER ======= -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">POLESTRIKE</div>
+      <div class="footer-status">
+        <span class="status-dot"></span>
+        System Operational
+      </div>
+    </div>
+    <div class="footer-legal">&copy; 2026 Outdoor Apparatus Inc. All rights reserved.</div>
+  </footer>
+
+</div>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* --- Hero entrance --- */
+  const tl = gsap.timeline({defaults:{ease:'power3.out',duration:1}});
+
+  tl.to('#heroImg',{scale:1,duration:6,ease:'power2.out'},0)
+    .to('#heroLogo',{opacity:1,y:0,duration:1.2},0.3)
+    .to('#heroTag',{opacity:1,y:0},0.6)
+    .to('#heroHead',{opacity:1,y:0},0.8)
+    .to('#heroSub',{opacity:1,y:0},1.0)
+    .to('#scrollHint',{opacity:1},1.4);
+
+  /* --- Form card scroll reveal --- */
+  gsap.to('#formCard',{
+    opacity:1,
+    y:0,
+    duration:0.8,
+    ease:'power3.out',
+    scrollTrigger:{
+      trigger:'#formSection',
+      start:'top 80%',
+      once:true
+    }
+  });
+
+  /* --- Navbar scroll: hide scroll hint --- */
+  ScrollTrigger.create({
+    trigger:'#formSection',
+    start:'top 90%',
+    onEnter:function(){
+      gsap.to('#scrollHint',{opacity:0,duration:0.4});
+    }
+  });
+
+  /* --- Form submission --- */
+  var form = document.getElementById('contactForm');
+  var success = document.getElementById('formSuccess');
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var data = new FormData(form);
+
+    fetch(form.action,{
+      method:'POST',
+      body:data,
+      headers:{'Accept':'application/json'}
+    }).then(function(res){
+      if(res.ok){
+        form.style.display = 'none';
+        success.classList.add('active');
+      }
+    }).catch(function(){
+      form.style.display = 'none';
+      success.classList.add('active');
+    });
+  });
+})();
+</script>
+</body>
+</html>
