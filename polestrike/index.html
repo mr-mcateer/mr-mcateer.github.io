@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pole Strike | Outlast the Night</title>
 <meta name="description" content="Premium LED-integrated yard game. Stay in the loop for product availability and crowdfunding.">
+<meta name="color-scheme" content="dark light">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,12 +14,13 @@
 <style>
 /* =============================================
    POLESTRIKE - Premium Contact Page
-   Cinematic dark mode. One shot.
+   Dark + Light modes. Accessible. Cinematic.
    ============================================= */
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-:root{
+/* --- Dark Theme (default) --- */
+:root, [data-theme="dark"]{
   --bg:#0A0A0F;
   --bg-card:#12121A;
   --text:#F2F0ED;
@@ -26,13 +28,110 @@
   --accent:#00D4FF;
   --accent-warm:#FF6B00;
   --border:rgba(255,255,255,0.06);
+  --input-bg:rgba(255,255,255,0.04);
+  --input-placeholder:rgba(255,255,255,0.15);
+  --focus-ring:rgba(0,212,255,0.08);
+  --focus-border:rgba(0,212,255,0.4);
+  --card-glow:rgba(0,212,255,0.06);
+  --hero-gradient-mid:rgba(10,10,15,0.6);
+  --hero-gradient-light:rgba(10,10,15,0.2);
+  --hero-gradient-top:rgba(10,10,15,0.4);
+  --noise-opacity:0.035;
+  --footer-legal:rgba(255,255,255,0.2);
+  --toggle-bg:rgba(255,255,255,0.08);
+  --toggle-border:rgba(255,255,255,0.12);
   --radius:2rem;
   --radius-sm:1.25rem;
+  color-scheme:dark;
+}
+
+/* --- Light Theme --- */
+[data-theme="light"]{
+  --bg:#F5F3EE;
+  --bg-card:#FFFFFF;
+  --text:#1A1A1A;
+  --text-dim:#6B6B6B;
+  --accent:#0095B3;
+  --accent-warm:#D45A00;
+  --border:rgba(0,0,0,0.08);
+  --input-bg:rgba(0,0,0,0.03);
+  --input-placeholder:rgba(0,0,0,0.25);
+  --focus-ring:rgba(0,149,179,0.1);
+  --focus-border:rgba(0,149,179,0.5);
+  --card-glow:rgba(0,149,179,0.04);
+  --hero-gradient-mid:rgba(245,243,238,0.5);
+  --hero-gradient-light:rgba(245,243,238,0.15);
+  --hero-gradient-top:rgba(245,243,238,0.3);
+  --noise-opacity:0.02;
+  --footer-legal:rgba(0,0,0,0.3);
+  --toggle-bg:rgba(0,0,0,0.06);
+  --toggle-border:rgba(0,0,0,0.1);
+  color-scheme:light;
+}
+
+/* Theme transition */
+body,
+.form-card,
+.form-badge,
+.field input,
+.btn-submit,
+footer{
+  transition:background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
 /* --- Noise Overlay --- */
 .noise{
-  position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0.035;
+  position:fixed;inset:0;z-index:9999;pointer-events:none;
+  opacity:var(--noise-opacity);
+}
+
+/* --- Skip to content (a11y) --- */
+.skip-link{
+  position:absolute;
+  top:-100%;left:50%;
+  transform:translateX(-50%);
+  background:var(--accent);
+  color:var(--bg);
+  padding:0.75rem 1.5rem;
+  border-radius:0 0 var(--radius-sm) var(--radius-sm);
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  font-size:0.85rem;
+  z-index:10000;
+  text-decoration:none;
+}
+
+.skip-link:focus{
+  top:0;
+  outline:none;
+}
+
+/* --- Focus styles (a11y) --- */
+:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+input:focus-visible{
+  outline:none;
+  border-color:var(--focus-border);
+  box-shadow:0 0 0 3px var(--focus-ring);
+}
+
+/* --- Reduced motion (a11y) --- */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+    scroll-behavior:auto !important;
+  }
+  .hero-img{transform:scale(1) !important}
+  .hero-logo-wrap,.hero-tagline,.hero-headline,.hero-sub,.scroll-hint,.form-card{
+    opacity:1 !important;
+    transform:none !important;
+  }
 }
 
 /* --- Base --- */
@@ -48,11 +147,46 @@ img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 
 /* --- Layout --- */
-.page{
-  display:flex;
-  flex-direction:column;
-  min-height:100dvh;
+.page{display:flex;flex-direction:column;min-height:100dvh}
+
+/* --- Theme Toggle --- */
+.theme-toggle{
+  position:fixed;
+  top:1.25rem;right:1.25rem;
+  z-index:10000;
+  width:44px;height:44px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--toggle-bg);
+  border:1px solid var(--toggle-border);
+  border-radius:50%;
+  cursor:pointer;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  transition:background 0.3s ease, border-color 0.3s ease, transform 0.25s cubic-bezier(0.25,0.46,0.45,0.94);
 }
+
+.theme-toggle:hover{
+  transform:scale(1.08);
+}
+
+.theme-toggle:active{
+  transform:scale(0.95);
+}
+
+.theme-toggle svg{
+  width:20px;height:20px;
+  fill:none;
+  stroke:var(--text);
+  stroke-width:1.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  transition:stroke 0.3s ease;
+}
+
+.theme-toggle .icon-sun{display:none}
+.theme-toggle .icon-moon{display:block}
+[data-theme="light"] .theme-toggle .icon-sun{display:block}
+[data-theme="light"] .theme-toggle .icon-moon{display:none}
 
 /* --- Hero --- */
 .hero{
@@ -74,8 +208,9 @@ a{color:inherit;text-decoration:none}
 .hero-gradient{
   position:absolute;inset:0;
   background:
-    linear-gradient(to top, var(--bg) 0%, rgba(10,10,15,0.6) 40%, rgba(10,10,15,0.2) 70%, rgba(10,10,15,0.4) 100%);
+    linear-gradient(to top, var(--bg) 0%, var(--hero-gradient-mid) 40%, var(--hero-gradient-light) 70%, var(--hero-gradient-top) 100%);
   z-index:1;
+  transition:background 0.4s ease;
 }
 
 .hero-content{
@@ -96,10 +231,15 @@ a{color:inherit;text-decoration:none}
   transform:translateY(20px);
 }
 
-.hero-icon{
+.hero-icon-svg{
   width:100px;height:100px;
-  mix-blend-mode:lighten;
-  filter:drop-shadow(0 0 30px rgba(0,212,255,0.2));
+  color:var(--text);
+  filter:drop-shadow(0 0 24px rgba(0,212,255,0.2));
+  transition:color 0.4s ease, filter 0.4s ease;
+}
+
+[data-theme="light"] .hero-icon-svg{
+  filter:drop-shadow(0 2px 12px rgba(0,0,0,0.1));
 }
 
 .hero-brand{
@@ -222,14 +362,17 @@ a{color:inherit;text-decoration:none}
   transform:translateY(30px);
 }
 
-/* Subtle glow behind form */
+[data-theme="light"] .form-card{
+  box-shadow:0 4px 24px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+}
+
 .form-card::before{
   content:'';
   position:absolute;
   top:-80px;left:50%;
   transform:translateX(-50%);
   width:300px;height:300px;
-  background:radial-gradient(circle,rgba(0,212,255,0.06) 0%,transparent 70%);
+  background:radial-gradient(circle,var(--card-glow) 0%,transparent 70%);
   pointer-events:none;
 }
 
@@ -253,6 +396,11 @@ a{color:inherit;text-decoration:none}
   padding:0.4rem 1rem;
   border-radius:2rem;
   margin-bottom:1.25rem;
+}
+
+[data-theme="light"] .form-badge{
+  background:rgba(0,149,179,0.08);
+  border-color:rgba(0,149,179,0.2);
 }
 
 .form-badge .dot{
@@ -283,9 +431,7 @@ a{color:inherit;text-decoration:none}
 }
 
 /* Input fields */
-.field{
-  margin-bottom:1.25rem;
-}
+.field{margin-bottom:1.25rem}
 
 .field label{
   display:block;
@@ -300,23 +446,23 @@ a{color:inherit;text-decoration:none}
 .field input{
   width:100%;
   padding:0.9rem 1.25rem;
-  background:rgba(255,255,255,0.04);
+  background:var(--input-bg);
   border:1px solid var(--border);
   border-radius:var(--radius-sm);
   color:var(--text);
   font-family:'Inter',sans-serif;
   font-size:0.95rem;
   outline:none;
-  transition:border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .field input::placeholder{
-  color:rgba(255,255,255,0.15);
+  color:var(--input-placeholder);
 }
 
 .field input:focus{
-  border-color:rgba(0,212,255,0.4);
-  box-shadow:0 0 0 3px rgba(0,212,255,0.08);
+  border-color:var(--focus-border);
+  box-shadow:0 0 0 3px var(--focus-ring);
 }
 
 .field-row{
@@ -331,7 +477,7 @@ a{color:inherit;text-decoration:none}
   margin-top:0.5rem;
   padding:1rem 2rem;
   background:var(--accent);
-  color:var(--bg);
+  color:#FFFFFF;
   border:none;
   border-radius:var(--radius-sm);
   font-family:'Oswald',sans-serif;
@@ -345,16 +491,15 @@ a{color:inherit;text-decoration:none}
   transition:transform 0.25s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.25s ease;
 }
 
+[data-theme="dark"] .btn-submit{color:var(--bg)}
+
 .btn-submit:hover{
   transform:scale(1.03);
   box-shadow:0 8px 32px rgba(0,212,255,0.25);
 }
 
-.btn-submit:active{
-  transform:scale(0.98);
-}
+.btn-submit:active{transform:scale(0.98)}
 
-/* Sliding background layer */
 .btn-submit .btn-bg{
   position:absolute;inset:0;
   background:linear-gradient(135deg,var(--accent),#00F0FF);
@@ -362,24 +507,12 @@ a{color:inherit;text-decoration:none}
   transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
 }
 
-.btn-submit:hover .btn-bg{
-  transform:translateX(0);
-}
-
-.btn-submit span{
-  position:relative;z-index:1;
-}
+.btn-submit:hover .btn-bg{transform:translateX(0)}
+.btn-submit span{position:relative;z-index:1}
 
 /* Success state */
-.form-success{
-  display:none;
-  text-align:center;
-  padding:2rem 0;
-}
-
-.form-success.active{
-  display:block;
-}
+.form-success{display:none;text-align:center;padding:2rem 0}
+.form-success.active{display:block}
 
 .form-success h3{
   font-family:'Oswald',sans-serif;
@@ -390,10 +523,7 @@ a{color:inherit;text-decoration:none}
   margin-bottom:0.75rem;
 }
 
-.form-success p{
-  color:var(--text-dim);
-  font-size:0.9rem;
-}
+.form-success p{color:var(--text-dim);font-size:0.9rem}
 
 .form-success .check{
   width:48px;height:48px;
@@ -406,10 +536,8 @@ a{color:inherit;text-decoration:none}
 .form-success .check svg{
   width:24px;height:24px;
   stroke:var(--accent);
-  fill:none;
-  stroke-width:2;
-  stroke-linecap:round;
-  stroke-linejoin:round;
+  fill:none;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;
 }
 
 /* --- Footer --- */
@@ -436,12 +564,9 @@ footer{
 }
 
 .footer-status{
-  display:flex;
-  align-items:center;
-  gap:0.5rem;
+  display:flex;align-items:center;gap:0.5rem;
   font-family:'Fira Code',monospace;
-  font-size:0.65rem;
-  letter-spacing:1px;
+  font-size:0.65rem;letter-spacing:1px;
   color:var(--text-dim);
 }
 
@@ -455,27 +580,30 @@ footer{
 .footer-legal{
   margin-top:1rem;
   font-size:0.7rem;
-  color:rgba(255,255,255,0.2);
+  color:var(--footer-legal);
   text-align:center;
   max-width:520px;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left:auto;margin-right:auto;
 }
 
 /* --- Responsive --- */
 @media(max-width:600px){
   .hero-content{padding:0 1.25rem 3rem}
-  .hero-logo{width:160px}
+  .hero-icon-svg{width:80px;height:80px}
   .form-card{padding:2rem 1.5rem}
   .field-row{grid-template-columns:1fr}
   .footer-inner{flex-direction:column;gap:0.75rem}
+  .theme-toggle{top:0.75rem;right:0.75rem}
 }
 </style>
 </head>
 <body>
 
+<!-- Skip to content (a11y) -->
+<a href="#formSection" class="skip-link">Skip to signup form</a>
+
 <!-- Noise texture overlay -->
-<svg class="noise" width="100%" height="100%">
+<svg class="noise" aria-hidden="true" width="100%" height="100%">
   <filter id="noise">
     <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
     <feColorMatrix type="saturate" values="0"/>
@@ -483,19 +611,52 @@ footer{
   <rect width="100%" height="100%" filter="url(#noise)"/>
 </svg>
 
+<!-- Theme toggle -->
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode">
+  <!-- Moon (shown in dark mode) -->
+  <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+  <!-- Sun (shown in light mode) -->
+  <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+</button>
+
 <div class="page">
 
   <!-- ======= HERO ======= -->
-  <section class="hero">
-    <div class="hero-img" id="heroImg"></div>
-    <div class="hero-gradient"></div>
+  <main>
+  <section class="hero" aria-label="Pole Strike hero">
+    <div class="hero-img" id="heroImg" role="img" aria-label="Two LED-illuminated Pole Strike game poles glowing in a backyard at night"></div>
+    <div class="hero-gradient" aria-hidden="true"></div>
 
     <div class="hero-content">
       <div class="hero-logo-wrap" id="heroLogo">
-        <img src="assets/icon.png" alt="Pole Strike" class="hero-icon">
-        <div class="hero-brand">Pole Strike</div>
+        <!-- Vectorized logo mark -->
+        <svg class="hero-icon-svg" viewBox="0 0 100 105" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <!-- Circle ring (arc with gap at bottom-left for bolt) -->
+          <path d="M22,72 A38,38 0 1 1 38,80" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/>
+          <!-- Bottle cap -->
+          <rect x="41" y="16" width="18" height="7" rx="1.5"/>
+          <!-- Bottle body -->
+          <rect x="38" y="26" width="24" height="20" rx="2.5"/>
+          <!-- Bottle neck + rounded base -->
+          <path d="M42,46 L37,62 Q37,72 50,72 Q63,72 63,62 L58,46 Z"/>
+          <!-- Lightning bolt (extends through circle gap) -->
+          <path d="M42,58 L32,74 L38,72 L24,96 L34,80 L28,82 Z"/>
+        </svg>
+        <div class="hero-brand" aria-hidden="true">Pole Strike</div>
       </div>
-      <div class="hero-tagline" id="heroTag">Available Soon</div>
+      <p class="hero-tagline" id="heroTag">Available Soon</p>
       <h1 class="hero-headline" id="heroHead">
         <span class="sans">Outlast the</span>
         <span class="serif">Night.</span>
@@ -506,48 +667,48 @@ footer{
       </p>
     </div>
 
-    <div class="scroll-hint" id="scrollHint">
+    <div class="scroll-hint" id="scrollHint" aria-hidden="true">
       <span>Scroll</span>
       <div class="scroll-line"></div>
     </div>
   </section>
 
   <!-- ======= FORM ======= -->
-  <section class="form-section" id="formSection">
+  <section class="form-section" id="formSection" aria-label="Signup form">
     <div class="form-card" id="formCard">
       <div class="form-header">
-        <div class="form-badge"><span class="dot"></span> Pre-Launch</div>
+        <div class="form-badge" aria-label="Pre-launch status"><span class="dot" aria-hidden="true"></span> Pre-Launch</div>
         <h2 class="form-title">Stay in the Loop</h2>
         <p class="form-desc">Enter your info to get the latest on product availability and crowdfunding.</p>
       </div>
 
-      <form id="contactForm" action="https://formspree.io/f/xpwzgvkl" method="POST">
+      <form id="contactForm" action="https://formspree.io/f/xpwzgvkl" method="POST" novalidate>
         <div class="field-row">
           <div class="field">
             <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName" placeholder="Andrew" required>
+            <input type="text" id="firstName" name="firstName" placeholder="Andrew" autocomplete="given-name" required aria-required="true">
           </div>
           <div class="field">
             <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" placeholder="McAteer">
+            <input type="text" id="lastName" name="lastName" placeholder="McAteer" autocomplete="family-name">
           </div>
         </div>
         <div class="field">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required aria-required="true">
         </div>
         <div class="field">
           <label for="phone">Phone</label>
-          <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000">
+          <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel">
         </div>
         <button type="submit" class="btn-submit">
-          <span class="btn-bg"></span>
+          <span class="btn-bg" aria-hidden="true"></span>
           <span>Join Waitlist</span>
         </button>
       </form>
 
-      <div class="form-success" id="formSuccess">
-        <div class="check">
+      <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+        <div class="check" aria-hidden="true">
           <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
         <h3>You're on the List</h3>
@@ -555,13 +716,14 @@ footer{
       </div>
     </div>
   </section>
+  </main>
 
   <!-- ======= FOOTER ======= -->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">POLESTRIKE</div>
-      <div class="footer-status">
-        <span class="status-dot"></span>
+      <div class="footer-status" aria-label="System status: operational">
+        <span class="status-dot" aria-hidden="true"></span>
         System Operational
       </div>
     </div>
@@ -575,47 +737,85 @@ footer{
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 (function(){
+  /* --- Theme toggle --- */
+  var html = document.documentElement;
+  var toggle = document.getElementById('themeToggle');
+  var stored = localStorage.getItem('ps-theme');
+
+  /* Respect system preference if no stored choice */
+  if(!stored){
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+  } else {
+    html.setAttribute('data-theme', stored);
+  }
+
+  function updateLabel(){
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+  updateLabel();
+
+  toggle.addEventListener('click', function(){
+    var current = html.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('ps-theme', next);
+    updateLabel();
+  });
+
+  /* Listen for system preference changes */
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e){
+    if(!localStorage.getItem('ps-theme')){
+      html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+      updateLabel();
+    }
+  });
+
+  /* --- Animations (skip if reduced motion) --- */
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   gsap.registerPlugin(ScrollTrigger);
 
-  /* --- Hero entrance --- */
-  const tl = gsap.timeline({defaults:{ease:'power3.out',duration:1}});
+  if(!prefersReduced){
+    var tl = gsap.timeline({defaults:{ease:'power3.out',duration:1}});
 
-  tl.to('#heroImg',{scale:1,duration:6,ease:'power2.out'},0)
-    .to('#heroLogo',{opacity:1,y:0,duration:1.2},0.3)
-    .to('#heroTag',{opacity:1,y:0},0.6)
-    .to('#heroHead',{opacity:1,y:0},0.8)
-    .to('#heroSub',{opacity:1,y:0},1.0)
-    .to('#scrollHint',{opacity:1},1.4);
+    tl.to('#heroImg',{scale:1,duration:6,ease:'power2.out'},0)
+      .to('#heroLogo',{opacity:1,y:0,duration:1.2},0.3)
+      .to('#heroTag',{opacity:1,y:0},0.6)
+      .to('#heroHead',{opacity:1,y:0},0.8)
+      .to('#heroSub',{opacity:1,y:0},1.0)
+      .to('#scrollHint',{opacity:1},1.4);
 
-  /* --- Form card scroll reveal --- */
-  gsap.to('#formCard',{
-    opacity:1,
-    y:0,
-    duration:0.8,
-    ease:'power3.out',
-    scrollTrigger:{
+    gsap.to('#formCard',{
+      opacity:1,y:0,duration:0.8,ease:'power3.out',
+      scrollTrigger:{trigger:'#formSection',start:'top 80%',once:true}
+    });
+
+    ScrollTrigger.create({
       trigger:'#formSection',
-      start:'top 80%',
-      once:true
-    }
-  });
-
-  /* --- Navbar scroll: hide scroll hint --- */
-  ScrollTrigger.create({
-    trigger:'#formSection',
-    start:'top 90%',
-    onEnter:function(){
-      gsap.to('#scrollHint',{opacity:0,duration:0.4});
-    }
-  });
+      start:'top 90%',
+      onEnter:function(){gsap.to('#scrollHint',{opacity:0,duration:0.4})}
+    });
+  }
 
   /* --- Form submission --- */
   var form = document.getElementById('contactForm');
   var success = document.getElementById('formSuccess');
 
-  form.addEventListener('submit',function(e){
+  form.addEventListener('submit', function(e){
     e.preventDefault();
+
+    /* Basic client-side validation */
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+
     var data = new FormData(form);
+    var btn = form.querySelector('.btn-submit');
+    btn.disabled = true;
+    btn.querySelector('span:last-child').textContent = 'Sending...';
 
     fetch(form.action,{
       method:'POST',
@@ -625,6 +825,9 @@ footer{
       if(res.ok){
         form.style.display = 'none';
         success.classList.add('active');
+      } else {
+        btn.disabled = false;
+        btn.querySelector('span:last-child').textContent = 'Join Waitlist';
       }
     }).catch(function(){
       form.style.display = 'none';
