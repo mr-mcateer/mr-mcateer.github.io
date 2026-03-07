@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 h1.appendChild(cursor);
 
                 let i = 0;
-                const speed = 1500 / text.length; // Complete in 1.5s
+                const speed = 3500 / text.length; // Complete in 3.5s
 
                 function typeWriter() {
                     if (i < text.length) {
