@@ -49,5 +49,45 @@ document.addEventListener("DOMContentLoaded", () => {
     const approachVisual = document.querySelector('.approach-visual');
     if (approachVisual) observer.observe(approachVisual);
 
+    // Typewriter Effect for Hero Headline
+    const h1 = document.querySelector('.hero h1');
+    if (h1) {
+        if (!isMobile && !isReducedMotion) {
+            const text = "Your voice, amplified.\nNot replaced.";
+            h1.innerHTML = '';
+            h1.style.opacity = '1';
+            h1.style.visibility = 'visible';
 
+            const cursor = document.createElement('span');
+            cursor.className = 'typewriter-cursor';
+
+            setTimeout(() => {
+                cursor.classList.add('active');
+                h1.appendChild(cursor);
+
+                let i = 0;
+                const speed = 3500 / text.length; // Complete in 3.5s
+
+                function typeWriter() {
+                    if (i < text.length) {
+                        const char = text.charAt(i);
+                        if (char === '\n') {
+                            const br = document.createElement('br');
+                            h1.insertBefore(br, cursor);
+                        } else {
+                            const span = document.createElement('span');
+                            span.textContent = char;
+                            h1.insertBefore(span, cursor);
+                        }
+                        i++;
+                        setTimeout(typeWriter, speed);
+                    }
+                }
+                typeWriter();
+            }, 300); // Start delay
+        } else {
+            h1.style.opacity = '1';
+            h1.style.visibility = 'visible';
+        }
+    }
 });
