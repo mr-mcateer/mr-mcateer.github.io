@@ -53,41 +53,56 @@ document.addEventListener("DOMContentLoaded", () => {
     const h1 = document.querySelector('.hero h1');
     if (h1) {
         if (!isMobile && !isReducedMotion) {
-            const text = "Your voice, amplified.\nNot replaced.";
+            const textLines = ["Your voice, amplified.", "Not replaced."];
+
+            // Rebuild with individual character spans perfectly preserves layout size
             h1.innerHTML = '';
             h1.style.opacity = '1';
             h1.style.visibility = 'visible';
 
             const cursor = document.createElement('span');
-            cursor.className = 'typewriter-cursor';
+            cursor.className = 'typewriter-cursor active';
+            h1.appendChild(cursor);
 
+            let charElements = [];
+            textLines.forEach((line, lineIndex) => {
+                for (let char of line) {
+                    const charSpan = document.createElement('span');
+                    charSpan.textContent = char;
+                    charSpan.style.opacity = '0';
+                    h1.appendChild(charSpan);
+                    charElements.push(charSpan);
+                }
+                if (lineIndex < textLines.length - 1) {
+                    h1.appendChild(document.createElement('br'));
+                }
+            });
+
+            // Delay start by 800ms to allow context and CTA to fade in smoothly first
             setTimeout(() => {
-                cursor.classList.add('active');
-                h1.appendChild(cursor);
-
                 let i = 0;
-                const speed = 3500 / text.length; // Complete in 3.5s
 
                 function typeWriter() {
-                    if (i < text.length) {
-                        const char = text.charAt(i);
-                        if (char === '\n') {
-                            const br = document.createElement('br');
-                            h1.insertBefore(br, cursor);
-                        } else {
-                            const span = document.createElement('span');
-                            span.textContent = char;
-                            h1.insertBefore(span, cursor);
-                        }
+                    if (i < charElements.length) {
+                        charElements[i].style.opacity = '1';
+                        // Move cursor after the revealed character
+                        h1.insertBefore(cursor, charElements[i].nextSibling);
+
+                        // Variable typing speed (fast letters, pause on punctuation)
+                        let delay = 60;
+                        const char = charElements[i].textContent;
+                        if (char === '.' || char === ',') delay = 400;
+
                         i++;
-                        setTimeout(typeWriter, speed);
+                        setTimeout(typeWriter, Math.max(delay + (Math.random() * 30 - 15), 20)); // Humanize
                     }
                 }
                 typeWriter();
-            }, 300); // Start delay
+            }, 800);
         } else {
             h1.style.opacity = '1';
             h1.style.visibility = 'visible';
+            h1.style.animation = 'hero-fade-up 0.5s ease-out 0.8s forwards';
         }
     }
 });
