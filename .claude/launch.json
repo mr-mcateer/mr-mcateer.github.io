@@ -24,6 +24,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8083", "--directory", "fishing-trip"],
       "port": 8083
+    },
+    {
+      "name": "polestrike",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8084", "--directory", "polestrike"],
+      "port": 8084
     }
   ]
 }
