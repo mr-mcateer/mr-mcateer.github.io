@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bracket #3: The Contrarian (Iowa State) - Fill-Out Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafafa;
+      --bg-card: #ffffff;
+      --bg-highlight: #f0fdf4;
+      --bg-upset: #fef2f2;
+      --bg-header: #1a1a2e;
+      --text: #1a1a2e;
+      --text-secondary: #4a4a68;
+      --text-muted: #7a7a96;
+      --border: #e2e4e9;
+      --accent: #e85d26;
+      --green: #16a34a;
+      --green-bg: #dcfce7;
+      --red: #dc2626;
+      --blue: #2563eb;
+      --amber: #d97706;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    [data-theme="dark"] {
+      --bg: #0f0f1a;
+      --bg-card: #1e1e34;
+      --bg-highlight: #1a2e1a;
+      --bg-upset: #2e1a1a;
+      --bg-header: #252540;
+      --text: #e8e8f0;
+      --text-secondary: #b0b0c8;
+      --text-muted: #7878a0;
+      --border: #2a2a44;
+      --accent: #f07040;
+      --green: #4ade80;
+      --green-bg: #1a2e20;
+      --red: #f87171;
+      --blue: #60a5fa;
+      --amber: #fbbf24;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    .top-bar {
+      background: var(--bg-header);
+      color: white;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-bar h1 { font-size: 1.1rem; font-weight: 700; }
+    .top-bar h1 span { color: var(--accent); }
+    .top-bar .champion-badge {
+      background: var(--accent);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .theme-btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-family: var(--font);
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+
+    /* Checklist instruction */
+    .instructions {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+    .instructions h2 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+    .instructions p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Region blocks */
+    .region {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .region-header {
+      padding: 14px 24px;
+      font-weight: 800;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .region-header .e8-winner {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--green);
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    /* Round sections within a region */
+    .round {
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+    }
+    .round:last-child { border-bottom: none; }
+    .round-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    /* Matchup rows */
+    .matchup {
+      display: flex;
+      align-items: stretch;
+      margin-bottom: 6px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+    .matchup:last-child { margin-bottom: 0; }
+    .team {
+      flex: 1;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .team:first-child {
+      border-right: 1px solid var(--border);
+    }
+    .seed {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: white;
+      background: #6366f1;
+      flex-shrink: 0;
+    }
+    .seed-1 { background: #1e40af; }
+    .seed-2 { background: #1e3a8a; }
+    .seed-3 { background: #3730a3; }
+    .seed-4 { background: #4338ca; }
+    .seed-hi { background: #6b7280; }
+    .team-name { font-weight: 500; }
+    .pick-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      flex-shrink: 0;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+    .pick-arrow.left { color: var(--green); }
+    .pick-arrow.right { color: var(--green); }
+    .pick-arrow.upset { color: var(--red); }
+
+    /* Winner highlight */
+    .team.is-pick {
+      background: var(--bg-highlight);
+      font-weight: 700;
+    }
+    .team.is-pick.is-upset {
+      background: var(--bg-upset);
+    }
+
+    /* Checkbox */
+    .check {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      flex-shrink: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+      margin-left: auto;
+    }
+    .check.checked {
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .check.checked::after {
+      content: '\2713';
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    /* Final Four section */
+    .final-four {
+      background: var(--bg-card);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .final-four h2 {
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+    .ff-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+    .ff-game {
+      text-align: center;
+    }
+    .ff-team {
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .ff-team.winner {
+      background: var(--bg-highlight);
+      border-color: var(--green);
+      font-weight: 700;
+    }
+    .ff-vs {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin: 4px 0;
+    }
+    .ff-center {
+      text-align: center;
+    }
+    .ff-champion {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .ff-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .ff-check-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      align-items: center;
+      margin-top: 4px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Progress bar */
+    .progress-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 24px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .progress-bar .label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .progress-track {
+      flex: 1;
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--green);
+      border-radius: 4px;
+      width: 0%;
+      transition: width 0.3s;
+    }
+    .progress-count {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--green);
+      white-space: nowrap;
+    }
+
+    /* Legend */
+    .legend {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .legend-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+    }
+
+    @media print {
+      .top-bar { position: static; }
+      .theme-btn, .progress-bar { display: none; }
+      .check { border-color: #999; }
+      body { background: white; color: black; }
+      .region, .final-four, .instructions { break-inside: avoid; }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 16px 10px; }
+      .region-header, .round { padding-left: 14px; padding-right: 14px; }
+      .team { padding: 6px 8px; font-size: 0.82rem; }
+      .ff-grid { grid-template-columns: 1fr; }
+      .ff-champion { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <h1>Bracket #3: <span>The Contrarian</span></h1>
+    <div class="champion-badge">CHAMPION: Iowa State</div>
+    <button class="theme-btn" id="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
+  </div>
+
+  <div class="container">
+    <div class="instructions">
+      <h2>How to Use This Fill-Out Guide</h2>
+      <p>Open the ESPN Tournament Challenge app alongside this page. For each matchup below, the <strong>highlighted team</strong> is your pick. Click the checkbox after you have entered each pick in the app. The progress bar tracks your completion. Red highlights indicate upset picks. Print this page if you prefer paper.</p>
+    </div>
+
+    <div class="progress-bar">
+      <span class="label">Fill-Out Progress</span>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      <span class="progress-count" id="progress-count">0 / 63</span>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-swatch" style="background:var(--bg-highlight);border-color:var(--green)"></div> Pick (higher seed wins)</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:var(--bg-upset);border-color:var(--red)"></div> Upset pick (lower seed wins)</div>
+    </div>
+
+    <!-- EAST REGION -->
+    <div class="region">
+      <div class="region-header">
+        East Region
+        <span class="e8-winner">Regional Champion: Duke (1)</span>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Round of 64 (8 picks)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-1">1</span><span class="team-name">Duke</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">16</span><span class="team-name">Siena</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed">8</span><span class="team-name">Ohio State</span></div>
+          <div class="pick-arrow right upset">&rarr;</div>
+          <div class="team is-pick is-upset"><span class="seed">9</span><span class="team-name">TCU</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed">5</span><span class="team-name">St. John's</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">12</span><span class="team-name">Northern Iowa</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-4">4</span><span class="team-name">Kansas</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">13</span><span class="team-name">Cal Baptist</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed">6</span><span class="team-name">Louisville</span></div>
+          <div class="pick-arrow right upset">&rarr;</div>
+          <div class="team is-pick is-upset"><span class="seed">11</span><span class="team-name">South Florida</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-3">3</span><span class="team-name">Michigan State</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">14</span><span class="team-name">North Dakota St</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed">7</span><span class="team-name">UCLA</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed">10</span><span class="team-name">UCF</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed seed-2">2</span><span class="team-name">UConn</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">15</span><span class="team-name">Furman</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Round of 32 (4 picks)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-1">1</span><span class="team-name">Duke</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed">9</span><span class="team-name">TCU</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed">5</span><span class="team-name">St. John's</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-4">4</span><span class="team-name">Kansas</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed">11</span><span class="team-name">South Florida</span></div>
+          <div class="pick-arrow right">&rarr;</div>
+          <div class="team is-pick"><span class="seed seed-3">3</span><span class="team-name">Michigan State</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed">7</span><span class="team-name">UCLA</span></div>
+          <div class="pick-arrow right">&rarr;</div>
+          <div class="team is-pick"><span class="seed seed-2">2</span><span class="team-name">UConn</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Sweet 16 (2 picks)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-1">1</span><span class="team-name">Duke</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed">5</span><span class="team-name">St. John's</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-3">3</span><span class="team-name">Michigan State</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-2">2</span><span class="team-name">UConn</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Elite 8 (1 pick)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-1">1</span><span class="team-name">Duke</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-3">3</span><span class="team-name">Michigan State</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEST REGION -->
+    <div class="region">
+      <div class="region-header">
+        West Region
+        <span class="e8-winner">Regional Champion: Purdue (2)</span>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Round of 64 (8 picks)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-1">1</span><span class="team-name">Arizona</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">16</span><span class="team-name">LIU</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed">8</span><span class="team-name">Villanova</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed">9</span><span class="team-name">Utah State</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed">5</span><span class="team-name">Wisconsin</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">12</span><span class="team-name">High Point</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-4">4</span><span class="team-name">Arkansas</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">13</span><span class="team-name">Hawaii</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed">6</span><span class="team-name">BYU</span></div>
+          <div class="pick-arrow right upset">&rarr;</div>
+          <div class="team is-pick is-upset"><span class="seed">11</span><span class="team-name">Texas</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-3">3</span><span class="team-name">Gonzaga</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">14</span><span class="team-name">Kennesaw St</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed">7</span><span class="team-name">Miami (FL)</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed">10</span><span class="team-name">Missouri</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed seed-2">2</span><span class="team-name">Purdue</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">15</span><span class="team-name">Queens</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Round of 32 (4 picks)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-1">1</span><span class="team-name">Arizona</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed">8</span><span class="team-name">Villanova</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed">5</span><span class="team-name">Wisconsin</span></div>
+          <div class="pick-arrow right">&rarr;</div>
+          <div class="team is-pick"><span class="seed seed-4">4</span><span class="team-name">Arkansas</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed">11</span><span class="team-name">Texas</span></div>
+          <div class="pick-arrow right">&rarr;</div>
+          <div class="team is-pick"><span class="seed seed-3">3</span><span class="team-name">Gonzaga</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed">7</span><span class="team-name">Miami (FL)</span></div>
+          <div class="pick-arrow right">&rarr;</div>
+          <div class="team is-pick"><span class="seed seed-2">2</span><span class="team-name">Purdue</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Sweet 16 (2 picks)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-1">1</span><span class="team-name">Arizona</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-4">4</span><span class="team-name">Arkansas</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed seed-3">3</span><span class="team-name">Gonzaga</span></div>
+          <div class="pick-arrow right">&rarr;</div>
+          <div class="team is-pick"><span class="seed seed-2">2</span><span class="team-name">Purdue</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Elite 8 (1 pick)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed seed-1">1</span><span class="team-name">Arizona</span></div>
+          <div class="pick-arrow right upset">&rarr;</div>
+          <div class="team is-pick is-upset"><span class="seed seed-2">2</span><span class="team-name">Purdue</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MIDWEST REGION -->
+    <div class="region">
+      <div class="region-header">
+        Midwest Region
+        <span class="e8-winner">Regional Champion: Iowa State (2)</span>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Round of 64 (8 picks)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-1">1</span><span class="team-name">Michigan</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">16</span><span class="team-name">Howard</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed">8</span><span class="team-name">Georgia</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed">9</span><span class="team-name">Saint Louis</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed">5</span><span class="team-name">Texas Tech</span></div>
+          <div class="pick-arrow right upset">&rarr;</div>
+          <div class="team is-pick is-upset"><span class="seed seed-hi">12</span><span class="team-name">Akron</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-4">4</span><span class="team-name">Alabama</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">13</span><span class="team-name">Hofstra</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed">6</span><span class="team-name">Tennessee</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed">11</span><span class="team-name">SMU</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-3">3</span><span class="team-name">Virginia</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">14</span><span class="team-name">Wright State</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed">7</span><span class="team-name">Kentucky</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed">10</span><span class="team-name">Santa Clara</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed seed-2">2</span><span class="team-name">Iowa State</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">15</span><span class="team-name">Tennessee State</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Round of 32 (4 picks)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-1">1</span><span class="team-name">Michigan</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed">8</span><span class="team-name">Georgia</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed seed-hi">12</span><span class="team-name">Akron</span></div>
+          <div class="pick-arrow right">&rarr;</div>
+          <div class="team is-pick"><span class="seed seed-4">4</span><span class="team-name">Alabama</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed">6</span><span class="team-name">Tennessee</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-3">3</span><span class="team-name">Virginia</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed">7</span><span class="team-name">Kentucky</span></div>
+          <div class="pick-arrow right">&rarr;</div>
+          <div class="team is-pick"><span class="seed seed-2">2</span><span class="team-name">Iowa State</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Sweet 16 (2 picks)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-1">1</span><span class="team-name">Michigan</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-4">4</span><span class="team-name">Alabama</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed">6</span><span class="team-name">Tennessee</span></div>
+          <div class="pick-arrow right upset">&rarr;</div>
+          <div class="team is-pick is-upset"><span class="seed seed-2">2</span><span class="team-name">Iowa State</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Elite 8 (1 pick)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed seed-1">1</span><span class="team-name">Michigan</span></div>
+          <div class="pick-arrow right upset">&rarr;</div>
+          <div class="team is-pick is-upset"><span class="seed seed-2">2</span><span class="team-name">Iowa State</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOUTH REGION -->
+    <div class="region">
+      <div class="region-header">
+        South Region
+        <span class="e8-winner">Regional Champion: Illinois (3)</span>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Round of 64 (8 picks)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-1">1</span><span class="team-name">Florida</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">16</span><span class="team-name">Lehigh</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed">8</span><span class="team-name">Clemson</span></div>
+          <div class="pick-arrow right upset">&rarr;</div>
+          <div class="team is-pick is-upset"><span class="seed">9</span><span class="team-name">Iowa</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed">5</span><span class="team-name">Vanderbilt</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">12</span><span class="team-name">McNeese</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-4">4</span><span class="team-name">Nebraska</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">13</span><span class="team-name">Troy</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed">6</span><span class="team-name">North Carolina</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed">11</span><span class="team-name">VCU</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-3">3</span><span class="team-name">Illinois</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">14</span><span class="team-name">Penn</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed">7</span><span class="team-name">Saint Mary's</span></div>
+          <div class="pick-arrow right upset">&rarr;</div>
+          <div class="team is-pick is-upset"><span class="seed">10</span><span class="team-name">Texas A&M</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-2">2</span><span class="team-name">Houston</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-hi">15</span><span class="team-name">Idaho</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Round of 32 (4 picks)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-1">1</span><span class="team-name">Florida</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed">9</span><span class="team-name">Iowa</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed">5</span><span class="team-name">Vanderbilt</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed seed-4">4</span><span class="team-name">Nebraska</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed">6</span><span class="team-name">North Carolina</span></div>
+          <div class="pick-arrow right">&rarr;</div>
+          <div class="team is-pick"><span class="seed seed-3">3</span><span class="team-name">Illinois</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed">10</span><span class="team-name">Texas A&M</span></div>
+          <div class="pick-arrow right">&rarr;</div>
+          <div class="team is-pick"><span class="seed seed-2">2</span><span class="team-name">Houston</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Sweet 16 (2 picks)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick"><span class="seed seed-1">1</span><span class="team-name">Florida</span></div>
+          <div class="pick-arrow left">&larr;</div>
+          <div class="team"><span class="seed">5</span><span class="team-name">Vanderbilt</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+
+        <div class="matchup" data-pick>
+          <div class="team is-pick is-upset"><span class="seed seed-3">3</span><span class="team-name">Illinois</span></div>
+          <div class="pick-arrow left upset">&larr;</div>
+          <div class="team"><span class="seed seed-2">2</span><span class="team-name">Houston</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+
+      <div class="round">
+        <div class="round-title">Elite 8 (1 pick)</div>
+
+        <div class="matchup" data-pick>
+          <div class="team"><span class="seed seed-1">1</span><span class="team-name">Florida</span></div>
+          <div class="pick-arrow right upset">&rarr;</div>
+          <div class="team is-pick is-upset"><span class="seed seed-3">3</span><span class="team-name">Illinois</span></div>
+          <div class="check" onclick="toggle(this)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINAL FOUR -->
+    <div class="final-four">
+      <h2>Final Four + Championship (3 picks)</h2>
+
+      <div class="ff-grid">
+        <div class="ff-game">
+          <div class="ff-label">Semifinal 1</div>
+          <div class="ff-team winner">Duke (1) - East</div>
+          <div class="ff-vs">vs</div>
+          <div class="ff-team">Purdue (2) - West</div>
+          <div class="ff-check-row">Winner: <strong>Duke</strong> <div class="check" onclick="toggle(this)"></div></div>
+        </div>
+
+        <div class="ff-center">
+          <div class="ff-label">Champion</div>
+          <div class="ff-champion">Iowa State</div>
+          <div class="ff-check-row"><div class="check" onclick="toggle(this)"></div></div>
+        </div>
+
+        <div class="ff-game">
+          <div class="ff-label">Semifinal 2</div>
+          <div class="ff-team winner">Iowa State (2) - Midwest</div>
+          <div class="ff-vs">vs</div>
+          <div class="ff-team">Illinois (3) - South</div>
+          <div class="ff-check-row">Winner: <strong>Iowa State</strong> <div class="check" onclick="toggle(this)"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggle(el) {
+      el.classList.toggle('checked');
+      updateProgress();
+    }
+
+    function updateProgress() {
+      var checks = document.querySelectorAll('.check');
+      var checked = document.querySelectorAll('.check.checked').length;
+      var total = checks.length;
+      document.getElementById('progress-fill').style.width = (checked / total * 100) + '%';
+      document.getElementById('progress-count').textContent = checked + ' / ' + total;
+    }
+
+    function toggleTheme() {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('mm-fill-theme', next);
+      document.getElementById('theme-toggle').textContent = next === 'dark' ? 'Light Mode' : 'Dark Mode';
+    }
+
+    // Init theme
+    (function() {
+      var saved = localStorage.getItem('mm-fill-theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+        if (saved === 'dark') document.getElementById('theme-toggle').textContent = 'Light Mode';
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.getElementById('theme-toggle').textContent = 'Light Mode';
+      }
+    })();
+  </script>
+</body>
+</html>
