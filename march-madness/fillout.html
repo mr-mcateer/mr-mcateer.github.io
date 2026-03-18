@@ -940,6 +940,25 @@
       </div>
     </div>
 
+    <!-- TIEBREAKER -->
+    <div class="final-four" style="border-color: var(--blue); margin-top: 24px;">
+      <h2 style="color: var(--blue);">Tiebreaker</h2>
+      <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 16px;">
+        How many total points will be scored in the Championship Game?
+      </p>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+        <input type="number" id="tiebreaker-input" placeholder="e.g. 138" min="50" max="300"
+          style="width: 120px; padding: 12px 16px; font-size: 1.4rem; font-weight: 800; font-family: var(--font);
+          text-align: center; border: 2px solid var(--border); border-radius: 8px; background: var(--bg-card);
+          color: var(--text); outline: none; transition: border-color 0.2s;"
+          onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'">
+        <div class="check" onclick="toggle(this)"></div>
+      </div>
+      <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 12px;">
+        Suggested: <strong>138</strong> (Iowa State averages 74 PPG; Duke averages 82 PPG in tournament play. Combined median: ~138 after adjusting for championship game pace.)
+      </p>
+    </div>
+
   </div>
 
   <script>
