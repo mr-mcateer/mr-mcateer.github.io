@@ -225,7 +225,7 @@
         south: {
           r1: ['Florida', 'Iowa', 'Vanderbilt', 'Nebraska', 'North Carolina', 'Illinois', 'Texas A&M', 'Houston'],
           r2: ['Florida', 'Vanderbilt', 'Illinois', 'Houston'],
-          s16: ['Illinois', 'Houston'],
+          s16: ['Florida', 'Illinois'],
           e8: ['Illinois']
         }
       },
