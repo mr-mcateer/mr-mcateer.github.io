@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>March Madness 2026 Bracket Optimizer</title>
+  <meta name="description" content="Four analytically optimized bracket entries for the 2026 NCAA Tournament, built on game theory and portfolio diversification.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <div class="nav__title"><span>MM</span> Bracket Optimizer</div>
+      <button class="theme-toggle" id="theme-toggle">Dark Mode</button>
+    </div>
+  </nav>
+
+  <!-- Hero / BLUF -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="reveal">2026 March Madness<br><span class="accent">Bracket Optimizer</span></h1>
+      <p class="reveal" style="font-size:var(--text-lg);max-width:640px;margin:0 auto var(--space-6);">
+        Four data-driven bracket entries optimized for a medium-sized pool (30 to 80 entries) using game theory, KenPom efficiency ratings, and portfolio diversification.
+      </p>
+
+      <div class="bluf reveal">
+        <span class="bluf__label">Bottom Line Up Front</span>
+        <p>
+          Submit all four brackets. Each entry picks a different champion (Duke, Houston, Iowa State, Arizona) to maximize your expected value across the most probable tournament outcomes. The portfolio approach ensures that if any of the top analytical contenders wins the title, you own those 320 championship points while most of your pool does not. In a 30-to-80 entry pool at $20 per entry ($600 to $1,600 pot), first place pays 60%. One well-placed contrarian champion pick is often the difference between winning and finishing in the middle of the pack. These four brackets balance baseline accuracy in early rounds with strategic differentiation where it matters most: the Final Four and championship.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pool Rules & Scoring -->
+  <section class="section reveal">
+    <div class="container">
+      <span class="section__eyebrow">Pool Rules & Scoring</span>
+      <h2>How Points Are Scored</h2>
+
+      <div class="rules-grid">
+        <div class="rule-card">
+          <div class="rule-card__value">$20</div>
+          <div class="rule-card__label">Per Entry</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-card__value">4</div>
+          <div class="rule-card__label">Max Entries</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-card__value">60/30/10</div>
+          <div class="rule-card__label">Payout Split</div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-card__value">1,920</div>
+          <div class="rule-card__label">Max Possible Points</div>
+        </div>
+      </div>
+
+      <table class="scoring-table" style="margin-top:var(--space-8);">
+        <thead>
+          <tr>
+            <th>Round</th>
+            <th>Points Per Correct Pick</th>
+            <th>Games</th>
+            <th>Max Points</th>
+            <th>Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Round of 64</td>
+            <td>10</td>
+            <td>32</td>
+            <td>320</td>
+            <td><span class="pts-bar" style="width:40px"></span> 16.7%</td>
+          </tr>
+          <tr>
+            <td>Round of 32</td>
+            <td>20</td>
+            <td>16</td>
+            <td>320</td>
+            <td><span class="pts-bar" style="width:40px"></span> 16.7%</td>
+          </tr>
+          <tr>
+            <td>Sweet 16</td>
+            <td>40</td>
+            <td>8</td>
+            <td>320</td>
+            <td><span class="pts-bar" style="width:40px"></span> 16.7%</td>
+          </tr>
+          <tr>
+            <td>Elite 8</td>
+            <td>80</td>
+            <td>4</td>
+            <td>320</td>
+            <td><span class="pts-bar" style="width:40px"></span> 16.7%</td>
+          </tr>
+          <tr>
+            <td>Final Four</td>
+            <td>160</td>
+            <td>2</td>
+            <td>320</td>
+            <td><span class="pts-bar" style="width:40px"></span> 16.7%</td>
+          </tr>
+          <tr>
+            <td>Championship</td>
+            <td>320</td>
+            <td>1</td>
+            <td>320</td>
+            <td><span class="pts-bar" style="width:40px"></span> 16.7%</td>
+          </tr>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td></td>
+            <td><strong>63</strong></td>
+            <td><strong>1,920</strong></td>
+            <td><strong>100%</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout--info">
+        <div class="callout__title">Key Insight: Every Round Is Worth the Same</div>
+        <p>
+          ESPN's doubling scoring system means each round contributes exactly 320 possible points (16.7% of the total). Getting the champion right is worth the same as getting all 32 first-round games right. This is why your champion pick is the single most impactful decision in your bracket. A correct champion pick (320 points) is equivalent to correctly picking 32 first-round games (32 times 10 points). Building a portfolio of four brackets with four different champions dramatically increases the probability that at least one of your entries nails this critical pick.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strategy Overview -->
+  <section class="section section--alt reveal">
+    <div class="container">
+      <span class="section__eyebrow">Strategic Framework</span>
+      <h2>Why Game Theory Beats "Picking Winners"</h2>
+
+      <p>
+        Most bracket players try to predict who will win each game as accurately as possible. That is the wrong objective. In a pool with a fixed prize structure, your goal is not accuracy. Your goal is to finish with more points than every other entry. This distinction is critical because it shifts the optimal strategy from "pick the most likely winners" to "pick winners that give you the most expected value relative to the rest of the field."
+      </p>
+
+      <p>
+        <strong><span class="term" title="Game theory is a branch of mathematics that studies strategic decision-making when outcomes depend on the choices of multiple players.">Game theory</span></strong> (the mathematical study of strategic decision-making when outcomes depend on the choices of multiple participants) tells us that in a bracket pool, the expected value of a pick depends not only on how likely it is to be correct but also on how many other entries in the pool share that same pick. If Duke wins the tournament and 18% of entries picked Duke as champion, the 320 points are shared across many entries and provide limited separation. But if Houston wins and only 3% of entries picked them, those 320 points create massive separation.
+      </p>
+
+      <p>
+        The concept is called <strong><span class="term" title="Leverage in bracket pools is the difference between a team's true championship probability and their public selection rate. Positive leverage means the team is picked less often than they should be.">leverage</span></strong>: the gap between a team's true championship probability (estimated via betting odds and efficiency ratings) and their public selection rate. Teams with positive leverage (underselected relative to their true odds) offer outsized expected value. Teams with negative leverage (overselected) are bad value even if they are the most likely champion.
+      </p>
+
+      <div class="callout callout--warn">
+        <div class="callout__title">The Portfolio Approach</div>
+        <p>
+          With 4 entries allowed, you are not filling out one bracket four times. You are building a <strong>portfolio</strong> of brackets, each designed to win under a different tournament scenario. Bracket 1 wins if chalk holds. Bracket 2 wins if the analytics-driven sleeper (Houston) breaks through. Bracket 3 wins if a deep contrarian run materializes. Bracket 4 wins if the expert consensus (Arizona) is right. This diversification means you have a realistic path to first place across a wide range of outcomes, not just one narrow scenario.
+        </p>
+      </div>
+
+      <h3>How These Brackets Were Built</h3>
+      <p>
+        Each bracket was constructed using <strong><span class="term" title="KenPom is Ken Pomeroy's college basketball rating system, which measures teams using adjusted offensive and defensive efficiency (points scored and allowed per 100 possessions, adjusted for opponent strength and game location).">KenPom</span></strong> adjusted efficiency ratings (which measure points scored and allowed per 100 possessions, adjusted for opponent strength and game location), championship betting odds from major sportsbooks, historical upset frequency data by seed matchup, and estimated public pick distributions. The first-round picks in each bracket are largely similar because seed-based accuracy matters in the early rounds. The brackets diverge strategically starting in the Sweet 16 and Elite 8, where contrarian picks create the leverage needed to win a pool.
+      </p>
+    </div>
+  </section>
+
+  <!-- The 4 Bracket Entries -->
+  <section class="section" id="brackets-section">
+    <div class="container">
+      <span class="section__eyebrow">The Four Brackets</span>
+      <h2>Your Optimized Entries</h2>
+      <p>Click any bracket to expand and view the complete picks for all 63 games. Each entry has a different champion and distinct strategic identity. The green highlight indicates the winner of each matchup. Red indicates an upset pick (lower seed defeating higher seed).</p>
+
+      <div id="brackets-container"></div>
+    </div>
+  </section>
+
+  <!-- Data Analysis -->
+  <section class="section section--alt reveal">
+    <div class="container">
+      <span class="section__eyebrow">Data Analysis</span>
+      <h2>The Numbers Behind the Picks</h2>
+
+      <p>
+        The following charts display the key analytical inputs that drove bracket construction. <strong><span class="term" title="Adjusted Efficiency Margin (AEM) is the difference between a team's adjusted offensive efficiency and adjusted defensive efficiency, expressed in points per 100 possessions. Higher is better.">KenPom rankings</span></strong> represent overall adjusted efficiency margin, which measures the difference between how many points a team scores and allows per 100 possessions after adjusting for opponent quality. Championship odds are sourced from major sportsbooks and reflect the betting market's implied probability. The leverage chart reveals the gap between a team's true probability and estimated public ownership, which is the core of our strategy.
+      </p>
+
+      <div class="data-grid">
+        <div class="data-panel">
+          <h4>KenPom Overall Ranking</h4>
+          <p style="font-size:var(--text-sm);margin-bottom:var(--space-4);">
+            Lower number = better. Teams ranking top-6 have won 20 of the last 23 championships.
+          </p>
+          <div id="kenpom-chart"></div>
+        </div>
+
+        <div class="data-panel">
+          <h4>Championship Odds (Implied Probability)</h4>
+          <p style="font-size:var(--text-sm);margin-bottom:var(--space-4);">
+            Betting market implied win probability. Reflects the market's best estimate of each team's chance.
+          </p>
+          <div id="odds-chart"></div>
+        </div>
+      </div>
+
+      <div class="data-grid" style="margin-top:var(--space-6);">
+        <div class="data-panel" style="grid-column: 1 / -1;">
+          <h4>Leverage: Implied Probability vs. Estimated Public Pick Rate</h4>
+          <p style="font-size:var(--text-sm);margin-bottom:var(--space-4);">
+            Positive values (green) = underselected by the public relative to true odds. These are the teams that offer the most expected value as champion picks. Negative values = overselected by the public. Picking these teams as champion means you are sharing points with more entries if correct.
+          </p>
+          <div id="leverage-chart"></div>
+        </div>
+      </div>
+
+      <div class="callout callout--success" style="margin-top:var(--space-8);">
+        <div class="callout__title">Key Takeaway: Houston and Iowa State Offer the Most Leverage</div>
+        <p>
+          Houston and Iowa State are significantly underselected by the public relative to their true championship probability. Houston's implied odds (roughly 7%) far exceed their estimated public pick rate (roughly 3 to 5%), giving them the best leverage of any team in the field. Iowa State at 18-to-1 is similarly underowned. Both teams are top-6 in KenPom, both have elite defenses, and both are in regions where their path is analytically favorable. These are not random longshots. They are analytically elite teams that the public is sleeping on, making them ideal contrarian champion picks for Brackets 2 and 3.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Historical Context -->
+  <section class="section reveal">
+    <div class="container">
+      <span class="section__eyebrow">Historical Context</span>
+      <h2>What History Tells Us</h2>
+
+      <p>
+        Championship brackets are not random. Twenty of the last twenty-three NCAA champions have entered the tournament ranked in the top 6 of KenPom's overall efficiency ratings. Twelve of the last thirteen champions ranked top-7 in either offensive or defensive efficiency. This means you can safely eliminate roughly 80% of the field from serious championship consideration before the tournament even tips off.
+      </p>
+
+      <p>
+        For 2026, the teams meeting these historical thresholds are: <strong>Duke, Michigan, Arizona, Florida, Houston, Iowa State, Illinois, Purdue, and Vanderbilt</strong>. Our four champion picks (Duke, Houston, Iowa State, Arizona) all come from this historically validated pool. We are not guessing. We are selecting from the subset of teams that match the analytical profile of previous champions, then using leverage analysis to determine which of those teams offer the best expected value in a pool setting.
+      </p>
+
+      <p>
+        One more historical note: the First Four (play-in games) has produced at least one team that advances to the second round in 12 of the last 14 tournaments, with five advancing to the Sweet 16. Howard, the First Four winner from the Midwest region's 16-seed slot, enters the Round of 64 as a significant underdog against Michigan, but do not be surprised if First Four winners create chaos elsewhere in the bracket. Six of the last seven at-large teams with 14 or more losses have won their first-round game.
+      </p>
+
+      <div class="callout callout--info">
+        <div class="callout__title">Upset Frequency by Seed Matchup</div>
+        <p>
+          Historical first-round upset rates worth noting: 5 vs. 12 seeds see upsets roughly 35% of the time. 6 vs. 11 seeds see upsets roughly 37% of the time. 7 vs. 10 seeds see upsets roughly 39% of the time. 8 vs. 9 matchups are nearly coin flips at 49%. Each bracket includes 2 to 4 first-round upsets calibrated to these historical base rates, ensuring we are not over- or under-predicting chaos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Reference: Champion Summary -->
+  <section class="section section--alt reveal">
+    <div class="container">
+      <span class="section__eyebrow">Quick Reference</span>
+      <h2>Champion Pick Summary</h2>
+
+      <table class="scoring-table">
+        <thead>
+          <tr>
+            <th>Bracket</th>
+            <th>Name</th>
+            <th>Champion</th>
+            <th>Final Four</th>
+            <th>Strategy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1</strong></td>
+            <td>The Chalk</td>
+            <td><strong>Duke</strong></td>
+            <td>Duke, Arizona, Michigan, Houston</td>
+            <td>Favorites-heavy baseline</td>
+          </tr>
+          <tr>
+            <td><strong>2</strong></td>
+            <td>The Analytics Edge</td>
+            <td><strong>Houston</strong></td>
+            <td>UConn, Arizona, Iowa State, Houston</td>
+            <td>KenPom + geographical edge</td>
+          </tr>
+          <tr>
+            <td><strong>3</strong></td>
+            <td>The Contrarian</td>
+            <td><strong>Iowa State</strong></td>
+            <td>Duke, Purdue, Iowa State, Illinois</td>
+            <td>Maximum leverage play</td>
+          </tr>
+          <tr style="background:transparent;">
+            <td><strong>4</strong></td>
+            <td>The Dark Horse</td>
+            <td><strong>Arizona</strong></td>
+            <td>Michigan State, Arizona, Michigan, Houston</td>
+            <td>Expert consensus + sleeper</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout--warn" style="margin-top:var(--space-8);">
+        <div class="callout__title">Honest Assessment: What Could Go Wrong</div>
+        <p>
+          No bracket strategy eliminates variance. March Madness is a single-elimination tournament, and single-elimination formats are inherently chaotic. A hot-shooting 12-seed can beat a KenPom top-10 team on any given night. Our brackets are optimized for expected value, not guaranteed outcomes. If a team outside the KenPom top-10 wins the championship (it happens roughly 15% of the time historically), none of our four brackets will have the correct champion. That is an acceptable risk because chasing extremely unlikely outcomes (picking a 7-seed to win it all) has even lower expected value. We are playing the probabilities, not pretending we can predict the future.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        Built for the 2026 NCAA Tournament. Data sourced from KenPom, ESPN, and major sportsbooks as of March 18, 2026.
+        <br>
+        Prompt AI Solutions | promptaisolutions.com
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
