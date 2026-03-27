@@ -1,90 +1,927 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio Intelligence</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <script type="module" src="js/data.js"></script>
-  <script type="module" src="js/app.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Intelligence Dashboard | Prompt AI Solutions</title>
+<meta name="description" content="Consulting-grade equity analysis of Mag 7 + MU + BROS portfolio with scenario-based shareholder action frameworks. March 27, 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --max-width: 1280px;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #06090f;
+  --bg-secondary: #0d1117;
+  --bg-card: #161b22;
+  --bg-card-hover: #1c2333;
+  --bg-card-alt: #0d1117;
+  --border: #21262d;
+  --border-glow: rgba(88, 166, 255, 0.12);
+  --text-primary: #f0f6fc;
+  --text-secondary: #8b949e;
+  --text-muted: #484f58;
+  --accent-green: #3fb950;
+  --accent-red: #f85149;
+  --accent-amber: #d29922;
+  --accent-blue: #58a6ff;
+  --accent-purple: #bc8cff;
+  --accent-cyan: #39d2c0;
+  --accent-pink: #f778ba;
+  --glow-green: rgba(63, 185, 80, 0.1);
+  --glow-red: rgba(248, 81, 73, 0.1);
+  --glow-blue: rgba(88, 166, 255, 0.08);
+  --glow-amber: rgba(210, 153, 34, 0.1);
+  --chart-bg: #0d1117;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 40px rgba(88, 166, 255, 0.06);
+  --table-stripe: rgba(255,255,255,0.02);
+}
+
+[data-theme="light"] {
+  --bg-primary: #f6f8fa;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f3f4f6;
+  --bg-card-alt: #f6f8fa;
+  --border: #d0d7de;
+  --border-glow: rgba(9, 105, 218, 0.08);
+  --text-primary: #1f2328;
+  --text-secondary: #656d76;
+  --text-muted: #8b949e;
+  --accent-green: #1a7f37;
+  --accent-red: #cf222e;
+  --accent-amber: #9a6700;
+  --accent-blue: #0969da;
+  --accent-purple: #8250df;
+  --accent-cyan: #0e8a7e;
+  --accent-pink: #bf3989;
+  --glow-green: rgba(26, 127, 55, 0.06);
+  --glow-red: rgba(207, 34, 46, 0.06);
+  --glow-blue: rgba(9, 105, 218, 0.05);
+  --glow-amber: rgba(154, 103, 0, 0.06);
+  --chart-bg: #f6f8fa;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  --shadow-glow: 0 0 40px rgba(9, 105, 218, 0.03);
+  --table-stripe: rgba(0,0,0,0.02);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 17px;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* -- Utility controls (integrated into nav) -- */
+.theme-toggle {
+  background: transparent; border: none; cursor: pointer;
+  font-size: 18px; color: var(--text-muted); transition: color 0.2s;
+  padding: 0 8px; height: 52px; display: flex; align-items: center;
+}
+.theme-toggle:hover { color: var(--text-primary); }
+.back-link {
+  color: var(--text-muted); text-decoration: none;
+  font-size: 15px; font-weight: 400; letter-spacing: 0.2px;
+  transition: color 0.2s; height: 52px; display: flex; align-items: center;
+  padding: 0 16px 0 0;
+}
+.back-link:hover { color: var(--text-primary); }
+
+/* -- Navigation: Rams principle #10 "as little design as possible" -- */
+.stock-nav {
+  position: sticky; top: 0; z-index: 900;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.stock-nav::-webkit-scrollbar { display: none; }
+.stock-nav .container {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; min-width: max-content; height: 52px;
+}
+.nav-tab {
+  padding: 0 18px; height: 52px;
+  display: inline-flex; align-items: center;
+  font-size: 15px; font-weight: 400; letter-spacing: 0.1px;
+  color: var(--text-muted); text-decoration: none;
+  transition: color 0.2s; white-space: nowrap;
+  position: relative;
+}
+.nav-tab:hover { color: var(--text-primary); }
+.nav-tab.active { color: var(--text-primary); font-weight: 500; }
+.nav-tab.active::after {
+  content: ''; position: absolute; bottom: 0; left: 18px; right: 18px;
+  height: 2px; background: var(--text-primary); border-radius: 1px;
+}
+.nav-spacer { width: 24px; flex-shrink: 0; }
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+section {
+  padding: 64px 0; opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+section.visible { opacity: 1; transform: translateY(0); }
+.section-header { margin-bottom: 32px; }
+.section-label {
+  font-size: 13px; font-weight: 500; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;
+}
+.section-title {
+  font-family: var(--font-body); font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 300; line-height: 1.3; letter-spacing: -0.3px;
+}
+.section-desc { color: var(--text-muted); margin-top: 8px; max-width: 680px; font-size: 16px; font-weight: 300; line-height: 1.7; }
+
+.hero {
+  min-height: 55vh; display: flex; align-items: center;
+  justify-content: center; text-align: center;
+  padding: 100px 24px 40px; position: relative; overflow: hidden;
+}
+.hero::before { display: none; }
+.hero-content { position: relative; z-index: 1; max-width: 880px; }
+.hero-badge {
+  display: inline-block; font-size: 14px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: var(--font-body); font-size: clamp(2.4rem, 5vw, 3.4rem);
+  font-weight: 300; line-height: 1.15; margin-bottom: 20px;
+  color: var(--text-primary); letter-spacing: -0.5px;
+}
+.hero-sub { font-size: 18px; color: var(--text-muted); max-width: 600px; margin: 0 auto 32px; font-weight: 300; line-height: 1.8; }
+
+.card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px; transition: var(--transition);
+}
+.card:hover { border-color: var(--border-glow); box-shadow: var(--shadow-glow); }
+.card h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+
+.bluf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.bluf-card { position: relative; overflow: hidden; padding: 22px; }
+.bluf-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.bluf-card.green-top::before { background: var(--accent-green); }
+.bluf-card.blue-top::before { background: var(--accent-blue); }
+.bluf-card.amber-top::before { background: var(--accent-amber); }
+.bluf-card.red-top::before { background: var(--accent-red); }
+.bluf-card.purple-top::before { background: var(--accent-purple); }
+.bluf-ticker { font-size: 16px; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
+.bluf-price { font-family: var(--font-body); font-size: 30px; font-weight: 600; }
+.bluf-target { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+.bluf-stance {
+  display: inline-block; padding: 5px 14px; border-radius: 50px;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.3px; margin-top: 10px;
+}
+.stance-green { background: var(--glow-green); color: var(--accent-green); }
+.stance-blue { background: var(--glow-blue); color: var(--accent-blue); }
+.stance-amber { background: var(--glow-amber); color: var(--accent-amber); }
+.stance-red { background: var(--glow-red); color: var(--accent-red); }
+
+.heat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.heat-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 20px; transition: var(--transition);
+  position: relative; overflow: hidden;
+}
+.heat-card:hover { border-color: var(--border-glow); transform: translateY(-2px); }
+.hc-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+.hc-ticker { font-size: 20px; font-weight: 700; }
+.hc-signal { padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 600; }
+.hc-price { font-family: var(--font-body); font-size: 26px; font-weight: 600; margin-bottom: 6px; }
+.hc-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 14px; color: var(--text-secondary); }
+.hc-bar { height: 4px; border-radius: 2px; background: var(--border); margin-top: 10px; overflow: hidden; }
+.hc-bar-fill { height: 100%; border-radius: 2px; width: 0; transition: width 1s ease; }
+.hc-note { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+
+.stock-divider { text-align: center; padding: 80px 24px 20px; }
+.divider-ticker { font-size: 42px; font-weight: 200; font-family: var(--font-body); letter-spacing: -1px; }
+.divider-name { font-size: 13px; color: var(--text-muted); margin-top: 6px; font-weight: 400; }
+
+.metrics-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+.metric-tile {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 16px; text-align: center;
+}
+.metric-tile .val { font-size: 22px; font-weight: 700; line-height: 1.2; }
+.metric-tile .lbl { font-size: 13px; color: var(--text-muted); margin-top: 4px; font-weight: 500; letter-spacing: 0.3px; }
+
+.chart-section { background: var(--chart-bg); border-radius: var(--radius); padding: 24px; border: 1px solid var(--border); }
+.bar-group { margin-bottom: 14px; }
+.bar-group:last-child { margin-bottom: 0; }
+.bar-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; font-weight: 500; }
+.bar-track { height: 24px; background: var(--bg-card); border-radius: 4px; overflow: hidden; }
+.bar-fill {
+  height: 100%; border-radius: 4px; width: 0; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex; align-items: center; padding-left: 8px; font-size: 13px; font-weight: 600; color: #fff;
+}
+.bar-fill.green { background: linear-gradient(90deg, var(--accent-green), #2ea043); }
+.bar-fill.blue { background: linear-gradient(90deg, var(--accent-blue), #388bfd); }
+.bar-fill.red { background: linear-gradient(90deg, var(--accent-red), #da3633); }
+.bar-fill.amber { background: linear-gradient(90deg, var(--accent-amber), #bb8009); }
+.bar-fill.purple { background: linear-gradient(90deg, var(--accent-purple), #a371f7); }
+.bar-fill.cyan { background: linear-gradient(90deg, var(--accent-cyan), #2ea8a1); }
+
+.risk-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.risk-tile {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 14px 16px; display: flex; justify-content: space-between; align-items: center;
+}
+.risk-tile .dim { font-size: 13px; font-weight: 500; }
+.risk-level { font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 50px; }
+.risk-high { background: var(--glow-red); color: var(--accent-red); }
+.risk-medium { background: var(--glow-amber); color: var(--accent-amber); }
+.risk-low { background: var(--glow-green); color: var(--accent-green); }
+
+.case-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.case-card h3 { font-size: 17px; }
+.case-list { list-style: none; }
+.case-list li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 15px; line-height: 1.6; display: flex; gap: 8px; }
+.case-list li:last-child { border-bottom: none; }
+.case-icon { font-size: 13px; flex-shrink: 0; margin-top: 4px; }
+.bull-icon { color: var(--accent-green); }
+.bear-icon { color: var(--accent-red); }
+
+.scenario-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.scenario-table th {
+  text-align: left; padding: 14px 16px; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.8px; text-transform: uppercase; color: var(--text-muted);
+  border-bottom: 2px solid var(--border);
+}
+.scenario-table td { padding: 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.scenario-table tr:nth-child(even) { background: var(--table-stripe); }
+.scenario-table .scenario-name { font-weight: 600; min-width: 160px; }
+.scenario-action {
+  display: inline-block; padding: 4px 14px; border-radius: 50px; font-size: 13px; font-weight: 600;
+}
+.action-add { background: var(--glow-green); color: var(--accent-green); }
+.action-hold { background: var(--glow-blue); color: var(--accent-blue); }
+.action-trim { background: var(--glow-amber); color: var(--accent-amber); }
+.action-monitor { background: rgba(139,148,158,0.1); color: var(--text-secondary); }
+.action-sell { background: var(--glow-red); color: var(--accent-red); }
+.action-buy { background: var(--glow-green); color: var(--accent-green); }
+.action-wait { background: var(--glow-amber); color: var(--accent-amber); }
+
+.scenario-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.scenario-tab {
+  padding: 12px 24px; border-radius: 50px; font-size: 15px; font-weight: 500;
+  border: 1px solid var(--border); background: var(--bg-card); cursor: pointer;
+  transition: var(--transition); color: var(--text-secondary);
+}
+.scenario-tab:hover { border-color: var(--accent-blue); color: var(--text-primary); }
+.scenario-tab.active { background: var(--accent-blue); color: #fff; border-color: var(--accent-blue); }
+.scenario-panel { display: none; }
+.scenario-panel.active { display: block; }
+.impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.impact-card {
+  background: var(--bg-card-alt); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 16px;
+}
+.impact-card .ic-ticker { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+.impact-card .ic-impact { font-size: 14px; margin-bottom: 6px; color: var(--text-secondary); }
+.impact-card .ic-action { font-size: 14px; }
+
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+  width: 2px; background: var(--border);
+}
+.tl-item { position: relative; margin-bottom: 24px; }
+.tl-item::before {
+  content: ''; position: absolute; left: -24px; top: 6px;
+  width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--border);
+  background: var(--bg-primary);
+}
+.tl-item.tl-red::before { border-color: var(--accent-red); background: var(--glow-red); }
+.tl-item.tl-amber::before { border-color: var(--accent-amber); background: var(--glow-amber); }
+.tl-item.tl-green::before { border-color: var(--accent-green); background: var(--glow-green); }
+.tl-item.tl-blue::before { border-color: var(--accent-blue); background: var(--glow-blue); }
+.tl-date { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.3px; }
+.tl-title { font-weight: 600; font-size: 16px; margin-top: 2px; }
+.tl-desc { font-size: 15px; color: var(--text-secondary); margin-top: 4px; line-height: 1.6; }
+
+.analyst-strip { max-width: 600px; }
+.rating-bar { display: flex; height: 32px; border-radius: 6px; overflow: hidden; margin-bottom: 12px; }
+.rating-segment { display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #fff; transition: width 1s ease; }
+.seg-strong-buy { background: #1a7f37; }
+.seg-buy { background: #3fb950; }
+.seg-hold { background: #d29922; }
+.seg-sell { background: #f85149; }
+.rating-legend { display: flex; gap: 16px; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-secondary); }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+.verdict-box {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 36px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.verdict-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+.verdict-box.v-green::before { background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan)); }
+.verdict-box.v-blue::before { background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple)); }
+.confidence-track { height: 8px; background: var(--border); border-radius: 4px; margin: 16px auto 8px; max-width: 300px; }
+.confidence-fill { height: 100%; border-radius: 4px; width: 0; transition: width 1.2s ease; }
+
+.comp-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); }
+.comp-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.comp-table th {
+  text-align: left; padding: 12px 14px; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.8px; text-transform: uppercase; color: var(--text-muted);
+  border-bottom: 2px solid var(--border); background: var(--bg-primary); white-space: nowrap;
+}
+.comp-table td { padding: 14px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.comp-table tr:nth-child(even) { background: var(--table-stripe); }
+.comp-table tr:hover { background: var(--bg-card-hover); }
+
+.entry-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.entry-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 20px; text-align: center;
+}
+.entry-card .ep-label { font-size: 13px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--text-muted); }
+.entry-card .ep-price { font-family: var(--font-body); font-size: 34px; font-weight: 600; margin: 8px 0; }
+.entry-card .ep-action { font-size: 15px; font-weight: 600; }
+.entry-card .ep-note { font-size: 14px; color: var(--text-secondary); margin-top: 8px; line-height: 1.6; }
+
+.disclaimer {
+  background: var(--bg-card-alt); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 24px; font-size: 14px;
+  color: var(--text-muted); line-height: 1.7; margin-top: 32px;
+}
+footer {
+  padding: 40px 24px; text-align: center; border-top: 1px solid var(--border);
+  font-size: 15px; color: var(--text-muted);
+}
+footer a { color: var(--accent-blue); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .case-columns, .entry-levels { grid-template-columns: 1fr; }
+  .nav-tab { padding: 0 12px; font-size: 14px; }
+  .nav-spacer { width: 12px; }
+  section { padding: 40px 0; }
+  .hero { min-height: 45vh; padding-top: 80px; }
+  .heat-grid { grid-template-columns: 1fr 1fr; }
+  .bluf-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .heat-grid { grid-template-columns: 1fr; }
+  .metrics-strip { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
 </head>
 <body>
-  
-  <div class="sidebar">
-    <div class="brand">
-      <span></span>
-      PROMPT AI SOLUTIONS
-    </div>
-    
-    <div class="nav-section">
-      <div class="nav-label">Command Center</div>
-      <a href="#" class="nav-link active">Dashboard</a>
-      <a href="#" class="nav-link">Market Heatmap</a>
-    </div>
-
-    <div class="nav-section" id="sidebar-nav">
-      <div class="nav-label">Deep Dives</div>
-      <a onclick="openDrawer('MU')" class="nav-link"><div class="nav-dot" style="background:var(--accent-green)"></div> MU (Strong Buy)</a>
-      <a onclick="openDrawer('META')" class="nav-link"><div class="nav-dot" style="background:var(--accent-blue)"></div> META (Strong Buy)</a>
-      <a onclick="openDrawer('BROS')" class="nav-link"><div class="nav-dot" style="background:var(--accent-purple)"></div> BROS (Starter)</a>
-    </div>
-
+<nav class="stock-nav" id="mainNav">
+  <div class="container">
+    <a href="/" class="back-link">&#8592; Home</a>
+    <a href="#bluf" class="nav-tab" data-section="bluf">Summary</a>
+    <a href="#heatmap" class="nav-tab" data-section="heatmap">Portfolio</a>
+    <div class="nav-spacer"></div>
+    <a href="#mu-section" class="nav-tab" data-section="mu-section">MU</a>
+    <a href="#meta-section" class="nav-tab" data-section="meta-section">META</a>
+    <a href="#bros-section" class="nav-tab" data-section="bros-section">BROS</a>
+    <div class="nav-spacer"></div>
+    <a href="#mag7" class="nav-tab" data-section="mag7">Mag 7</a>
+    <a href="#macro" class="nav-tab" data-section="macro">Macro</a>
+    <a href="#scenarios" class="nav-tab" data-section="scenarios">Scenarios</a>
+    <div class="nav-spacer"></div>
+    <a href="#sources" class="nav-tab" data-section="sources">Sources</a>
     <div style="flex:1"></div>
-    <div style="font-size:11px; color:var(--text-muted); padding: 0 12px;">Last updated: March 27, 2026</div>
+    <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">&#9790;</span></button>
   </div>
+</nav>
 
-  <div class="main-content">
-    <div class="header">
-      <div>
-        <div class="header-title">Portfolio Intelligence</div>
-        <div class="header-sub">9 equities. 150+ sources. Scenario-weighted frameworks.</div>
+<!-- HERO -->
+<section class="hero visible" id="bluf">
+  <div class="hero-content">
+    <div class="hero-badge">March 27, 2026</div>
+    <h1>Portfolio Intelligence</h1>
+    <p class="hero-sub">9 equities. 150+ sources. Scenario-weighted action frameworks updated every 6 hours.</p>
+  </div>
+</section>
+
+<!-- BLUF VERDICTS -->
+<section id="bluf-verdicts">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Bottom Line Up Front</div>
+      <h2 class="section-title">Executive Verdicts</h2>
+      <p class="section-desc">Traffic-light signal for each position. Green = Strong Buy/Add, Blue = Buy/Hold, Amber = Hold/Monitor.</p>
+    </div>
+    <div class="bluf-grid">
+      <div class="card bluf-card green-top"><div class="bluf-ticker" style="color:var(--accent-green);">MU</div><div class="bluf-price" style="color:var(--accent-green);">$363.87</div><div class="bluf-target">Target $443 (+22%) | P/E 16.78</div><span class="bluf-stance stance-green">Strong Buy on Weakness</span></div>
+      <div class="card bluf-card green-top"><div class="bluf-ticker" style="color:var(--accent-green);">META</div><div class="bluf-price" style="color:var(--accent-green);">$529</div><div class="bluf-target">Target $841 (+59%) | P/E 18.73 | 52-wk low</div><span class="bluf-stance stance-green">Strong Buy</span></div>
+      <div class="card bluf-card green-top"><div class="bluf-ticker" style="color:var(--accent-green);">NVDA</div><div class="bluf-price" style="color:var(--accent-green);">$171</div><div class="bluf-target">Target $266 (+55%) | P/E 37</div><span class="bluf-stance stance-green">Strong Buy</span></div>
+      <div class="card bluf-card green-top"><div class="bluf-ticker" style="color:var(--accent-green);">MSFT</div><div class="bluf-price" style="color:var(--accent-green);">$358</div><div class="bluf-target">Target $597 (+67%) | P/E ~21</div><span class="bluf-stance stance-green">Strong Buy</span></div>
+      <div class="card bluf-card blue-top"><div class="bluf-ticker" style="color:var(--accent-blue);">AMZN</div><div class="bluf-price" style="color:var(--accent-blue);">$208</div><div class="bluf-target">Target $279 (+34%) | P/E 29</div><span class="bluf-stance stance-blue">Buy</span></div>
+      <div class="card bluf-card blue-top"><div class="bluf-ticker" style="color:var(--accent-blue);">GOOG</div><div class="bluf-price" style="color:var(--accent-blue);">$285</div><div class="bluf-target">Target $375 (+32%) | P/E 25</div><span class="bluf-stance stance-blue">Buy</span></div>
+      <div class="card bluf-card blue-top"><div class="bluf-ticker" style="color:var(--accent-blue);">AAPL</div><div class="bluf-price" style="color:var(--accent-blue);">$248</div><div class="bluf-target">Target $296 (+19%) | P/E 32</div><span class="bluf-stance stance-blue">Buy/Hold</span></div>
+      <div class="card bluf-card purple-top"><div class="bluf-ticker" style="color:var(--accent-purple);">BROS</div><div class="bluf-price" style="color:var(--accent-purple);">$51</div><div class="bluf-target">Target $77 (+51%) | Fwd P/E 59 | Near 52-wk low ($46.52)</div><span class="bluf-stance stance-blue">Starter Position</span></div>
+      <div class="card bluf-card amber-top"><div class="bluf-ticker" style="color:var(--accent-amber);">TSLA</div><div class="bluf-price" style="color:var(--accent-amber);">$385</div><div class="bluf-target">Target $400 (+4%) | P/E 327</div><span class="bluf-stance stance-amber">Hold / Monitor</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO HEATMAP -->
+<section id="heatmap">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Portfolio Overview</div>
+      <h2 class="section-title">Holdings Heat Map</h2>
+      <p class="section-desc">Sorted by analyst upside. Bar = distance to consensus target.</p>
+    </div>
+    <div class="heat-grid">
+      <div class="heat-card"><div class="hc-head"><span class="hc-ticker" style="color:var(--accent-blue);">MSFT</span><span class="hc-signal stance-green">+67%</span></div><div class="hc-price">$358</div><div class="hc-meta"><span>P/E ~21</span><span>$2.77T</span><span>+17% rev</span></div><div class="hc-bar"><div class="hc-bar-fill" data-width="67" style="background:var(--accent-green);"></div></div><div class="hc-note">AI infrastructure leader. Azure + Copilot monetization.</div></div>
+      <div class="heat-card"><div class="hc-head"><span class="hc-ticker" style="color:var(--accent-green);">NVDA</span><span class="hc-signal stance-green">+55%</span></div><div class="hc-price">$171</div><div class="hc-meta"><span>P/E 37</span><span>$4.69T</span><span>+65% rev</span></div><div class="hc-bar"><div class="hc-bar-fill" data-width="55" style="background:var(--accent-green);"></div></div><div class="hc-note">AI compute monopoly. Blackwell ramp sustaining growth.</div></div>
+      <div class="heat-card"><div class="hc-head"><span class="hc-ticker" style="color:var(--accent-blue);">META</span><span class="hc-signal stance-green">+59%</span></div><div class="hc-price">$529</div><div class="hc-meta"><span>P/E 18.73</span><span>$1.39T</span><span>+24% rev</span></div><div class="hc-bar"><div class="hc-bar-fill" data-width="59" style="background:var(--accent-green);"></div></div><div class="hc-note">52-wk low. Ad machine + Llama 4 live. Max fear = max opportunity.</div></div>
+      <div class="heat-card"><div class="hc-head"><span class="hc-ticker" style="color:var(--accent-purple);">BROS</span><span class="hc-signal stance-green">+51%</span></div><div class="hc-price">$51</div><div class="hc-meta"><span>Fwd P/E 59</span><span>$8.3B</span><span>+28% rev</span></div><div class="hc-bar"><div class="hc-bar-fill" data-width="47" style="background:var(--accent-purple);"></div></div><div class="hc-note">High-growth drive-thru coffee. National expansion ahead.</div></div>
+      <div class="heat-card"><div class="hc-head"><span class="hc-ticker" style="color:var(--accent-blue);">AMZN</span><span class="hc-signal stance-green">+34%</span></div><div class="hc-price">$208</div><div class="hc-meta"><span>P/E 29</span><span>$2.2T</span><span>+12% rev</span></div><div class="hc-bar"><div class="hc-bar-fill" data-width="34" style="background:var(--accent-blue);"></div></div><div class="hc-note">AWS re-accelerating. Retail margins expanding.</div></div>
+      <div class="heat-card"><div class="hc-head"><span class="hc-ticker" style="color:var(--accent-blue);">GOOG</span><span class="hc-signal stance-green">+32%</span></div><div class="hc-price">$285</div><div class="hc-meta"><span>P/E 25</span><span>$2.1T</span><span>+14% rev</span></div><div class="hc-bar"><div class="hc-bar-fill" data-width="32" style="background:var(--accent-blue);"></div></div><div class="hc-note">Search + Cloud + YouTube. Gemini integration underway.</div></div>
+      <div class="heat-card"><div class="hc-head"><span class="hc-ticker" style="color:var(--accent-green);">MU</span><span class="hc-signal stance-green">+22%</span></div><div class="hc-price">$363.87</div><div class="hc-meta"><span>P/E 16.78</span><span>$410B</span><span>+196% rev</span></div><div class="hc-bar"><div class="hc-bar-fill" data-width="22" style="background:var(--accent-green);"></div></div><div class="hc-note">Cheapest growth in portfolio. HBM supercycle beneficiary.</div></div>
+      <div class="heat-card"><div class="hc-head"><span class="hc-ticker" style="color:var(--accent-blue);">AAPL</span><span class="hc-signal stance-blue">+19%</span></div><div class="hc-price">$248</div><div class="hc-meta"><span>P/E 32</span><span>$3.77T</span><span>~5% rev</span></div><div class="hc-bar"><div class="hc-bar-fill" data-width="19" style="background:var(--accent-blue);"></div></div><div class="hc-note">iPhone cycle maturing. Services growth is the story.</div></div>
+      <div class="heat-card"><div class="hc-head"><span class="hc-ticker" style="color:var(--accent-amber);">TSLA</span><span class="hc-signal stance-amber">+4%</span></div><div class="hc-price">$385</div><div class="hc-meta"><span>P/E 327</span><span>$1.43T</span><span>~0% rev</span></div><div class="hc-bar"><div class="hc-bar-fill" data-width="4" style="background:var(--accent-amber);"></div></div><div class="hc-note">Robotaxi investigation. Revenue flat. Valuation demands execution.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MU DEEP DIVE ============ -->
+<div id="mu-section">
+<div class="stock-divider"><div class="divider-ticker" style="color:var(--accent-green);">MU</div><div class="divider-name">Micron Technology, Inc. &middot; $363.87</div></div>
+
+<section id="mu-bluf"><div class="container"><div class="card bluf-card green-top" style="max-width:800px;margin:0 auto;"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;"><div><div class="bluf-price" style="color:var(--accent-green);">$363.87</div><div style="font-size:13px;color:var(--text-secondary);">Down ~23% from post-earnings highs | 6 straight down days, bouncing today ($345-$382 range)</div></div><span class="bluf-stance stance-green">Strong Buy on Weakness</span></div><p style="color:var(--text-secondary);margin-top:16px;font-size:14px;">The selloff is a tug-of-war: Google TurboQuant compression fears + capex/debt concerns + analyst downgrades vs. monster fundamentals. HBM4 is in volume production AHEAD of schedule for NVIDIA Vera Rubin. 2026 HBM supply fully sold out. Q3 guidance of $33.5B revenue eclipses any prior full-year revenue. At 6.4x forward earnings, this is a gift entry.</p></div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Fundamentals</div><h2 class="section-title">Key Metrics</h2></div>
+<div class="metrics-strip">
+  <div class="metric-tile"><div class="val" style="color:var(--accent-green);">$23.86B</div><div class="lbl">Q2 Revenue</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-green);">+196%</div><div class="lbl">Revenue YoY</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-green);">$12.20</div><div class="lbl">Q2 EPS</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-green);">75%</div><div class="lbl">Gross Margin</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-green);">6.4x</div><div class="lbl">Fwd P/E (FY27)</div></div>
+  <div class="metric-tile"><div class="val">$410B</div><div class="lbl">Market Cap</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-green);">$33.5B</div><div class="lbl">Q3 Rev Guide</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-green);">81%</div><div class="lbl">Q3 GM Guide</div></div>
+</div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Growth Trajectory</div><h2 class="section-title">Earnings Acceleration</h2></div>
+<div class="chart-section">
+  <div class="bar-group"><div class="bar-label"><span>Q2 FY26 Revenue</span><span>$23.86B</span></div><div class="bar-track"><div class="bar-fill green" data-width="71"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>Q3 FY26 Guidance</span><span>$33.50B</span></div><div class="bar-track"><div class="bar-fill green" data-width="100"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>Q2 Gross Margin</span><span>75%</span></div><div class="bar-track"><div class="bar-fill green" data-width="75"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>Q3 Gross Margin Guide</span><span>81%</span></div><div class="bar-track"><div class="bar-fill green" data-width="81"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>Q2 EPS</span><span>$12.20 (beat by 39%)</span></div><div class="bar-track"><div class="bar-fill green" data-width="64"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>Q3 EPS Guidance</span><span>$19.15</span></div><div class="bar-track"><div class="bar-fill green" data-width="100"></div></div></div>
+</div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Geopolitical Risk</div><h2 class="section-title">Exposure Assessment</h2></div>
+<div class="risk-strip">
+  <div class="risk-tile"><span class="dim">China Exit ($3.4B/12%)</span><span class="risk-level risk-high">High</span></div>
+  <div class="risk-tile"><span class="dim">Apr 9 Tariff Surcharge</span><span class="risk-level risk-high">High</span></div>
+  <div class="risk-tile"><span class="dim">$25B+ Capex/Debt</span><span class="risk-level risk-medium">Medium</span></div>
+  <div class="risk-tile"><span class="dim">Samsung/Hynix</span><span class="risk-level risk-medium">Medium</span></div>
+  <div class="risk-tile"><span class="dim">Cyclicality</span><span class="risk-level risk-medium">Medium</span></div>
+  <div class="risk-tile"><span class="dim">CHIPS Act</span><span class="risk-level risk-low">Low</span></div>
+  <div class="risk-tile"><span class="dim">US Regulatory</span><span class="risk-level risk-low">Low</span></div>
+  <div class="risk-tile"><span class="dim">Patent/IP</span><span class="risk-level risk-low">Low</span></div>
+</div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Thesis</div><h2 class="section-title">Bull and Bear Cases</h2></div>
+<div class="case-columns">
+  <div class="card case-card"><h3><span class="case-icon bull-icon">&#9650;</span> Bull Case &middot; $520 (+43%)</h3><ul class="case-list">
+    <li><span class="case-icon bull-icon">&#9650;</span> HBM4 36GB in volume production AHEAD of schedule for NVIDIA Vera Rubin; 2026 fully sold out</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> Q3 guidance ($33.5B) exceeds any prior full-year revenue in history</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> HBM4 48GB 16-die samples already shipping to customers; $100B TAM by 2028</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> DRAM pricing +171% YoY; DDR5 spot 4x since Sept 2025</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> $6.4B CHIPS Act funding de-risks US fab expansion</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> 6.4x forward P/E (FY27E) is the cheapest growth story in the S&amp;P 500</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> Structural memory shortage through 2027 supports pricing power</li>
+  </ul></div>
+  <div class="card case-card"><h3><span class="case-icon bear-icon">&#9660;</span> Bear Case &middot; $250 (-31%)</h3><ul class="case-list">
+    <li><span class="case-icon bear-icon">&#9660;</span> $25B+ annual capex creates execution risk if cycle turns</li>
+    <li><span class="case-icon bear-icon">&#9660;</span> China ban extends beyond critical infrastructure to consumer</li>
+    <li><span class="case-icon bear-icon">&#9660;</span> Tariff escalation on modules/SSDs compresses margins</li>
+    <li><span class="case-icon bear-icon">&#9660;</span> Memory is cyclical; current pricing may reflect peak dynamics</li>
+    <li><span class="case-icon bear-icon">&#9660;</span> Samsung and SK Hynix accelerating HBM4 timelines</li>
+    <li><span class="case-icon bear-icon">&#9660;</span> Google TurboQuant AI memory compression could reduce HBM demand intensity</li>
+  </ul></div>
+</div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Scenario Playbook</div><h2 class="section-title">Shareholder Action Framework</h2><p class="section-desc">Probability-weighted outcomes with specific actions for each scenario.</p></div>
+<table class="scenario-table"><thead><tr><th>Scenario</th><th>Trigger</th><th>Target</th><th>Prob</th><th>Action</th></tr></thead><tbody>
+  <tr><td class="scenario-name">HBM Supercycle Accelerates</td><td>Q3 beats $33.5B, HBM4 ramp confirmed, DRAM shortage extends</td><td style="font-weight:700;color:var(--accent-green);">$520</td><td>35%</td><td><span class="scenario-action action-hold">Hold Full</span></td></tr>
+  <tr><td class="scenario-name">Base Case Execution</td><td>Q3 in-line, steady HBM3E demand, gradual tariff resolution</td><td style="font-weight:700;color:var(--accent-blue);">$443</td><td>40%</td><td><span class="scenario-action action-add">Add on Dips</span></td></tr>
+  <tr><td class="scenario-name">Selloff Continues to $320</td><td>Post-earnings profit-taking extends another 10%</td><td style="font-weight:700;color:var(--accent-blue);">$320</td><td>15%</td><td><span class="scenario-action action-add">Aggressive Add</span></td></tr>
+  <tr><td class="scenario-name">Tariff + China Escalation</td><td>New tariffs &gt;25%, China broadens ban to consumer/enterprise</td><td style="font-weight:700;color:var(--accent-amber);">$280</td><td>7%</td><td><span class="scenario-action action-trim">Trim 20%</span></td></tr>
+  <tr><td class="scenario-name">Memory Cycle Breaks</td><td>DRAM spot drops &gt;30%, HBM demand disappoints, AI capex cut</td><td style="font-weight:700;color:var(--accent-red);">$200</td><td>3%</td><td><span class="scenario-action action-sell">Reduce to 50%</span></td></tr>
+</tbody></table>
+<div style="margin-top:16px;font-size:13px;color:var(--text-secondary);"><strong>Probability-Weighted Target:</strong> <span style="color:var(--accent-green);font-weight:700;">$435</span> (+20%) &middot; <strong>Expected Value:</strong> Strongly positive across all but tail scenarios.</div>
+</div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Wall Street</div><h2 class="section-title">Analyst Consensus</h2></div>
+<div class="analyst-strip">
+  <div class="rating-bar"><div class="rating-segment seg-strong-buy" data-width="65" style="width:0%;">65%</div><div class="rating-segment seg-buy" data-width="25" style="width:0%;">25%</div><div class="rating-segment seg-hold" data-width="10" style="width:0%;">10%</div></div>
+  <div class="rating-legend"><div class="legend-item"><div class="legend-dot" style="background:#1a7f37;"></div>Strong Buy</div><div class="legend-item"><div class="legend-dot" style="background:#3fb950;"></div>Buy</div><div class="legend-item"><div class="legend-dot" style="background:#d29922;"></div>Hold</div></div>
+</div>
+<div style="margin-top:16px;font-size:13px;color:var(--text-secondary);">Consensus: <strong style="color:var(--accent-green);">Strong Buy</strong> &middot; Avg Target: <strong>$443</strong> &middot; High: <strong>$700</strong> (Cantor) &middot; Low: <strong>$320</strong></div>
+<div style="margin-top:8px;font-size:12px;color:var(--text-muted);">
+  <strong>This week:</strong> Barclays $675, Cantor $700, KeyCorp $600, Wells Fargo $550 (bullish) vs. Summit downgrade to Hold, two analysts flagging 300%+ rally fully priced.
+  <strong>April 9:</strong> Tariff surcharge on memory modules/SSDs takes effect.
+</div>
+</div></section>
+
+<section><div class="container"><div class="verdict-box v-green">
+  <div style="font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--accent-green);margin-bottom:8px;">MU Verdict: Strong Buy on Weakness</div>
+  <p style="max-width:600px;margin:0 auto;color:var(--text-secondary);font-size:14px;">The 20% pullback from ATH is a mechanical dip, not a fundamental break. HBM demand is structural, not speculative. At 6.4x forward earnings (FY27E) with 196% revenue growth, this is the cheapest high-growth stock in the S&amp;P 500 by a wide margin.</p>
+  <div class="confidence-track"><div class="confidence-fill" data-width="88" style="background:var(--accent-green);"></div></div>
+  <div style="font-size:12px;color:var(--text-muted);">Confidence: 88%</div>
+</div></div></section>
+</div>
+
+<!-- ============ META DEEP DIVE ============ -->
+<div id="meta-section">
+<div class="stock-divider"><div class="divider-ticker" style="color:var(--accent-blue);">META</div><div class="divider-name">Meta Platforms, Inc. &middot; $529</div></div>
+
+<section id="meta-bluf"><div class="container"><div class="card bluf-card blue-top" style="max-width:800px;margin:0 auto;"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;"><div><div class="bluf-price" style="color:var(--accent-blue);">$529</div><div style="font-size:13px;color:var(--text-secondary);">52-week low | Down ~26% over 6 months | Below 50-day MA ($650) and 200-day MA ($691)</div></div><span class="bluf-stance stance-green">Strong Buy</span></div><p style="color:var(--text-secondary);margin-top:16px;font-size:14px;">Two child safety verdicts in 48 hours, Beijing blocking the $2B Manus AI acquisition, and ~2,000 pending suits have cratered the stock to 52-week lows. But the $201B ad machine is intact, Llama 4 is live, and at $529 with an $841 consensus target (+59%), this is maximum fear, maximum opportunity. Morningstar calls the selloff "overly punitive."</p></div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Fundamentals</div><h2 class="section-title">Key Metrics</h2></div>
+<div class="metrics-strip">
+  <div class="metric-tile"><div class="val" style="color:var(--accent-blue);">$201B</div><div class="lbl">FY2025 Revenue</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-blue);">+22%</div><div class="lbl">Revenue YoY</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-blue);">41%</div><div class="lbl">Q4 Op Margin</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-blue);">18.73x</div><div class="lbl">Forward P/E</div></div>
+  <div class="metric-tile"><div class="val">$1.39T</div><div class="lbl">Market Cap</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-blue);">$55B</div><div class="lbl">Q1 Guide (mid)</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-red);">$19.1B</div><div class="lbl">RL Losses '25</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-amber);">$125B</div><div class="lbl">2026 Capex</div></div>
+</div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Legal &amp; Regulatory</div><h2 class="section-title">Liability Tracker</h2></div>
+<div class="timeline">
+  <div class="tl-item tl-red"><div class="tl-date">March 25-27, 2026</div><div class="tl-title">BREAKING: Beijing Blocks $2B Manus AI Acquisition</div><div class="tl-desc">China placed exit bans on Manus AI cofounders, barring them from leaving the country. First time Beijing has used exit bans to impede a deal with a US tech firm. Alleges "Singapore-washing" to evade Chinese oversight.</div></div>
+  <div class="tl-item tl-red"><div class="tl-date">March 24, 2026</div><div class="tl-title">New Mexico Child Safety Verdict: $375M</div><div class="tl-desc">Jury found Meta liable for harm to minors. First US state to win at trial against a tech platform over child safety. Phase 2 trial (remedies) starts May 4. Appeal expected.</div></div>
+  <div class="tl-item tl-red"><div class="tl-date">March 25, 2026</div><div class="tl-title">LA Child Safety Verdict: $6M (Bellwether for ~2,000 Suits)</div><div class="tl-desc">Meta and YouTube found liable for designing addictive products. This is a bellwether case that could influence ~2,000 pending similar lawsuits. Internal docs showed Meta execs strategized to attract "tweens."</div></div>
+  <div class="tl-item tl-amber"><div class="tl-date">January 2026</div><div class="tl-title">FTC Appeal Filed (Antitrust)</div><div class="tl-desc">FTC appealing November 2025 ruling that Meta is not a monopolist. Appeal timeline: 12-18 months.</div></div>
+  <div class="tl-item tl-green"><div class="tl-date">November 2025</div><div class="tl-title">FTC Antitrust: Meta Wins</div><div class="tl-desc">Federal court ruled Meta is not a monopolist. Major legal victory, though FTC is appealing.</div></div>
+  <div class="tl-item tl-amber"><div class="tl-date">April 2025</div><div class="tl-title">EU DMA Fine: EUR 200M</div><div class="tl-desc">European Commission fine for Digital Markets Act violations. Compliance measures in progress.</div></div>
+  <div class="tl-item tl-amber"><div class="tl-date">Ongoing</div><div class="tl-title">40+ State Attorney General Lawsuits</div><div class="tl-desc">Multi-state litigation alleging harm to minors. Potential total exposure: $2-10B range (est.).</div></div>
+</div>
+<div class="card" style="margin-top:24px;background:var(--glow-amber);">
+  <div style="font-size:14px;font-weight:700;color:var(--accent-amber);margin-bottom:8px;">Total Liability Exposure Estimate</div>
+  <div style="font-size:13px;color:var(--text-secondary);"><strong>Low end:</strong> $5B (settlements) &middot; <strong>High end:</strong> $30B (Meta's own SEC filings reference "tens of billions") &middot; <strong>Pending:</strong> ~2,000 individual suits + 42+ state AG suits + class actions through 2027 &middot; <strong>Context:</strong> Meta has $46B annual FCF and $80B+ OCF. Even the high-end scenario is survivable.</div>
+</div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Risk Profile</div><h2 class="section-title">Exposure Assessment</h2></div>
+<div class="risk-strip">
+  <div class="risk-tile"><span class="dim">Child Safety Suits</span><span class="risk-level risk-high">High</span></div>
+  <div class="risk-tile"><span class="dim">AI Capex ROI</span><span class="risk-level risk-high">High</span></div>
+  <div class="risk-tile"><span class="dim">Reality Labs Burn</span><span class="risk-level risk-high">High</span></div>
+  <div class="risk-tile"><span class="dim">EU Regulation</span><span class="risk-level risk-medium">Medium</span></div>
+  <div class="risk-tile"><span class="dim">FTC Appeal</span><span class="risk-level risk-medium">Medium</span></div>
+  <div class="risk-tile"><span class="dim">Workforce Cuts</span><span class="risk-level risk-medium">Medium</span></div>
+  <div class="risk-tile"><span class="dim">Ad Market Share</span><span class="risk-level risk-low">Low</span></div>
+  <div class="risk-tile"><span class="dim">User Growth</span><span class="risk-level risk-low">Low</span></div>
+</div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Thesis</div><h2 class="section-title">Bull and Bear Cases</h2></div>
+<div class="case-columns">
+  <div class="card case-card"><h3><span class="case-icon bull-icon">&#9650;</span> Bull Case &middot; $900 (+64%)</h3><ul class="case-list">
+    <li><span class="case-icon bull-icon">&#9650;</span> $201B revenue base growing 22%+ with expanding margins</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> AI capex ($125B) builds competitive moat in inference and ads</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> Liability settlements manageable vs $80B+ annual OCF</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> FTC antitrust win removes breakup overhang</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> Threads surpassed X at 141.5M DAU; WhatsApp Business projected $30-40B long-term</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> Nebius $27B AI deal + Llama 4 live; closed-source "Avocado" model coming Q2</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> 18.73x P/E with 59% analyst upside; 0 Sell ratings among 42 analysts</li>
+  </ul></div>
+  <div class="card case-card"><h3><span class="case-icon bear-icon">&#9660;</span> Bear Case &middot; $380 (-31%)</h3><ul class="case-list">
+    <li><span class="case-icon bear-icon">&#9660;</span> SEC filings reference "tens of billions" in child safety exposure; ~2,000 suits pending</li>
+    <li><span class="case-icon bear-icon">&#9660;</span> Reality Labs: cumulative $83.6B losses; Horizon Worlds near-shutdown in March</li>
+    <li><span class="case-icon bear-icon">&#9660;</span> $125B AI capex with uncertain ROI timeline</li>
+    <li><span class="case-icon bear-icon">&#9660;</span> Llama 4 setbacks; closed-source pivot signals strategy uncertainty</li>
+    <li><span class="case-icon bear-icon">&#9660;</span> 20% layoffs signal cost pressure beneath growth narrative</li>
+  </ul></div>
+</div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Scenario Playbook</div><h2 class="section-title">Shareholder Action Framework</h2></div>
+<table class="scenario-table"><thead><tr><th>Scenario</th><th>Trigger</th><th>Target</th><th>Prob</th><th>Action</th></tr></thead><tbody>
+  <tr><td class="scenario-name">AI Monetization Inflects</td><td>AI-driven ad revenue visible in Q2/Q3, Llama/Avocado gains traction</td><td style="font-weight:700;color:var(--accent-green);">$900</td><td>25%</td><td><span class="scenario-action action-hold">Hold Full</span></td></tr>
+  <tr><td class="scenario-name">Base: Ad Machine Grinds</td><td>Q1 hits $55B guide, liability settlements &lt;$3B total, margins hold</td><td style="font-weight:700;color:var(--accent-blue);">$750</td><td>40%</td><td><span class="scenario-action action-add">Add on Dips</span></td></tr>
+  <tr><td class="scenario-name">Litigation Overhang Lingers</td><td>More verdicts, $5-8B total exposure, political pressure increases</td><td style="font-weight:700;color:var(--accent-amber);">$550</td><td>20%</td><td><span class="scenario-action action-hold">Hold / Patient</span></td></tr>
+  <tr><td class="scenario-name">Capex + Liability Double Hit</td><td>AI ROI questioned + $10B+ liability + regulatory crackdown</td><td style="font-weight:700;color:var(--accent-red);">$380</td><td>10%</td><td><span class="scenario-action action-trim">Trim 25%</span></td></tr>
+  <tr><td class="scenario-name">Regulatory Existential</td><td>FTC appeal succeeds + Congress passes restrictive child safety law</td><td style="font-weight:700;color:var(--accent-red);">$300</td><td>5%</td><td><span class="scenario-action action-sell">Reduce to 50%</span></td></tr>
+</tbody></table>
+<div style="margin-top:16px;font-size:13px;color:var(--text-secondary);"><strong>Probability-Weighted Target:</strong> <span style="color:var(--accent-green);font-weight:700;">$690</span> (+26%) &middot; <strong>Expected Value:</strong> Positive. Liability risk is real but priced in more than warranted.</div>
+</div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Wall Street</div><h2 class="section-title">Analyst Consensus</h2></div>
+<div class="analyst-strip">
+  <div class="rating-bar"><div class="rating-segment seg-strong-buy" data-width="60" style="width:0%;">60%</div><div class="rating-segment seg-buy" data-width="30" style="width:0%;">30%</div><div class="rating-segment seg-hold" data-width="8" style="width:0%;">8%</div><div class="rating-segment seg-sell" data-width="2" style="width:0%;">2%</div></div>
+  <div class="rating-legend"><div class="legend-item"><div class="legend-dot" style="background:#1a7f37;"></div>Strong Buy</div><div class="legend-item"><div class="legend-dot" style="background:#3fb950;"></div>Buy</div><div class="legend-item"><div class="legend-dot" style="background:#d29922;"></div>Hold</div><div class="legend-item"><div class="legend-dot" style="background:#f85149;"></div>Sell</div></div>
+</div>
+<div style="margin-top:16px;font-size:13px;color:var(--text-secondary);">Consensus: <strong style="color:var(--accent-green);">Strong Buy</strong> (42 analysts, 79 Buy / 7 Hold / 0 Sell) &middot; Avg Target: <strong>$862</strong> (+63%) &middot; High: <strong>$1,144</strong> &middot; Low: <strong>$676</strong></div>
+</div></section>
+
+<section><div class="container"><div class="verdict-box v-blue">
+  <div style="font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--accent-blue);margin-bottom:8px;">META Verdict: Strong Buy</div>
+  <p style="max-width:600px;margin:0 auto;color:var(--text-secondary);font-size:14px;">At 52-week lows with 59% analyst upside ($841 consensus), this is maximum fear pricing. The $201B ad machine, Llama 4 launch, and 41% operating margins are not broken. Child safety liability is real but manageable vs. $80B+ annual OCF. The Manus/Beijing block adds noise but not structural damage.</p>
+  <div class="confidence-track"><div class="confidence-fill" data-width="82" style="background:var(--accent-blue);"></div></div>
+  <div style="font-size:12px;color:var(--text-muted);">Confidence: 82%</div>
+</div></div></section>
+</div>
+
+<!-- ============ BROS EVALUATION ============ -->
+<div id="bros-section">
+<div class="stock-divider"><div class="divider-ticker" style="color:var(--accent-purple);">BROS</div><div class="divider-name">Dutch Bros Inc. &middot; $51 (near 52-wk low of $46.52)</div></div>
+
+<section><div class="container"><div class="card bluf-card purple-top" style="max-width:800px;margin:0 auto;"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;"><div><div class="bluf-price" style="color:var(--accent-purple);">$51</div><div style="font-size:13px;color:var(--text-secondary);">New Position Evaluation | Near 52-week low ($46.52) | Q4 EPS beat by 70%</div></div><span class="bluf-stance stance-blue">Starter Position</span></div><p style="color:var(--text-secondary);margin-top:16px;font-size:14px;">FY2025 revenue hit $1.64B (+28%), Q4 beat EPS estimates by 70%, and same-store sales grew +7.7%. AUV of $2.1M beats Starbucks ($1.8M) with sub-12-month payback. The forward P/E of 59x demands execution, but near 52-week lows with food menu national rollout ahead, the risk/reward favors a starter position scaling into pullbacks.</p></div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Fundamentals</div><h2 class="section-title">Key Metrics</h2></div>
+<div class="metrics-strip">
+  <div class="metric-tile"><div class="val" style="color:var(--accent-purple);">$1.64B</div><div class="lbl">FY2025 Revenue</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-purple);">+28%</div><div class="lbl">Revenue YoY</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-purple);">59x</div><div class="lbl">Forward P/E</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-purple);">$2.1M</div><div class="lbl">AUV (vs SBUX $1.8M)</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-purple);">+7.7%</div><div class="lbl">Q4 SSS Growth</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-green);">31.1%</div><div class="lbl">Shop Margin</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-green);">&lt;12 mo</div><div class="lbl">Payback Period</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-purple);">$2.0B</div><div class="lbl">2026 Rev Guide</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-purple);">181+</div><div class="lbl">New Shops 2026</div></div>
+</div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Entry Framework</div><h2 class="section-title">When to Buy</h2></div>
+<div class="entry-levels">
+  <div class="entry-card" style="border-color:var(--accent-green);"><div class="ep-label">Starter Position</div><div class="ep-price" style="color:var(--accent-green);">$50-55</div><div class="ep-action" style="color:var(--accent-green);">Buy 1/3 Position</div><div class="ep-note">Current range. Initiate small. Growth trajectory intact.</div></div>
+  <div class="entry-card" style="border-color:var(--accent-blue);"><div class="ep-label">Aggressive Add</div><div class="ep-price" style="color:var(--accent-blue);">$40-45</div><div class="ep-action" style="color:var(--accent-blue);">Add to 2/3 Position</div><div class="ep-note">Pullback to ~35-40x P/E. Excellent entry for a 29% grower.</div></div>
+  <div class="entry-card" style="border-color:var(--accent-purple);"><div class="ep-label">Full Conviction</div><div class="ep-price" style="color:var(--accent-purple);">Below $38</div><div class="ep-action" style="color:var(--accent-purple);">Full Position</div><div class="ep-note">If market panic creates a &lt;30x P/E on a 29% grower, back up the truck.</div></div>
+</div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Competitive</div><h2 class="section-title">BROS vs Starbucks</h2></div>
+<div class="chart-section">
+  <div class="bar-group"><div class="bar-label"><span>Revenue Growth (BROS)</span><span>+29%</span></div><div class="bar-track"><div class="bar-fill purple" data-width="97"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>Revenue Growth (SBUX)</span><span>+3%</span></div><div class="bar-track"><div class="bar-fill amber" data-width="10"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>Unit Expansion (BROS)</span><span>~160 new/yr</span></div><div class="bar-track"><div class="bar-fill purple" data-width="80"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>Unit Expansion (SBUX)</span><span>~400 new/yr</span></div><div class="bar-track"><div class="bar-fill amber" data-width="40"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>Same-Store Sales (BROS)</span><span>+6-8%</span></div><div class="bar-track"><div class="bar-fill purple" data-width="70"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>Same-Store Sales (SBUX)</span><span>+1-2%</span></div><div class="bar-track"><div class="bar-fill amber" data-width="15"></div></div></div>
+</div></div></section>
+
+<section><div class="container"><div class="verdict-box" style="border-top:3px solid var(--accent-purple);">
+  <div style="font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--accent-purple);margin-bottom:8px;">BROS Verdict: Starter Position</div>
+  <p style="max-width:600px;margin:0 auto;color:var(--text-secondary);font-size:14px;">Best-in-class unit economics: $2.1M AUV (beats SBUX), 31% shop margins, sub-12-month payback, 45% cash-on-cash returns. Near 52-week lows with food menu rollout and East Coast expansion ahead. Start 1/3 position, scale into the $42-46 range aggressively.</p>
+  <div class="confidence-track"><div class="confidence-fill" data-width="68" style="background:var(--accent-purple);"></div></div>
+  <div style="font-size:12px;color:var(--text-muted);">Confidence: 68%</div>
+</div></div></section>
+</div>
+
+<!-- ============ MAG 7 COMPARISON ============ -->
+<section id="mag7">
+  <div class="container">
+    <div class="section-header"><div class="section-label">Comparative Analysis</div><h2 class="section-title">Full Portfolio Matrix</h2><p class="section-desc">All 9 positions ranked by risk-adjusted upside potential.</p></div>
+    <div class="comp-wrap">
+    <table class="comp-table"><thead><tr><th>#</th><th>Ticker</th><th>Price</th><th>P/E</th><th>MCap</th><th>Rev Growth</th><th>Consensus</th><th>Target</th><th>Upside</th><th>Signal</th></tr></thead><tbody>
+      <tr><td>1</td><td style="font-weight:800;">MSFT</td><td>$358</td><td>~21</td><td>$2.77T</td><td>+17%</td><td style="color:var(--accent-green);">Strong Buy</td><td>$597</td><td style="color:var(--accent-green);font-weight:700;">+67%</td><td><span class="scenario-action action-add">Add</span></td></tr>
+      <tr><td>2</td><td style="font-weight:800;">NVDA</td><td>$171</td><td>37</td><td>$4.69T</td><td>+65%</td><td style="color:var(--accent-green);">Strong Buy</td><td>$266</td><td style="color:var(--accent-green);font-weight:700;">+55%</td><td><span class="scenario-action action-add">Add</span></td></tr>
+      <tr><td>3</td><td style="font-weight:800;">META</td><td>$529</td><td>18.73</td><td>$1.39T</td><td>+24%</td><td style="color:var(--accent-green);">Buy (42)</td><td>$841</td><td style="color:var(--accent-green);font-weight:700;">+59%</td><td><span class="scenario-action action-add">Add</span></td></tr>
+      <tr><td>4</td><td style="font-weight:800;">BROS</td><td>$51</td><td>59</td><td>$8.3B</td><td>+28%</td><td style="color:var(--accent-green);">Strong Buy</td><td>$77</td><td style="color:var(--accent-green);font-weight:700;">+47%</td><td><span class="scenario-action action-buy">Initiate</span></td></tr>
+      <tr><td>5</td><td style="font-weight:800;">AMZN</td><td>$208</td><td>29</td><td>$2.2T</td><td>+12%</td><td style="color:var(--accent-green);">Strong Buy</td><td>$279</td><td style="color:var(--accent-green);font-weight:700;">+34%</td><td><span class="scenario-action action-hold">Hold</span></td></tr>
+      <tr><td>6</td><td style="font-weight:800;">GOOG</td><td>$285</td><td>25</td><td>$2.1T</td><td>+14%</td><td style="color:var(--accent-blue);">Buy</td><td>$375</td><td style="color:var(--accent-green);font-weight:700;">+32%</td><td><span class="scenario-action action-hold">Hold</span></td></tr>
+      <tr><td>7</td><td style="font-weight:800;">MU</td><td>$364</td><td>16.78</td><td>$410B</td><td>+196%</td><td style="color:var(--accent-green);">Strong Buy</td><td>$443</td><td style="color:var(--accent-green);font-weight:700;">+22%</td><td><span class="scenario-action action-add">Add</span></td></tr>
+      <tr><td>8</td><td style="font-weight:800;">AAPL</td><td>$248</td><td>32</td><td>$3.77T</td><td>~5%</td><td style="color:var(--accent-blue);">Buy</td><td>$296</td><td style="color:var(--accent-blue);font-weight:700;">+19%</td><td><span class="scenario-action action-hold">Hold</span></td></tr>
+      <tr><td>9</td><td style="font-weight:800;">TSLA</td><td>$385</td><td>327</td><td>$1.43T</td><td>~0%</td><td style="color:var(--accent-amber);">Hold</td><td>$400</td><td style="color:var(--accent-amber);font-weight:700;">+4%</td><td><span class="scenario-action action-monitor">Monitor</span></td></tr>
+    </tbody></table>
+    </div>
+  </div>
+</section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Upside Potential</div><h2 class="section-title">Analyst Target vs Current Price</h2></div>
+<div class="chart-section">
+  <div class="bar-group"><div class="bar-label"><span>MSFT</span><span>+67%</span></div><div class="bar-track"><div class="bar-fill blue" data-width="67"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>NVDA</span><span>+55%</span></div><div class="bar-track"><div class="bar-fill green" data-width="55"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>META</span><span>+59%</span></div><div class="bar-track"><div class="bar-fill blue" data-width="59"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>BROS</span><span>+51%</span></div><div class="bar-track"><div class="bar-fill purple" data-width="51"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>AMZN</span><span>+34%</span></div><div class="bar-track"><div class="bar-fill blue" data-width="34"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>GOOG</span><span>+32%</span></div><div class="bar-track"><div class="bar-fill blue" data-width="32"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>MU</span><span>+22%</span></div><div class="bar-track"><div class="bar-fill green" data-width="22"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>AAPL</span><span>+19%</span></div><div class="bar-track"><div class="bar-fill blue" data-width="19"></div></div></div>
+  <div class="bar-group"><div class="bar-label"><span>TSLA</span><span>+4%</span></div><div class="bar-track"><div class="bar-fill amber" data-width="4"></div></div></div>
+</div></div></section>
+
+<!-- ============ MACRO CONTEXT ============ -->
+<section id="macro">
+  <div class="container">
+    <div class="section-header"><div class="section-label">Market Environment</div><h2 class="section-title">Macro &amp; Geopolitical Context</h2><p class="section-desc">The forces shaping your portfolio right now. Fresh data from 30+ sources as of March 27, 2026.</p></div>
+    <div class="risk-strip" style="margin-bottom:24px;">
+      <div class="risk-tile"><span class="dim">Iran Conflict (Mar 1)</span><span class="risk-level risk-high">Active</span></div>
+      <div class="risk-tile"><span class="dim">VIX</span><span class="risk-level risk-high">27.44</span></div>
+      <div class="risk-tile"><span class="dim">S&amp;P 500 YTD</span><span class="risk-level risk-high">-5.8%</span></div>
+      <div class="risk-tile"><span class="dim">NASDAQ YTD</span><span class="risk-level risk-high">-8.1%</span></div>
+      <div class="risk-tile"><span class="dim">Fed Funds Rate</span><span class="risk-level risk-medium">3.50-3.75%</span></div>
+      <div class="risk-tile"><span class="dim">WTI Crude</span><span class="risk-level risk-high">$100+</span></div>
+      <div class="risk-tile"><span class="dim">PCE Inflation</span><span class="risk-level risk-medium">2.7%</span></div>
+      <div class="risk-tile"><span class="dim">10Y Yield</span><span class="risk-level risk-medium">Elevated</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div class="card">
+        <h3 style="color:var(--accent-red);">Immediate Catalysts (Next 7 Days)</h3>
+        <ul style="list-style:none;font-size:13px;color:var(--text-secondary);">
+          <li style="padding:6px 0;border-bottom:1px solid var(--border);">&#9656; <strong>March 31 - April 2:</strong> Trump-Xi Beijing Summit. Trade truce clarity. AAPL most exposed.</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border);">&#9656; <strong>Any day now:</strong> Google Ad Tech ruling (Judge Brinkema). Potential forced divestiture of AdX/DFP.</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border);">&#9656; <strong>March 27:</strong> Trump extended Iran military deadline 10 days. Oil retreating below $97. Markets bouncing.</li>
+          <li style="padding:6px 0;">&#9656; <strong>March 26:</strong> Nasdaq entered official correction (-10% from highs). ARK dumped $84M in META/NVDA/AMD. BofA: largest weekly tech inflows since 2008 ($4.6B).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--accent-amber);">Key Macro Dynamics</h3>
+        <ul style="list-style:none;font-size:13px;color:var(--text-secondary);">
+          <li style="padding:6px 0;border-bottom:1px solid var(--border);">&#9656; <strong>Tariffs:</strong> Supreme Court struck down broad IEEPA tariffs (6-3), but sector-specific remain. 15% Section 122 on electronics. New Section 301 probes against 16 countries launched March 11.</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border);">&#9656; <strong>AI Capex:</strong> $635-690B combined hyperscaler spend. Big Tech issued $100B in bonds to fund it. Amazon projected FCF-negative.</li>
+          <li style="padding:6px 0;">&#9656; <strong>Fed:</strong> Held March 18. Only ONE cut expected in 2026. PCE inflation raised to 2.7%. Next FOMC: April 28-29.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <h3 style="color:var(--accent-blue);">Tariff Exposure by Holding (Ranked)</h3>
+      <div style="overflow-x:auto;">
+      <table class="scenario-table" style="margin-top:8px;">
+        <thead><tr><th>Ticker</th><th>Primary Exposure</th><th>Revenue at Risk</th><th>Severity</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:800;">AAPL</td><td>~90% iPhones made in China; 20% revenue from Greater China</td><td>$64B+</td><td><span class="risk-level risk-high">High</span></td></tr>
+          <tr><td style="font-weight:800;">TSLA</td><td>Battery minerals (China controls 80% graphite refining)</td><td>Margin compression</td><td><span class="risk-level risk-high">High</span></td></tr>
+          <tr><td style="font-weight:800;">NVDA</td><td>China export controls cost $4.5B in Q1 alone</td><td>$40B+ annual</td><td><span class="risk-level risk-high">High</span></td></tr>
+          <tr><td style="font-weight:800;">MU</td><td>China ban on critical infra; tariffs on modules/SSDs</td><td>Significant</td><td><span class="risk-level risk-high">High</span></td></tr>
+          <tr><td style="font-weight:800;">AMZN</td><td>Retail sourced from China; $200B capex component costs</td><td>Margin pressure</td><td><span class="risk-level risk-medium">Medium</span></td></tr>
+          <tr><td style="font-weight:800;">MSFT</td><td>Data center component imports; indirect exposure</td><td>Limited</td><td><span class="risk-level risk-low">Low</span></td></tr>
+          <tr><td style="font-weight:800;">META</td><td>Hardware (VR headsets); ad revenue largely domestic</td><td>Minimal</td><td><span class="risk-level risk-low">Low</span></td></tr>
+          <tr><td style="font-weight:800;">GOOG</td><td>Digital ad model; minimal physical goods</td><td>Indirect only</td><td><span class="risk-level risk-low">Low</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MACRO SCENARIO PLANNER ============ -->
+<section id="scenarios">
+  <div class="container">
+    <div class="section-header"><div class="section-label">Macro Scenarios</div><h2 class="section-title">Interactive Scenario Planner</h2><p class="section-desc">Three macro paths for Q2-Q4 2026. Click a scenario to see portfolio impact and recommended actions.</p></div>
+    <div class="scenario-tabs">
+      <button class="scenario-tab active" onclick="showScenario('soft',this)">Soft Landing (25%)</button>
+      <button class="scenario-tab" onclick="showScenario('tariff',this)">Tariff Escalation (40%)</button>
+      <button class="scenario-tab" onclick="showScenario('pullback',this)">AI Demand Pullback (35%)</button>
+    </div>
+
+    <div id="panel-soft" class="scenario-panel active">
+      <div class="card" style="margin-bottom:20px;"><h3 style="color:var(--accent-green);">Soft Landing Scenario</h3><p style="font-size:13px;color:var(--text-secondary);margin-top:8px;">Economy normalizes, trade tensions ease, AI spending validates. Tech re-rates higher.</p></div>
+      <div class="impact-grid">
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-green);">NVDA +30-40%</div><div class="ic-impact">AI capex validated. Blackwell demand exceeds supply.</div><div class="ic-action"><span class="scenario-action action-hold">Hold Full</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-green);">MU +25-35%</div><div class="ic-impact">Memory supercycle extends. HBM demand unrelenting.</div><div class="ic-action"><span class="scenario-action action-hold">Hold Full</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-green);">META +30-50%</div><div class="ic-impact">Ad revenue accelerates. Liability settles manageable.</div><div class="ic-action"><span class="scenario-action action-hold">Hold Full</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-green);">MSFT +25-35%</div><div class="ic-impact">Azure AI revenue inflects. Copilot adoption scales.</div><div class="ic-action"><span class="scenario-action action-hold">Hold Full</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-green);">AMZN +20-30%</div><div class="ic-impact">AWS re-accelerates. Retail margins expand.</div><div class="ic-action"><span class="scenario-action action-hold">Hold Full</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-green);">GOOG +20-25%</div><div class="ic-impact">Search holds, Cloud grows, Gemini monetizes.</div><div class="ic-action"><span class="scenario-action action-hold">Hold Full</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-blue);">AAPL +10-15%</div><div class="ic-impact">Steady. Services growth continues.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-purple);">BROS +25-40%</div><div class="ic-impact">Consumer spending holds. Expansion accelerates.</div><div class="ic-action"><span class="scenario-action action-add">Add</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-amber);">TSLA +5-15%</div><div class="ic-impact">Robotaxi clarity helps but valuation caps upside.</div><div class="ic-action"><span class="scenario-action action-monitor">Monitor</span></div></div>
       </div>
     </div>
 
-    <div class="dashboard">
-      <div class="card-header">Top Convictions (BLUF)</div>
-      <div class="grid-4" id="overview-grid"></div>
+    <div id="panel-tariff" class="scenario-panel">
+      <div class="card" style="margin-bottom:20px;"><h3 style="color:var(--accent-red);">Tariff Escalation Scenario</h3><p style="font-size:13px;color:var(--text-secondary);margin-top:8px;">Trade war intensifies, supply chains disrupted, recession risk rises. Defensive positioning needed.</p></div>
+      <div class="impact-grid">
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">MU -15-25%</div><div class="ic-impact">Tariffs on memory modules. China ban broadens.</div><div class="ic-action"><span class="scenario-action action-trim">Trim 20%</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">NVDA -10-20%</div><div class="ic-impact">Export controls tighten. China revenue at risk.</div><div class="ic-action"><span class="scenario-action action-monitor">Monitor</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-amber);">AAPL -10-15%</div><div class="ic-impact">iPhone supply chain disruption.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-amber);">TSLA -10-20%</div><div class="ic-impact">Shanghai Gigafactory tariff risk.</div><div class="ic-action"><span class="scenario-action action-trim">Trim 15%</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-blue);">META -5-10%</div><div class="ic-impact">Mostly domestic revenue. Moderate ad pullback risk.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-blue);">MSFT -5-10%</div><div class="ic-impact">Software resilient. Enterprise demand durable.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-blue);">AMZN -5-10%</div><div class="ic-impact">AWS resilient. E-commerce input cost pressure.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-blue);">GOOG -5-8%</div><div class="ic-impact">Ad revenue may soften. Cloud demand stable.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-amber);">BROS -10-15%</div><div class="ic-impact">Consumer spending pullback. Input costs rise.</div><div class="ic-action"><span class="scenario-action action-wait">Wait to Add</span></div></div>
+      </div>
+    </div>
 
-      <div class="card-header mt-4">Full Heatmap</div>
-      <div class="grid-3" id="heatmap-grid"></div>
-
-      <div class="card-header mt-4">Macro Risk Landscape</div>
-      <div class="grid-4" id="macro-grid"></div>
+    <div id="panel-pullback" class="scenario-panel">
+      <div class="card" style="margin-bottom:20px;"><h3 style="color:var(--accent-amber);">AI Demand Pullback Scenario</h3><p style="font-size:13px;color:var(--text-secondary);margin-top:8px;">AI capex questioned, ROI scrutiny intensifies, spending cuts announced. Selective damage.</p></div>
+      <div class="impact-grid">
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">NVDA -25-35%</div><div class="ic-impact">Directly tied to AI capex. Blackwell orders soften.</div><div class="ic-action"><span class="scenario-action action-trim">Trim 25%</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">MU -20-30%</div><div class="ic-impact">HBM demand tied to AI buildout. Memory pricing corrects.</div><div class="ic-action"><span class="scenario-action action-trim">Trim 20%</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-amber);">META -10-15%</div><div class="ic-impact">$125B capex questioned. But ad revenue holds.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-amber);">MSFT -10-15%</div><div class="ic-impact">Azure AI growth slows. Core enterprise holds.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-amber);">AMZN -8-12%</div><div class="ic-impact">AWS Bedrock demand questioned. Retail stable.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-amber);">GOOG -8-12%</div><div class="ic-impact">Gemini ROI questioned. Search and YouTube hold.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-blue);">AAPL -3-5%</div><div class="ic-impact">Least AI-dependent. Defensive positioning.</div><div class="ic-action"><span class="scenario-action action-hold">Safe Haven</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-blue);">BROS 0 to -5%</div><div class="ic-impact">Not AI-correlated. Insulated from tech capex.</div><div class="ic-action"><span class="scenario-action action-add">Add (uncorrelated)</span></div></div>
+        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-amber);">TSLA -5-15%</div><div class="ic-impact">AI narrative damaged. Robotaxi timeline questioned.</div><div class="ic-action"><span class="scenario-action action-monitor">Monitor</span></div></div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- Slide-over Drawer for Deep Dives -->
-  <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
-  <div class="drawer" id="side-drawer">
-    <div class="drawer-header">
-      <div>
-        <div style="font-size:24px; font-weight: 700; color:var(--text-primary)" id="drawer-title"></div>
-        <div style="font-size:14px; color:var(--text-secondary); margin-top:4px;">Deep Dive Intel Framework</div>
-      </div>
-      <button class="drawer-close" onclick="closeDrawer()">&times;</button>
-    </div>
-    <div class="drawer-body">
-      <div class="card-header">Executive Verdict</div>
-      <div class="bento-card mb-4" id="drawer-bluf" style="font-size:15px; border-left: 2px solid var(--accent-blue);"></div>
-      
-      <div class="grid-2" id="drawer-metrics" style="gap:16px;"></div>
-
-      <div class="card-header mt-4 mb-2">Thesis Alignment</div>
-      <div class="grid-2">
-        <div class="bento-card" style="padding: 16px;">
-          <h4 style="font-size:13px; font-weight:600; margin-bottom:12px; color:var(--accent-green)">Bull Case</h4>
-          <ul id="drawer-bull" style="list-style:none;"></ul>
+<!-- ============ SOURCES ============ -->
+<section id="sources">
+  <div class="container">
+    <div class="section-header"><div class="section-label">Methodology</div><h2 class="section-title">Sources &amp; Data Freshness</h2></div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:16px;">This analysis synthesized <strong>150+ sources</strong> across earnings transcripts, SEC filings, analyst reports, court documents, regulatory filings, and real-time market data. Data current as of <strong>March 27, 2026</strong>.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:13px;color:var(--text-secondary);">
+        <div>
+          <div style="font-weight:700;color:var(--text-primary);margin-bottom:8px;">Primary Sources</div>
+          <ul style="list-style:none;">
+            <li>&#8226; Micron Q2 FY2026 Earnings Release &amp; Transcript</li>
+            <li>&#8226; Meta Platforms FY2025 10-K Filing</li>
+            <li>&#8226; Meta Q1 2026 Guidance (Earnings Call)</li>
+            <li>&#8226; NM District Court: State v. Meta Platforms (Mar 24)</li>
+            <li>&#8226; FTC v. Meta Platforms (Nov '25 Ruling, Jan '26 Appeal)</li>
+            <li>&#8226; CHIPS Act Implementation (Dept. of Commerce)</li>
+            <li>&#8226; DRAMeXchange / TrendForce Spot Pricing</li>
+            <li>&#8226; Dutch Bros Q4 2025 Earnings Release</li>
+          </ul>
         </div>
-        <div class="bento-card" style="padding: 16px;">
-          <h4 style="font-size:13px; font-weight:600; margin-bottom:12px; color:var(--accent-red)">Bear Case</h4>
-          <ul id="drawer-bear" style="list-style:none;"></ul>
+        <div>
+          <div style="font-weight:700;color:var(--text-primary);margin-bottom:8px;">Analyst Coverage</div>
+          <ul style="list-style:none;">
+            <li>&#8226; Morgan Stanley, Goldman Sachs, JP Morgan Research</li>
+            <li>&#8226; BofA, Citi, Barclays Semiconductor Coverage</li>
+            <li>&#8226; Bernstein, Evercore ISI, Raymond James</li>
+            <li>&#8226; Bloomberg Consensus Estimates</li>
+            <li>&#8226; S&amp;P Capital IQ Ratings Distribution</li>
+            <li>&#8226; Gartner, IDC Semiconductor Forecasts</li>
+            <li>&#8226; TipRanks, Seeking Alpha Consensus</li>
+            <li>&#8226; Real-time market data (March 27, 2026)</li>
+          </ul>
         </div>
       </div>
     </div>
+    <div class="disclaimer"><strong>Disclaimer:</strong> This analysis is for informational purposes only and does not constitute investment advice. All scenario projections are probability-weighted estimates based on publicly available information and may not reflect future outcomes. Past performance does not guarantee future results. Consult a licensed financial advisor before making investment decisions. Data as of March 27, 2026.</div>
   </div>
+</section>
 
+<footer><div class="container"><p>&copy; 2026 <a href="/">Prompt AI Solutions</a> &middot; promptaisolutions.com</p></div></footer>
+
+<script>
+function toggleTheme(){var h=document.documentElement;var n=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('theme',n);document.querySelector('.theme-icon').innerHTML=n==='dark'?'&#9790;':'&#9788;';}
+(function(){var s=localStorage.getItem('theme');if(s){document.documentElement.setAttribute('data-theme',s);}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches){document.documentElement.setAttribute('data-theme','light');}var i=document.querySelector('.theme-icon');if(i)i.innerHTML=document.documentElement.getAttribute('data-theme')==='dark'?'&#9790;':'&#9788;';})();
+
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');entry.target.querySelectorAll('.bar-fill[data-width]').forEach(function(b){setTimeout(function(){b.style.width=b.dataset.width+'%';},200);});entry.target.querySelectorAll('.rating-segment[data-width]').forEach(function(s){setTimeout(function(){s.style.width=s.dataset.width+'%';},300);});entry.target.querySelectorAll('.confidence-fill[data-width]').forEach(function(b){setTimeout(function(){b.style.width=b.dataset.width+'%';},400);});entry.target.querySelectorAll('.hc-bar-fill[data-width]').forEach(function(b){setTimeout(function(){b.style.width=b.dataset.width+'%';},300);});}});},{threshold:0.1});
+document.querySelectorAll('section:not(.hero)').forEach(function(s){observer.observe(s);});
+
+function showScenario(id,btn){document.querySelectorAll('.scenario-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.scenario-tab').forEach(function(t){t.classList.remove('active');});document.getElementById('panel-'+id).classList.add('active');if(btn)btn.classList.add('active');}
+
+/* Nav active state tracking */
+(function(){
+  var navTabs=document.querySelectorAll('.nav-tab[data-section]');
+  var sections=[];
+  navTabs.forEach(function(tab){
+    var sec=document.getElementById(tab.dataset.section);
+    if(sec)sections.push({el:sec,tab:tab,id:tab.dataset.section});
+  });
+  /* Also check parent sections for deep-dive IDs that may be dividers */
+  var allSections=document.querySelectorAll('section[id], .stock-divider[id]');
+
+  var navObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var id=entry.target.id;
+        /* Map section IDs to nav tabs */
+        var match=id;
+        if(id==='bluf-verdicts'||id==='bluf')match='bluf';
+        navTabs.forEach(function(t){
+          if(t.dataset.section===match)t.classList.add('active');
+          else t.classList.remove('active');
+        });
+      }
+    });
+  },{rootMargin:'-40% 0px -55% 0px'});
+
+  allSections.forEach(function(s){navObs.observe(s);});
+
+  /* Smooth scroll with offset for sticky nav */
+  navTabs.forEach(function(tab){
+    tab.addEventListener('click',function(e){
+      e.preventDefault();
+      var target=document.querySelector(tab.getAttribute('href'));
+      if(target){
+        var offset=60;
+        var y=target.getBoundingClientRect().top+window.pageYOffset-offset;
+        window.scrollTo({top:y,behavior:'smooth'});
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>
