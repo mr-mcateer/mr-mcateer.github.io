@@ -86,74 +86,50 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* -- Utility controls (integrated into nav) -- */
 .theme-toggle {
-  position: fixed; top: 20px; right: 20px; z-index: 1000;
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: 50px; padding: 8px 14px; cursor: pointer;
-  font-size: 18px; transition: var(--transition); box-shadow: var(--shadow);
+  background: transparent; border: none; cursor: pointer;
+  font-size: 14px; color: var(--text-muted); transition: color 0.2s;
+  padding: 0 4px; height: 44px; display: flex; align-items: center;
 }
-.theme-toggle:hover { border-color: var(--accent-blue); }
+.theme-toggle:hover { color: var(--text-primary); }
 .back-link {
-  position: fixed; top: 20px; left: 20px; z-index: 1000;
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: 50px; padding: 8px 16px; color: var(--text-secondary);
-  text-decoration: none; font-size: 13px; font-weight: 500;
-  transition: var(--transition); box-shadow: var(--shadow);
+  color: var(--text-muted); text-decoration: none;
+  font-size: 12px; font-weight: 400; letter-spacing: 0.2px;
+  transition: color 0.2s; height: 44px; display: flex; align-items: center;
+  padding: 0 12px 0 0;
 }
-.back-link:hover { color: var(--accent-blue); border-color: var(--accent-blue); }
+.back-link:hover { color: var(--text-primary); }
 
+/* -- Navigation: Rams principle #10 "as little design as possible" -- */
 .stock-nav {
   position: sticky; top: 0; z-index: 900;
-  background: rgba(6,9,15,0.85); border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border);
   overflow-x: auto; -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
-[data-theme="light"] .stock-nav { background: rgba(246,248,250,0.88); }
 .stock-nav::-webkit-scrollbar { display: none; }
 .stock-nav .container {
-  display: flex; align-items: center; gap: 2px; min-width: max-content;
-  padding: 8px 24px;
-}
-.nav-group {
-  display: flex; align-items: center; gap: 2px;
-  padding: 0 4px;
-}
-.nav-divider {
-  width: 1px; height: 20px; background: var(--border);
-  margin: 0 10px; flex-shrink: 0;
-}
-.nav-group-label {
-  font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
-  text-transform: uppercase; color: var(--text-muted);
-  padding: 0 6px 0 2px; white-space: nowrap;
-  user-select: none;
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; min-width: max-content; height: 44px;
 }
 .nav-tab {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 6px 12px; font-size: 12px; font-weight: 600;
-  color: var(--text-secondary); text-decoration: none;
-  border-radius: 6px; transition: var(--transition);
-  white-space: nowrap; position: relative;
+  padding: 0 16px; height: 44px;
+  display: inline-flex; align-items: center;
+  font-size: 12px; font-weight: 400; letter-spacing: 0.2px;
+  color: var(--text-muted); text-decoration: none;
+  transition: color 0.2s; white-space: nowrap;
+  position: relative;
 }
-.nav-tab:hover { color: var(--text-primary); background: var(--bg-card); }
-.nav-tab.active { color: var(--text-primary); background: var(--bg-card); box-shadow: 0 0 0 1px var(--border); }
-.nav-dot {
-  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+.nav-tab:hover { color: var(--text-primary); }
+.nav-tab.active { color: var(--text-primary); font-weight: 500; }
+.nav-tab.active::after {
+  content: ''; position: absolute; bottom: 0; left: 16px; right: 16px;
+  height: 1.5px; background: var(--text-primary); border-radius: 1px;
 }
-.nav-dot.green { background: var(--accent-green); box-shadow: 0 0 6px var(--accent-green); }
-.nav-dot.blue { background: var(--accent-blue); box-shadow: 0 0 6px var(--accent-blue); }
-.nav-dot.purple { background: var(--accent-purple); box-shadow: 0 0 6px var(--accent-purple); }
-.nav-dot.amber { background: var(--accent-amber); box-shadow: 0 0 6px var(--accent-amber); }
-.nav-dot.cyan { background: var(--accent-cyan); box-shadow: 0 0 6px var(--accent-cyan); }
-.nav-dot.red { background: var(--accent-red); box-shadow: 0 0 6px var(--accent-red); }
-.nav-tab .nav-signal {
-  font-size: 9px; font-weight: 700; letter-spacing: 0.3px;
-  padding: 1px 5px; border-radius: 3px; line-height: 1.3;
-}
-.nav-signal.up { background: var(--glow-green); color: var(--accent-green); }
-.nav-signal.hold { background: var(--glow-amber); color: var(--accent-amber); }
-.nav-signal.new { background: rgba(188,140,255,0.12); color: var(--accent-purple); }
+/* Spacing between groups -- just breathing room, no divider chrome */
+.nav-spacer { width: 20px; flex-shrink: 0; }
 
 .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
 section {
@@ -163,39 +139,33 @@ section {
 section.visible { opacity: 1; transform: translateY(0); }
 .section-header { margin-bottom: 32px; }
 .section-label {
-  font-size: 11px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--accent-blue); margin-bottom: 8px;
+  font-size: 10px; font-weight: 500; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;
 }
 .section-title {
-  font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 700; line-height: 1.2;
+  font-family: var(--font-body); font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  font-weight: 300; line-height: 1.3; letter-spacing: -0.3px;
 }
-.section-desc { color: var(--text-secondary); margin-top: 8px; max-width: 680px; }
+.section-desc { color: var(--text-muted); margin-top: 8px; max-width: 680px; font-size: 14px; font-weight: 300; }
 
 .hero {
   min-height: 55vh; display: flex; align-items: center;
   justify-content: center; text-align: center;
   padding: 100px 24px 40px; position: relative; overflow: hidden;
 }
-.hero::before {
-  content: ''; position: absolute; top: -30%; left: 50%;
-  transform: translateX(-50%); width: 900px; height: 900px;
-  background: radial-gradient(circle, var(--glow-blue) 0%, transparent 70%);
-  pointer-events: none;
-}
+.hero::before { display: none; }
 .hero-content { position: relative; z-index: 1; max-width: 880px; }
 .hero-badge {
-  display: inline-block; background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: 50px; padding: 6px 18px; font-size: 11px; font-weight: 700;
-  letter-spacing: 2px; text-transform: uppercase; color: var(--accent-blue); margin-bottom: 20px;
+  display: inline-block; font-size: 11px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 24px;
 }
 .hero h1 {
-  font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.6rem);
-  font-weight: 800; line-height: 1.1; margin-bottom: 18px;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  font-family: var(--font-body); font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 300; line-height: 1.15; margin-bottom: 20px;
+  color: var(--text-primary); letter-spacing: -0.5px;
 }
-.hero-sub { font-size: 17px; color: var(--text-secondary); max-width: 700px; margin: 0 auto 32px; }
+.hero-sub { font-size: 15px; color: var(--text-muted); max-width: 560px; margin: 0 auto 32px; font-weight: 300; line-height: 1.7; }
 
 .card {
   background: var(--bg-card); border: 1px solid var(--border);
@@ -241,8 +211,8 @@ section.visible { opacity: 1; transform: translateY(0); }
 .hc-note { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
 
 .stock-divider { text-align: center; padding: 80px 24px 20px; }
-.divider-ticker { font-size: 56px; font-weight: 800; font-family: var(--font-display); }
-.divider-name { font-size: 16px; color: var(--text-secondary); margin-top: 4px; }
+.divider-ticker { font-size: 42px; font-weight: 200; font-family: var(--font-body); letter-spacing: -1px; }
+.divider-name { font-size: 13px; color: var(--text-muted); margin-top: 6px; font-weight: 400; }
 
 .metrics-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
 .metric-tile {
@@ -402,9 +372,8 @@ footer a { color: var(--accent-blue); text-decoration: none; }
 
 @media (max-width: 768px) {
   .case-columns, .entry-levels { grid-template-columns: 1fr; }
-  .nav-tab { padding: 5px 10px; font-size: 11px; }
-  .nav-group-label { display: none; }
-  .nav-divider { margin: 0 6px; }
+  .nav-tab { padding: 0 10px; font-size: 11px; }
+  .nav-spacer { width: 10px; }
   section { padding: 40px 0; }
   .hero { min-height: 45vh; padding-top: 80px; }
   .heat-grid { grid-template-columns: 1fr 1fr; }
@@ -417,46 +386,32 @@ footer a { color: var(--accent-blue); text-decoration: none; }
 </style>
 </head>
 <body>
-<a href="/" class="back-link">&#8592; Home</a>
-<button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">&#9790;</span></button>
-
 <nav class="stock-nav" id="mainNav">
   <div class="container">
-    <!-- Overview group -->
-    <div class="nav-group">
-      <span class="nav-group-label">Overview</span>
-      <a href="#bluf" class="nav-tab" data-section="bluf">Summary</a>
-      <a href="#heatmap" class="nav-tab" data-section="heatmap"><span class="nav-dot cyan"></span>Portfolio</a>
-    </div>
-    <div class="nav-divider"></div>
-    <!-- Deep Dives group -->
-    <div class="nav-group">
-      <span class="nav-group-label">Deep Dives</span>
-      <a href="#mu-section" class="nav-tab" data-section="mu-section"><span class="nav-dot green"></span>MU <span class="nav-signal up">+22%</span></a>
-      <a href="#meta-section" class="nav-tab" data-section="meta-section"><span class="nav-dot blue"></span>META <span class="nav-signal up">+59%</span></a>
-      <a href="#bros-section" class="nav-tab" data-section="bros-section"><span class="nav-dot purple"></span>BROS <span class="nav-signal new">NEW</span></a>
-    </div>
-    <div class="nav-divider"></div>
-    <!-- Context group -->
-    <div class="nav-group">
-      <span class="nav-group-label">Context</span>
-      <a href="#mag7" class="nav-tab" data-section="mag7"><span class="nav-dot cyan"></span>Mag 7</a>
-      <a href="#macro" class="nav-tab" data-section="macro"><span class="nav-dot amber"></span>Macro</a>
-      <a href="#scenarios" class="nav-tab" data-section="scenarios"><span class="nav-dot red"></span>Scenarios</a>
-    </div>
-    <div class="nav-divider"></div>
-    <div class="nav-group">
-      <a href="#sources" class="nav-tab" data-section="sources">Sources</a>
-    </div>
+    <a href="/" class="back-link">&#8592; Home</a>
+    <a href="#bluf" class="nav-tab" data-section="bluf">Summary</a>
+    <a href="#heatmap" class="nav-tab" data-section="heatmap">Portfolio</a>
+    <div class="nav-spacer"></div>
+    <a href="#mu-section" class="nav-tab" data-section="mu-section">MU</a>
+    <a href="#meta-section" class="nav-tab" data-section="meta-section">META</a>
+    <a href="#bros-section" class="nav-tab" data-section="bros-section">BROS</a>
+    <div class="nav-spacer"></div>
+    <a href="#mag7" class="nav-tab" data-section="mag7">Mag 7</a>
+    <a href="#macro" class="nav-tab" data-section="macro">Macro</a>
+    <a href="#scenarios" class="nav-tab" data-section="scenarios">Scenarios</a>
+    <div class="nav-spacer"></div>
+    <a href="#sources" class="nav-tab" data-section="sources">Sources</a>
+    <div style="flex:1"></div>
+    <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">&#9790;</span></button>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero visible" id="bluf">
   <div class="hero-content">
-    <div class="hero-badge">Portfolio Intelligence Brief &middot; March 27, 2026</div>
-    <h1>9-Stock Equity Analysis with Scenario Playbooks</h1>
-    <p class="hero-sub">Consulting-grade research across your Mag 7 holdings plus MU and BROS. Shareholder action frameworks, probability-weighted scenarios, and decision tools built for volatile markets. 150+ sources. Data as of market close March 27, 2026.</p>
+    <div class="hero-badge">March 27, 2026</div>
+    <h1>Portfolio Intelligence</h1>
+    <p class="hero-sub">9 equities. 150+ sources. Scenario-weighted action frameworks updated every 6 hours.</p>
   </div>
 </section>
 
