@@ -104,24 +104,56 @@ body {
 
 .stock-nav {
   position: sticky; top: 0; z-index: 900;
-  background: var(--bg-primary); border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  background: rgba(6,9,15,0.85); border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8);
   overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+[data-theme="light"] .stock-nav { background: rgba(246,248,250,0.88); }
 .stock-nav::-webkit-scrollbar { display: none; }
-.stock-nav .container { display: flex; justify-content: center; gap: 0; min-width: max-content; }
-.nav-tab {
-  padding: 12px 20px; font-size: 13px; font-weight: 600;
-  color: var(--text-muted); text-decoration: none;
-  border-bottom: 3px solid transparent; transition: var(--transition);
-  white-space: nowrap;
+.stock-nav .container {
+  display: flex; align-items: center; gap: 2px; min-width: max-content;
+  padding: 8px 24px;
 }
-.nav-tab:hover { color: var(--text-primary); }
-.nav-tab.t-green { color: var(--accent-green); border-color: var(--accent-green); }
-.nav-tab.t-blue { color: var(--accent-blue); border-color: var(--accent-blue); }
-.nav-tab.t-purple { color: var(--accent-purple); border-color: var(--accent-purple); }
-.nav-tab.t-amber { color: var(--accent-amber); border-color: var(--accent-amber); }
-.nav-tab.t-cyan { color: var(--accent-cyan); border-color: var(--accent-cyan); }
+.nav-group {
+  display: flex; align-items: center; gap: 2px;
+  padding: 0 4px;
+}
+.nav-divider {
+  width: 1px; height: 20px; background: var(--border);
+  margin: 0 10px; flex-shrink: 0;
+}
+.nav-group-label {
+  font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--text-muted);
+  padding: 0 6px 0 2px; white-space: nowrap;
+  user-select: none;
+}
+.nav-tab {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 12px; font-size: 12px; font-weight: 600;
+  color: var(--text-secondary); text-decoration: none;
+  border-radius: 6px; transition: var(--transition);
+  white-space: nowrap; position: relative;
+}
+.nav-tab:hover { color: var(--text-primary); background: var(--bg-card); }
+.nav-tab.active { color: var(--text-primary); background: var(--bg-card); box-shadow: 0 0 0 1px var(--border); }
+.nav-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.nav-dot.green { background: var(--accent-green); box-shadow: 0 0 6px var(--accent-green); }
+.nav-dot.blue { background: var(--accent-blue); box-shadow: 0 0 6px var(--accent-blue); }
+.nav-dot.purple { background: var(--accent-purple); box-shadow: 0 0 6px var(--accent-purple); }
+.nav-dot.amber { background: var(--accent-amber); box-shadow: 0 0 6px var(--accent-amber); }
+.nav-dot.cyan { background: var(--accent-cyan); box-shadow: 0 0 6px var(--accent-cyan); }
+.nav-dot.red { background: var(--accent-red); box-shadow: 0 0 6px var(--accent-red); }
+.nav-tab .nav-signal {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.3px;
+  padding: 1px 5px; border-radius: 3px; line-height: 1.3;
+}
+.nav-signal.up { background: var(--glow-green); color: var(--accent-green); }
+.nav-signal.hold { background: var(--glow-amber); color: var(--accent-amber); }
+.nav-signal.new { background: rgba(188,140,255,0.12); color: var(--accent-purple); }
 
 .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
 section {
@@ -370,7 +402,9 @@ footer a { color: var(--accent-blue); text-decoration: none; }
 
 @media (max-width: 768px) {
   .case-columns, .entry-levels { grid-template-columns: 1fr; }
-  .nav-tab { padding: 10px 14px; font-size: 12px; }
+  .nav-tab { padding: 5px 10px; font-size: 11px; }
+  .nav-group-label { display: none; }
+  .nav-divider { margin: 0 6px; }
   section { padding: 40px 0; }
   .hero { min-height: 45vh; padding-top: 80px; }
   .heat-grid { grid-template-columns: 1fr 1fr; }
@@ -386,17 +420,34 @@ footer a { color: var(--accent-blue); text-decoration: none; }
 <a href="/" class="back-link">&#8592; Home</a>
 <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">&#9790;</span></button>
 
-<nav class="stock-nav">
+<nav class="stock-nav" id="mainNav">
   <div class="container">
-    <a href="#bluf" class="nav-tab t-blue">BLUF</a>
-    <a href="#heatmap" class="nav-tab t-cyan">Portfolio</a>
-    <a href="#mu-section" class="nav-tab t-green">MU</a>
-    <a href="#meta-section" class="nav-tab t-blue">META</a>
-    <a href="#bros-section" class="nav-tab t-purple">BROS</a>
-    <a href="#mag7" class="nav-tab t-cyan">Mag 7</a>
-    <a href="#macro" class="nav-tab t-amber">Macro</a>
-    <a href="#scenarios" class="nav-tab t-amber">Scenarios</a>
-    <a href="#sources" class="nav-tab">Sources</a>
+    <!-- Overview group -->
+    <div class="nav-group">
+      <span class="nav-group-label">Overview</span>
+      <a href="#bluf" class="nav-tab" data-section="bluf">Summary</a>
+      <a href="#heatmap" class="nav-tab" data-section="heatmap"><span class="nav-dot cyan"></span>Portfolio</a>
+    </div>
+    <div class="nav-divider"></div>
+    <!-- Deep Dives group -->
+    <div class="nav-group">
+      <span class="nav-group-label">Deep Dives</span>
+      <a href="#mu-section" class="nav-tab" data-section="mu-section"><span class="nav-dot green"></span>MU <span class="nav-signal up">+22%</span></a>
+      <a href="#meta-section" class="nav-tab" data-section="meta-section"><span class="nav-dot blue"></span>META <span class="nav-signal up">+59%</span></a>
+      <a href="#bros-section" class="nav-tab" data-section="bros-section"><span class="nav-dot purple"></span>BROS <span class="nav-signal new">NEW</span></a>
+    </div>
+    <div class="nav-divider"></div>
+    <!-- Context group -->
+    <div class="nav-group">
+      <span class="nav-group-label">Context</span>
+      <a href="#mag7" class="nav-tab" data-section="mag7"><span class="nav-dot cyan"></span>Mag 7</a>
+      <a href="#macro" class="nav-tab" data-section="macro"><span class="nav-dot amber"></span>Macro</a>
+      <a href="#scenarios" class="nav-tab" data-section="scenarios"><span class="nav-dot red"></span>Scenarios</a>
+    </div>
+    <div class="nav-divider"></div>
+    <div class="nav-group">
+      <a href="#sources" class="nav-tab" data-section="sources">Sources</a>
+    </div>
   </div>
 </nav>
 
@@ -874,6 +925,48 @@ var observer=new IntersectionObserver(function(entries){entries.forEach(function
 document.querySelectorAll('section:not(.hero)').forEach(function(s){observer.observe(s);});
 
 function showScenario(id,btn){document.querySelectorAll('.scenario-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.scenario-tab').forEach(function(t){t.classList.remove('active');});document.getElementById('panel-'+id).classList.add('active');if(btn)btn.classList.add('active');}
+
+/* Nav active state tracking */
+(function(){
+  var navTabs=document.querySelectorAll('.nav-tab[data-section]');
+  var sections=[];
+  navTabs.forEach(function(tab){
+    var sec=document.getElementById(tab.dataset.section);
+    if(sec)sections.push({el:sec,tab:tab,id:tab.dataset.section});
+  });
+  /* Also check parent sections for deep-dive IDs that may be dividers */
+  var allSections=document.querySelectorAll('section[id], .stock-divider[id]');
+
+  var navObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var id=entry.target.id;
+        /* Map section IDs to nav tabs */
+        var match=id;
+        if(id==='bluf-verdicts'||id==='bluf')match='bluf';
+        navTabs.forEach(function(t){
+          if(t.dataset.section===match)t.classList.add('active');
+          else t.classList.remove('active');
+        });
+      }
+    });
+  },{rootMargin:'-40% 0px -55% 0px'});
+
+  allSections.forEach(function(s){navObs.observe(s);});
+
+  /* Smooth scroll with offset for sticky nav */
+  navTabs.forEach(function(tab){
+    tab.addEventListener('click',function(e){
+      e.preventDefault();
+      var target=document.querySelector(tab.getAttribute('href'));
+      if(target){
+        var offset=60;
+        var y=target.getBoundingClientRect().top+window.pageYOffset-offset;
+        window.scrollTo({top:y,behavior:'smooth'});
+      }
+    });
+  });
+})();
 </script>
 </body>
 </html>
