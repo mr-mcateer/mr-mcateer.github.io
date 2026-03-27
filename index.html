@@ -511,6 +511,55 @@
       font-weight: 600;
     }
 
+    /* ===== FEATURED CASE CARD ===== */
+    .case-card--featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-left: 4px solid var(--accent);
+      border-top: 1px solid var(--gray-100);
+      border-right: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+      margin-bottom: 28px;
+      margin-top: 48px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .case-card--featured:hover { cursor: pointer; box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+    .case-card--featured .featured-main { padding: 36px 32px; }
+    .case-card--featured .featured-aside {
+      padding: 36px 32px;
+      border-left: 1px solid var(--gray-100);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+    .feature-list li {
+      font-size: 15px; color: var(--gray-600); line-height: 1.55;
+      padding-left: 20px; position: relative;
+    }
+    .feature-list li::before {
+      content: ''; position: absolute; left: 0; top: 8px;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    }
+    .feature-label {
+      display: block; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 2px;
+    }
+    [data-theme="dark"] .case-card--featured {
+      border: 1px solid var(--gray-100);
+      border-left: 4px solid var(--accent);
+    }
+    [data-theme="dark"] .case-card--featured .featured-aside {
+      border-left-color: var(--gray-100);
+    }
+    @media (max-width: 768px) {
+      .case-card--featured { grid-template-columns: 1fr; }
+      .case-card--featured .featured-aside {
+        border-left: none; border-top: 1px solid var(--gray-100);
+      }
+    }
+
     /* ===== ABOUT ===== */
     .about-grid {
       display: grid;
@@ -782,6 +831,36 @@
     <div class="container--wide">
       <p class="section-eyebrow">Selected work</p>
       <h2 class="section-title">Projects that ship.</h2>
+
+      <!-- Featured Project -->
+      <a href="/stock-analysis/" class="case-card case-card--featured animate-on-scroll">
+        <div class="featured-main">
+          <p class="case-card__tag">AI Agent System</p>
+          <h3>Portfolio Intelligence Dashboard</h3>
+          <p style="padding:0;margin-bottom:16px;">A self-running equity research system that monitors 9 stocks using coordinated AI agents. Every 6 hours it pulls fresh data from 150+ sources, produces deep-dive reports with scenario frameworks, and publishes automatically. No human in the loop.</p>
+          <span class="case-card__link" style="padding:0;">Explore the live dashboard &rarr;</span>
+        </div>
+        <div class="featured-aside">
+          <ul class="feature-list">
+            <li>
+              <span class="feature-label">Automation</span>
+              AI agents research and publish every 6 hours with zero human intervention
+            </li>
+            <li>
+              <span class="feature-label">Coverage</span>
+              9 equities with individual deep-dives, bull/bear cases, and action frameworks
+            </li>
+            <li>
+              <span class="feature-label">Epistemic honesty</span>
+              Built-in framework documenting what the system can and cannot reliably know
+            </li>
+            <li>
+              <span class="feature-label">Infrastructure</span>
+              Pure static HTML/CSS/JS on GitHub Pages. No backend, no API keys, no framework
+            </li>
+          </ul>
+        </div>
+      </a>
 
       <div class="cases-grid">
         <div class="case-card">
