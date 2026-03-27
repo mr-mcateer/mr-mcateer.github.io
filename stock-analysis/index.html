@@ -406,7 +406,7 @@ footer a { color: var(--accent-blue); text-decoration: none; }
     <a href="#macro" class="nav-tab" data-section="macro">Macro</a>
     <a href="#scenarios" class="nav-tab" data-section="scenarios">Scenarios</a>
     <div class="nav-spacer"></div>
-    <a href="#sources" class="nav-tab" data-section="sources">Sources</a>
+    <a href="#sources" class="nav-tab" data-section="sources">Limits</a>
     <div style="flex:1"></div>
     <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">&#9790;</span></button>
   </div>
@@ -417,7 +417,7 @@ footer a { color: var(--accent-blue); text-decoration: none; }
   <div class="hero-content">
     <div class="hero-badge">March 27, 2026</div>
     <h1>Portfolio Intelligence</h1>
-    <p class="hero-sub">9 equities. 150+ sources. Scenario-weighted action frameworks updated every 6 hours.</p>
+    <p class="hero-sub">9 equities. Auto-refreshed every 6 hours. Read the <a href="#sources" style="color:var(--accent-blue);text-decoration:underline;">limitations</a> before acting on anything here.</p>
   </div>
 </section>
 
@@ -1059,42 +1059,152 @@ footer a { color: var(--accent-blue); text-decoration: none; }
   </div>
 </section>
 
-<!-- ============ SOURCES ============ -->
+<!-- ============ WHAT THIS MODEL CANNOT KNOW ============ -->
 <section id="sources">
   <div class="container">
-    <div class="section-header"><div class="section-label">Methodology</div><h2 class="section-title">Sources &amp; Data Freshness</h2></div>
-    <div class="card">
-      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:16px;">This analysis synthesized <strong>150+ sources</strong> across earnings transcripts, SEC filings, analyst reports, court documents, regulatory filings, and real-time market data. Data current as of <strong>March 27, 2026</strong>.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:13px;color:var(--text-secondary);">
+    <div class="section-header"><div class="section-label">Epistemic Honesty</div><h2 class="section-title">What This Model Knows, and What It Cannot</h2></div>
+
+    <!-- The honest framing -->
+    <div class="card" style="border-top:3px solid var(--accent-red);margin-bottom:20px;">
+      <h3 style="color:var(--accent-red);margin-bottom:12px;">This is not investment advice. This is a research synthesis tool with real limitations.</h3>
+      <p style="font-size:15px;color:var(--text-secondary);line-height:1.8;margin-bottom:16px;">Every number on this page came from an AI agent searching the public internet, reading financial news, and synthesizing what it found. That process has structural blindspots that no amount of source volume can fix. Being transparent about those blindspots is what separates useful analysis from dangerous noise.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">
+      <!-- What we CAN see -->
+      <div class="card" style="border-top:3px solid var(--accent-green);">
+        <h3 style="color:var(--accent-green);margin-bottom:12px;">What the model CAN see</h3>
+        <ul style="list-style:none;font-size:14px;color:var(--text-secondary);line-height:2;">
+          <li>&#9679; Public earnings data, SEC filings, transcripts</li>
+          <li>&#9679; Published analyst targets and consensus ratings</li>
+          <li>&#9679; News reported by major financial outlets</li>
+          <li>&#9679; Historical price data and technical levels</li>
+          <li>&#9679; Public court filings and regulatory actions</li>
+          <li>&#9679; Macro indicators (VIX, yields, crude, CPI)</li>
+          <li>&#9679; Institutional 13F filings (delayed 45 days)</li>
+        </ul>
+      </div>
+      <!-- What we CANNOT see -->
+      <div class="card" style="border-top:3px solid var(--accent-red);">
+        <h3 style="color:var(--accent-red);margin-bottom:12px;">What the model CANNOT see</h3>
+        <ul style="list-style:none;font-size:14px;color:var(--text-secondary);line-height:2;">
+          <li>&#9679; Insider sentiment, boardroom dynamics, private negotiations</li>
+          <li>&#9679; Real-time order flow, dark pool activity, options gamma</li>
+          <li>&#9679; Classified geopolitical intelligence (Iran, Taiwan, trade)</li>
+          <li>&#9679; Unreported supply chain disruptions</li>
+          <li>&#9679; Undisclosed legal settlements or pending lawsuits</li>
+          <li>&#9679; Central bank decisions before they're announced</li>
+          <li>&#9679; Black swan events (by definition, unpredictable)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Source quality tiers -->
+    <div class="card" style="margin-bottom:20px;">
+      <h3 style="margin-bottom:12px;">Source Quality Tiers</h3>
+      <p style="font-size:14px;color:var(--text-muted);margin-bottom:16px;">Not all 150+ sources are equal. Here is how they rank by reliability:</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;font-size:13px;">
         <div>
-          <div style="font-weight:700;color:var(--text-primary);margin-bottom:8px;">Primary Sources</div>
-          <ul style="list-style:none;">
-            <li>&#8226; Micron Q2 FY2026 Earnings Release &amp; Transcript</li>
-            <li>&#8226; Meta Platforms FY2025 10-K Filing</li>
-            <li>&#8226; Meta Q1 2026 Guidance (Earnings Call)</li>
-            <li>&#8226; NM District Court: State v. Meta Platforms (Mar 24)</li>
-            <li>&#8226; FTC v. Meta Platforms (Nov '25 Ruling, Jan '26 Appeal)</li>
-            <li>&#8226; CHIPS Act Implementation (Dept. of Commerce)</li>
-            <li>&#8226; DRAMeXchange / TrendForce Spot Pricing</li>
-            <li>&#8226; Dutch Bros Q4 2025 Earnings Release</li>
+          <div style="color:var(--accent-green);font-weight:600;margin-bottom:8px;">Tier 1: Primary (highest trust)</div>
+          <ul style="list-style:none;color:var(--text-secondary);line-height:1.9;">
+            <li>&#9679; SEC filings (10-K, 10-Q, 8-K)</li>
+            <li>&#9679; Earnings transcripts (direct quotes)</li>
+            <li>&#9679; Federal court dockets</li>
+            <li>&#9679; Fed/FOMC statements</li>
+            <li>&#9679; Company press releases</li>
           </ul>
         </div>
         <div>
-          <div style="font-weight:700;color:var(--text-primary);margin-bottom:8px;">Analyst Coverage</div>
-          <ul style="list-style:none;">
-            <li>&#8226; Morgan Stanley, Goldman Sachs, JP Morgan Research</li>
-            <li>&#8226; BofA, Citi, Barclays Semiconductor Coverage</li>
-            <li>&#8226; Bernstein, Evercore ISI, Raymond James</li>
-            <li>&#8226; Bloomberg Consensus Estimates</li>
-            <li>&#8226; S&amp;P Capital IQ Ratings Distribution</li>
-            <li>&#8226; Gartner, IDC Semiconductor Forecasts</li>
-            <li>&#8226; TipRanks, Seeking Alpha Consensus</li>
-            <li>&#8226; Real-time market data (March 27, 2026)</li>
+          <div style="color:var(--accent-amber);font-weight:600;margin-bottom:8px;">Tier 2: Interpreted (moderate trust)</div>
+          <ul style="list-style:none;color:var(--text-secondary);line-height:1.9;">
+            <li>&#9679; Sell-side analyst reports*</li>
+            <li>&#9679; Bloomberg/Reuters consensus</li>
+            <li>&#9679; Industry research (Gartner, IDC)</li>
+            <li>&#9679; Major news outlets (WSJ, FT, NYT)</li>
+            <li style="font-size:11px;color:var(--text-muted);margin-top:4px;">*Analysts have banking conflicts of interest</li>
+          </ul>
+        </div>
+        <div>
+          <div style="color:var(--accent-red);font-weight:600;margin-bottom:8px;">Tier 3: Aggregated (verify independently)</div>
+          <ul style="list-style:none;color:var(--text-secondary);line-height:1.9;">
+            <li>&#9679; TipRanks, Seeking Alpha consensus</li>
+            <li>&#9679; Social media sentiment</li>
+            <li>&#9679; Price target aggregators</li>
+            <li>&#9679; AI-generated news summaries</li>
+            <li style="font-size:11px;color:var(--text-muted);margin-top:4px;">Including this dashboard itself</li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="disclaimer"><strong>Disclaimer:</strong> This analysis is for informational purposes only and does not constitute investment advice. All scenario projections are probability-weighted estimates based on publicly available information and may not reflect future outcomes. Past performance does not guarantee future results. Consult a licensed financial advisor before making investment decisions. Data as of March 27, 2026.</div>
+
+    <!-- Confidence calibration -->
+    <div class="card" style="margin-bottom:20px;">
+      <h3 style="margin-bottom:12px;">How to Read the Confidence Scores</h3>
+      <p style="font-size:14px;color:var(--text-secondary);line-height:1.8;margin-bottom:16px;">Every deep dive has a confidence bar. Here is what those numbers actually mean:</p>
+      <div style="font-size:14px;color:var(--text-secondary);line-height:2;">
+        <div><strong style="color:var(--accent-green);">80-95%</strong> = Strong conviction. Thesis supported by Tier 1 data. Consensus is directionally aligned. Key risk factors are identifiable and bounded. <em>This does not mean 80-95% chance of being right.</em></div>
+        <div style="margin-top:8px;"><strong style="color:var(--accent-blue);">65-79%</strong> = Moderate conviction. Thesis is plausible but depends on assumptions that could change. Multiple scenarios have meaningful probability.</div>
+        <div style="margin-top:8px;"><strong style="color:var(--accent-amber);">50-64%</strong> = Low conviction. Significant uncertainty. The analysis is more directional than precise. Position sizing should reflect this.</div>
+        <div style="margin-top:8px;"><strong style="color:var(--accent-red);">Below 50%</strong> = Coin flip. We are essentially guessing. The analysis exists to frame the question, not answer it.</div>
+      </div>
+    </div>
+
+    <!-- The meta-risk -->
+    <div class="card" style="border-top:3px solid var(--accent-amber);margin-bottom:20px;">
+      <h3 style="color:var(--accent-amber);margin-bottom:12px;">The Meta-Risk: AI Analyzing AI Stocks</h3>
+      <p style="font-size:14px;color:var(--text-secondary);line-height:1.8;">6 of 9 positions in this portfolio are direct AI beneficiaries (NVDA, MSFT, META, GOOG, AMZN, MU). This analysis was generated by AI. That creates a structural bias: the tool doing the analysis has an implicit incentive to be optimistic about the industry that justifies its own existence. We have attempted to constrain this by weighting bear cases heavily and requiring specific falsification criteria for each bull thesis. But the bias exists, and you should weight external bearish perspectives accordingly.</p>
+    </div>
+
+    <!-- What would change our minds -->
+    <div class="card" style="margin-bottom:20px;">
+      <h3 style="margin-bottom:12px;">What Would Change Our Minds (Falsification Signals)</h3>
+      <p style="font-size:14px;color:var(--text-muted);margin-bottom:16px;">For each thesis to be wrong, one or more of these would need to happen:</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;color:var(--text-secondary);">
+        <ul style="list-style:none;line-height:2;">
+          <li><strong>MU:</strong> HBM4 yields below 70%, or DRAM spot price decline >30%</li>
+          <li><strong>META:</strong> Daily active users decline 2 consecutive quarters</li>
+          <li><strong>NVDA:</strong> Hyperscaler capex cuts >15% from guidance</li>
+          <li><strong>MSFT:</strong> Azure growth decelerates below 25%</li>
+          <li><strong>BROS:</strong> Same-store sales go negative for 2+ quarters</li>
+        </ul>
+        <ul style="list-style:none;line-height:2;">
+          <li><strong>AMZN:</strong> AWS growth decelerates below 15%</li>
+          <li><strong>GOOG:</strong> Search market share drops below 85%</li>
+          <li><strong>AAPL:</strong> iPhone revenue declines YoY for 3 consecutive quarters</li>
+          <li><strong>TSLA:</strong> Delivery growth negative for 3+ consecutive quarters</li>
+          <li><strong>Portfolio-wide:</strong> VIX sustained above 35 for 30+ days</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sources list (condensed) -->
+    <div class="card" style="margin-bottom:20px;">
+      <h3 style="margin-bottom:12px;">Source Categories (150+)</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:13px;color:var(--text-secondary);">
+        <div>
+          <div style="font-weight:600;color:var(--text-primary);margin-bottom:8px;">Tier 1 Primary</div>
+          <ul style="list-style:none;line-height:1.9;">
+            <li>&#9679; SEC EDGAR filings (10-K, 10-Q, 8-K, DEF 14A)</li>
+            <li>&#9679; Earnings call transcripts (all 9 companies)</li>
+            <li>&#9679; Federal/state court dockets (NM, FTC, DOJ)</li>
+            <li>&#9679; FOMC statements and Fed dot plots</li>
+            <li>&#9679; Dept. of Commerce CHIPS Act filings</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-weight:600;color:var(--text-primary);margin-bottom:8px;">Tier 2 Interpreted</div>
+          <ul style="list-style:none;line-height:1.9;">
+            <li>&#9679; Morgan Stanley, Goldman, JP Morgan, BofA, Citi, Barclays</li>
+            <li>&#9679; Bloomberg/S&amp;P Capital IQ consensus</li>
+            <li>&#9679; Gartner, IDC, TrendForce industry data</li>
+            <li>&#9679; WSJ, Financial Times, Reuters reporting</li>
+            <li>&#9679; TipRanks, Yahoo Finance, MarketBeat aggregation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="disclaimer"><strong>Not investment advice.</strong> This dashboard is an AI-generated research synthesis tool. It cannot predict the future. It has structural biases (see above). All scenario projections are estimates that may be completely wrong. Consult a licensed financial advisor before making any investment decisions. The creator of this tool holds positions in several of the securities discussed.</div>
   </div>
 </section>
 
