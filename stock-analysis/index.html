@@ -394,6 +394,7 @@ footer a { color: var(--accent-blue); text-decoration: none; }
     <a href="#meta-section" class="nav-tab t-blue">META</a>
     <a href="#bros-section" class="nav-tab t-purple">BROS</a>
     <a href="#mag7" class="nav-tab t-cyan">Mag 7</a>
+    <a href="#macro" class="nav-tab t-amber">Macro</a>
     <a href="#scenarios" class="nav-tab t-amber">Scenarios</a>
     <a href="#sources" class="nav-tab">Sources</a>
   </div>
@@ -404,7 +405,7 @@ footer a { color: var(--accent-blue); text-decoration: none; }
   <div class="hero-content">
     <div class="hero-badge">Portfolio Intelligence Brief &middot; March 27, 2026</div>
     <h1>9-Stock Equity Analysis with Scenario Playbooks</h1>
-    <p class="hero-sub">Consulting-grade research across your Mag 7 holdings plus MU and BROS. Shareholder action frameworks, probability-weighted scenarios, and decision tools built for volatile markets.</p>
+    <p class="hero-sub">Consulting-grade research across your Mag 7 holdings plus MU and BROS. Shareholder action frameworks, probability-weighted scenarios, and decision tools built for volatile markets. 150+ sources. Data as of market close March 27, 2026.</p>
   </div>
 </section>
 
@@ -702,14 +703,67 @@ footer a { color: var(--accent-blue); text-decoration: none; }
   <div class="bar-group"><div class="bar-label"><span>TSLA</span><span>+4%</span></div><div class="bar-track"><div class="bar-fill amber" data-width="4"></div></div></div>
 </div></div></section>
 
+<!-- ============ MACRO CONTEXT ============ -->
+<section id="macro">
+  <div class="container">
+    <div class="section-header"><div class="section-label">Market Environment</div><h2 class="section-title">Macro &amp; Geopolitical Context</h2><p class="section-desc">The forces shaping your portfolio right now. Fresh data from 30+ sources as of March 27, 2026.</p></div>
+    <div class="risk-strip" style="margin-bottom:24px;">
+      <div class="risk-tile"><span class="dim">Iran Conflict (Mar 1)</span><span class="risk-level risk-high">Active</span></div>
+      <div class="risk-tile"><span class="dim">VIX</span><span class="risk-level risk-high">27.44</span></div>
+      <div class="risk-tile"><span class="dim">S&amp;P 500 YTD</span><span class="risk-level risk-high">-5.8%</span></div>
+      <div class="risk-tile"><span class="dim">NASDAQ YTD</span><span class="risk-level risk-high">-8.1%</span></div>
+      <div class="risk-tile"><span class="dim">Fed Funds Rate</span><span class="risk-level risk-medium">3.50-3.75%</span></div>
+      <div class="risk-tile"><span class="dim">WTI Crude</span><span class="risk-level risk-high">$100+</span></div>
+      <div class="risk-tile"><span class="dim">PCE Inflation</span><span class="risk-level risk-medium">2.7%</span></div>
+      <div class="risk-tile"><span class="dim">10Y Yield</span><span class="risk-level risk-medium">Elevated</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div class="card">
+        <h3 style="color:var(--accent-red);">Immediate Catalysts (Next 7 Days)</h3>
+        <ul style="list-style:none;font-size:13px;color:var(--text-secondary);">
+          <li style="padding:6px 0;border-bottom:1px solid var(--border);">&#9656; <strong>March 31 - April 2:</strong> Trump-Xi Beijing Summit. Trade truce clarity. AAPL most exposed.</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border);">&#9656; <strong>Any day now:</strong> Google Ad Tech ruling (Judge Brinkema). Potential forced divestiture of AdX/DFP.</li>
+          <li style="padding:6px 0;">&#9656; <strong>Iran conflict trajectory:</strong> Oil at $100+ acting as a tax on the economy. Fanning stagflation fears.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--accent-amber);">Key Macro Dynamics</h3>
+        <ul style="list-style:none;font-size:13px;color:var(--text-secondary);">
+          <li style="padding:6px 0;border-bottom:1px solid var(--border);">&#9656; <strong>Tariffs:</strong> 15% Section 122 on all electronics (Feb 24). 50% on Chinese semiconductors. New rates deferred to June 2027.</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border);">&#9656; <strong>AI Capex:</strong> $635-690B combined hyperscaler spend. Big Tech issued $100B in bonds to fund it. Amazon projected FCF-negative.</li>
+          <li style="padding:6px 0;">&#9656; <strong>Fed:</strong> Held March 18. Only ONE cut expected in 2026. PCE inflation raised to 2.7%. Next FOMC: April 28-29.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <h3 style="color:var(--accent-blue);">Tariff Exposure by Holding (Ranked)</h3>
+      <div style="overflow-x:auto;">
+      <table class="scenario-table" style="margin-top:8px;">
+        <thead><tr><th>Ticker</th><th>Primary Exposure</th><th>Revenue at Risk</th><th>Severity</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:800;">AAPL</td><td>~90% iPhones made in China; 20% revenue from Greater China</td><td>$64B+</td><td><span class="risk-level risk-high">High</span></td></tr>
+          <tr><td style="font-weight:800;">TSLA</td><td>Battery minerals (China controls 80% graphite refining)</td><td>Margin compression</td><td><span class="risk-level risk-high">High</span></td></tr>
+          <tr><td style="font-weight:800;">NVDA</td><td>China export controls cost $4.5B in Q1 alone</td><td>$40B+ annual</td><td><span class="risk-level risk-high">High</span></td></tr>
+          <tr><td style="font-weight:800;">MU</td><td>China ban on critical infra; tariffs on modules/SSDs</td><td>Significant</td><td><span class="risk-level risk-high">High</span></td></tr>
+          <tr><td style="font-weight:800;">AMZN</td><td>Retail sourced from China; $200B capex component costs</td><td>Margin pressure</td><td><span class="risk-level risk-medium">Medium</span></td></tr>
+          <tr><td style="font-weight:800;">MSFT</td><td>Data center component imports; indirect exposure</td><td>Limited</td><td><span class="risk-level risk-low">Low</span></td></tr>
+          <tr><td style="font-weight:800;">META</td><td>Hardware (VR headsets); ad revenue largely domestic</td><td>Minimal</td><td><span class="risk-level risk-low">Low</span></td></tr>
+          <tr><td style="font-weight:800;">GOOG</td><td>Digital ad model; minimal physical goods</td><td>Indirect only</td><td><span class="risk-level risk-low">Low</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ MACRO SCENARIO PLANNER ============ -->
 <section id="scenarios">
   <div class="container">
     <div class="section-header"><div class="section-label">Macro Scenarios</div><h2 class="section-title">Interactive Scenario Planner</h2><p class="section-desc">Three macro paths for Q2-Q4 2026. Click a scenario to see portfolio impact and recommended actions.</p></div>
     <div class="scenario-tabs">
-      <button class="scenario-tab active" onclick="showScenario('soft',this)">Soft Landing (45%)</button>
-      <button class="scenario-tab" onclick="showScenario('tariff',this)">Tariff Escalation (35%)</button>
-      <button class="scenario-tab" onclick="showScenario('pullback',this)">AI Demand Pullback (20%)</button>
+      <button class="scenario-tab active" onclick="showScenario('soft',this)">Soft Landing (25%)</button>
+      <button class="scenario-tab" onclick="showScenario('tariff',this)">Tariff Escalation (40%)</button>
+      <button class="scenario-tab" onclick="showScenario('pullback',this)">AI Demand Pullback (35%)</button>
     </div>
 
     <div id="panel-soft" class="scenario-panel active">
