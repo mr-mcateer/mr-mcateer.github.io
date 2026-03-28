@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "mcp-ical": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/Shared/mcp/mcp-ical",
+        "run",
+        "mcp-ical"
+      ]
+    },
+    "apple-native": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supermemoryai/apple-mcp"
+      ]
+    },
+    "applescript-control": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@peakmojo/applescript-mcp"
+      ]
+    }
+  }
+}

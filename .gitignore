@@ -23,3 +23,19 @@ venv/
 # Temporary files
 /tmp/
 *.tmp
+
+# EEF run logs and capture files (local, ephemeral)
+logs/*.md
+!logs/run-log-template.md
+
+# EEF memory directories (subagent state -- local only)
+# Scaffold templates are committed; live data is gitignored
+memory/cvhs/*.md
+memory/llc/*.md
+memory/dad/*.md
+memory/archive/
+memory/morning_briefing.md
+!memory/cvhs/.gitkeep
+!memory/llc/.gitkeep
+!memory/dad/.gitkeep
+!memory/archive/.gitkeep
