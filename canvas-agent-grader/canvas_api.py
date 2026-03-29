@@ -30,6 +30,13 @@ def _make_put_request(endpoint, payload=None):
     response.raise_for_status()
     return response.json()
 
+def _make_post_request(endpoint, payload=None):
+    """Internal helper for POST requests (creating pages, assignments, etc.)"""
+    url = f"{CANVAS_API_URL}/api/v1/{endpoint}"
+    response = requests.post(url, headers=HEADERS, json=payload)
+    response.raise_for_status()
+    return response.json()
+
 
 def get_active_courses():
     """Returns a list of active courses the user is enrolled in/teaching."""
@@ -124,6 +131,65 @@ def post_grade(course_id, assignment_id, user_id, grade, comment=None):
         
     endpoint = f"courses/{course_id}/assignments/{assignment_id}/submissions/{user_id}"
     return _make_put_request(endpoint, payload)
+
+def get_pages(course_id):
+    """Returns a list of pages (wiki pages) for a course."""
+    params = {'per_page': 100, 'sort': 'updated_at', 'order': 'desc'}
+    return _make_request(f'courses/{course_id}/pages', params)
+
+
+def get_page(course_id, page_url):
+    """Returns a single page by its URL slug."""
+    return _make_request(f'courses/{course_id}/pages/{page_url}')
+
+
+def create_page(course_id, title, body_html, published=False, front_page=False):
+    """
+    Creates a new wiki page in a Canvas course.
+    Body must be HTML. Set published=False to create as draft for review.
+    """
+    payload = {
+        'wiki_page': {
+            'title': title,
+            'body': body_html,
+            'published': published,
+            'front_page': front_page
+        }
+    }
+    return _make_post_request(f'courses/{course_id}/pages', payload)
+
+
+def update_page(course_id, page_url, title=None, body_html=None, published=None):
+    """Updates an existing wiki page by its URL slug."""
+    payload = {'wiki_page': {}}
+    if title is not None:
+        payload['wiki_page']['title'] = title
+    if body_html is not None:
+        payload['wiki_page']['body'] = body_html
+    if published is not None:
+        payload['wiki_page']['published'] = published
+    return _make_put_request(f'courses/{course_id}/pages/{page_url}', payload)
+
+
+def create_assignment(course_id, name, description_html, points_possible=100,
+                      submission_types=None, due_at=None, published=False):
+    """
+    Creates a new assignment in a Canvas course.
+    Set published=False to create as draft for review.
+    """
+    payload = {
+        'assignment': {
+            'name': name,
+            'description': description_html,
+            'points_possible': points_possible,
+            'submission_types': submission_types or ['online_text_entry'],
+            'published': published
+        }
+    }
+    if due_at:
+        payload['assignment']['due_at'] = due_at
+    return _make_post_request(f'courses/{course_id}/assignments', payload)
+
 
 # Interactive testing block
 if __name__ == "__main__":
