@@ -27,6 +27,10 @@ calc_time() {
         m=$((m + 60))
         h=$((h - 1))
     done
+    # Handle hour wraparound past midnight
+    while [ $h -lt 0 ]; do
+        h=$((h + 24))
+    done
     printf "%02d:%02d" $h $m
 }
 

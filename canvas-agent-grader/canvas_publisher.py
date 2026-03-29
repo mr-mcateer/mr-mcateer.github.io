@@ -19,12 +19,39 @@ Requires: CANVAS_API_URL and CANVAS_API_TOKEN in ../.env
 import argparse
 import json
 import os
+import re
 import sys
 from datetime import datetime
+from html import escape as html_escape
+from urllib.parse import urlparse
 
 # Add parent directory so we can import canvas_api from the same package
 sys.path.insert(0, os.path.dirname(__file__))
 from canvas_api import create_page, create_assignment, get_pages, update_page
+
+
+def _safe(text):
+    """Escape user input for safe HTML embedding."""
+    return html_escape(str(text))
+
+
+def _safe_url(url):
+    """Validate and escape a URL. Reject javascript: and data: protocols."""
+    parsed = urlparse(url)
+    if parsed.scheme in ('javascript', 'data', 'vbscript', ''):
+        if not url.startswith(('#', '/', 'http://', 'https://', 'mailto:')):
+            return '#'
+    return html_escape(url, quote=True)
+
+
+def _slugify(text):
+    """Generate a Canvas-compatible URL slug from a title."""
+    slug = text.lower()
+    slug = re.sub(r'[^a-z0-9\s-]', '', slug)  # strip non-alphanumeric
+    slug = re.sub(r'[\s]+', '-', slug)          # spaces to hyphens
+    slug = re.sub(r'-+', '-', slug)             # collapse consecutive hyphens
+    slug = slug.strip('-')                       # trim leading/trailing hyphens
+    return slug
 
 
 def build_agenda_html(agenda):
@@ -56,42 +83,42 @@ def build_agenda_html(agenda):
     html_parts = []
 
     # Header
-    html_parts.append(f'<h2>{title}</h2>')
-    html_parts.append(f'<p><strong>Date:</strong> {date}</p>')
+    html_parts.append(f'<h2>{_safe(title)}</h2>')
+    html_parts.append(f'<p><strong>Date:</strong> {_safe(date)}</p>')
 
     # Objective
     if objective:
-        html_parts.append(f'<h3>Objective</h3>')
-        html_parts.append(f'<p>{objective}</p>')
+        html_parts.append('<h3>Objective</h3>')
+        html_parts.append(f'<p>{_safe(objective)}</p>')
 
     # Safety
     if safety:
-        html_parts.append(f'<h3>Safety Focus</h3>')
+        html_parts.append('<h3>Safety Focus</h3>')
         html_parts.append(
             f'<p style="background-color:#fff3cd;padding:10px;'
-            f'border-left:4px solid #ffc107;">{safety}</p>'
+            f'border-left:4px solid #ffc107;">{_safe(safety)}</p>'
         )
 
     # Materials
     if materials:
         html_parts.append('<h3>Materials</h3><ul>')
         for item in materials:
-            html_parts.append(f'<li>{item}</li>')
+            html_parts.append(f'<li>{_safe(item)}</li>')
         html_parts.append('</ul>')
 
     # Procedure
     if procedure:
         html_parts.append('<h3>Procedure</h3><ol>')
         for step in procedure:
-            html_parts.append(f'<li>{step}</li>')
+            html_parts.append(f'<li>{_safe(step)}</li>')
         html_parts.append('</ol>')
 
     # Media
     if media:
         html_parts.append('<h3>Resources</h3><ul>')
         for m in media:
-            label = m.get('label', 'Link')
-            url = m.get('url', '#')
+            label = _safe(m.get('label', 'Link'))
+            url = _safe_url(m.get('url', '#'))
             html_parts.append(
                 f'<li><a href="{url}" target="_blank">{label}</a></li>'
             )
@@ -99,8 +126,8 @@ def build_agenda_html(agenda):
 
     # Notes
     if notes:
-        html_parts.append(f'<h3>Teacher Notes</h3>')
-        html_parts.append(f'<p><em>{notes}</em></p>')
+        html_parts.append('<h3>Teacher Notes</h3>')
+        html_parts.append(f'<p><em>{_safe(notes)}</em></p>')
 
     return '\n'.join(html_parts)
 
@@ -123,11 +150,11 @@ def build_exit_ticket_html(ticket):
     title = ticket.get('title', 'Exit Ticket')
     questions = ticket.get('questions', [])
 
-    html_parts = [f'<h2>Exit Ticket: {title}</h2>']
+    html_parts = [f'<h2>Exit Ticket: {_safe(title)}</h2>']
     html_parts.append('<p>Answer each question in 2-3 sentences.</p>')
     html_parts.append('<ol>')
     for q in questions:
-        html_parts.append(f'<li>{q}</li>')
+        html_parts.append(f'<li>{_safe(q)}</li>')
     html_parts.append('</ol>')
 
     return '\n'.join(html_parts)
@@ -139,9 +166,9 @@ def publish_agenda(course_id, date_str, agenda_data):
     body = build_agenda_html(agenda_data)
 
     # Check if a page with this date already exists (update vs create)
-    slug = title.lower().replace(' ', '-').replace(':', '').replace('(', '').replace(')', '')
+    slug = _slugify(title)
     existing_pages = get_pages(course_id)
-    existing_slugs = [p.get('url', '') for p in existing_pages]
+    existing_slugs = {p.get('url', ''): p for p in existing_pages}
 
     if slug in existing_slugs:
         result = update_page(course_id, slug, title=title, body_html=body)

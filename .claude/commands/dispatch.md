@@ -16,6 +16,14 @@ Read the input and classify each item into exactly one domain:
 - **personal** -- Anything about James, John, Stacie, family schedules, medical,
   household tasks, groceries, personal errands
 
+### Tiebreaker Rules (when an item spans multiple domains)
+Classify by the **primary action verb**, not the nouns:
+- invoice/bill/charge/quote --> **llc** (even if the subject is a school item)
+- order/restock/buy for shop --> **school** (even if payment comes from LLC)
+- schedule/pickup/dropoff/appointment --> **personal** (even if it involves work timing)
+- If still ambiguous after applying the verb rule, route to `logs/capture-inbox.md`
+  for the Night Shift to sort. Do NOT ask the user to disambiguate.
+
 ## Step 2: Route
 Append each classified item to the correct file with a timestamp:
 - School --> `logs/capture-school.md`
