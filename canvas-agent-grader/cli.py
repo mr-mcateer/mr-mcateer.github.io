@@ -3,15 +3,16 @@ import sys
 import os
 import pandas as pd
 from canvas_api import (
-    get_assignments, 
-    get_ungraded_submissions, 
-    get_assignment_rubric, 
+    get_assignments,
+    get_ungraded_submissions,
+    get_assignment_rubric,
     post_grade,
     get_student_name,
     get_course_name,
     get_active_courses
 )
 from swarm import run_swarm_on_submission, format_rubric_from_canvas, extract_submission_parts
+from anonymizer import AnonymizationContext
 
 def cmd_fetch(course_id):
     """List recent assignments to help the user pick an assignment ID."""
@@ -30,67 +31,78 @@ def cmd_evaluate(course_id, assignment_id):
     3. Output the results to a local CSV.
     """
     print(f"Loading data for Assignment {assignment_id} in Course {course_id}...")
-    
+
+    # Initialize anonymization context for this evaluation run
+    anon = AnonymizationContext()
+
     # 1. Get Rubric
     raw_rubric = get_assignment_rubric(course_id, assignment_id)
     if not raw_rubric:
         print("[WARNING] No rubric found on this assignment in Canvas! The agents will grade purely holistically.")
     rubric_text = format_rubric_from_canvas(raw_rubric)
-    
+
     # 2. Get Submissions
     submissions = get_ungraded_submissions(course_id, assignment_id)
     if not submissions:
         print("No submissions found (or all are already graded).")
         return
-        
+
     print(f"Found {len(submissions)} total submissions.")
-    
+
     results = []
     # 3. Process each submission (filtering to just those that are ungraded and actually submitted something)
     for sub in submissions:
         # Skip if already graded (unless we want to overwrite)
         if sub.get('workflow_state') == 'graded':
             continue
-            
+
         # Skip missing submissions
         if sub.get('workflow_state') == 'unsubmitted':
             continue
-            
+
         user_id = sub['user_id']
         name = get_student_name(course_id, user_id)
-        
-        print(f"\nEvaluating student: {name} ({user_id})...")
+
+        # Register student in anonymization context
+        pseudonym = anon.anonymize_name(name)
+        print(f"\nEvaluating student: {pseudonym} (anonymized)...")
         submission_parts = extract_submission_parts(sub)
-        
+
         # Determine if it's text we can evaluate
         if not submission_parts or len(submission_parts) == 1 and "No content" in str(submission_parts[0]):
             print("  -> Skipping: No content found to evaluate.")
             continue
-            
+
         # Extract a short excerpt for the CSV regardless of type
         excerpt = "Multimodal content (Images/Docs)"
         if isinstance(submission_parts[0], str):
             excerpt = submission_parts[0][:150] + "..."
-            
-        # Hit the swarm
+
+        # Anonymize submission text before sending to external AI
+        anon_parts = anon.anonymize_parts(submission_parts)
+
+        # Hit the swarm (with anonymized data)
         try:
-            swarm_eval = run_swarm_on_submission(submission_parts, rubric_text)
+            swarm_eval = run_swarm_on_submission(anon_parts, rubric_text)
             final = swarm_eval['final_conclusion']
-            
+
+            # Deanonymize rationale text for the CSV (teacher needs real names)
             results.append({
                 "User ID": user_id,
                 "Student Name": name,
                 "Submission Excerpt": excerpt,
                 "Strict Agent Score": swarm_eval['strict_agent'].get('suggested_score'),
-                "Strict Rationale": swarm_eval['strict_agent'].get('rationale'),
+                "Strict Rationale": anon.deanonymize_text(
+                    swarm_eval['strict_agent'].get('rationale', '')),
                 "Holistic Agent Score": swarm_eval['holistic_agent'].get('suggested_score'),
                 "Final Recommended Score": final.get('final_suggested_score'),
-                "Resolution Rationale": final.get('resolution_rationale')
+                "Resolution Rationale": anon.deanonymize_text(
+                    final.get('resolution_rationale', ''))
             })
             print(f"  -> Recommended Score: {final.get('final_suggested_score')}")
-            
+
         except Exception as e:
-            print(f"  -> [ERROR] Failed to evaluate student {name}: {e}")
+            print(f"  -> [ERROR] Failed to evaluate student {pseudonym}: {e}")
             
     # 4. Save
     if results:
@@ -111,56 +123,63 @@ def cmd_evaluate_course(course_id):
     course_name = get_course_name(course_id)
     # create safe string for filename
     clean_course_name = "".join([c if c.isalnum() else "_" for c in course_name])
-    
+
+    # Initialize anonymization context for this course evaluation
+    anon = AnonymizationContext()
+
     print(f"Loading assignments for Course: {course_name} ({course_id})...")
     assignments = get_assignments(course_id)
-    
+
     all_results = []
-    
+
     for a in assignments:
         assignment_id = a['id']
         assignment_name = a['name']
         print(f"\n--- Processing Assignment: {assignment_name} ({assignment_id}) ---")
-        
+
         # 1. Get Rubric
         raw_rubric = get_assignment_rubric(course_id, assignment_id)
         if not raw_rubric:
             print("[WARNING] No rubric found on this assignment in Canvas! The agents will grade purely holistically.")
         rubric_text = format_rubric_from_canvas(raw_rubric)
-        
+
         # 2. Get Submissions
         submissions = get_ungraded_submissions(course_id, assignment_id)
         if not submissions:
             print("No submissions found (or all are already graded).")
             continue
-            
+
         print(f"Found {len(submissions)} total submissions.")
-        
+
         # 3. Process each submission
         for sub in submissions:
             if sub.get('workflow_state') == 'graded':
                 continue
             if sub.get('workflow_state') == 'unsubmitted':
                 continue
-                
+
             user_id = sub['user_id']
             name = get_student_name(course_id, user_id)
-            
-            print(f"\nEvaluating student: {name} ({user_id})...")
+            pseudonym = anon.anonymize_name(name)
+
+            print(f"\nEvaluating student: {pseudonym} (anonymized)...")
             submission_parts = extract_submission_parts(sub)
-            
+
             if not submission_parts or len(submission_parts) == 1 and "No content" in str(submission_parts[0]):
                 print("  -> Skipping: No content found to evaluate.")
                 continue
-                
+
             excerpt = "Multimodal content (Images/Docs)"
             if isinstance(submission_parts[0], str):
                 excerpt = submission_parts[0][:150] + "..."
-                
+
+            # Anonymize before sending to external AI
+            anon_parts = anon.anonymize_parts(submission_parts)
+
             try:
-                swarm_eval = run_swarm_on_submission(submission_parts, rubric_text)
+                swarm_eval = run_swarm_on_submission(anon_parts, rubric_text)
                 final = swarm_eval['final_conclusion']
-                
+
                 all_results.append({
                     "Course Name": course_name,
                     "Assignment Name": assignment_name,
@@ -169,15 +188,17 @@ def cmd_evaluate_course(course_id):
                     "Student Name": name,
                     "Submission Excerpt": excerpt,
                     "Strict Agent Score": swarm_eval['strict_agent'].get('suggested_score'),
-                    "Strict Rationale": swarm_eval['strict_agent'].get('rationale'),
+                    "Strict Rationale": anon.deanonymize_text(
+                        swarm_eval['strict_agent'].get('rationale', '')),
                     "Holistic Agent Score": swarm_eval['holistic_agent'].get('suggested_score'),
                     "Final Recommended Score": final.get('final_suggested_score'),
-                    "Resolution Rationale": final.get('resolution_rationale')
+                    "Resolution Rationale": anon.deanonymize_text(
+                        final.get('resolution_rationale', ''))
                 })
                 print(f"  -> Recommended Score: {final.get('final_suggested_score')}")
-                
+
             except Exception as e:
-                print(f"  -> [ERROR] Failed to evaluate student {name}: {e}")
+                print(f"  -> [ERROR] Failed to evaluate student {pseudonym}: {e}")
                 
     if all_results:
         df = pd.DataFrame(all_results)

@@ -3,6 +3,7 @@ import json
 from google import genai
 from google.genai import types
 from dotenv import load_dotenv
+from dlp import sanitize_parts, sanitize
 
 load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
 
@@ -17,19 +18,23 @@ def evaluate_with_strict_agent(submission_parts, rubric_text):
     """
     Agent 1: The Strict Rubric Adherent.
     """
+    # Sanitize submission content before sending to external API
+    safe_rubric, _ = sanitize(rubric_text)
+    safe_parts = sanitize_parts(submission_parts)
+
     prompt_intro = f"""
-    You are the 'Strict Rubric Evaluator' agent. 
+    You are the 'Strict Rubric Evaluator' agent.
     Your ONLY job is to evaluate the provided student submission strictly according to the provided rubric.
     Do not give credit for effort, formatting, or tangential insights unless explicitly stated in the rubric.
     Be extremely critical and objective.
     Review the submission payload, which may contain text, URLs, and images of physical fabrication or design.
 
     RUBRIC:
-    {rubric_text}
+    {safe_rubric}
 
     STUDENT SUBMISSION (Images and/or text will follow):
     """
-    
+
     prompt_outro = """
     Output your analysis as raw JSON (no markdown formatting, no code blocks) matching this EXACT schema:
     {
@@ -38,9 +43,9 @@ def evaluate_with_strict_agent(submission_parts, rubric_text):
         "rationale": "<your detailed step-by-step reasoning based ONLY on the rubric>"
     }
     """
-    
+
     # We feed the model a list of instructions wrapped around the actual submission pieces
-    contents = [prompt_intro] + submission_parts + [prompt_outro]
+    contents = [prompt_intro] + safe_parts + [prompt_outro]
     
     response = client.models.generate_content(
         model=MODEL_ID,
@@ -57,19 +62,23 @@ def evaluate_with_holistic_agent(submission_parts, rubric_text):
     """
     Agent 2: The Holistic Reviewer.
     """
+    # Sanitize submission content before sending to external API
+    safe_rubric, _ = sanitize(rubric_text)
+    safe_parts = sanitize_parts(submission_parts)
+
     prompt_intro = f"""
-    You are the 'Holistic Reviewer' agent. 
+    You are the 'Holistic Reviewer' agent.
     While you should reference the provided rubric, your primary job is to evaluate the student's OVERALL grasp of the concept.
     Look for deep insights, effort, creativity, and critical thinking.
     If a student missed a minor technicality in the rubric but demonstrated profound understanding in their work/photos, suggest a higher score.
     Review the submission payload, which may contain text, URLs, and images of physical fabrication or design.
 
     RUBRIC:
-    {rubric_text}
+    {safe_rubric}
 
     STUDENT SUBMISSION (Images and/or text will follow):
     """
-    
+
     prompt_outro = """
     Output your analysis as raw JSON (no markdown formatting, no code blocks) matching this EXACT schema:
     {
@@ -78,8 +87,8 @@ def evaluate_with_holistic_agent(submission_parts, rubric_text):
         "rationale": "<your detailed reasoning focusing on insight, effort, and big-picture understanding>"
     }
     """
-    
-    contents = [prompt_intro] + submission_parts + [prompt_outro]
+
+    contents = [prompt_intro] + safe_parts + [prompt_outro]
     
     response = client.models.generate_content(
         model=MODEL_ID,
@@ -96,12 +105,14 @@ def synthesize_final_grade(strict_evaluation, holistic_evaluation, rubric_text):
     """
     Agent 3: The Synthesizer (Lead Agent).
     """
+    # Sanitize evaluation reports before sending to external API
+    safe_rubric, _ = sanitize(rubric_text)
     prompt = f"""
     You are the 'Lead Grading Synthesizer' agent.
     Your job is to read the reports from two specialized grading agents, resolve any discrepancies, and finalize a suggested score for the student.
 
     RUBRIC context:
-    {rubric_text}
+    {safe_rubric}
 
     AGENT 1 (Strict Rubric Adherent) REPORT:
     {json.dumps(strict_evaluation, indent=2)}

@@ -24,6 +24,10 @@ venv/
 /tmp/
 *.tmp
 
+# Student data exports (PII -- never commit)
+canvas-agent-grader/draft_grades_*.csv
+canvas-agent-grader/exports/
+
 # EEF run logs and capture files (local, ephemeral)
 logs/*.md
 !logs/run-log-template.md

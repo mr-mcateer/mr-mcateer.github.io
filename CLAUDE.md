@@ -9,6 +9,12 @@ that amplifies your reach -- not a gimmick.
 ## Security Rules
 - NEVER hardcode API keys in scripts, commands, or chat output.
 - ALL secrets live in `.env` and are loaded via env_loader (see education repo).
+- ALL text routed to external APIs (Gemini, Anthropic) MUST pass through
+  `canvas-agent-grader/dlp.py` sanitize() first. No exceptions.
+- Student names and IDs MUST be anonymized before any external API call.
+  Use `canvas-agent-grader/anonymizer.py` AnonymizationContext.
+- NEVER commit draft_grades CSVs. Delete them after grades are submitted.
+- See `docs/mac-hardening-guide.md` for restricted account and firewall setup.
 
 ## Code Style
 - No em-dashes in any generated content.
