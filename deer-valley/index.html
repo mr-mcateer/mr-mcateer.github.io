@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCP-25-5 | Strategic Position Analysis</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-card: #1a2235;
+            --bg-elevated: #1f2b42;
+            --bg-hover: #263350;
+            --text-primary: #e8ecf4;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #1e293b;
+            --border-light: #334155;
+            --accent-gold: #d4a017;
+            --accent-gold-dim: rgba(212,160,23,0.15);
+            --critical: #ef4444;
+            --critical-bg: rgba(239,68,68,0.08);
+            --critical-border: rgba(239,68,68,0.25);
+            --dangerous: #f97316;
+            --dangerous-bg: rgba(249,115,22,0.08);
+            --dangerous-border: rgba(249,115,22,0.25);
+            --serious: #eab308;
+            --serious-bg: rgba(234,179,8,0.08);
+            --serious-border: rgba(234,179,8,0.25);
+            --manageable: #22c55e;
+            --manageable-bg: rgba(34,197,94,0.08);
+            --manageable-border: rgba(34,197,94,0.25);
+            --weak: #06b6d4;
+            --info: #3b82f6;
+            --info-bg: rgba(59,130,246,0.08);
+            --info-border: rgba(59,130,246,0.25);
+            --navy: #1e40af;
+            --navy-bg: rgba(30,64,175,0.1);
+        }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::selection { background: var(--accent-gold); color: var(--bg-primary); }
+
+        /* ── LAYOUT ─────────────────────────────────────────── */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+        section:last-child { border-bottom: none; }
+
+        /* ── HERO ───────────────────────────────────────────── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(212,160,23,0.04) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 20%, rgba(30,64,175,0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: var(--critical-bg);
+            border: 1px solid var(--critical-border);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--critical);
+            margin-bottom: 32px;
+        }
+        .hero-badge .dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--critical);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+        }
+        .hero h1 span { color: var(--accent-gold); }
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin-bottom: 48px;
+            line-height: 1.7;
+        }
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .hero-meta-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .hero-meta-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* ── NAV ────────────────────────────────────────────── */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10,14,23,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0;
+        }
+        .nav-inner {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .nav-inner::-webkit-scrollbar { display: none; }
+        .nav-link {
+            padding: 14px 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .nav-link:hover { color: var(--text-primary); border-bottom-color: var(--accent-gold); }
+
+        /* ── SECTION HEADERS ────────────────────────────────── */
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin-bottom: 48px;
+        }
+
+        /* ── PLAYER CARDS ───────────────────────────────────── */
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        .player-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            transition: all 0.3s;
+            cursor: default;
+        }
+        .player-card:hover {
+            border-color: var(--border-light);
+            background: var(--bg-elevated);
+            transform: translateY(-2px);
+        }
+        .player-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+        .player-icon {
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .player-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .player-role {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .player-section {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+        }
+        .player-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .player-section-label.wants { color: var(--manageable); }
+        .player-section-label.vuln { color: var(--critical); }
+        .player-section-label.move { color: var(--accent-gold); }
+        .player-section p {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ── TIMELINE ───────────────────────────────────────── */
+        .timeline { position: relative; padding-left: 0; }
+        .move-card {
+            position: relative;
+            margin-bottom: 32px;
+        }
+        .move-header {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            cursor: pointer;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .move-header:hover { border-color: var(--border-light); }
+        .move-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 72px;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: white;
+            flex-shrink: 0;
+        }
+        .move-number.m1 { background: linear-gradient(135deg, #1e40af, #3b82f6); }
+        .move-number.m2 { background: linear-gradient(135deg, #7c3aed, #8b5cf6); }
+        .move-number.m3 { background: linear-gradient(135deg, #0d9488, #14b8a6); }
+        .move-number.m4 { background: linear-gradient(135deg, #dc2626, #ef4444); }
+        .move-number.m5 { background: linear-gradient(135deg, #c2410c, #f97316); }
+        .move-number.m6 { background: linear-gradient(135deg, #9333ea, #a855f7); }
+        .move-number.m7 { background: linear-gradient(135deg, #be123c, #f43f5e); }
+        .move-info {
+            flex: 1;
+            padding: 20px 24px;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .move-title-group { flex: 1; }
+        .move-timing {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 4px;
+        }
+        .move-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .move-chevron {
+            font-size: 20px;
+            color: var(--text-muted);
+            transition: transform 0.3s;
+            margin-left: 16px;
+            flex-shrink: 0;
+        }
+        .move-card.open .move-chevron { transform: rotate(180deg); }
+        .move-card.open .move-header { border-color: var(--border-light); }
+        .move-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        .move-card.open .move-body { max-height: 2000px; }
+        .move-content {
+            padding: 28px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+        }
+        .move-content h4 {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-top: 24px;
+            margin-bottom: 10px;
+        }
+        .move-content h4:first-child { margin-top: 0; }
+        .move-content p {
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 12px;
+        }
+        .move-content .script {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--accent-gold);
+            padding: 16px 20px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            color: var(--text-primary);
+            line-height: 1.75;
+            font-style: italic;
+        }
+        .move-content .effect-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .effect-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 16px;
+        }
+        .effect-item .target {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--info);
+            margin-bottom: 4px;
+        }
+        .effect-item p {
+            font-size: 13px;
+            margin-bottom: 0;
+        }
+
+        /* ── THREAT TABLE ───────────────────────────────────── */
+        .threat-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 6px;
+        }
+        .threat-table thead th {
+            padding: 10px 16px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .threat-table tbody tr {
+            background: var(--bg-card);
+            transition: background 0.2s;
+        }
+        .threat-table tbody tr:hover { background: var(--bg-elevated); }
+        .threat-table td {
+            padding: 14px 16px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .threat-table td:first-child {
+            border-radius: 8px 0 0 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-muted);
+            width: 48px;
+            text-align: center;
+        }
+        .threat-table td:last-child { border-radius: 0 8px 8px 0; }
+        .threat-table td:nth-child(2) { font-weight: 600; color: var(--text-primary); }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .badge.critical { background: var(--critical-bg); color: var(--critical); border: 1px solid var(--critical-border); }
+        .badge.dangerous { background: var(--dangerous-bg); color: var(--dangerous); border: 1px solid var(--dangerous-border); }
+        .badge.serious { background: var(--serious-bg); color: var(--serious); border: 1px solid var(--serious-border); }
+        .badge.manageable { background: var(--manageable-bg); color: var(--manageable); border: 1px solid var(--manageable-border); }
+
+        /* ── VERIFY CARDS ───────────────────────────────────── */
+        .verify-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .verify-card {
+            display: flex;
+            gap: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s;
+        }
+        .verify-card:hover {
+            border-color: var(--critical-border);
+            background: var(--bg-elevated);
+        }
+        .verify-num {
+            flex-shrink: 0;
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--critical), #b91c1c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 900;
+            color: white;
+        }
+        .verify-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        .verify-body {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* ── BOARD STATE ────────────────────────────────────── */
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .board-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+        .board-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+        }
+        .board-card.after-moves::before { background: linear-gradient(90deg, var(--manageable), var(--accent-gold)); }
+        .board-card.deg-position::before { background: linear-gradient(90deg, var(--critical), var(--dangerous)); }
+        .board-card.checkmate::before { background: linear-gradient(90deg, var(--accent-gold), #f59e0b); }
+        .board-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .board-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .board-card li {
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+            padding-left: 20px;
+            position: relative;
+        }
+        .board-card li:last-child { border-bottom: none; }
+        .board-card li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 16px;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+        }
+        .board-card.after-moves li::before { background: var(--manageable); }
+        .board-card.deg-position li::before { background: var(--critical); }
+        .board-card.checkmate li::before { background: var(--accent-gold); }
+
+        /* ── SEQUENCING TABLE ───────────────────────────────── */
+        .seq-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+        }
+        .seq-table td {
+            padding: 16px 20px;
+            vertical-align: top;
+        }
+        .seq-table td:first-child {
+            width: 100px;
+            border-radius: 8px 0 0 8px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: white;
+        }
+        .seq-table td:nth-child(2) {
+            width: 220px;
+            background: var(--bg-card);
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        .seq-table td:last-child {
+            background: var(--bg-card);
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .seq-lead { background: linear-gradient(135deg, #b91c1c, #ef4444); }
+        .seq-second { background: linear-gradient(135deg, #c2410c, #f97316); }
+        .seq-third { background: linear-gradient(135deg, #a16207, #eab308); }
+        .seq-closing { background: linear-gradient(135deg, #1e40af, #3b82f6); }
+
+        /* ── QUOTE BOX ──────────────────────────────────────── */
+        .quote-box {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 0 12px 12px 0;
+            padding: 28px 32px;
+            margin: 32px 0;
+            font-size: 15px;
+            color: var(--text-primary);
+            line-height: 1.8;
+            font-style: italic;
+        }
+        .quote-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            font-style: normal;
+            margin-bottom: 12px;
+        }
+
+        /* ── CALLOUT BOX ────────────────────────────────────── */
+        .callout {
+            background: var(--critical-bg);
+            border: 1px solid var(--critical-border);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin: 32px 0;
+        }
+        .callout.gold {
+            background: var(--accent-gold-dim);
+            border-color: rgba(212,160,23,0.3);
+        }
+        .callout h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--critical);
+            margin-bottom: 10px;
+        }
+        .callout.gold h3 { color: var(--accent-gold); }
+        .callout p {
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ── FOOTER ─────────────────────────────────────────── */
+        .site-footer {
+            padding: 48px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .site-footer p {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* ── RESPONSIVE ─────────────────────────────────────── */
+        @media (max-width: 768px) {
+            section { padding: 48px 0; }
+            .players-grid { grid-template-columns: 1fr; }
+            .move-number { min-width: 56px; font-size: 22px; }
+            .move-title { font-size: 15px; }
+            .threat-table { font-size: 13px; }
+            .threat-table td { padding: 10px 12px; }
+            .hero-meta { gap: 20px; }
+            .board-grid { grid-template-columns: 1fr; }
+            .effect-grid { grid-template-columns: 1fr; }
+            .seq-table td:first-child { width: 70px; font-size: 10px; }
+            .seq-table td:nth-child(2) { width: 150px; font-size: 13px; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .nav-link { padding: 12px 14px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════════════════ -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge"><span class="dot"></span> Privileged &mdash; Attorney Review Only</div>
+        <h1>7 Moves to <span>Checkmate</span></h1>
+        <p class="hero-sub">
+            A sequenced strategic playbook for SCP-25-5 Deer Valley Reserve Replat.
+            Each move sets up the next. The game is won before the hearing starts &mdash;
+            or it isn't won at all.
+        </p>
+        <div class="hero-meta">
+            <div class="hero-meta-item">
+                <span class="hero-meta-label">Case</span>
+                <span class="hero-meta-value">SCP-25-5 &bull; Bannock County, ID</span>
+            </div>
+            <div class="hero-meta-item">
+                <span class="hero-meta-label">Federal Judgment</span>
+                <span class="hero-meta-value">Smith v. Bannock County, 4:23-cv-00504</span>
+            </div>
+            <div class="hero-meta-item">
+                <span class="hero-meta-label">Judgment Date</span>
+                <span class="hero-meta-value">March 25, 2026</span>
+            </div>
+            <div class="hero-meta-item">
+                <span class="hero-meta-label">Appeal Deadline</span>
+                <span class="hero-meta-value">~April 24, 2026</span>
+            </div>
+            <div class="hero-meta-item">
+                <span class="hero-meta-label">Version</span>
+                <span class="hero-meta-value">3.0 &bull; March 29, 2026</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ STICKY NAV ═════════════════════════════════════════════════════════ -->
+<nav class="sticky-nav">
+    <div class="container">
+        <div class="nav-inner">
+            <a class="nav-link" href="#players">Players</a>
+            <a class="nav-link" href="#moves">7 Moves</a>
+            <a class="nav-link" href="#threats">Threat Matrix</a>
+            <a class="nav-link" href="#sequencing">Sequencing</a>
+            <a class="nav-link" href="#verify">Must Verify</a>
+            <a class="nav-link" href="#endgame">Endgame</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ═══ BLUF ═══════════════════════════════════════════════════════════════ -->
+<section>
+    <div class="container">
+        <div class="section-label">Bottom Line Up Front</div>
+        <div class="section-title">The Hearing Is Theater.<br>The Game Is Won Before It Starts.</div>
+        <div class="section-desc">
+            The Bannock County P&Z Commission follows its staff report and county attorney 80%+ of the time.
+            Control those two inputs and the hearing outcome is predetermined. Every move below targets the
+            information environment <em>before</em> the commissioners sit down.
+        </div>
+
+        <div class="callout gold">
+            <h3>The Single Highest-Priority Action</h3>
+            <p>Nathan calls Ian Johnson (County Attorney) <strong>this week</strong> &mdash; before the staff report
+            is drafted, before Racine Olson makes contact, before the hearing date is set.
+            Whoever frames the issue for Johnson wins. The entire game turns on this one phone call.
+            If Racine Olson gets there first, the frame becomes "vindictive neighbor." If Nathan gets there
+            first, the frame becomes "the County's own federal judgment creates a compliance issue."</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ PLAYERS ════════════════════════════════════════════════════════════ -->
+<section id="players">
+    <div class="container">
+        <div class="section-label">The Board</div>
+        <div class="section-title">Players &amp; Pressure Points</div>
+        <div class="section-desc">Every person in that room is a human being with a self-preservation instinct, a reputation to protect, and a story they tell themselves about who they are.</div>
+
+        <div class="players-grid">
+            <!-- Ian Johnson -->
+            <div class="player-card">
+                <div class="player-header">
+                    <div class="player-icon" style="background: var(--info-bg); border: 1px solid var(--info-border);">&#9878;</div>
+                    <div>
+                        <div class="player-name">Ian Johnson</div>
+                        <div class="player-role">County Prosecuting Attorney, Civil Division</div>
+                    </div>
+                </div>
+                <div class="player-section">
+                    <div class="player-section-label vuln">Psychological Vulnerability</div>
+                    <p>Fear of professional embarrassment. A county attorney who advises approval of a plat contradicting a federal judgment his county just lost &mdash; then gets reversed on appeal &mdash; looks incompetent. Recommending denial costs him nothing. Staying silent costs everything.</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-section-label move">Your Move</div>
+                    <p>Make his path of least resistance be denial. Give him legal cover to say "my recommendation is this body cannot approve until the access condition is satisfied." He will say it if you make it easy and dangerous not to.</p>
+                </div>
+            </div>
+
+            <!-- Planning Staff -->
+            <div class="player-card">
+                <div class="player-header">
+                    <div class="player-icon" style="background: var(--manageable-bg); border: 1px solid var(--manageable-border);">&#9997;</div>
+                    <div>
+                        <div class="player-name">Planning Staff</div>
+                        <div class="player-role">Draft the Staff Report &amp; Recommendation</div>
+                    </div>
+                </div>
+                <div class="player-section">
+                    <div class="player-section-label vuln">Psychological Vulnerability</div>
+                    <p>Staff want to be right. They don't want a recommendation that gets overturned on appeal. They don't want to be caught in a political fight. Give them a factual, unemotional basis to state the obvious &mdash; the condition isn't met &mdash; and they will state it.</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-section-label move">Your Move</div>
+                    <p>The Notice of Non-Compliance is really for staff, not for commissioners. It gives them the predicate to write: "Staff is unable to confirm that Condition #6 has been satisfied." That sentence kills the application.</p>
+                </div>
+            </div>
+
+            <!-- P&Z Commissioners -->
+            <div class="player-card">
+                <div class="player-header">
+                    <div class="player-icon" style="background: var(--serious-bg); border: 1px solid var(--serious-border);">&#9813;</div>
+                    <div>
+                        <div class="player-name">P&Z Commissioners</div>
+                        <div class="player-role">Vote to approve, deny, or defer</div>
+                    </div>
+                </div>
+                <div class="player-section">
+                    <div class="player-section-label vuln">Psychological Vulnerability</div>
+                    <p>Terrified of being wrong in public. Unanimously approved this developer in 2015. Their instinct is to follow whatever the "safe" option is. No commissioner has ever been criticized for following staff's recommendation. Plenty have been criticized for overriding it.</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-section-label move">Your Move</div>
+                    <p>Make denial the safe option. If staff recommends denial and the county attorney advises caution, denial IS the safe option. The Commission follows. This is why Moves 1 and 2 must happen before the hearing.</p>
+                </div>
+            </div>
+
+            <!-- Racine Olson -->
+            <div class="player-card">
+                <div class="player-header">
+                    <div class="player-icon" style="background: var(--dangerous-bg); border: 1px solid var(--dangerous-border);">&#9876;</div>
+                    <div>
+                        <div class="player-name">Racine Olson PLLP</div>
+                        <div class="player-role">DEG's Counsel &bull; Scott Smith / Richard Block</div>
+                    </div>
+                </div>
+                <div class="player-section">
+                    <div class="player-section-label vuln">Psychological Vulnerability</div>
+                    <p>Overconfidence. 80+ years in Pocatello. They expect to win because they always win here. They're preparing for standard objections from a smaller firm &mdash; not a pre-hearing campaign that has already turned the room before they walk in. They have no playbook for that.</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-section-label move">Your Move</div>
+                    <p>Make the fight expensive and uncertain. Racine Olson bills by the hour. The Gebos pay those bills. Drive a wedge between client and attorney by making the fight drag. At some point, the Gebos override their lawyers.</p>
+                </div>
+            </div>
+
+            <!-- The Gebos -->
+            <div class="player-card">
+                <div class="player-header">
+                    <div class="player-icon" style="background: var(--critical-bg); border: 1px solid var(--critical-border);">&#9971;</div>
+                    <div>
+                        <div class="player-name">The Gebos / DEG Enterprises-3</div>
+                        <div class="player-role">Applicant &bull; Subdivision Developers</div>
+                    </div>
+                </div>
+                <div class="player-section">
+                    <div class="player-section-label vuln">Psychological Vulnerability</div>
+                    <p>Sunk cost fallacy. They've invested so heavily that walking away feels like total loss. But every month of carrying costs without selling lots makes the loss grow. Time is their enemy. The rational move is to cut losses &mdash; your job is to make that point arrive faster.</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-section-label move">Your Move</div>
+                    <p>Block every path to lot sales. Title companies, recording requirements, appeal threats. When every road leads nowhere, the Gebos' calculation becomes: "We can keep paying Racine Olson, or we can stop bleeding."</p>
+                </div>
+            </div>
+
+            <!-- Title Companies -->
+            <div class="player-card">
+                <div class="player-header">
+                    <div class="player-icon" style="background: var(--navy-bg); border: 1px solid rgba(30,64,175,0.25);">&#128274;</div>
+                    <div>
+                        <div class="player-name">Title Companies</div>
+                        <div class="player-role">Commercial Gatekeepers &bull; Must insure before any sale</div>
+                    </div>
+                </div>
+                <div class="player-section">
+                    <div class="player-section-label wants">What They Want</div>
+                    <p>Clean title. Clear access. Zero litigation risk. They are conservative by nature and by fiduciary duty. They will not insure a subdivision where the access road dedication has been judicially voided.</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-section-label move">Your Move</div>
+                    <p>Post-hearing (if approved): notify every title company in SE Idaho with the federal judgment. No title insurance = no closings = subdivision commercially dead regardless of what the Commission decided. This bypasses the political process entirely.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 7 MOVES ════════════════════════════════════════════════════════════ -->
+<section id="moves">
+    <div class="container">
+        <div class="section-label">The Sequence</div>
+        <div class="section-title">7 Moves in Order</div>
+        <div class="section-desc">This is not a list of options. It is a sequence. Each move sets up the next. Miss a step and the sequence breaks.</div>
+
+        <div class="timeline">
+
+            <!-- MOVE 1 -->
+            <div class="move-card open">
+                <div class="move-header" onclick="toggleMove(this)">
+                    <div class="move-number m1">1</div>
+                    <div class="move-info">
+                        <div class="move-title-group">
+                            <div class="move-timing">Immediately &mdash; This Week</div>
+                            <div class="move-title">"The Staff Briefing"</div>
+                        </div>
+                        <div class="move-chevron">&#9660;</div>
+                    </div>
+                </div>
+                <div class="move-body">
+                    <div class="move-content">
+                        <h4>The Action</h4>
+                        <p>Nathan delivers a concise, factual memo to the planning director. Not to the Commission. Not to Johnson yet. To <strong>staff</strong>. The memo contains: (1) a certified copy of the federal judgment, (2) a one-page analysis showing the road dedication upon which access relied has been invalidated, (3) the exact language of Condition #6, and (4) a simple question: "Can the applicant satisfy Condition #6 given the federal judgment? Staff's analysis is requested."</p>
+                        <h4>Why This Works</h4>
+                        <p>You're not telling staff what to conclude. You're asking them to do their job. They will read the judgment. They will read Condition #6. They will reach the obvious conclusion: the condition cannot currently be satisfied. And they will write that in the staff report.</p>
+                        <h4>Psychological Mechanism</h4>
+                        <p>Staff now owns the conclusion. It's not Bim's argument &mdash; it's staff's independent finding. When Racine Olson stands up to argue, they're arguing against the County's own staff. That's a much harder position than arguing against a neighboring property owner.</p>
+                        <div class="effect-grid">
+                            <div class="effect-item">
+                                <div class="target">Effect on P&amp;Z</div>
+                                <p>Staff report frames the issue before the hearing. Commissioners read staff's recommendation, not your brief.</p>
+                            </div>
+                            <div class="effect-item">
+                                <div class="target">Effect on Racine Olson</div>
+                                <p>They walk into a room that's already been briefed. The frame is set. They're responding instead of leading.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOVE 2 -->
+            <div class="move-card">
+                <div class="move-header" onclick="toggleMove(this)">
+                    <div class="move-number m2">2</div>
+                    <div class="move-info">
+                        <div class="move-title-group">
+                            <div class="move-timing">Within 48 Hours of Move 1</div>
+                            <div class="move-title">"The Johnson Conversation"</div>
+                        </div>
+                        <div class="move-chevron">&#9660;</div>
+                    </div>
+                </div>
+                <div class="move-body">
+                    <div class="move-content">
+                        <h4>The Action</h4>
+                        <p>Nathan calls Ian Johnson. Not a formal meeting. A phone call. Professional courtesy.</p>
+                        <div class="script">"Ian, I represent Vawn Smith. You know the federal judgment came down last week. I've provided staff with a copy and asked them to assess whether the applicant can satisfy Condition #6. I wanted to give you a heads up because I know this puts the County in a sensitive position &mdash; you were the defendant in the federal case, and now you're being asked to approve a plat that relies on the road the court invalidated. I'm not asking you to take a position. I just want you to know that if this body approves, my client will exercise his rights under &sect; 67-6521. I'd rather not do that. But I will."</div>
+                        <h4>Why This Works</h4>
+                        <p>Three things accomplished: (1) Johnson knows staff has the judgment (he can't pretend ignorance), (2) the call is framed as courtesy, not threat, (3) the appeal threat is real but personal &mdash; "I'd rather not do that" implies reluctance, which implies certainty.</p>
+                        <div class="callout">
+                            <h3>Critical Timing</h3>
+                            <p>You MUST reach Johnson before Racine Olson does. If Racine Olson frames this first as "a vindictive neighbor abusing process," Johnson aligns with them. If Nathan frames it first as "the County's own federal judgment creates a compliance issue," Johnson aligns with you. <strong>Whoever sets the frame wins. Get there first.</strong></p>
+                        </div>
+                        <h4>Johnson's Calculation After This Call</h4>
+                        <p>"If I advise the Commission to deny, no one blames me &mdash; I'm protecting the County. If I stay silent and they approve and lose on appeal, I'm the one who didn't warn them." The math points one direction: caution.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOVE 3 -->
+            <div class="move-card">
+                <div class="move-header" onclick="toggleMove(this)">
+                    <div class="move-number m3">3</div>
+                    <div class="move-info">
+                        <div class="move-title-group">
+                            <div class="move-timing">10+ Days Before the Hearing</div>
+                            <div class="move-title">"The Written Opposition"</div>
+                        </div>
+                        <div class="move-chevron">&#9660;</div>
+                    </div>
+                </div>
+                <div class="move-body">
+                    <div class="move-content">
+                        <h4>The Action</h4>
+                        <p>File a formal written opposition into the record. <strong>Four paragraphs. One page. Nothing more.</strong></p>
+                        <p><strong>Paragraph 1:</strong> State the federal judgment &mdash; case number, date, holding. The road dedication is void.</p>
+                        <p><strong>Paragraph 2:</strong> State Condition #6 &mdash; exact language. "Proof of legal 60' access from Autumn Lane to be provided at Preliminary Plat."</p>
+                        <p><strong>Paragraph 3:</strong> State the deficiency &mdash; the access the applicant relied upon no longer exists. The remaining access is a private easement, 30 feet wide. This does not satisfy the 60-foot requirement.</p>
+                        <p><strong>Paragraph 4:</strong> State the consequences &mdash; if approved, (a) the plat cannot be recorded under &sect; 50-1308, (b) the decision will be appealed under &sect; 67-6521, (c) the County will be defending another legal proceeding arising from the same road.</p>
+                        <h4>Why Four Paragraphs</h4>
+                        <p>Commissioners won't read a 20-page brief. They will read one page. Make that one page devastating. No narrative. No emotion. No settlement agreement discussion. Let DEG bring the drama. You bring the facts.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOVE 4 -->
+            <div class="move-card">
+                <div class="move-header" onclick="toggleMove(this)">
+                    <div class="move-number m4">4</div>
+                    <div class="move-info">
+                        <div class="move-title-group">
+                            <div class="move-timing">At the Hearing</div>
+                            <div class="move-title">"Controlled Aggression" &mdash; The 3-Minute Opening</div>
+                        </div>
+                        <div class="move-chevron">&#9660;</div>
+                    </div>
+                </div>
+                <div class="move-body">
+                    <div class="move-content">
+                        <h4>First 60 Seconds &mdash; The Frame</h4>
+                        <div class="script">"Commissioners, this is simple. Your own Findings and Order impose Condition #6: proof of legal 60-foot access from Autumn Lane, to be provided at Preliminary Plat. That's your condition. Your language. Your timing requirement. On March 25, a federal court invalidated the road dedication that provided that access. This County was the defendant. This County lost. The access that existed on paper no longer exists in law. The applicant cannot satisfy Condition #6 today. That is the beginning and the end of this matter."</div>
+
+                        <h4>Next 60 Seconds &mdash; Close the Escape Routes</h4>
+                        <div class="script">"I want to address three things you may hear tonight. First, you may hear that the applicant has broad use rights under a prior stipulated judgment. That's true &mdash; but those are private easement rights, 30 feet wide, over my client's land. Private easement rights are not the same as a 60-foot public right-of-way. Your condition requires the latter. Second, you may hear that these issues can be deferred to Final Plat. Your own condition says 'at Preliminary Plat.' Deferral violates your own conditions of approval. Third, you may hear that Idaho Code &sect; 50-1308 is only about recording. That's also true. But the practical consequence is the same: even if you approve tonight, this plat cannot be recorded. My client owns the strip. He will not sign. An approval that cannot be recorded accomplishes nothing for the applicant and exposes this County to yet another legal proceeding."</div>
+
+                        <h4>Final 60 Seconds &mdash; The Lock</h4>
+                        <div class="script">"My client has asked me to make the following clear for the record: If this body approves the Preliminary Plat without the applicant satisfying Condition #6, my client will seek judicial review under Idaho Code &sect; 67-6521. If this body defers the Condition #6 requirement to a later stage, my client will seek judicial review of that deferral as a departure from the conditions of approval. We preserve these objections on the record tonight. We are not asking this body to do anything extraordinary. We are asking you to enforce your own condition."</div>
+
+                        <h4>Why This Sequence</h4>
+                        <p>Opened with THEIR condition (not your argument). Closed the three escape routes. Ended with a locked record that makes appeal nearly automatic. Three minutes. No settlement agreement. No name-calling. Nothing for Racine Olson to grab onto emotionally.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOVE 5 -->
+            <div class="move-card">
+                <div class="move-header" onclick="toggleMove(this)">
+                    <div class="move-number m5">5</div>
+                    <div class="move-info">
+                        <div class="move-title-group">
+                            <div class="move-timing">During Deliberation</div>
+                            <div class="move-title">"Object to Everything &mdash; On the Record"</div>
+                        </div>
+                        <div class="move-chevron">&#9660;</div>
+                    </div>
+                </div>
+                <div class="move-body">
+                    <div class="move-content">
+                        <h4>The Action</h4>
+                        <p>Every time a commissioner proposes deferral: <strong>"For the record, my client objects to deferral of the Condition #6 access requirement."</strong></p>
+                        <p>Every time DEG makes a disputed factual claim: <strong>"For the record, my client disputes that characterization."</strong></p>
+                        <p>If the Commission votes to approve: <strong>"For the record, my client objects to this approval on the grounds that the applicant has not satisfied Condition #6."</strong></p>
+                        <h4>Why This Matters</h4>
+                        <p>The appeal under &sect; 67-6521 is based on the administrative record. If objections aren't on the record, they can't be raised on appeal. Every objection is a brick in the appeal wall.</p>
+                        <h4>Psychological Mechanism on Commissioners</h4>
+                        <p>Every time Nathan stands and says "for the record, my client objects," commissioners hear: <em>this is going to court.</em> That fear accumulates. By the fourth or fifth objection, at least one commissioner is thinking: "Maybe we should just deny this and avoid the whole mess."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOVE 6 -->
+            <div class="move-card">
+                <div class="move-header" onclick="toggleMove(this)">
+                    <div class="move-number m6">6</div>
+                    <div class="move-info">
+                        <div class="move-title-group">
+                            <div class="move-timing">48 Hours After Hearing (If Approved)</div>
+                            <div class="move-title">"The Title Company Notification"</div>
+                        </div>
+                        <div class="move-chevron">&#9660;</div>
+                    </div>
+                </div>
+                <div class="move-body">
+                    <div class="move-content">
+                        <h4>The Action</h4>
+                        <p>Nathan sends a formal letter to every title company operating in Bannock County containing: (1) the federal judgment, (2) proof the road dedication is void, (3) proof Bim has not consented to a plat, (4) a statement that &sect; 50-1308 prohibits recording without the property owner's signature.</p>
+                        <h4>The Effect</h4>
+                        <p>No title insurance = no closings = no lot sales = <strong>subdivision is commercially dead regardless of what the Commission decided</strong>. The Commission's approval becomes a piece of paper with no practical consequence. No buyer's lender will fund a purchase without title insurance.</p>
+                        <h4>Why the Timing Matters</h4>
+                        <p>You do this <strong>AFTER</strong> the hearing, not before. Before the hearing, it looks like interference and gives DEG ammunition. After the hearing, it's a legal response to an administrative decision. There's nothing DEG or the Commission can do about it.</p>
+                        <div class="callout gold">
+                            <h3>The Chess of the Threat</h3>
+                            <p>The <em>threat</em> of this move is more valuable than executing it. If DEG knows Bim can kill the title insurance, their incentive to negotiate increases dramatically. Nathan can reference "my client's property rights extend to the recording and title process" at the hearing without spelling it out. Racine Olson will understand immediately.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MOVE 7 -->
+            <div class="move-card">
+                <div class="move-header" onclick="toggleMove(this)">
+                    <div class="move-number m7">7</div>
+                    <div class="move-info">
+                        <div class="move-title-group">
+                            <div class="move-timing">Within 28 Days of Approval</div>
+                            <div class="move-title">"The Appeal" &mdash; &sect; 67-6521</div>
+                        </div>
+                        <div class="move-chevron">&#9660;</div>
+                    </div>
+                </div>
+                <div class="move-body">
+                    <div class="move-content">
+                        <h4>The Brief Writes Itself</h4>
+                        <p>(1) County's own Condition #6 required proof at Preliminary Plat. (2) Applicant could not provide proof because road dedication voided by federal court &mdash; where County was defendant. (3) Commission approved despite the deficiency. (4) Every objection preserved on the record. (5) Approval is arbitrary, capricious, and an abuse of discretion.</p>
+                        <h4>The Psychological Endgame</h4>
+                        <p>The Commission knows this appeal is coming (Nathan said so). Johnson knows (Nathan told him). The reviewing judge sees a Commission that approved a plat the applicant couldn't satisfy &mdash; after being warned on the record, by the opposing party, and by their own staff report. That's not a close case. That's a reversal.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══ THREATS ═════════════════════════════════════════════════════════════ -->
+<section id="threats">
+    <div class="container">
+        <div class="section-label">Opposition Intelligence</div>
+        <div class="section-title">Threat Matrix &mdash; What DEG Will Argue</div>
+        <div class="section-desc">Ranked by how the argument lands before the Bannock County P&Z Council, accounting for small-county dynamics and Racine Olson's institutional advantage.</div>
+
+        <div style="overflow-x: auto;">
+        <table class="threat-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Argument</th>
+                    <th>Threat</th>
+                    <th>Why This Ranking</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Defer Everything to Final Plat</td>
+                    <td><span class="badge critical">Critical</span></td>
+                    <td>Path of least resistance. Council approved unanimously in 2015. Most likely outcome if not forcefully prevented.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>&sect; 50-1308 Only Bars Recording</td>
+                    <td><span class="badge critical">Critical</span></td>
+                    <td>DEG is legally correct. If Nathan leads with this and gets exposed, credibility collapses for all subsequent arguments.</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Settlement Agreement Breach</td>
+                    <td><span class="badge critical">Critical</span></td>
+                    <td>Fazzio v. Mason makes specific performance real. Narrative devastating in small county. Creates second legal front.</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>HSRDP Permits Private Roads</td>
+                    <td><span class="badge dangerous">Dangerous</span></td>
+                    <td>May collapse kill-chain #3 entirely. Actual HSRDP text (&#167; 2020.040) permits private roads. Must verify before hearing.</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Stipulated Judgment Broad Language</td>
+                    <td><span class="badge dangerous">Dangerous</span></td>
+                    <td>Genuinely broad "anyone for any purposes" language. Federal judgment preserved these rights. Sounds sufficient to lay commissioners.</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Appeal Window / Defer</td>
+                    <td><span class="badge dangerous">Dangerous</span></td>
+                    <td>Political cover for commissioners who don't want to decide. Strongest before April 24, 2026.</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>"Bim Is Unreasonable"</td>
+                    <td><span class="badge dangerous">Dangerous</span></td>
+                    <td>Small-town dynamics amplify this. Racine Olson's institutional advantage makes the narrative land harder.</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>County Can Condemn</td>
+                    <td><span class="badge serious">Serious</span></td>
+                    <td>Most dangerous if floated by a commissioner as a "compromise" &mdash; gives them a path to say yes.</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Road Was Lawfully Constructed</td>
+                    <td><span class="badge serious">Serious</span></td>
+                    <td>Emotionally effective. Makes commissioners think "why are we making this complicated?"</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Easement Is 30, Not 14 Feet</td>
+                    <td><span class="badge manageable">Manageable</span></td>
+                    <td>True but irrelevant. Neither 14 nor 30 satisfies the 60-foot requirement.</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>Alternative Access Configuration</td>
+                    <td><span class="badge manageable">Weak</span></td>
+                    <td>Procedurally dead. Condition #6 specifies access from Autumn Lane specifically.</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ SEQUENCING ═════════════════════════════════════════════════════════ -->
+<section id="sequencing">
+    <div class="container">
+        <div class="section-label">Argument Order</div>
+        <div class="section-title">Resequenced for Preliminary Plat</div>
+        <div class="section-desc">The existing strategy leads with &sect; 50-1308. This is wrong. It invites DEG to expose the approval/recording distinction and damages credibility on everything after. Correct sequencing below.</div>
+
+        <div style="overflow-x: auto;">
+        <table class="seq-table">
+            <tr>
+                <td class="seq-lead">Lead</td>
+                <td>Condition #6<br><small style="font-weight:400; color: var(--text-muted);">60' access at Preliminary Plat</small></td>
+                <td>The County's OWN condition. Explicit timing. Demonstrably unsatisfied. Forces the developer to explain how they satisfy it. They cannot.</td>
+            </tr>
+            <tr>
+                <td class="seq-second">Second</td>
+                <td>Federal Judgment<br><small style="font-weight:400; color: var(--text-muted);">Road dedication void</small></td>
+                <td>Reinforcement. The access on paper has been judicially invalidated. Developer cannot point to prior dedication as proof.</td>
+            </tr>
+            <tr>
+                <td class="seq-third">Third</td>
+                <td>Private Road Prohibition<br><small style="font-weight:400; color: var(--text-muted);">IF confirmed</small></td>
+                <td>Only use if the ordinance citation and "generally prohibited" language are verified. Do NOT use if unconfirmed &mdash; it will be exposed.</td>
+            </tr>
+            <tr>
+                <td class="seq-closing">Closing</td>
+                <td>&sect; 50-1308<br><small style="font-weight:400; color: var(--text-muted);">Recording backstop</small></td>
+                <td>"Even if you approve &mdash; it cannot be recorded. My client owns the strip. He will not sign. Approval is a hollow act."</td>
+            </tr>
+        </table>
+        </div>
+
+        <div class="quote-box" style="margin-top: 48px;">
+            <div class="quote-label">The 60-Second Explanation Nathan Must Deliver</div>
+            "Commissioners, I want to make one distinction that everything in this hearing turns on. An easement says specific people can use a specific piece of road. A public right-of-way says the government owns or controls the road, maintains it, and anyone can use it. Your own subdivision standards require a public right-of-way. What exists here is a private easement &mdash; 30 feet wide, over my client's land. The developer is asking you to treat one as the other. They are different legal instruments with different consequences. You cannot approve a subdivision with private road access and call it public. That is what is being asked of you today."
+        </div>
+    </div>
+</section>
+
+<!-- ═══ VERIFY ═════════════════════════════════════════════════════════════ -->
+<section id="verify">
+    <div class="container">
+        <div class="section-label">Pre-Flight Check</div>
+        <div class="section-title">5 Things Nathan Must Verify</div>
+        <div class="section-desc">These are not nice-to-haves. Each one could change the strategy. Any one left unverified is an exposed flank Racine Olson will exploit.</div>
+
+        <div class="verify-grid">
+            <div class="verify-card">
+                <div class="verify-num">1</div>
+                <div>
+                    <div class="verify-title">What is the correct ordinance number?</div>
+                    <div class="verify-body">Every prior document cites "Ordinance 2024-03." Research suggests this is actually the Stormwater Management Ordinance, not the HSRDP. If wrong, every filing contains an error opposing counsel will exploit immediately.</div>
+                </div>
+            </div>
+            <div class="verify-card">
+                <div class="verify-num">2</div>
+                <div>
+                    <div class="verify-title">Does the HSRDP actually prohibit private roads?</div>
+                    <div class="verify-body">The actual text of &sect; 2020.040 appears to regulate and permit private roads, not prohibit them. If the HSRDP permits private roads, kill-chain #3 is gone and the entire strategy must be rebuilt around Condition #6 exclusively.</div>
+                </div>
+            </div>
+            <div class="verify-card">
+                <div class="verify-num">3</div>
+                <div>
+                    <div class="verify-title">What did the County mean by "legal 60' access" in Condition #6?</div>
+                    <div class="verify-body">Review the January 22, 2026 meeting minutes and staff report. Did they mean public right-of-way or just legally sufficient access? This single answer determines whether the Stipulated Judgment's private easement satisfies the condition.</div>
+                </div>
+            </div>
+            <div class="verify-card">
+                <div class="verify-num">4</div>
+                <div>
+                    <div class="verify-title">Does the Settlement Agreement contain a specific performance clause?</div>
+                    <div class="verify-body">If yes, Fazzio v. Mason (150 Idaho 591, 2011) makes a court order forcing Bim to cooperate a real risk &mdash; not hypothetical. Nathan must assess this exposure before filing anything.</div>
+                </div>
+            </div>
+            <div class="verify-card">
+                <div class="verify-num">5</div>
+                <div>
+                    <div class="verify-title">Has the developer attempted to acquire the strip?</div>
+                    <div class="verify-body">If no: powerful argument they haven't tried lawful means. If yes: the argument shifts to Bim's right to refuse. Either way, Nathan needs the answer to control the narrative at the hearing.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ ENDGAME ════════════════════════════════════════════════════════════ -->
+<section id="endgame">
+    <div class="container">
+        <div class="section-label">After All 7 Moves</div>
+        <div class="section-title">The Board State</div>
+        <div class="section-desc">If you execute all seven moves in sequence, this is where the pieces land.</div>
+
+        <div class="board-grid">
+            <div class="board-card after-moves">
+                <h3 style="color: var(--manageable);">Our Position</h3>
+                <ul>
+                    <li>Staff report says condition isn't satisfied</li>
+                    <li>County attorney advised caution</li>
+                    <li>Written opposition is in the record</li>
+                    <li>Every objection preserved for appeal</li>
+                    <li>Title companies notified &mdash; no insurance</li>
+                    <li>Appeal filed and strong under &sect; 67-6521</li>
+                </ul>
+            </div>
+            <div class="board-card deg-position">
+                <h3 style="color: var(--critical);">DEG's Position</h3>
+                <ul>
+                    <li>A piece of paper (approval) that cannot be recorded</li>
+                    <li>Cannot be insured by any title company</li>
+                    <li>Will be reversed on appeal</li>
+                    <li>Six figures spent on attorneys</li>
+                    <li>No closer to selling lots than before</li>
+                    <li>Carrying costs growing every month</li>
+                </ul>
+            </div>
+            <div class="board-card checkmate">
+                <h3 style="color: var(--accent-gold);">The Gebos' Calculation</h3>
+                <ul>
+                    <li>"We can keep paying Racine Olson to fight..."</li>
+                    <li>"...or we can stop bleeding money"</li>
+                    <li>There is no path to selling lots</li>
+                    <li>Every road leads through Bim's property</li>
+                    <li>Time makes their position weaker, not stronger</li>
+                    <li><strong>That's checkmate.</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="callout" style="margin-top: 48px;">
+            <h3>The Asymmetric Advantage</h3>
+            <p>Even if the Commission approves: Bim owns the strip. The plat cannot be recorded without his signature (&sect; 50-1308). No lots can be sold. A "yes" vote is a hollow act that accomplishes nothing for the developer while handing Bim a strong appellate record. <strong>The game was not won at the hearing. It was won when the federal court entered judgment. Everything since is positioning.</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ FOOTER ═════════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+    <div class="container">
+        <p>
+            SCP-25-5 &bull; Deer Valley Reserve Replat &bull; Bannock County, Idaho<br>
+            Privileged &mdash; Attorney Review Only &bull; Version 3.0 &bull; March 29, 2026<br>
+            Strategic analysis prepared by family support. Not legal advice.
+        </p>
+    </div>
+</footer>
+
+<script>
+function toggleMove(header) {
+    const card = header.closest('.move-card');
+    card.classList.toggle('open');
+}
+
+// Smooth scroll for nav
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+
+// Active nav tracking
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navLinks.forEach(l => l.style.color = '');
+            const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+            if (active) active.style.color = 'var(--accent-gold)';
+        }
+    });
+}, { threshold: 0.3 });
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
