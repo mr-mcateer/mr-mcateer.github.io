@@ -155,16 +155,16 @@ The course covers legitimate, well-documented Claude Code concepts. Nearly all t
 
 | Project | Claimed | Verified | GitHub |
 |---------|---------|----------|--------|
-| Paperclip | Business agent team with CEO/CTO/CMO roles | YES | `paperclipai/paperclip` (30k+ stars). paperclip.ing |
-| Company Helm | AI studio with agent roles | NOT FOUND | May be misnamed or obscure |
+| Paperclip | Business agent team with CEO/CTO/CMO roles | YES | `paperclipai/paperclip` (~45k stars). paperclip.ing |
+| Company Helm | AI studio with agent roles | YES (tiny) | `CompanyHelm/companyhelm` (7 stars, March 2026). Very new/small |
 | Open Goat | Autonomous org of OpenClaw agents | YES | `marian2js/opengoat` (315 stars). opengoat.ai |
 | "The System" | 26 specialized agents | NOT FOUND | Could not locate specific project |
-| Gastown | Mayor/crew/polecats hierarchy | YES | `steveyegge/gastown` by Steve Yegge |
-| Crew AI | Multi-agent framework | YES | `crewAIInc/crewAI` (100k+ certified devs). crewai.com |
+| Gastown | Mayor/crew/polecats hierarchy | YES | `steveyegge/gastown` (~13.4k stars) by Steve Yegge |
+| Crew AI | Multi-agent framework | YES | `crewAIInc/crewAI` (~47.8k stars, 100k+ certified devs). crewai.com |
 | SwarmClaw | CEO-based delegation | YES | `swarmclawai/swarmclaw` (207 stars) |
-| Droid (Factory AI) | Publicly available harness | YES | `Factory-AI/droid-action`. factory.ai |
+| Droid (Factory AI) | Publicly available harness | YES | `Factory-AI/droid-action`. factory.ai. $50M funded, enterprise customers |
 
-**5 of 7 named projects verified. 2 could not be found (may be misheard from audio transcript).**
+**7 of 8 named projects verified. "The System" could not be found (may be a private config or misheard from audio).**
 
 ---
 
@@ -226,16 +226,20 @@ The course covers legitimate, well-documented Claude Code concepts. Nearly all t
 
 The Claude Code ecosystem has multiple credible voices:
 
-1. **Anthropic** -- Official docs, engineering blog, developer conferences
-2. **Matt Pocock** -- "Claude Code for Real Engineers" course
-3. **Mario Zechner** -- Pi agent creator, detailed technical blog
-4. **Steve Yegge** -- Gastown creator, veteran engineer
-5. **LangChain team** -- Harness engineering blog series
-6. **Andrej Karpathy** -- Auto-research framework creator
-7. **Simon Willison** -- Covers AI tools extensively
-8. **Microsoft Azure team** -- AI agent design pattern documentation
-9. **ClaudeLog** -- Community documentation aggregator
-10. **Scrimba, various YouTube educators** -- Growing tutorial ecosystem
+1. **Boris Cherny** -- Anthropic Staff Engineer who created Claude Code. Shared workflow of 259 PRs in 30 days, all AI-written
+2. **Matt Pocock** -- "Claude Code for Real Engineers" cohort course
+3. **Cole Medin** (coleam00) -- AI Agents Masterclass on YouTube, created `your-claude-engineer` harness, speaks at conferences on "Agentic Engineering with Context Driven Development"
+4. **Steve Yegge** -- Gastown creator, veteran engineer (famous for "Google Platforms Rant")
+5. **Theo (t3dotgg)** -- YouTuber (~500K subs) who covers Claude Code extensively
+6. **Mario Zechner** -- Pi agent creator, detailed technical blog at mariozechner.at
+7. **Florian Bruniaux** -- Created `claude-code-ultimate-guide` on GitHub
+8. **LangChain team** -- Harness engineering blog series (4+ posts)
+9. **Andrej Karpathy** -- Auto-research framework creator
+10. **Simon Willison** -- Covers AI tools extensively at simonwillison.net
+11. **Microsoft Azure team** -- AI agent design pattern documentation
+12. **Anthropic** -- Official docs, engineering blog, developer conferences, Coursera course "Claude Code: Software Engineering with Generative AI Agents"
+13. **ClaudeLog** (claudelog.com) -- Community documentation aggregator
+14. **Scrimba** -- Published curated tutorial roundups
 
 The instructor demonstrates genuine expertise and working knowledge. His technical claims are overwhelmingly accurate. But the strategies he presents (CLAUDE.md management, parallelization patterns, auto-research, workspace organization) are **well-documented by multiple independent sources** -- he is a skilled practitioner and communicator, not the sole authority.
 
