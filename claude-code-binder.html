@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code Advanced Practitioner's Binder</title>
+<style>
+@page { size: letter; margin: 0.75in; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: #1a1a2e; line-height: 1.5; font-size: 11pt; }
+h1 { font-size: 28pt; font-weight: 800; color: #0f0f23; margin-bottom: 4pt; letter-spacing: -0.5pt; }
+h2 { font-size: 18pt; font-weight: 700; color: #1a1a2e; margin: 28pt 0 8pt 0; padding-bottom: 4pt; border-bottom: 2.5pt solid #d4a843; }
+h3 { font-size: 13pt; font-weight: 700; color: #2d2d5e; margin: 16pt 0 6pt 0; }
+h4 { font-size: 11pt; font-weight: 700; color: #444; margin: 10pt 0 4pt 0; }
+p, li { font-size: 10.5pt; line-height: 1.55; }
+p { margin-bottom: 6pt; }
+ul, ol { margin: 4pt 0 8pt 18pt; }
+li { margin-bottom: 3pt; }
+table { width: 100%; border-collapse: collapse; margin: 8pt 0 12pt 0; font-size: 10pt; }
+th { background: #1a1a2e; color: #fff; padding: 6pt 8pt; text-align: left; font-weight: 600; }
+td { padding: 5pt 8pt; border-bottom: 1pt solid #e0e0e0; }
+tr:nth-child(even) td { background: #f8f7f4; }
+code { font-family: 'SF Mono', 'Fira Code', monospace; background: #f0ede6; padding: 1pt 4pt; border-radius: 3pt; font-size: 9.5pt; }
+.cover { page-break-after: always; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 9in; text-align: center; }
+.cover h1 { font-size: 36pt; color: #1a1a2e; margin-bottom: 6pt; }
+.cover .subtitle { font-size: 16pt; color: #555; font-weight: 400; margin-bottom: 24pt; }
+.cover .meta { font-size: 10pt; color: #888; margin-top: 12pt; line-height: 1.8; }
+.cover .badge { display: inline-block; background: #d4a843; color: #fff; padding: 4pt 14pt; border-radius: 4pt; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1pt; margin-bottom: 18pt; }
+.module { page-break-before: always; }
+.module:first-of-type { page-break-before: avoid; }
+.card { background: #f8f7f4; border: 1pt solid #e8e4db; border-radius: 6pt; padding: 12pt 14pt; margin: 8pt 0; }
+.card-warn { background: #fff8e7; border-color: #d4a843; }
+.card-green { background: #f0f7f0; border-color: #4a9; }
+.card-red { background: #fdf0f0; border-color: #c44; }
+.card-blue { background: #f0f4fa; border-color: #4477bb; }
+.badge-verified { display: inline-block; background: #2a7a3a; color: #fff; padding: 1pt 7pt; border-radius: 3pt; font-size: 8pt; font-weight: 700; text-transform: uppercase; }
+.badge-unverified { display: inline-block; background: #c44; color: #fff; padding: 1pt 7pt; border-radius: 3pt; font-size: 8pt; font-weight: 700; text-transform: uppercase; }
+.badge-partial { display: inline-block; background: #b8860b; color: #fff; padding: 1pt 7pt; border-radius: 3pt; font-size: 8pt; font-weight: 700; text-transform: uppercase; }
+.toc { list-style: none; margin: 0; padding: 0; }
+.toc li { padding: 5pt 0; border-bottom: 1pt dotted #ccc; font-size: 11pt; }
+.toc li span { float: right; color: #888; font-size: 10pt; }
+.revision { background: #1a1a2e; color: #d4a843; padding: 6pt 12pt; font-size: 9pt; font-weight: 600; text-align: center; margin-bottom: 16pt; border-radius: 4pt; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt; }
+.diagram { background: #1a1a2e; color: #e8e4db; padding: 14pt; border-radius: 6pt; font-family: monospace; font-size: 9pt; line-height: 1.6; margin: 8pt 0; white-space: pre; overflow-x: auto; }
+.footer { margin-top: 20pt; padding-top: 8pt; border-top: 1pt solid #ddd; font-size: 8pt; color: #999; text-align: center; }
+.checklist { list-style: none; padding-left: 0; }
+.checklist li { padding: 3pt 0 3pt 20pt; position: relative; }
+.checklist li::before { content: "\2610"; position: absolute; left: 0; }
+.expert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6pt; }
+.expert { background: #f8f7f4; border: 1pt solid #e0e0e0; border-radius: 4pt; padding: 6pt 10pt; }
+.expert strong { font-size: 10pt; }
+.expert .role { font-size: 8.5pt; color: #666; }
+.page-break { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<!-- ==================== COVER PAGE ==================== -->
+<div class="cover">
+  <div class="badge">Verified Research Compendium</div>
+  <h1>Claude Code<br>Advanced Practitioner's Binder</h1>
+  <div class="subtitle">Strategies, Tools & Verified Claims for Agentic Engineering</div>
+  <p style="font-size:11pt; color:#555; max-width:5in; margin: 0 auto;">
+    Distilled from course analysis, GitHub verification, Anthropic documentation,
+    and multi-source cross-referencing. Every claim tagged with verification status.
+    No single-source dependency.
+  </p>
+  <div class="meta">
+    <strong>Compiled by:</strong> Prompt AI Solutions (promptaisolutions.com)<br>
+    <strong>Primary Source:</strong> "Advanced Claude Code" course (Nyx Drive / YouTube)<br>
+    <strong>Verification Sources:</strong> GitHub repos, Anthropic docs, LangChain, Microsoft, academic papers<br><br>
+    <strong>First Published:</strong> April 2, 2026<br>
+    <strong>Last Revised:</strong> April 3, 2026<br>
+    <strong>Revision:</strong> 1.1<br><br>
+    <em style="color:#c44; font-size:9pt;">
+      WARNING: This field moves at extraordinary speed. Verify all tool versions,
+      feature availability, and pricing before implementation. Target shelf life: 60-90 days.
+    </em>
+  </div>
+</div>
+
+<!-- ==================== REVISION LOG ==================== -->
+<div class="revision">REVISION LOG -- This document will age. Check dates before trusting any claim.</div>
+
+<table>
+  <tr><th>Rev</th><th>Date</th><th>Changes</th></tr>
+  <tr><td>1.0</td><td>2026-04-02</td><td>Initial research and claim verification across all modules</td></tr>
+  <tr><td>1.1</td><td>2026-04-03</td><td>Expanded expert list, updated star counts, Company Helm found, converted to binder format</td></tr>
+  <tr><td style="color:#999;">1.2</td><td style="color:#999;">TBD</td><td style="color:#999;">Re-verify feature flags, pricing, and tool availability (target: May 2026)</td></tr>
+</table>
+
+<h3>How to Use This Binder</h3>
+<div class="two-col">
+  <div class="card">
+    <h4>For Learning</h4>
+    <p>Work through Modules 1-9 sequentially. Each module is self-contained with verified claims, primary sources, and implementation checklists.</p>
+  </div>
+  <div class="card">
+    <h4>For Reference</h4>
+    <p>Jump to any module via the table of contents. Use the verification badges to assess confidence level. Check revision dates before acting on tool-specific claims.</p>
+  </div>
+</div>
+
+<!-- ==================== TABLE OF CONTENTS ==================== -->
+<h2>Table of Contents</h2>
+<ul class="toc">
+  <li><strong>Module 1:</strong> CLAUDE.md System Prompts <span>The 4-Purpose Framework</span></li>
+  <li><strong>Module 2:</strong> Agent Harnesses <span>What Wraps the LLM</span></li>
+  <li><strong>Module 3:</strong> Parallelization & Multi-Agent Patterns <span>Fan-Out, Consensus, Debate</span></li>
+  <li><strong>Module 4:</strong> Auto Research <span>Karpathy's Autonomous Improvement Loop</span></li>
+  <li><strong>Module 5:</strong> Browser & Computer Automation <span>HTTP to Full Computer Use</span></li>
+  <li><strong>Module 6:</strong> Performance Diversification <span>Avoiding Monoculture Risk</span></li>
+  <li><strong>Module 7:</strong> Multi-Agent Orchestration Landscape <span>Org Charts & Frameworks</span></li>
+  <li><strong>Module 8:</strong> Workspace Organization <span>Business, Personal & Client Structures</span></li>
+  <li><strong>Module 9:</strong> Security <span>The 80/20 That Actually Matters</span></li>
+  <li><strong>Appendix A:</strong> Expert & Source Directory <span>14 Verified Authorities</span></li>
+  <li><strong>Appendix B:</strong> Tool & Repo Quick Reference <span>Links, Status, Star Counts</span></li>
+  <li><strong>Appendix C:</strong> Implementation Checklists <span>Prioritized Action Items</span></li>
+  <li><strong>Appendix D:</strong> Unverified & Personal Claims <span>What Could Not Be Confirmed</span></li>
+</ul>
+
+
+<!-- ==================== MODULE 1 ==================== -->
+<div class="module">
+<h2>Module 1: CLAUDE.md System Prompts</h2>
+<div class="revision">Last verified: April 2, 2026 | Source: Anthropic docs (code.claude.com/docs/en/memory)</div>
+
+<h3>Core Concept: The 4-Purpose Framework</h3>
+<p>The course frames CLAUDE.md as serving four distinct purposes. This framework is a useful mental model, though not an official Anthropic categorization.</p>
+
+<table>
+  <tr><th>#</th><th>Purpose</th><th>What It Does</th><th>Where It Lives</th></tr>
+  <tr><td>1</td><td><strong>Knowledge Compression</strong></td><td>Summarizes workspace structure so Claude doesn't re-read every file each session. ~45x compression ratio claimed (827 words to 22 lines).</td><td>Local CLAUDE.md</td></tr>
+  <tr><td>2</td><td><strong>User Preferences</strong></td><td>Programming conventions, communication style, tool preferences, output formatting.</td><td>Global + Local</td></tr>
+  <tr><td>3</td><td><strong>Capability Declaration</strong></td><td>Tells Claude what it CAN do (APIs, tools, skills) so it doesn't underestimate its own abilities.</td><td>Local CLAUDE.md</td></tr>
+  <tr><td>4</td><td><strong>Log of Failures & Successes</strong></td><td>Running record of what worked and what didn't, shrinking the solution search space over time.</td><td>Local CLAUDE.md ("Lab Notes")</td></tr>
+</table>
+
+<h3>Scope Hierarchy <span class="badge-verified">VERIFIED</span></h3>
+<div class="card-warn card">
+  <strong>Course claims 2 scopes. Reality: 4+ scopes exist.</strong>
+</div>
+
+<table>
+  <tr><th>Scope</th><th>Location</th><th>Loaded When</th></tr>
+  <tr><td>Managed Policy</td><td><code>/Library/Application Support/ClaudeCode/CLAUDE.md</code> (macOS)</td><td>Always (org-wide)</td></tr>
+  <tr><td>User / Global</td><td><code>~/.claude/CLAUDE.md</code></td><td>Every session, every workspace</td></tr>
+  <tr><td>Project</td><td><code>./CLAUDE.md</code> or <code>./.claude/CLAUDE.md</code></td><td>When in that project directory</td></tr>
+  <tr><td>Local (gitignored)</td><td><code>./CLAUDE.local.md</code></td><td>When in that project (not committed)</td></tr>
+  <tr><td>Subdirectory</td><td><code>./subdir/CLAUDE.md</code></td><td>Discovered on demand</td></tr>
+  <tr><td>Rules</td><td><code>.claude/rules/*.md</code></td><td>Path-scoped rules</td></tr>
+</table>
+
+<h3>Key Commands <span class="badge-verified">VERIFIED</span></h3>
+<table>
+  <tr><th>Command</th><th>Function</th><th>Notes</th></tr>
+  <tr><td><code>/init</code></td><td>Scans workspace, generates starter CLAUDE.md</td><td>Interactive version behind <code>CLAUDE_CODE_NEW_INIT=1</code></td></tr>
+  <tr><td><code>/insights</code></td><td>Analyzes last 30 days of sessions, generates HTML report</td><td>Uses Haiku for qualitative facets; can auto-generate rules</td></tr>
+  <tr><td><code>/context</code></td><td>Shows token usage breakdown</td><td>System prompt, MCP tools, memory, conversation, buffer</td></tr>
+</table>
+
+<h3>The Update Loop (Course Strategy)</h3>
+<div class="diagram">LOCAL LOOP (frequent):                    GLOBAL LOOP (periodic):
+                                           
+  Plan Feature                               Accumulate local learnings
+       |                                          |
+  Instantiate (failures + successes)         Run /insights (30-day analysis)
+       |                                          |
+  Compile Learnings                          Manually review patterns
+       |                                          |
+  Update Local CLAUDE.md                     Add high-ROI bullets to Global
+       |                                          |
+  [repeat -- each cycle faster]              Update ~/.claude/CLAUDE.md
+                                                  |
+                                             [repeat after many local cycles]</div>
+
+<h3>What to Put Where</h3>
+<div class="two-col">
+  <div class="card">
+    <h4>Global CLAUDE.md</h4>
+    <ul>
+      <li>Context about you (goals, constraints, budget vs. time preference)</li>
+      <li>High-level reasoning strategies</li>
+      <li>Global preferences (file path format, programming paradigm)</li>
+      <li>Token conservation strategies</li>
+      <li>Agency reminders ("you CAN do X")</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>Local CLAUDE.md</h4>
+    <ul>
+      <li>Project structure summary (from <code>/init</code>)</li>
+      <li>API docs and usage patterns</li>
+      <li>Project-specific capabilities and skills</li>
+      <li>Lab notes: failures, successes, things not to retry</li>
+      <li>Deployment workflow (dev/build/preview/production)</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Key Principle: Token Cost of Context</h3>
+<p>The course demonstrates a ~45x compression ratio. Full <code>app.jsx</code> = ~1,100 tokens. CLAUDE.md summary = ~22 tokens. This matters because:</p>
+<ul>
+  <li>Token length scales inversely with output quality</li>
+  <li>Every query pays the system prompt tax</li>
+  <li>Opus 4.6 input: $5/MTok; Sonnet 4.6: $3/MTok -- real money at scale</li>
+</ul>
+</div>
+
+
+<!-- ==================== MODULE 2 ==================== -->
+<div class="module">
+<h2>Module 2: Agent Harnesses</h2>
+<div class="revision">Last verified: April 2, 2026 | Source: Anthropic engineering blog, LangChain</div>
+
+<h3>Definition <span class="badge-verified">VERIFIED</span></h3>
+<p>An <strong>agent harness</strong> is everything that wraps around the LLM that is not the LLM itself: the system prompt, hooks, available tools, permission modes, memory management, context compaction parameters, and execution environment.</p>
+<p><strong>LLM = intelligence. Harness = what makes it useful.</strong> Claude is the model. Claude Code is the harness.</p>
+
+<h3>Harness Components</h3>
+<table>
+  <tr><th>Component</th><th>What It Controls</th></tr>
+  <tr><td>System Prompt</td><td>CLAUDE.md files, injected at top of context window</td></tr>
+  <tr><td>Tools</td><td>Bash, Read, Write, Edit, Grep, Glob, Web tools, MCP servers</td></tr>
+  <tr><td>Hooks</td><td>Lifecycle automation: PreToolUse, PostToolUse, SessionStart, etc.</td></tr>
+  <tr><td>Permission Modes</td><td>Plan mode, default, accept edits, auto mode, bypass permissions</td></tr>
+  <tr><td>Memory</td><td>Context compaction, autocompact buffer, conversation history</td></tr>
+  <tr><td>Parameters</td><td>Max turns, token limits, model selection</td></tr>
+</table>
+
+<h3>Primary Reference: Anthropic's Harness Blog <span class="badge-verified">VERIFIED</span></h3>
+<div class="card">
+  <strong>"Effective Harnesses for Long-Running Agents"</strong> -- Published Nov 26, 2025<br>
+  <em>anthropic.com/engineering/effective-harnesses-for-long-running-agents</em>
+  <p style="margin-top:6pt;">Key concepts: initializer agent sets up environment (feature lists, git repos, progress tracking files like <code>claude-progress.txt</code>). Coding agents make incremental progress across multiple context windows. Each new window reads the progress file + git history.</p>
+</div>
+
+<h3>LangChain's Harness Engineering Series <span class="badge-verified">VERIFIED</span></h3>
+<table>
+  <tr><th>Post</th><th>Date</th><th>Key Insight</th></tr>
+  <tr><td>"Agent Frameworks, Runtimes, and Harnesses -- oh my!"</td><td>Nov 4, 2025</td><td>Taxonomy: frameworks vs. runtimes vs. harnesses</td></tr>
+  <tr><td>"Improving Deep Agents with Harness Engineering"</td><td>Feb 17, 2026</td><td>52.8 to 66.5 on Terminal-Bench by tweaking only the harness</td></tr>
+  <tr><td>"The Anatomy of an Agent Harness"</td><td>Mar 2026</td><td>Structural breakdown of harness components</td></tr>
+  <tr><td>"How Middleware Lets You Customize Your Agent Harness"</td><td>Mar 2026</td><td>Extensibility patterns</td></tr>
+</table>
+
+<h3>Alternative Harnesses Landscape</h3>
+<table>
+  <tr><th>Harness</th><th>Status</th><th>Differentiator</th></tr>
+  <tr><td><strong>Claude Code</strong></td><td><span class="badge-verified">DOMINANT</span></td><td>40.8% adoption. Best model + best harness integration</td></tr>
+  <tr><td><strong>OpenAI Codex</strong></td><td><span class="badge-verified">VERIFIED</span></td><td>Strong backend/contemplation. Sandboxed cloud execution</td></tr>
+  <tr><td><strong>Droid (Factory AI)</strong></td><td><span class="badge-verified">VERIFIED</span></td><td>58.75% Terminal-Bench. $50M funded. Enterprise focus</td></tr>
+  <tr><td><strong>Pi (p.dev)</strong></td><td><span class="badge-verified">VERIFIED</span></td><td>Open-source, multi-provider. By Mario Zechner (badlogic)</td></tr>
+  <tr><td><strong>Cursor</strong></td><td>Active</td><td>IDE-integrated. Popular for frontend work</td></tr>
+</table>
+
+<h3>Auto Mode (Permission Innovation) <span class="badge-verified">VERIFIED</span></h3>
+<div class="card-blue card">
+  <strong>Launched:</strong> March 24, 2026 (research preview)<br>
+  <strong>How it works:</strong> Sonnet 4.6 classifier reviews each action before execution. Blocks actions that escalate beyond task scope or appear driven by prompt injection.<br>
+  <strong>Requires:</strong> Team, Enterprise, or API plan. Claude Sonnet 4.6 or Opus 4.6.<br>
+  <strong>Enable:</strong> <code>--enable-auto-mode</code> at startup; cycle with <code>Shift+Tab</code>
+</div>
+</div>
+
+<!-- ==================== MODULE 3 ==================== -->
+<div class="module">
+<h2>Module 3: Parallelization & Multi-Agent Patterns</h2>
+<div class="revision">Last verified: April 2, 2026 | Sources: Microsoft Azure, MindStudio, OpenReview, Anthropic docs</div>
+
+<h3>Why Parallelize</h3>
+<div class="two-col">
+  <div class="card">
+    <h4>Time</h4>
+    <p>Serial: 4 steps x 5 min = 20 min. Parallel: 5 min concurrent + 2 min synthesis = 7 min. <strong>65% faster.</strong></p>
+  </div>
+  <div class="card">
+    <h4>Quality</h4>
+    <p>Model performance degrades as context grows. Sub-agents stay in the "zone of good" with short, clean context windows.</p>
+  </div>
+  <div class="card">
+    <h4>Coverage</h4>
+    <p>Stochastic outputs: 5 runs produce ~2.5x unique answers vs. 1 run. Outlier ideas surface that a single agent would miss.</p>
+  </div>
+  <div class="card">
+    <h4>Cost</h4>
+    <p>Research with Sonnet ($3/MTok), synthesize with Opus ($5/MTok). ~60% savings on research tokens.</p>
+  </div>
+</div>
+
+<h3>Pattern 1: Fan-Out / Fan-In <span class="badge-verified">VERIFIED</span></h3>
+<div class="diagram">
+                    [Research Query]
+                         |
+            +------------+------------+
+            |            |            |
+     [Sonnet Agent 1] [Sonnet 2] [Sonnet N]    <-- Fan Out (cheap, parallel)
+            |            |            |
+            +------------+------------+
+                         |
+                  [Opus Synthesizer]             <-- Fan In (smart, single)
+                         |
+                   [Final Answer]
+</div>
+<p><strong>Use when:</strong> Research tasks, API evaluation, competitor analysis, any "find the best X" query.</p>
+<p><strong>Documented by:</strong> Microsoft Azure Architecture Center, Kinde, multiple practitioners.</p>
+
+<h3>Pattern 2: Stochastic Consensus <span class="badge-verified">VERIFIED</span></h3>
+<div class="diagram">
+  Same prompt (slightly varied framing) --> N agents independently
+  
+  Agent 1: [A, B, C]        Consensus count:
+  Agent 2: [B, C, E]        A: 2  B: 3  C: 3  (HIGH CONFIDENCE)
+  Agent 3: [A, B, Q]        E: 1  Q: 1        (OUTLIERS -- investigate)
+</div>
+<p><strong>Use when:</strong> Decision-making, ranking options, filtering hallucinations, surfacing high-variance ideas.</p>
+<p><strong>Documented by:</strong> MindStudio ("Stochastic Multi-Agent Consensus"), Kinde ("LLM Fan-Out 101").</p>
+
+<h3>Pattern 3: Multi-Round Debate <span class="badge-verified">VERIFIED</span></h3>
+<div class="diagram">
+  Time 1: Each agent generates independently
+  Time 2: Each agent sees ALL other responses, refines
+  Time 3: Further refinement with cross-pollination
+  ...
+  Time N: Convergence on nuanced, battle-tested solutions
+</div>
+<p><strong>Use when:</strong> Nuanced analysis, architecture decisions, anything where "it depends" is the first answer.</p>
+<p><strong>Documented by:</strong> Edoardo Schepis (Medium series), academic papers on OpenReview.</p>
+
+<h3>Pattern 4: Pipeline (Sequential Specialist Handoff)</h3>
+<div class="diagram">
+  [Dev Agent] --> [QA Agent] --> [Test Agent]
+       |              |              |
+   Fresh context  Fresh context  Fresh context
+   Incentive:     Incentive:     Incentive:
+   Build fast     Find bugs      Break things
+</div>
+<p><strong>Use when:</strong> Any build-then-verify workflow. Different incentives prevent blind spots.</p>
+
+<h3>Recommended Orchestration Architectures</h3>
+<div class="two-col">
+  <div class="card-green card">
+    <h4>Parent + Researchers + QA (Recommended)</h4>
+    <p><strong>Parent (Opus):</strong> orchestrates, builds<br>
+    <strong>Researchers (Sonnet x N):</strong> fan-out research<br>
+    <strong>QA (Opus):</strong> fresh context, finds bugs<br>
+    Best balance of quality, speed, cost.</p>
+  </div>
+  <div class="card">
+    <h4>Developer + QA (Lean)</h4>
+    <p><strong>Dev (Opus):</strong> plans and builds<br>
+    <strong>QA (Opus):</strong> fresh spawn after each feature, zero context bias<br>
+    Simpler, fewer compound probability issues.</p>
+  </div>
+</div>
+
+<h3>Agent Teams Feature <span class="badge-verified">VERIFIED</span></h3>
+<div class="card-warn card">
+  <strong>Status:</strong> Experimental. Requires <code>CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS</code> env var.<br>
+  <strong>How it works:</strong> One session = team lead. Coordinates multiple independent teammates. Each has own context window. Can communicate via team lead.<br>
+  <strong>Sub-agent model overrides:</strong> Supported via <code>model</code> field in SKILL.md frontmatter.
+</div>
+</div>
+
+
+<!-- ==================== MODULE 4 ==================== -->
+<div class="module">
+<h2>Module 4: Auto Research (Karpathy Framework)</h2>
+<div class="revision">Last verified: April 2, 2026 | Source: github.com/karpathy/autoresearch, Shopify/liquid PR #2056</div>
+
+<h3>The Three Prerequisites</h3>
+<p>Auto research works when -- and only when -- you have all three:</p>
+<table>
+  <tr><th>#</th><th>Requirement</th><th>Example (Website)</th><th>Example (Cold Email)</th></tr>
+  <tr><td>1</td><td><strong>Metric</strong> to optimize</td><td>Google Lighthouse score</td><td>Reply rate %</td></tr>
+  <tr><td>2</td><td><strong>Change method</strong> (fast)</td><td>Modify HTML/CSS/JS</td><td>Modify email copy</td></tr>
+  <tr><td>3</td><td><strong>Assessment</strong> (fast)</td><td>Run Lighthouse test (~30s)</td><td>Wait for replies (~1hr)</td></tr>
+</table>
+
+<div class="card-green card">
+  <strong>Speed math:</strong> If change + assess = 60 seconds, you get 1,440 experiments/day. At 2% success rate with 1% improvement each = 1.01^30 = <strong>34% improvement per day</strong>.
+</div>
+
+<h3>The Loop <span class="badge-verified">VERIFIED</span></h3>
+<div class="diagram">
+  +---> [Hypothesize] ---> [Execute Change] ---> [Assess]
+  |                                                 |
+  |          +--- improvement? ---> YES: Keep, log success
+  |          |                      NO:  Revert, log failure
+  |          |
+  +----------+
+  
+  Research log accumulates: what worked, what didn't, why.
+  Each cycle starts with full history -- search space shrinks.</div>
+
+<h3>Verified Real-World Results</h3>
+<table>
+  <tr><th>Who</th><th>What</th><th>Result</th><th>Source</th></tr>
+  <tr><td>Andrej Karpathy</td><td>GPU training pipeline optimization</td><td>~700 experiments, 20 improvements, 11% speedup on already-optimized code</td><td><span class="badge-verified">VERIFIED</span> github.com/karpathy/autoresearch</td></tr>
+  <tr><td>Toby Lutke (Shopify CEO)</td><td>Shopify Liquid Ruby template engine</td><td>53% faster parse+render, 61% fewer object allocations, ~120 experiments</td><td><span class="badge-verified">VERIFIED</span> Shopify/liquid PR #2056</td></tr>
+</table>
+
+<h3>Applicable Domains (Course Claims)</h3>
+<table>
+  <tr><th>Domain</th><th>Metric</th><th>Change Method</th><th>Assessment</th><th>Loop Speed</th></tr>
+  <tr><td>Website speed</td><td>Lighthouse score</td><td>Modify code</td><td>Run Lighthouse</td><td>~60s/cycle</td></tr>
+  <tr><td>SaaS backend</td><td>Request latency</td><td>Modify server code</td><td>Benchmark endpoint</td><td>~60s/cycle</td></tr>
+  <tr><td>Conversion rate</td><td>Signup %</td><td>Modify landing page</td><td>A/B test results</td><td>~hours/cycle</td></tr>
+  <tr><td>Cold email</td><td>Reply rate</td><td>Modify copy/subject</td><td>Measure responses</td><td>~1hr/cycle</td></tr>
+  <tr><td>Ad creative</td><td>CTR / CPA</td><td>Modify creative</td><td>Platform metrics</td><td>~hours/cycle</td></tr>
+  <tr><td>Customer support</td><td>Resolution rate</td><td>Modify agent prompt</td><td>Track outcomes</td><td>~1hr/cycle</td></tr>
+</table>
+
+<h3>The Autonomy Spectrum</h3>
+<div class="diagram">
+  Vibe Coding          Agentic Engineering       Auto Research          ???
+  (2024-2025)          (2025-2026)               (2026+)               (Future)
+  
+  Human: writes        Human: directs            Human: sets goal       Human: sets vision?
+  AI: codes            AI: orchestrates          AI: runs experiments
+  Role: writer         Role: director            Role: PI / researcher</div>
+
+<h3>Setup: 3 Files</h3>
+<table>
+  <tr><th>File</th><th>Purpose</th></tr>
+  <tr><td><code>program.md</code></td><td>Instructions: what to modify, how to score, where to log</td></tr>
+  <tr><td><code>train.py</code></td><td>The thing being optimized (website, model, pipeline)</td></tr>
+  <tr><td><code>progress.log</code></td><td>Running log of all experiments, scores, and decisions</td></tr>
+</table>
+</div>
+
+<!-- ==================== MODULE 5 ==================== -->
+<div class="module">
+<h2>Module 5: Browser & Computer Automation</h2>
+<div class="revision">Last verified: April 2, 2026 | Source: Anthropic docs, browser-use.com</div>
+
+<h3>The Automation Spectrum</h3>
+<table>
+  <tr><th></th><th>HTTP Requests</th><th>Browser Automation</th><th>Computer Use</th></tr>
+  <tr><td><strong>Speed</strong></td><td>Fastest (~0.2s)</td><td>Medium (~5s/action)</td><td>Slowest (~10s/action)</td></tr>
+  <tr><td><strong>Cost</strong></td><td>Cheapest</td><td>Moderate</td><td>Most expensive (screenshots)</td></tr>
+  <tr><td><strong>Setup</strong></td><td>High (learn each API)</td><td>Low-medium</td><td>Zero</td></tr>
+  <tr><td><strong>Generality</strong></td><td>Narrow (one API at a time)</td><td>Broad</td><td>Universal (anything on screen)</td></tr>
+  <tr><td><strong>Fragility</strong></td><td>Very fragile</td><td>Moderate</td><td>Robust</td></tr>
+  <tr><td><strong>Detection</strong></td><td>Often blocked</td><td>Sometimes blocked</td><td>Rarely blocked</td></tr>
+  <tr><td><strong>Tool</strong></td><td>Claude's <code>WebFetch</code></td><td>Chrome DevTools MCP, Browser Use</td><td>Claude Desktop Computer Use</td></tr>
+</table>
+
+<h3>Recommended Workflow (Course Strategy)</h3>
+<div class="diagram">
+  1. Prototype with Browser Automation (Chrome DevTools MCP)
+     - General, works for most tasks
+     - Can see network requests (hidden APIs)
+     
+  2. If blocked --> Browser Use (browser-use.com)
+     - Anti-detect fingerprinting
+     - CAPTCHA solving, 195+ country proxies
+     - Best for social media automation
+     
+  3. Once flow is proven --> Convert to HTTP Requests
+     - Extract API patterns from browser network tab
+     - Document in workspace for future use
+     - 100x faster, 100x cheaper at scale
+     
+  4. If nothing else works --> Computer Use
+     - Controls mouse + keyboard literally
+     - Always works, extremely expensive
+     - Last resort</div>
+
+<div class="card-red card">
+  <strong>Legal warning:</strong> Browser and computer automation may violate terms of service of target platforms. The course acknowledges this but does not condone violations. Understand the legal implications before automating interactions with third-party services.
+</div>
+</div>
+
+
+<!-- ==================== MODULE 6 ==================== -->
+<div class="module">
+<h2>Module 6: Performance Diversification</h2>
+<div class="revision">Last verified: April 2, 2026 | Source: conductor.build, GitHub repos</div>
+
+<h3>The Monoculture Risk</h3>
+<p>The course uses an "Interstellar blight" analogy: when one crop dominates, a single disease destroys everything. Claude Code at 40.8% adoption creates real dependency risk. Documented outages have caused widespread productivity drops.</p>
+
+<h3>Recommended Split: 70/30</h3>
+<div class="diagram">
+  Your Productivity Basket:
+  
+  [Claude Code] [Claude Code] [Claude Code] [Claude Code]
+  [Claude Code] [Claude Code] [Claude Code]   = 70%
+  
+  [Codex] [Codex]                              = 20%
+  [Pi / Local Models]                          = 10%</div>
+
+<h3>Three Diversification Methods <span class="badge-verified">VERIFIED</span></h3>
+<table>
+  <tr><th>Method</th><th>Tool</th><th>When to Use</th><th>Status</th></tr>
+  <tr><td>Multi-agent platform</td><td><strong>Conductor</strong> (conductor.build)</td><td>Daily work -- run Claude Code + Codex in parallel</td><td><span class="badge-verified">VERIFIED</span> YC-backed</td></tr>
+  <tr><td>MCP bridge</td><td><strong>Codex MCP Server</strong> (tuannvm/codex-mcp-server)</td><td>Claude up but model degraded -- route tasks to Codex</td><td><span class="badge-verified">VERIFIED</span></td></tr>
+  <tr><td>Full alternative</td><td><strong>OpenAI Codex desktop app</strong></td><td>Complete Claude outage -- switch platforms entirely</td><td><span class="badge-verified">VERIFIED</span></td></tr>
+</table>
+
+<h3>Portability Strategy</h3>
+<div class="card">
+  <p>Maintain parallel system prompt files:</p>
+  <ul>
+    <li><code>CLAUDE.md</code> -- for Claude Code</li>
+    <li><code>agents.md</code> -- for Codex / provider-agnostic agents</li>
+    <li><code>gemini.md</code> -- for Gemini / VS Code agent</li>
+  </ul>
+  <p>Add a meta-instruction to CLAUDE.md: "When you update this file, also sync changes to agents.md and gemini.md."</p>
+</div>
+</div>
+
+<!-- ==================== MODULE 7 ==================== -->
+<div class="module">
+<h2>Module 7: Multi-Agent Orchestration Landscape</h2>
+<div class="revision">Last verified: April 3, 2026 | Source: GitHub repos verified individually</div>
+
+<h3>Key Insight: Skills and Sub-Agents Are the Same Thing</h3>
+<p>The course makes an important observation: SKILL.md files and sub-agent definitions share nearly identical structure (name, description, tools, prompt). The only real difference is context window state. This convergence suggests future unification.</p>
+
+<table>
+  <tr><th>Property</th><th>Sub-Agent</th><th>Skill</th></tr>
+  <tr><td>Fresh context</td><td>Yes</td><td>No (but compressed)</td></tr>
+  <tr><td>Specialized</td><td>Yes</td><td>Yes</td></tr>
+  <tr><td>Reliable at task</td><td>Yes</td><td>Yes</td></tr>
+  <tr><td>Markdown + tools</td><td>Yes</td><td>Yes</td></tr>
+  <tr><td>Delegates to others</td><td>Yes</td><td>Rarely</td></tr>
+</table>
+
+<h3>Verified Org Chart Projects</h3>
+<table>
+  <tr><th>Project</th><th>Stars</th><th>Approach</th><th>Status</th></tr>
+  <tr><td><strong>Paperclip</strong> (paperclipai/paperclip)</td><td>~45k</td><td>CEO/CTO/CMO agent roles, board oversight</td><td><span class="badge-verified">VERIFIED</span></td></tr>
+  <tr><td><strong>Gastown</strong> (steveyegge/gastown)</td><td>~13.4k</td><td>Mayor + Crew + Polecats + Refinery (by Steve Yegge)</td><td><span class="badge-verified">VERIFIED</span></td></tr>
+  <tr><td><strong>CrewAI</strong> (crewAIInc/crewAI)</td><td>~47.8k</td><td>Role-playing autonomous agents framework</td><td><span class="badge-verified">VERIFIED</span></td></tr>
+  <tr><td><strong>Open Goat</strong> (marian2js/opengoat)</td><td>~315</td><td>Hierarchical orgs across multiple agent platforms</td><td><span class="badge-verified">VERIFIED</span></td></tr>
+  <tr><td><strong>SwarmClaw</strong> (swarmclawai/swarmclaw)</td><td>~207</td><td>Agent runtime with orchestration/delegation</td><td><span class="badge-verified">VERIFIED</span></td></tr>
+  <tr><td><strong>Company Helm</strong> (CompanyHelm/companyhelm)</td><td>~7</td><td>AI studio with defined agent roles</td><td><span class="badge-partial">VERIFIED (TINY)</span></td></tr>
+  <tr><td><strong>Droid</strong> (Factory AI)</td><td>N/A</td><td>Commercial. CodeDroid, ReviewDroid, QA Droid</td><td><span class="badge-verified">VERIFIED</span></td></tr>
+  <tr><td><strong>"The System"</strong></td><td>?</td><td>26 specialized agents (as described)</td><td><span class="badge-unverified">NOT FOUND</span></td></tr>
+</table>
+
+<div class="card-warn card">
+  <strong>Course's own assessment:</strong> "I think pretty much all of them suck right now." The instructor views these as premature anthropomorphization of agents into human org structures. Simpler architectures (Parent + Researchers + QA) outperform complex hierarchies.
+</div>
+</div>
+
+<!-- ==================== MODULE 8 ==================== -->
+<div class="module">
+<h2>Module 8: Workspace Organization</h2>
+<div class="revision">Last verified: April 2, 2026 | Note: These are personal conventions, not official Anthropic recommendations</div>
+
+<h3>Core Structure</h3>
+<div class="diagram">
+business/
+  .env                    # API keys (gitignored)
+  CLAUDE.md               # Local system prompt
+  .claude/
+    skills/               # Reusable SOPs
+    settings.json         # Hooks, permissions
+  active/                 # All generated output (never pollute root)
+    tmp/                  # Ephemeral files (hidden)
+    model-chat/           # Skill-specific output dirs
+    research/
+    web-design/
+  clients/
+    client-a/
+      .env                # Client's API keys
+      CLAUDE.md           # Client context (/init + manual)
+      .claude/skills/     # Client-specific skills
+    client-b/
+      ...
+
+personal/                 # Separate workspace, different VS Code color
+  .env
+  CLAUDE.md
+  .claude/skills/
+  active/
+  health/                 # Domain-specific subfolders
+  citizenship/
+  ...</div>
+
+<h3>Key Principles</h3>
+<ul>
+  <li><strong>Never pollute root.</strong> All generated files go in <code>active/</code> subdirectories.</li>
+  <li><strong>Skills specify their output paths.</strong> Each SKILL.md declares where its output lives.</li>
+  <li><strong>Client folders mirror business structure.</strong> Each has its own .env, CLAUDE.md, skills.</li>
+  <li><strong>Periodically clean up.</strong> Ask Claude to organize loose files in <code>active/</code>.</li>
+  <li><strong>Color-code workspaces.</strong> VS Code <code>.vscode/settings.json</code> with different title bar colors per workspace type.</li>
+  <li><strong>Cross-workspace skill access.</strong> Add a line to CLAUDE.md: "Client skills live in <code>clients/[name]/.claude/skills/</code> -- read from there when working on that client."</li>
+</ul>
+
+<div class="card">
+  <h4>Alternative Approaches</h4>
+  <ul>
+    <li>Project-based: <code>company/projects/{website, cro, lead-gen}</code></li>
+    <li>GitHub-synced: nightly push, daily clone, cloud backup</li>
+    <li>CRM-as-JSON: store customer data in workspace, sync to calendar</li>
+    <li>Or just ask Claude to design one for your needs</li>
+  </ul>
+</div>
+</div>
+
+
+<!-- ==================== MODULE 9 ==================== -->
+<div class="module">
+<h2>Module 9: Security -- The 80/20 That Actually Matters</h2>
+<div class="revision">Last verified: April 2, 2026 | Sources: OWASP, academic papers, Supabase docs</div>
+
+<h3>Guiding Principle</h3>
+<p>"Everything is hackable. It's always just a question of how hackable." The goal is not perfection -- it's making your attack surface more expensive to breach than the value of what's behind it. A fence and a camera, not Fort Knox.</p>
+
+<h3>The Five Low-Hanging Threats</h3>
+
+<h4>1. Plain-Text API Keys in Conversation Logs <span class="badge-verified">VERIFIED</span></h4>
+<div class="card-red card">
+  <strong>Risk:</strong> All Claude Code conversations stored at <code>~/.claude/projects/</code> in JSONL format. Any API key pasted in chat = stored in plain text on disk.<br>
+  <strong>Fix:</strong> Store ALL secrets in <code>.env</code>. Reference by variable name only. Never paste raw keys into chat. Add <code>.env</code> to <code>.gitignore</code>.
+</div>
+
+<h4>2. Hallucinated Package Names (Supply Chain) <span class="badge-verified">VERIFIED</span></h4>
+<div class="card-red card">
+  <strong>Risk:</strong> AI models hallucinate package names ~19.7% of the time (academic study: "We Have a Package for You," 2024). Attackers register these misspelled names with malware.<br>
+  <strong>Fix:</strong> Audit dependency list after every <code>npm install</code>. Ask Claude: "Are all packages here legitimate, verified, and actively maintained?" Check for unfamiliar names before running.
+</div>
+
+<h4>3. Database Row-Level Security (RLS) <span class="badge-verified">VERIFIED</span></h4>
+<div class="card-red card">
+  <strong>Risk:</strong> Supabase does NOT enable RLS by default. Without it, any user with a public key can read, write, and delete every row in your database.<br>
+  <strong>Fix:</strong> Enable RLS on every table. Immediately. No exceptions.
+</div>
+
+<h4>4. Public-Facing Agent Servers</h4>
+<div class="card-red card">
+  <strong>Risk:</strong> Any URL on a VPS IP range is continuously scanned by bot farms testing for vulnerabilities. Open ports, unpatched services, and exposed agent interfaces are found within hours.<br>
+  <strong>Fix:</strong> Never expose agent interfaces directly. Use authenticated proxies (Telegram connectors, etc.). Don't give public agents access to sensitive data (passports, SSNs, credentials).
+</div>
+
+<h4>5. Credit Card Data</h4>
+<div class="card-red card">
+  <strong>Risk:</strong> Storing card numbers anywhere = PCI compliance nightmare + massive liability. AI agents will log them in conversation history.<br>
+  <strong>Fix:</strong> Use Stripe or equivalent payment processor. Never touch card numbers. Period.
+</div>
+
+<h3>Security Audit Workflow</h3>
+<div class="card-green card">
+  <ol>
+    <li>Build your feature / app / system</li>
+    <li>Open a <strong>new, clean conversation</strong> (no development context bias)</li>
+    <li>Paste a security audit prompt covering: secret scanning, dependency audit, RLS check, input validation, OWASP Top 10 for LLMs</li>
+    <li>Review findings, then open <strong>another new conversation</strong> to implement fixes (avoids audit bias)</li>
+    <li>Optionally: run the audit with a different model (Codex, Gemini) for provider diversity</li>
+  </ol>
+</div>
+</div>
+
+<!-- ==================== APPENDIX A ==================== -->
+<div class="module">
+<h2>Appendix A: Expert & Source Directory</h2>
+<div class="revision">Last verified: April 3, 2026 | These people are NOT the course instructor -- they independently document the same concepts</div>
+
+<div class="expert-grid">
+  <div class="expert">
+    <strong>Boris Cherny</strong>
+    <div class="role">Anthropic Staff Engineer. Created Claude Code. 259 AI-written PRs in 30 days.</div>
+  </div>
+  <div class="expert">
+    <strong>Matt Pocock</strong>
+    <div class="role">"Claude Code for Real Engineers" cohort course. TypeScript educator.</div>
+  </div>
+  <div class="expert">
+    <strong>Cole Medin (coleam00)</strong>
+    <div class="role">AI Agents Masterclass (YouTube). Created your-claude-engineer harness. Conference speaker.</div>
+  </div>
+  <div class="expert">
+    <strong>Steve Yegge</strong>
+    <div class="role">Gastown creator (~13.4k stars). Veteran engineer. Famous for "Google Platforms Rant."</div>
+  </div>
+  <div class="expert">
+    <strong>Theo (t3dotgg)</strong>
+    <div class="role">YouTuber (~500K subs). Extensive Claude Code coverage and tutorials.</div>
+  </div>
+  <div class="expert">
+    <strong>Mario Zechner (badlogic)</strong>
+    <div class="role">Pi agent creator (open-source, multi-provider). Technical blog at mariozechner.at.</div>
+  </div>
+  <div class="expert">
+    <strong>Andrej Karpathy</strong>
+    <div class="role">Auto-research framework creator. Former Tesla head of AI. OpenAI co-founder.</div>
+  </div>
+  <div class="expert">
+    <strong>Simon Willison</strong>
+    <div class="role">Covers AI tools extensively at simonwillison.net. Detailed auto-research analysis.</div>
+  </div>
+  <div class="expert">
+    <strong>Florian Bruniaux</strong>
+    <div class="role">Created claude-code-ultimate-guide on GitHub.</div>
+  </div>
+  <div class="expert">
+    <strong>LangChain Team</strong>
+    <div class="role">4+ blog posts on harness engineering. Taxonomy of frameworks vs. runtimes vs. harnesses.</div>
+  </div>
+  <div class="expert">
+    <strong>Microsoft Azure Team</strong>
+    <div class="role">"AI Agent Design Patterns" reference architecture. Fan-out/fan-in documentation.</div>
+  </div>
+  <div class="expert">
+    <strong>Anthropic (Official)</strong>
+    <div class="role">code.claude.com/docs. Engineering blog. Coursera: "Claude Code: Software Engineering with AI Agents."</div>
+  </div>
+  <div class="expert">
+    <strong>ClaudeLog (claudelog.com)</strong>
+    <div class="role">Community documentation aggregator. Tutorials, guides, tips.</div>
+  </div>
+  <div class="expert">
+    <strong>Scrimba</strong>
+    <div class="role">Published "Best Claude Code Tutorials and Courses in 2026" curated roundup.</div>
+  </div>
+</div>
+</div>
+
+
+<!-- ==================== APPENDIX B ==================== -->
+<div class="module">
+<h2>Appendix B: Tool & Repo Quick Reference</h2>
+<div class="revision">Last verified: April 3, 2026 | Star counts and status change rapidly -- re-verify before citing</div>
+
+<h3>Claude Code Features</h3>
+<table>
+  <tr><th>Feature</th><th>Status</th><th>Access</th></tr>
+  <tr><td>CLAUDE.md (4+ scopes)</td><td><span class="badge-verified">STABLE</span></td><td>Built-in</td></tr>
+  <tr><td><code>/init</code></td><td><span class="badge-verified">STABLE</span></td><td>Built-in (new interactive: <code>CLAUDE_CODE_NEW_INIT=1</code>)</td></tr>
+  <tr><td><code>/insights</code></td><td><span class="badge-verified">STABLE</span></td><td>Built-in (analyzes 30-day history)</td></tr>
+  <tr><td><code>/context</code></td><td><span class="badge-verified">STABLE</span></td><td>Built-in</td></tr>
+  <tr><td>Skills (SKILL.md)</td><td><span class="badge-verified">STABLE</span></td><td><code>.claude/skills/</code> + anthropics/skills repo</td></tr>
+  <tr><td>Hooks</td><td><span class="badge-verified">STABLE</span></td><td><code>.claude/settings.json</code></td></tr>
+  <tr><td>Agent Teams</td><td><span class="badge-partial">EXPERIMENTAL</span></td><td><code>CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS</code></td></tr>
+  <tr><td>Sub-agent model overrides</td><td><span class="badge-verified">STABLE</span></td><td><code>model</code> field in SKILL.md frontmatter</td></tr>
+  <tr><td>Auto Mode</td><td><span class="badge-partial">RESEARCH PREVIEW</span></td><td>Team/Enterprise/API plan. <code>--enable-auto-mode</code></td></tr>
+</table>
+
+<h3>External Tools & Platforms</h3>
+<table>
+  <tr><th>Tool</th><th>What</th><th>Link</th><th>Verified</th></tr>
+  <tr><td>Karpathy Auto Research</td><td>Autonomous improvement loop</td><td>github.com/karpathy/autoresearch</td><td><span class="badge-verified">YES</span></td></tr>
+  <tr><td>Conductor</td><td>Multi-agent parallel runner (Mac)</td><td>conductor.build</td><td><span class="badge-verified">YES</span></td></tr>
+  <tr><td>Codex MCP Server</td><td>Bridge Claude Code to OpenAI Codex</td><td>github.com/tuannvm/codex-mcp-server</td><td><span class="badge-verified">YES</span></td></tr>
+  <tr><td>Browser Use</td><td>Anti-detect browser automation</td><td>browser-use.com</td><td><span class="badge-verified">YES</span></td></tr>
+  <tr><td>Chrome DevTools MCP</td><td>Browser automation via DevTools</td><td>Various MCP server repos</td><td><span class="badge-verified">YES</span></td></tr>
+  <tr><td>Pi Agent</td><td>Open-source multi-provider harness</td><td>github.com/badlogic/pi-mono</td><td><span class="badge-verified">YES</span></td></tr>
+  <tr><td>Droid (Factory AI)</td><td>Enterprise agent suite</td><td>factory.ai</td><td><span class="badge-verified">YES</span></td></tr>
+</table>
+
+<h3>Multi-Agent Frameworks</h3>
+<table>
+  <tr><th>Project</th><th>GitHub</th><th>Stars</th><th>Verified</th></tr>
+  <tr><td>CrewAI</td><td>crewAIInc/crewAI</td><td>~47.8k</td><td><span class="badge-verified">YES</span></td></tr>
+  <tr><td>Paperclip</td><td>paperclipai/paperclip</td><td>~45k</td><td><span class="badge-verified">YES</span></td></tr>
+  <tr><td>Gastown</td><td>steveyegge/gastown</td><td>~13.4k</td><td><span class="badge-verified">YES</span></td></tr>
+  <tr><td>Open Goat</td><td>marian2js/opengoat</td><td>~315</td><td><span class="badge-verified">YES</span></td></tr>
+  <tr><td>SwarmClaw</td><td>swarmclawai/swarmclaw</td><td>~207</td><td><span class="badge-verified">YES</span></td></tr>
+  <tr><td>Company Helm</td><td>CompanyHelm/companyhelm</td><td>~7</td><td><span class="badge-partial">YES (tiny)</span></td></tr>
+  <tr><td>"The System"</td><td>Unknown</td><td>?</td><td><span class="badge-unverified">NOT FOUND</span></td></tr>
+</table>
+</div>
+
+<!-- ==================== APPENDIX C ==================== -->
+<div class="module">
+<h2>Appendix C: Implementation Checklists</h2>
+<div class="revision">Prioritized by verified impact. Check off as you implement.</div>
+
+<h3>Tier 1: High-Value, Verified, Well-Documented</h3>
+<ul class="checklist">
+  <li>Set up global CLAUDE.md at <code>~/.claude/CLAUDE.md</code> with: personal context, reasoning preferences, token conservation rules, agency reminders</li>
+  <li>Run <code>/init</code> on every active project to generate local CLAUDE.md</li>
+  <li>Run <code>/insights</code> monthly to surface patterns and auto-generate rules</li>
+  <li>Store ALL API keys in <code>.env</code> only -- add <code>.env</code> to <code>.gitignore</code></li>
+  <li>Enable Supabase RLS on every table in every project</li>
+  <li>Implement fan-out/fan-in pattern: Sonnet researchers + Opus synthesizer</li>
+  <li>Set up auto-research loop on one metric you care about (website speed is easiest starter)</li>
+  <li>Run security audit prompt on any public-facing project (use fresh conversation, no dev context)</li>
+  <li>Add "Lab Notes" section to local CLAUDE.md -- log failures and successes after each development cycle</li>
+</ul>
+
+<h3>Tier 2: Medium-Value, Situational</h3>
+<ul class="checklist">
+  <li>Use stochastic consensus for important decisions (spawn N agents, aggregate by frequency)</li>
+  <li>Use debate pattern for nuanced architectural decisions</li>
+  <li>Install Conductor for multi-provider parallel agent work</li>
+  <li>Set up Codex MCP server as Claude Code fallback</li>
+  <li>Configure Browser Use for any social media or anti-bot automation needs</li>
+  <li>Create SKILL.md files for any SOP you repeat more than 3 times</li>
+  <li>Separate business and personal workspaces with distinct VS Code color themes</li>
+  <li>Structure client folders to mirror business workspace (.env, CLAUDE.md, skills)</li>
+</ul>
+
+<h3>Tier 3: Nice-to-Have</h3>
+<ul class="checklist">
+  <li>Maintain provider-portable system prompts (sync CLAUDE.md to agents.md, gemini.md)</li>
+  <li>Schedule periodic workspace cleanup ("organize loose files in active/")</li>
+  <li>Audit npm dependencies after every AI-driven install for hallucinated package names</li>
+  <li>Try Agent Teams feature (experimental) for complex multi-part tasks</li>
+  <li>Explore auto-research on non-code metrics: email copy, ad creative, customer support prompts</li>
+</ul>
+</div>
+
+<!-- ==================== APPENDIX D ==================== -->
+<div class="module">
+<h2>Appendix D: Unverified & Personal Claims</h2>
+<div class="revision">These claims could not be independently confirmed via GitHub or public sources</div>
+
+<table>
+  <tr><th>Claim</th><th>Status</th><th>Notes</th></tr>
+  <tr><td>"Over $4 million a year in profit"</td><td><span class="badge-unverified">UNVERIFIABLE</span></td><td>No public financial records. Common influencer claim.</td></tr>
+  <tr><td>"Teach around 2,000 people"</td><td><span class="badge-partial">PLAUSIBLE</span></td><td>Consistent with community/course size, but not independently confirmed.</td></tr>
+  <tr><td>"350,000 YouTube subscribers"</td><td><span class="badge-partial">CHECKABLE</span></td><td>Verify on YouTube channel "Nyx Drive" -- subscriber counts are public.</td></tr>
+  <tr><td>"Uses Claude Code daily in business"</td><td><span class="badge-partial">PLAUSIBLE</span></td><td>Demonstrated working knowledge throughout. Consistent with claims.</td></tr>
+  <tr><td>"Owns multiple companies including LeftClick"</td><td><span class="badge-verified">PARTIAL</span></td><td>leftclick.ai exists and is a real agency. Other companies not verified.</td></tr>
+  <tr><td>"The System" (26 agents project)</td><td><span class="badge-unverified">NOT FOUND</span></td><td>May be private, misnamed, or misheard in audio transcription.</td></tr>
+</table>
+
+<h3>Editorial Assessment</h3>
+<div class="card">
+  <p>The instructor demonstrates genuine, deep expertise with Claude Code. His technical claims are overwhelmingly accurate (30+ verified against primary sources). The strategies he presents -- CLAUDE.md management, parallelization patterns, auto-research, workspace organization, security 80/20 -- are <strong>well-documented by multiple independent sources</strong> including Anthropic themselves, LangChain, Microsoft, and academic researchers.</p>
+  <p>He is a skilled practitioner and effective communicator. He is <strong>not the sole authority</strong> on any of these topics. At least 14 other credible voices independently document the same concepts. Use this binder as a cross-referenced resource, not a single-source dependency.</p>
+</div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<div class="footer" style="page-break-before: always; padding-top: 40pt;">
+  <h2 style="border:none; text-align:center; color:#888; font-size:14pt;">End of Binder</h2>
+  <p style="margin-top:12pt;">
+    <strong>Claude Code Advanced Practitioner's Binder</strong> | Rev 1.1 | April 3, 2026<br>
+    Compiled by Prompt AI Solutions (promptaisolutions.com)<br><br>
+    This document is a point-in-time snapshot. The AI tooling landscape changes weekly.<br>
+    Re-verify all tool availability, feature flags, pricing, and star counts before acting.<br>
+    Target shelf life: 60-90 days. Schedule re-verification for June 2026.<br><br>
+    <em>No single source. No single expert. Cross-reference everything.</em>
+  </p>
+</div>
+
+</body>
+</html>
