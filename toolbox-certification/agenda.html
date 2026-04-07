@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toolbox Certification Day - Agenda</title>
+  <style>
+    :root {
+      --text: #1a1a2e;
+      --accent: #c0392b;
+      --border: #333;
+      --light-border: #ccc;
+      --muted: #555;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { background: #fff; color-scheme: light; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.4;
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 0.4in;
+    }
+
+    .doc-header {
+      text-align: center;
+      border-bottom: 3px solid var(--border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .doc-header h1 { font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .doc-header .sub { font-size: 0.85rem; color: var(--muted); margin-top: 0.15rem; }
+    .doc-header .teacher-only {
+      display: inline-block;
+      margin-top: 0.3rem;
+      padding: 0.15rem 0.6rem;
+      background: var(--accent);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+    }
+
+    h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.2rem;
+      margin: 1rem 0 0.5rem;
+    }
+    h2:first-of-type { margin-top: 0.5rem; }
+
+    /* --- TIMELINE --- */
+    .timeline { margin-bottom: 0.5rem; }
+    .time-block {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #eee;
+      font-size: 0.88rem;
+    }
+    .time-block:last-child { border-bottom: none; }
+    .time {
+      flex-shrink: 0;
+      width: 5.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+    .activity { flex: 1; }
+    .activity strong { display: block; }
+    .activity .detail { font-size: 0.82rem; color: var(--muted); margin-top: 0.1rem; }
+
+    /* --- ROLES TABLE --- */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+    th {
+      background: var(--border);
+      color: white;
+      font-weight: 700;
+      text-align: left;
+      padding: 0.3rem 0.5rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+    td {
+      border: 1px solid var(--light-border);
+      padding: 0.3rem 0.5rem;
+      vertical-align: top;
+    }
+    .role-senior td { background: #fff3cd; }
+
+    /* --- CHECKLIST --- */
+    .checklist {
+      list-style: none;
+      font-size: 0.88rem;
+    }
+    .checklist li {
+      padding: 0.25rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    .checklist li::before {
+      content: "\2610";
+      position: absolute;
+      left: 0;
+      font-size: 1.1rem;
+    }
+
+    /* --- NOTES --- */
+    .notes-box {
+      margin-top: 0.75rem;
+      padding: 0.5rem;
+      border: 2px solid var(--light-border);
+      border-radius: 4px;
+      min-height: 1.5in;
+    }
+    .notes-box .label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .nav-back {
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .nav-back:hover { text-decoration: underline; }
+
+    @media print {
+      body { padding: 0.5in; }
+      .nav-back { display: none; }
+    }
+    @media screen {
+      body { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="index.html" class="nav-back">&larr; Back to Toolbox Certification Hub</a>
+
+<div class="doc-header">
+  <h1>Toolbox Certification Day</h1>
+  <div class="sub">Mr. McAteer -- Automotive Manufacturing -- Crescent Valley HS</div>
+  <div class="teacher-only">Teacher Agenda -- Do Not Distribute</div>
+</div>
+
+<h2>Timeline</h2>
+<div class="timeline">
+  <div class="time-block">
+    <div class="time">0:00 - 0:05</div>
+    <div class="activity">
+      <strong>Briefing</strong>
+      <div class="detail">Hand out audit forms. Explain objective: every toolbox gets inventoried, organized, and certified today. Point out the QR code for the Tool Identifier. Assign toolbox colors to engine groups.</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time">0:05 - 0:10</div>
+    <div class="activity">
+      <strong>Empty and sort</strong>
+      <div class="detail">Students empty toolboxes completely onto benches. Group by type. Seniors begin teacher cabinet audit.</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time">0:10 - 0:30</div>
+    <div class="activity">
+      <strong>Audit</strong>
+      <div class="detail">Students work through the 20-tool checklist. Rate condition, mark action codes. Pull extras to the Orphan Bin. This is the main work block -- circulate and check progress.</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time">0:30 - 0:40</div>
+    <div class="activity">
+      <strong>Mystery tools and extras</strong>
+      <div class="detail">Students ID unknowns using the reference sheet, phone Tool Identifier, and seniors. Log extras. Seniors float to help.</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time">0:40 - 0:50</div>
+    <div class="activity">
+      <strong>Clean and organize</strong>
+      <div class="detail">Wipe tools, arrange drawers (top = sockets, middle = wrenches, bottom = everything else). Bonus: matching set hunt.</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time">0:50 - 0:55</div>
+    <div class="activity">
+      <strong>Certification spot-checks</strong>
+      <div class="detail">Each group brings their form. Spot-check 3 items per box. Sign off if accurate. Flag boxes that need attention.</div>
+    </div>
+  </div>
+  <div class="time-block">
+    <div class="time">0:55 - end</div>
+    <div class="activity">
+      <strong>Wrap-up</strong>
+      <div class="detail">Collect all audit forms. Review Orphan Bin -- redistribute or set aside for ordering. Note any critical shortages.</div>
+    </div>
+  </div>
+</div>
+
+<h2>Roles</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="width:25%">Person</th>
+      <th style="width:20%">Role</th>
+      <th>Responsibilities</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="role-senior">
+      <td><strong>Abe Moore</strong></td>
+      <td>Senior Lead</td>
+      <td>Teacher cabinet audit. Float to help student boxes with tool ID. Verify audit accuracy.</td>
+    </tr>
+    <tr class="role-senior">
+      <td><strong>Zeph Caze</strong></td>
+      <td>Senior Lead</td>
+      <td>Teacher cabinet audit. Float to help student boxes with tool ID. Verify audit accuracy.</td>
+    </tr>
+    <tr class="role-senior">
+      <td><strong>Lincoln Ziniker</strong></td>
+      <td>Senior Lead</td>
+      <td>Teacher cabinet audit. Float to help student boxes with tool ID. Verify audit accuracy.</td>
+    </tr>
+    <tr class="role-senior">
+      <td><strong>Colton Hankey</strong></td>
+      <td>Senior Lead</td>
+      <td>Teacher cabinet audit. Float to help student boxes with tool ID. Verify audit accuracy.</td>
+    </tr>
+    <tr>
+      <td>Engine groups (3 per box)</td>
+      <td>Auditors</td>
+      <td>Audit assigned toolbox. Complete checklist. Log extras. Clean and organize drawers.</td>
+    </tr>
+    <tr>
+      <td>Mr. McAteer</td>
+      <td>Certifier</td>
+      <td>Assign groups to toolboxes. Circulate during audit. Spot-check and sign off. Manage Orphan Bin.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Materials Needed</h2>
+<ul class="checklist">
+  <li>Printed audit forms (1 per toolbox = 6 copies)</li>
+  <li>Printed master tool list (1 per toolbox = 6 copies, laminate after)</li>
+  <li>Orphan Bin on the front bench (empty box or tray)</li>
+  <li>Rags / shop towels for wiping tools</li>
+  <li>Pen per group (students fill in forms by hand)</li>
+  <li>Phone access for students (Tool Identifier via QR code)</li>
+</ul>
+
+<h2>After Class</h2>
+<ul class="checklist">
+  <li>Review all 6 audit forms -- compile missing tool list for ordering</li>
+  <li>Redistribute tools from Orphan Bin to understocked boxes</li>
+  <li>Laminate master tool lists and tape inside each toolbox lid</li>
+  <li>Route strays: metals shop, vehicle area, instructor cabinet, shared shelf</li>
+  <li>Note any boxes rated CRITICAL for priority restocking</li>
+</ul>
+
+<div class="notes-box">
+  <div class="label">Notes</div>
+</div>
+
+</body>
+</html>
