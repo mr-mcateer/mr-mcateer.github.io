@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Tool Identifier - What Is This Thing?</title>
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --card-bg: #fff;
+      --text: #1a1a2e;
+      --accent: #c0392b;
+      --border: #ddd;
+      --muted: #666;
+      --green: #2e7d32;
+      --blue: #1565c0;
+      --orange: #e65100;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { background: #fff; color-scheme: light; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-text-size-adjust: 100%;
+    }
+    .header {
+      background: var(--accent);
+      color: white;
+      padding: 1rem 1rem;
+      text-align: center;
+    }
+    .header h1 { font-size: 1.3rem; margin-bottom: 0.1rem; }
+    .header p { opacity: 0.9; font-size: 0.85rem; }
+    .nav-back {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .nav-back:hover { text-decoration: underline; }
+    .container { max-width: 700px; margin: 0 auto; padding: 0 0.75rem 2rem; }
+
+    /* --- SEARCH (sticky, mobile-friendly) --- */
+    .search-wrap {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      padding: 0.75rem 0 0.5rem;
+      z-index: 10;
+    }
+    .search-inner { position: relative; }
+    .search-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.7rem 0.75rem 0.7rem 2.25rem;
+      font-size: 16px; /* prevents iOS zoom */
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      outline: none;
+      background: var(--card-bg);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .search-box:focus { border-color: var(--accent); }
+    .search-hint { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; }
+
+    /* --- FILTER CHIPS --- */
+    .filters {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .filter-btn {
+      padding: 0.4rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--card-bg);
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      white-space: nowrap;
+    }
+    .filter-btn:hover, .filter-btn:active { border-color: var(--accent); }
+    .filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+    .result-count { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
+
+    /* --- TOOL CARDS --- */
+    .tool-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 0.6rem;
+      overflow: hidden;
+    }
+    .tool-card.required { border-left: 4px solid var(--green); }
+    .tool-card.mystery { border-left: 4px solid var(--orange); }
+    .tool-card.precision { border-left: 4px solid var(--blue); }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .card-icon {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      background: #f0f0f0;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-icon svg {
+      width: 40px;
+      height: 40px;
+    }
+    .card-title-area { flex: 1; min-width: 0; }
+    .card-title-area h3 { font-size: 0.95rem; line-height: 1.3; }
+    .badge {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-top: 0.15rem;
+    }
+    .badge-required { background: #e8f5e9; color: var(--green); }
+    .badge-mystery { background: #fff3e0; color: var(--orange); }
+    .badge-precision { background: #e3f2fd; color: var(--blue); }
+    .expand-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      color: var(--muted);
+      transition: transform 0.2s;
+    }
+    .tool-card.open .expand-icon { transform: rotate(180deg); }
+
+    .card-body {
+      display: none;
+      padding: 0 0.75rem 0.75rem;
+      border-top: 1px solid #eee;
+    }
+    .tool-card.open .card-body { display: block; }
+
+    .detail-row {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+      margin-bottom: 0.1rem;
+    }
+    .detail-value { font-size: 0.88rem; }
+
+    .route-tag {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .route-toolbox { background: #e8f5e9; color: #2e7d32; }
+    .route-metals { background: #e8eaf6; color: #283593; }
+    .route-vehicle { background: #fce4ec; color: #c62828; }
+    .route-shared { background: #e0f2f1; color: #00695c; }
+    .route-precision { background: #e3f2fd; color: #1565c0; }
+    .route-instructor { background: #f3e5f5; color: #6a1b9a; }
+    .route-keep { background: #e0f2f1; color: #00695c; }
+
+    .no-results {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+    }
+    .no-results h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+
+    /* --- PRINT --- */
+    @media print {
+      .search-wrap, .filters, .nav-back, .header, .result-count, .expand-icon { display: none; }
+      .card-body { display: block !important; }
+      .tool-card { break-inside: avoid; border: 1px solid #999; margin-bottom: 0.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Tool Identifier</h1>
+  <p>Found something you don't recognize? Search or browse here.</p>
+</div>
+<a href="index.html" class="nav-back">&larr; Back to Hub</a>
+
+<div class="container">
+  <div class="search-wrap">
+    <div class="search-inner">
+      <span class="search-icon">&#128269;</span>
+      <input type="text" class="search-box" id="searchInput" placeholder="Describe what you see..." autocomplete="off" autocorrect="off" spellcheck="false">
+    </div>
+    <div class="search-hint">Try: "star shaped", "rubber hose", "brass rod", "deep socket"</div>
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="required">Required (20)</button>
+    <button class="filter-btn" data-filter="mystery">Mystery</button>
+    <button class="filter-btn" data-filter="precision">Precision</button>
+  </div>
+
+  <div class="result-count" id="resultCount"></div>
+  <div id="toolList"></div>
+</div>
+
+<script>
+// ====== SVG ICONS ======
+// Simple, recognizable tool silhouettes for identification
+const SVG = {
+  ratchet: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><rect x="4" y="16" width="24" height="8" rx="2"/><circle cx="32" cy="20" r="6"/><circle cx="32" cy="20" r="3"/></svg>`,
+  extension: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><rect x="4" y="16" width="32" height="8" rx="1"/><rect x="6" y="18" width="4" height="4" fill="#333"/><rect x="30" y="18" width="4" height="4" fill="#333"/></svg>`,
+  socket: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2"><rect x="10" y="6" width="20" height="28" rx="3"/><rect x="14" y="10" width="12" height="12" rx="1" fill="#eee" stroke="#333"/><rect x="16" y="28" width="8" height="6" fill="#333"/></svg>`,
+  wrench: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><path d="M6 20h22"/><path d="M6 16v8"/><circle cx="32" cy="20" r="6"/><circle cx="32" cy="20" r="3"/></svg>`,
+  phillips: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><rect x="14" y="2" width="12" height="20" rx="6"/><line x1="20" y1="22" x2="20" y2="38"/><line x1="18" y1="36" x2="22" y2="36"/><line x1="18" y1="24" x2="22" y2="28"/><line x1="22" y1="24" x2="18" y2="28"/></svg>`,
+  flathead: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><rect x="14" y="2" width="12" height="20" rx="6"/><line x1="20" y1="22" x2="20" y2="38"/><line x1="16" y1="38" x2="24" y2="38"/></svg>`,
+  needlenose: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><path d="M8 8l12 16"/><path d="M32 8l-12 16"/><path d="M14 24l6 14"/><path d="M26 24l-6 14"/><circle cx="20" cy="24" r="3" fill="#eee"/></svg>`,
+  pliers: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><path d="M10 6c4 4 6 10 6 14"/><path d="M30 6c-4 4-6 10-6 14"/><circle cx="20" cy="20" r="4" fill="#eee"/><line x1="16" y1="24" x2="12" y2="38"/><line x1="24" y1="24" x2="28" y2="38"/></svg>`,
+  adjustable: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><rect x="6" y="18" width="20" height="6" rx="1"/><path d="M26 14v14"/><path d="M26 14l8 4v6l-8 4"/><line x1="30" y1="20" x2="34" y2="20"/></svg>`,
+  feeler: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round"><path d="M10 34l4-28" stroke-width="2"/><path d="M14 34l3-24"/><path d="M18 34l2-20"/><path d="M22 34l1-16"/><path d="M26 34l0-12"/><circle cx="12" cy="34" r="4" fill="#eee" stroke="#333" stroke-width="2"/></svg>`,
+  magtray: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2"><rect x="4" y="22" width="32" height="10" rx="2"/><path d="M8 22c0-6 6-10 12-10s12 4 12 10" fill="#eee"/><circle cx="14" cy="26" r="1.5" fill="#333"/><circle cx="20" cy="26" r="1.5" fill="#333"/><circle cx="26" cy="26" r="1.5" fill="#333"/></svg>`,
+  wirebrush: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><rect x="4" y="16" width="18" height="10" rx="2"/><line x1="22" y1="16" x2="36" y2="10"/><line x1="22" y1="19" x2="36" y2="16"/><line x1="22" y1="22" x2="36" y2="22"/><line x1="22" y1="25" x2="36" y2="28"/><line x1="22" y1="26" x2="36" y2="34"/></svg>`,
+  torquewrench: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><rect x="2" y="17" width="28" height="6" rx="1"/><circle cx="34" cy="20" r="5"/><circle cx="34" cy="20" r="2.5"/><path d="M8 17v-4h12v4" stroke-width="1.5"/><line x1="14" y1="13" x2="14" y2="17" stroke-width="1"/></svg>`,
+  sparkplug: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2"><rect x="12" y="4" width="16" height="24" rx="3"/><rect x="15" y="8" width="10" height="10" rx="1" fill="#eee"/><circle cx="20" cy="13" r="3" fill="#ddd" stroke="#333" stroke-width="1"/><rect x="16" y="28" width="8" height="8" fill="#333" rx="1"/></svg>`,
+  torx: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><path d="M20 8l6 3.5v7L20 22l-6-3.5v-7z" fill="#eee"/><line x1="20" y1="22" x2="20" y2="36"/><rect x="8" y="2" width="24" height="8" rx="4"/></svg>`,
+  snapring: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><line x1="8" y1="36" x2="16" y2="22"/><line x1="32" y1="36" x2="24" y2="22"/><circle cx="20" cy="20" r="4" fill="#eee"/><line x1="16" y1="18" x2="10" y2="4"/><line x1="24" y1="18" x2="30" y2="4"/><circle cx="10" cy="4" r="2" fill="#333"/><circle cx="30" cy="4" r="2" fill="#333"/></svg>`,
+  impact: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><rect x="12" y="2" width="16" height="22" rx="4"/><line x1="20" y1="24" x2="20" y2="36"/><line x1="16" y1="36" x2="24" y2="36"/><line x1="16" y1="30" x2="24" y2="30" stroke-width="1.5"/></svg>`,
+  brasspunch: `<svg viewBox="0 0 40 40" fill="none" stroke="#b8860b" stroke-width="2.5" stroke-linecap="round"><line x1="20" y1="4" x2="20" y2="36"/><circle cx="20" cy="6" r="4" fill="#daa520" stroke="#b8860b"/><line x1="16" y1="36" x2="24" y2="36" stroke-width="2"/></svg>`,
+  oilfilter: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2"><circle cx="20" cy="16" r="10" fill="#eee"/><circle cx="20" cy="16" r="5"/><rect x="14" y="26" width="12" height="10" rx="1"/><line x1="18" y1="30" x2="22" y2="30"/></svg>`,
+  balancer: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2"><circle cx="20" cy="20" r="14" fill="#eee"/><circle cx="20" cy="20" r="4"/><line x1="20" y1="6" x2="20" y2="2"/><line x1="20" y1="34" x2="20" y2="38"/><line x1="6" y1="20" x2="2" y2="20"/><line x1="34" y1="20" x2="38" y2="20"/></svg>`,
+  threadpitch: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round"><path d="M10 34l2-28" stroke-width="2"/><path d="M14 34l2-24"/><path d="M18 34l1-20"/><path d="M22 34l1-16"/><circle cx="12" cy="34" r="4" fill="#eee" stroke="#333" stroke-width="2"/><path d="M16 10l2-2 2 2 2-2 2 2" stroke-width="1"/></svg>`,
+  gasket: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><rect x="12" y="2" width="14" height="14" rx="3"/><line x1="19" y1="16" x2="19" y2="38"/><line x1="12" y1="38" x2="26" y2="38" stroke-width="3"/></svg>`,
+  tapdie: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2"><rect x="4" y="8" width="32" height="24" rx="3" fill="#eee"/><circle cx="14" cy="20" r="5"/><circle cx="28" cy="20" r="5"/><line x1="14" y1="15" x2="14" y2="25" stroke-width="1"/><line x1="9" y1="20" x2="19" y2="20" stroke-width="1"/></svg>`,
+  vacuum: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2"><circle cx="20" cy="16" r="12" fill="#eee"/><circle cx="20" cy="16" r="3"/><line x1="20" y1="16" x2="26" y2="10"/><path d="M20 28c0 4-4 8-4 10" stroke-linecap="round"/></svg>`,
+  bearing: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><line x1="20" y1="6" x2="20" y2="38"/><line x1="6" y1="6" x2="20" y2="20"/><line x1="34" y1="6" x2="20" y2="20"/><circle cx="6" cy="6" r="3" fill="#eee"/><circle cx="34" cy="6" r="3" fill="#eee"/></svg>`,
+  compression: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2"><circle cx="20" cy="14" r="10" fill="#eee"/><line x1="20" y1="14" x2="26" y2="10"/><path d="M20 24c0 2-1 4-1 6s-2 4-4 6" stroke-linecap="round"/><circle cx="20" cy="14" r="3"/></svg>`,
+  micrometer: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><path d="M4 10v20"/><path d="M4 30h16"/><path d="M4 10h4"/><rect x="20" y="16" width="16" height="8" rx="4" fill="#eee"/><line x1="24" y1="20" x2="36" y2="20" stroke-width="1"/></svg>`,
+  calipers: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><rect x="2" y="6" width="36" height="4" rx="1"/><line x1="6" y1="10" x2="6" y2="34"/><line x1="22" y1="10" x2="22" y2="34"/><line x1="6" y1="34" x2="6" y2="34"/><circle cx="30" cy="18" r="6" fill="#eee"/><line x1="30" y1="18" x2="34" y2="14"/></svg>`,
+  telescoping: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><line x1="20" y1="4" x2="20" y2="24"/><line x1="10" y1="24" x2="30" y2="24"/><line x1="12" y1="24" x2="8" y2="32"/><line x1="28" y1="24" x2="32" y2="32"/><circle cx="8" cy="32" r="2" fill="#333"/><circle cx="32" cy="32" r="2" fill="#333"/></svg>`,
+  allenkey: `<svg viewBox="0 0 40 40" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"><line x1="10" y1="6" x2="10" y2="28"/><line x1="10" y1="28" x2="30" y2="28"/></svg>`,
+};
+
+// ====== TOOL DATA ======
+const TOOLS = [
+  // === REQUIRED (20) ===
+  { name:'Ratchet, 3/8" drive', category:'required', drawer:'Top', icon:'ratchet',
+    looksLike:'Metal handle with a rotating head that clicks. Has a direction switch lever.',
+    purpose:'Primary driver for all socket work. The backbone of the kit.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'ratchet drive socket handle click' },
+  { name:'Extension, 3" (3/8" drive)', category:'required', drawer:'Top', icon:'extension',
+    looksLike:'Short metal bar, square drive on both ends. About the length of a finger.',
+    purpose:'Reaches bolts in tight spots near the block.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'extension short bar reach' },
+  { name:'Extension, 6" (3/8" drive)', category:'required', drawer:'Top', icon:'extension',
+    looksLike:'Longer metal bar, square drive on both ends. About the length of a hand.',
+    purpose:'Reaches deeper fasteners, head bolts, and under-shroud hardware.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'extension long bar reach deep' },
+  { name:'8mm socket', category:'required', drawer:'Top', icon:'socket',
+    looksLike:'Small cylinder, hex opening inside, square drive hole on top. Marked "8" or "8mm".',
+    purpose:'Valve cover, air filter housing, small shroud bolts.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'socket 8mm small' },
+  { name:'10mm socket', category:'required', drawer:'Top', icon:'socket',
+    looksLike:'Cylinder, hex opening inside. Marked "10" or "10mm". The most important socket you own.',
+    purpose:'Most-used size. Shroud, blower housing, fuel tank mount. Guard it with your life.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'socket 10mm important lost common' },
+  { name:'12mm socket', category:'required', drawer:'Top', icon:'socket',
+    looksLike:'Cylinder, hex opening inside. Marked "12" or "12mm".',
+    purpose:'Head bolts, side cover, muffler mount.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'socket 12mm head bolt' },
+  { name:'13mm socket', category:'required', drawer:'Top', icon:'socket',
+    looksLike:'Cylinder, hex opening inside. Marked "13" or "13mm".',
+    purpose:'Flywheel nut (with holder). Some aftermarket bolts.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'socket 13mm flywheel' },
+  { name:'14mm socket', category:'required', drawer:'Top', icon:'socket',
+    looksLike:'Cylinder, hex opening inside. Marked "14" or "14mm". Largest in your kit.',
+    purpose:'Spark plug (if no dedicated plug socket), larger mounts.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'socket 14mm spark plug large' },
+  { name:'8mm combination wrench', category:'required', drawer:'Middle', icon:'wrench',
+    looksLike:'Flat metal wrench. Open end (U-shape) on one side, closed ring on the other. Marked "8".',
+    purpose:'Backup for 8mm socket. Holds bolt head while socket drives the nut.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'wrench combo combination open ring 8mm' },
+  { name:'10mm combination wrench', category:'required', drawer:'Middle', icon:'wrench',
+    looksLike:'Flat metal wrench, open end + ring end. Marked "10".',
+    purpose:'Backup for 10mm socket. Hold-and-turn situations.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'wrench combo combination open ring 10mm' },
+  { name:'12mm combination wrench', category:'required', drawer:'Middle', icon:'wrench',
+    looksLike:'Flat metal wrench, open end + ring end. Marked "12".',
+    purpose:'Head bolt backup. Used when ratchet clearance is tight.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'wrench combo combination open ring 12mm' },
+  { name:'13mm combination wrench', category:'required', drawer:'Middle', icon:'wrench',
+    looksLike:'Flat metal wrench, open end + ring end. Marked "13".',
+    purpose:'Flywheel work, larger fastener backup.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'wrench combo combination open ring 13mm' },
+  { name:'Phillips #2 screwdriver', category:'required', drawer:'Bottom', icon:'phillips',
+    looksLike:'Screwdriver with a cross-shaped (+) tip. Medium length. The most common type.',
+    purpose:'Carburetor screws, governor arm, throttle linkage adjustments.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'screwdriver phillips cross plus' },
+  { name:'Flathead screwdriver, 3/16"', category:'required', drawer:'Bottom', icon:'flathead',
+    looksLike:'Screwdriver with a flat, straight blade tip (-). Medium length.',
+    purpose:'Idle mixture screw, prying gaskets, general scraping.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'screwdriver flathead flat blade straight slotted' },
+  { name:'Needle-nose pliers', category:'required', drawer:'Bottom', icon:'needlenose',
+    looksLike:'Pliers with long, thin, pointed jaws. Good for reaching into small spaces.',
+    purpose:'Governor spring, fuel line clips, small cotter pins, wire routing.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'pliers needle nose long thin pointed' },
+  { name:'Slip-joint pliers', category:'required', drawer:'Bottom', icon:'pliers',
+    looksLike:'Standard pliers with adjustable jaw width. The "normal" looking pliers.',
+    purpose:'General gripping, pulling stuck fuel lines, holding parts.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'pliers slip joint standard adjustable grip' },
+  { name:'Adjustable wrench, 8"', category:'required', drawer:'Bottom', icon:'adjustable',
+    looksLike:'Wrench with a movable jaw controlled by a thumb wheel. About 8 inches long.',
+    purpose:'Odd-size fasteners, holding flats while torquing. Versatile backup.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'adjustable wrench crescent movable jaw thumb wheel' },
+  { name:'Feeler gauge set', category:'required', drawer:'Bottom', icon:'feeler',
+    looksLike:'Fan of thin, flexible metal blades on a pivot, like a pocketknife. Each blade stamped with a thickness.',
+    purpose:'Valve lash adjustment. Measures tiny gaps between parts.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'feeler gauge blades thin fan gap measurement valve lash' },
+  { name:'Magnetic parts tray', category:'required', drawer:'Bottom', icon:'magtray',
+    looksLike:'Small metal tray or bowl, magnetic bottom. Bolts and nuts stick to it.',
+    purpose:'Keeps bolts, nuts, and small parts from rolling away during teardown.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'magnetic tray bowl parts holder' },
+  { name:'Wire brush', category:'required', drawer:'Bottom', icon:'wirebrush',
+    looksLike:'Brush with stiff metal bristles. Looks like a toothbrush but made of metal wire.',
+    purpose:'Cleans gasket surfaces, rust, and carbon buildup from mating faces.',
+    route:'toolbox', routeLabel:'Your toolbox', keywords:'wire brush metal bristle clean scrub rust carbon' },
+
+  // === MYSTERY / STRAY (14) ===
+  { name:'Torque wrench', category:'mystery', drawer:null, icon:'torquewrench',
+    looksLike:'Looks like a ratchet but longer, with a dial, scale, or click mechanism on the handle. May have ft-lb or in-lb markings.',
+    purpose:'Sets exact bolt tightness. Used for final assembly only when specs matter.',
+    route:'precision', routeLabel:'Precision cart', keywords:'torque wrench click dial scale ft-lb in-lb tightness' },
+  { name:'Spark plug socket', category:'mystery', drawer:null, icon:'sparkplug',
+    looksLike:'Deep socket (taller than normal) with a rubber insert visible inside. Usually 5/8" or 13/16".',
+    purpose:'Grips the spark plug ceramic insulator without cracking it during removal.',
+    route:'shared', routeLabel:'Shared shelf', keywords:'spark plug socket deep rubber insert ceramic' },
+  { name:'Torx / star bits', category:'mystery', drawer:null, icon:'torx',
+    looksLike:'Set of star-shaped (6-pointed) tips, often in a folding key set or bit holder.',
+    purpose:'For automotive electronics fasteners. Not used on the Predator 212.',
+    route:'instructor', routeLabel:'Instructor cabinet', keywords:'torx star bits six point folding set' },
+  { name:'Snap ring pliers', category:'mystery', drawer:null, icon:'snapring',
+    looksLike:'Pliers with small, pointed tips that bend inward or outward. May have interchangeable tips.',
+    purpose:'Removes retaining clips (snap rings) from shafts and bores.',
+    route:'instructor', routeLabel:'Instructor cabinet', keywords:'snap ring pliers pointed tips circlip retaining clip' },
+  { name:'Impact driver (manual)', category:'mystery', drawer:null, icon:'impact',
+    looksLike:'Thick, heavy screwdriver body. Shorter than normal. Feels very solid. Bit holder at the tip.',
+    purpose:'Strike the back with a hammer to free seized screws. The impact breaks them loose.',
+    route:'instructor', routeLabel:'Instructor cabinet', keywords:'impact driver manual hammer strike heavy thick screwdriver seized stuck' },
+  { name:'Brass drift punch', category:'mystery', drawer:null, icon:'brasspunch',
+    looksLike:'Solid brass-colored rod, tapered to a point or flat end. Softer than steel, gold colored.',
+    purpose:'Drives pins and parts out without marring surfaces. Brass is softer than steel.',
+    route:'shared', routeLabel:'Shared shelf', keywords:'brass drift punch rod gold colored soft pin' },
+  { name:'Oil filter wrench', category:'mystery', drawer:null, icon:'oilfilter',
+    looksLike:'Metal band, strap, or cap-grip tool. Some look like a big socket for an oil filter.',
+    purpose:'Removes spin-on oil filters. Pred 212 has none -- this is a stray from vehicle work.',
+    route:'vehicle', routeLabel:'Vehicle area', keywords:'oil filter wrench band strap cap grip' },
+  { name:'Harmonic balancer puller', category:'mystery', drawer:null, icon:'balancer',
+    looksLike:'Heavy metal disc or plate with bolt holes around the edge and a center bolt. May have spider arms.',
+    purpose:'Removes press-fit pulleys and balancers from crankshafts. From the vehicle side.',
+    route:'vehicle', routeLabel:'Vehicle area', keywords:'harmonic balancer puller disc plate center bolt arms crankshaft' },
+  { name:'Thread pitch gauge', category:'mystery', drawer:null, icon:'threadpitch',
+    looksLike:'Fan of toothed metal blades on a pivot (like feeler gauges but with teeth). Numbers on each blade.',
+    purpose:'Match blade teeth to bolt threads to identify thread pitch. Not for measuring gaps.',
+    route:'shared', routeLabel:'Shared shelf', keywords:'thread pitch gauge toothed blades fan teeth bolt identify' },
+  { name:'Gasket scraper', category:'mystery', drawer:null, icon:'gasket',
+    looksLike:'Flat blade tool, looks like a putty knife or paint scraper. May have plastic or wood handle.',
+    purpose:'Scrapes old gasket material off mating surfaces before reassembly. Actually useful.',
+    route:'keep', routeLabel:'KEEP if good condition', keywords:'gasket scraper flat blade putty knife surface' },
+  { name:'Tap and die set', category:'mystery', drawer:null, icon:'tapdie',
+    looksLike:'Hinged case full of cylindrical cutting tools. Taps look like bolts with flutes. Dies look like thick washers.',
+    purpose:'Cuts new threads or repairs damaged threads. Belongs in the metals shop.',
+    route:'metals', routeLabel:'Metals shop', keywords:'tap die set thread cutting repair cylinder case' },
+  { name:'Vacuum gauge', category:'mystery', drawer:null, icon:'vacuum',
+    looksLike:'Round dial gauge (like a small clock) with a rubber hose. Reads in inches of mercury (inHg).',
+    purpose:'Measures intake vacuum on running engines. Diagnoses internal engine problems.',
+    route:'instructor', routeLabel:'Instructor cabinet', keywords:'vacuum gauge dial hose mercury running engine diagnostic' },
+  { name:'Bearing puller', category:'mystery', drawer:null, icon:'bearing',
+    looksLike:'Spider-shaped tool with 2-3 arms and a center bolt. Arms hook behind things, center bolt pushes.',
+    purpose:'Pulls bearings and gears off shafts without damaging them. From vehicle work.',
+    route:'vehicle', routeLabel:'Vehicle area', keywords:'bearing puller spider arms center bolt gear shaft' },
+  { name:'Allen key / hex key set', category:'mystery', drawer:null, icon:'allenkey',
+    looksLike:'L-shaped hexagonal rods, usually in a set on a holder. May be metric or SAE.',
+    purpose:'Fits hex socket (Allen) bolts. Some set screws and aftermarket parts use these.',
+    route:'shared', routeLabel:'Shared shelf', keywords:'allen key hex wrench L-shaped set screw hexagonal' },
+
+  // === PRECISION / SHARED CHECKOUT (5) ===
+  { name:'Compression tester', category:'precision', drawer:null, icon:'compression',
+    looksLike:'Gauge with a flexible hose and fitting that screws into the spark plug hole. Reads PSI.',
+    purpose:'Tests cylinder compression to check ring seal, valve seal, and head gasket integrity.',
+    route:'precision', routeLabel:'Precision cart (checkout)', keywords:'compression tester gauge hose psi cylinder pressure' },
+  { name:'Torque wrench (in-lb)', category:'precision', drawer:null, icon:'torquewrench',
+    looksLike:'Like a regular ratchet but with a beam, dial, or click. Reads in inch-pounds, not foot-pounds.',
+    purpose:'Precise tightening for small fasteners like valve cover and carburetor bolts.',
+    route:'precision', routeLabel:'Precision cart (checkout)', keywords:'torque wrench inch pound small fastener precise click' },
+  { name:'Micrometer 0-1"', category:'precision', drawer:null, icon:'micrometer',
+    looksLike:'C-shaped frame with a rotating thimble (cylinder) on one end. Very precise. Reads to 0.001".',
+    purpose:'Measures piston diameter, crankshaft journal diameter, precision dimensions.',
+    route:'precision', routeLabel:'Precision cart (checkout)', keywords:'micrometer c-frame thimble precision measure thousandths' },
+  { name:'Dial calipers 6"', category:'precision', drawer:null, icon:'calipers',
+    looksLike:'Sliding jaw tool with a round dial (clock face). Has inside jaws, outside jaws, and a depth rod.',
+    purpose:'Measures inside diameters, outside diameters, and depths. More versatile than a micrometer.',
+    route:'precision', routeLabel:'Precision cart (checkout)', keywords:'caliper dial sliding jaw measure inside outside depth' },
+  { name:'Telescoping gauges', category:'precision', drawer:null, icon:'telescoping',
+    looksLike:'T-shaped tools with spring-loaded ends that expand. Come in a set of different sizes.',
+    purpose:'Inserted into a bore, locked, then measured with a micrometer to find bore diameter.',
+    route:'precision', routeLabel:'Precision cart (checkout)', keywords:'telescoping gauge bore cylinder measure t-shaped spring' },
+];
+
+// ====== RENDERING ======
+const searchInput = document.getElementById('searchInput');
+const toolList = document.getElementById('toolList');
+const resultCount = document.getElementById('resultCount');
+const filterBtns = document.querySelectorAll('.filter-btn');
+let activeFilter = 'all';
+
+function renderTools() {
+  const query = searchInput.value.toLowerCase().trim();
+  const words = query.split(/\s+/).filter(w => w.length > 0);
+
+  let filtered = TOOLS.filter(t => {
+    if (activeFilter !== 'all' && t.category !== activeFilter) return false;
+    if (words.length === 0) return true;
+    const haystack = [t.name, t.looksLike, t.purpose, t.keywords, t.routeLabel, t.drawer || ''].join(' ').toLowerCase();
+    return words.every(w => haystack.includes(w));
+  });
+
+  resultCount.textContent = filtered.length + ' of ' + TOOLS.length + ' tools';
+
+  if (filtered.length === 0) {
+    toolList.innerHTML = '<div class="no-results"><h3>No match</h3><p>Try describing the shape: "star shaped", "rubber hose", "brass rod"</p></div>';
+    return;
+  }
+
+  toolList.innerHTML = filtered.map((t, i) => {
+    const badgeClass = 'badge-' + t.category;
+    const badgeText = t.category === 'required' ? 'Required' : t.category === 'mystery' ? 'Mystery' : 'Precision';
+    const routeClass = 'route-' + t.route;
+    const icon = SVG[t.icon] || SVG.socket;
+    const drawerRow = t.drawer ? '<div class="detail-row"><div class="detail-label">Drawer</div><div class="detail-value">' + t.drawer + '</div></div>' : '';
+    // Auto-expand first 3 results on search, or mystery tools
+    const isOpen = words.length > 0 && i < 3 ? ' open' : '';
+
+    return '<div class="tool-card ' + t.category + isOpen + '" onclick="this.classList.toggle(\'open\')">' +
+      '<div class="card-header">' +
+        '<div class="card-icon">' + icon + '</div>' +
+        '<div class="card-title-area">' +
+          '<h3>' + hl(t.name, words) + '</h3>' +
+          '<span class="badge ' + badgeClass + '">' + badgeText + '</span>' +
+        '</div>' +
+        '<svg class="expand-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M5 8l5 5 5-5z"/></svg>' +
+      '</div>' +
+      '<div class="card-body">' +
+        '<div class="detail-row"><div class="detail-label">Looks Like</div><div class="detail-value">' + hl(t.looksLike, words) + '</div></div>' +
+        '<div class="detail-row"><div class="detail-label">What It Does</div><div class="detail-value">' + hl(t.purpose, words) + '</div></div>' +
+        drawerRow +
+        '<div class="detail-row"><div class="detail-label">Where It Goes</div><div class="detail-value"><span class="route-tag ' + routeClass + '">' + t.routeLabel + '</span></div></div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function hl(text, words) {
+  if (!words.length) return text;
+  const esc = words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  return text.replace(new RegExp('(' + esc.join('|') + ')', 'gi'), '<mark>$1</mark>');
+}
+
+// ====== EVENTS ======
+searchInput.addEventListener('input', renderTools);
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    renderTools();
+  });
+});
+
+renderTools();
+</script>
+</body>
+</html>

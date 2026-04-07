@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Tool List - Predator 212 Kit</title>
+  <style>
+    :root {
+      --text: #1a1a2e;
+      --accent: #c0392b;
+      --border: #333;
+      --light-border: #ccc;
+      --muted: #555;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { background: #fff; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.35;
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 0.4in;
+      color-scheme: light;
+    }
+
+    .nav-back {
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .nav-back:hover { text-decoration: underline; }
+
+    /* --- HEADER --- */
+    .doc-header {
+      text-align: center;
+      border: 3px solid var(--accent);
+      padding: 0.6rem 1rem;
+      margin-bottom: 0.6rem;
+      background: #fdf2f2;
+    }
+    .doc-header h1 {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+    }
+    .doc-header .sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+    .doc-header .purpose {
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+      font-style: italic;
+    }
+
+    /* --- DRAWER GUIDE --- */
+    .drawer-guide {
+      display: flex;
+      gap: 0;
+      margin-bottom: 0.6rem;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      font-size: 0.78rem;
+    }
+    .drawer-section {
+      flex: 1;
+      padding: 0.35rem 0.5rem;
+      text-align: center;
+    }
+    .drawer-top { background: #e8f5e9; border-right: 1px solid var(--light-border); }
+    .drawer-mid { background: #e3f2fd; border-right: 1px solid var(--light-border); }
+    .drawer-bot { background: #fff3e0; }
+    .drawer-section strong { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.1rem; }
+
+    /* --- TABLE --- */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-bottom: 0.5rem;
+    }
+    th {
+      background: var(--accent);
+      color: white;
+      font-weight: 700;
+      text-align: left;
+      padding: 0.3rem 0.5rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    td {
+      border: 1px solid var(--light-border);
+      padding: 0.3rem 0.5rem;
+      vertical-align: top;
+    }
+    .cat-row td {
+      background: #2c3e50;
+      color: white;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.25rem 0.5rem;
+    }
+    .cat-icon { margin-right: 0.3rem; }
+    .num-col { width: 1.8rem; text-align: center; font-weight: 700; color: var(--muted); }
+    .qty-col { width: 2.2rem; text-align: center; }
+    .purpose-col { width: 42%; color: var(--muted); font-size: 0.78rem; }
+    .tool-name { font-weight: 600; }
+
+    /* callout row */
+    .callout-row td {
+      background: #fff3cd;
+      border: 1px solid #d4a800;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 0.2rem;
+    }
+
+    /* --- TOTALS --- */
+    .totals {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0.75rem;
+      background: #f0f0f0;
+      border: 2px solid var(--border);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    /* --- FOOTER --- */
+    .footer-note {
+      margin-top: 0.6rem;
+      padding: 0.4rem 0.6rem;
+      border: 1px dashed var(--light-border);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* --- LAMINATE BADGE --- */
+    .laminate-badge {
+      position: relative;
+      display: block;
+      text-align: center;
+      margin-top: 0.75rem;
+      padding: 0.3rem;
+      border: 2px dashed var(--accent);
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* --- TOOL IMAGE LINKS --- */
+    .tool-link {
+      color: #1a5276;
+      text-decoration: none;
+      border-bottom: 1px dotted #1a5276;
+    }
+    .tool-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .tool-link::after {
+      content: " \1F50D";
+      font-size: 0.6em;
+      vertical-align: super;
+      opacity: 0.5;
+    }
+
+    @media print {
+      body { padding: 0.25in; }
+      .nav-back { display: none; }
+      .laminate-badge { border-style: solid; }
+      .tool-link { color: inherit; border-bottom: none; }
+      .tool-link::after { display: none; }
+    }
+    @media screen {
+      body { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="index.html" class="nav-back">&larr; Back to Toolbox Certification Hub</a>
+
+<div class="doc-header">
+  <h1>Master Tool List</h1>
+  <div class="sub">Predator 212 Engine -- Small Engine Manufacturing</div>
+  <div class="purpose">20 required tools per toolbox. Laminate this page and tape inside the lid.</div>
+</div>
+
+<div class="drawer-guide">
+  <div class="drawer-section drawer-top">
+    <strong>Top Drawer</strong>
+    Sockets, ratchet, extensions
+  </div>
+  <div class="drawer-section drawer-mid">
+    <strong>Middle Drawer</strong>
+    Combination wrenches
+  </div>
+  <div class="drawer-section drawer-bot">
+    <strong>Bottom Drawer</strong>
+    Screwdrivers, pliers, specialty
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th class="num-col">#</th>
+      <th>Tool</th>
+      <th class="qty-col">Qty</th>
+      <th class="purpose-col">Purpose (Why It's Here)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- SOCKETS & DRIVE -->
+    <tr class="cat-row"><td colspan="4"><span class="cat-icon">&#9881;</span> Sockets &amp; Drive -- Top Drawer</td></tr>
+    <tr>
+      <td class="num-col">1</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=3/8+drive+ratchet+tool" target="_blank">Ratchet, 3/8" drive</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Primary driver for all socket work. The backbone of the kit.</td>
+    </tr>
+    <tr>
+      <td class="num-col">2</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=3+inch+socket+extension+3/8+drive" target="_blank">Extension, 3" (3/8" drive)</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Reaches bolts in tight spots near the block.</td>
+    </tr>
+    <tr>
+      <td class="num-col">3</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=6+inch+socket+extension+3/8+drive" target="_blank">Extension, 6" (3/8" drive)</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Reaches deeper fasteners, head bolts, and under-shroud hardware.</td>
+    </tr>
+    <tr>
+      <td class="num-col">4</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=8mm+socket" target="_blank">8mm socket</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Valve cover, air filter housing, small shroud bolts.</td>
+    </tr>
+    <tr>
+      <td class="num-col">5</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=10mm+socket" target="_blank">10mm socket</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Most-used size. Shroud, blower housing, fuel tank mount. Guard it.</td>
+    </tr>
+    <tr class="callout-row"><td colspan="4">The 10mm socket is the most commonly lost tool in any shop. Know where yours is at all times.</td></tr>
+    <tr>
+      <td class="num-col">6</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=12mm+socket" target="_blank">12mm socket</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Head bolts, side cover, muffler mount.</td>
+    </tr>
+    <tr>
+      <td class="num-col">7</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=13mm+socket" target="_blank">13mm socket</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Flywheel nut (with holder). Some aftermarket bolts.</td>
+    </tr>
+    <tr>
+      <td class="num-col">8</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=14mm+socket" target="_blank">14mm socket</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Spark plug (if no dedicated spark plug socket), larger mounts.</td>
+    </tr>
+
+    <!-- WRENCHES -->
+    <tr class="cat-row"><td colspan="4"><span class="cat-icon">&#128295;</span> Wrenches -- Middle Drawer</td></tr>
+    <tr>
+      <td class="num-col">9</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=8mm+combination+wrench" target="_blank">8mm combination wrench</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Backup for 8mm socket. Holds bolt head while socket drives the nut.</td>
+    </tr>
+    <tr>
+      <td class="num-col">10</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=10mm+combination+wrench" target="_blank">10mm combination wrench</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Backup for 10mm socket. Hold-and-turn situations.</td>
+    </tr>
+    <tr>
+      <td class="num-col">11</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=12mm+combination+wrench" target="_blank">12mm combination wrench</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Head bolt backup. Used when ratchet clearance is tight.</td>
+    </tr>
+    <tr>
+      <td class="num-col">12</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=13mm+combination+wrench" target="_blank">13mm combination wrench</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Flywheel work, larger fastener backup.</td>
+    </tr>
+
+    <!-- SCREWDRIVERS -->
+    <tr class="cat-row"><td colspan="4"><span class="cat-icon">&#128736;</span> Screwdrivers -- Bottom Drawer</td></tr>
+    <tr>
+      <td class="num-col">13</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=phillips+%232+screwdriver" target="_blank">Phillips #2 screwdriver</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Carburetor screws, governor arm, throttle linkage adjustments.</td>
+    </tr>
+    <tr>
+      <td class="num-col">14</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=3/16+flathead+screwdriver" target="_blank">Flathead screwdriver, 3/16"</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Idle mixture screw, prying gaskets, general scraping.</td>
+    </tr>
+
+    <!-- PLIERS -->
+    <tr class="cat-row"><td colspan="4"><span class="cat-icon">&#9986;</span> Pliers -- Bottom Drawer</td></tr>
+    <tr>
+      <td class="num-col">15</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=needle+nose+pliers" target="_blank">Needle-nose pliers</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Governor spring, fuel line clips, small cotter pins, wire routing.</td>
+    </tr>
+    <tr>
+      <td class="num-col">16</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=slip+joint+pliers" target="_blank">Slip-joint pliers</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">General gripping, pulling stuck fuel lines, holding parts.</td>
+    </tr>
+
+    <!-- SPECIALTY -->
+    <tr class="cat-row"><td colspan="4"><span class="cat-icon">&#9733;</span> Specialty -- Bottom Drawer</td></tr>
+    <tr>
+      <td class="num-col">17</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=8+inch+adjustable+wrench" target="_blank">Adjustable wrench, 8"</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Odd-size fasteners, holding flats while torquing. Versatile backup.</td>
+    </tr>
+    <tr>
+      <td class="num-col">18</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=feeler+gauge+set" target="_blank">Feeler gauge set</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Valve lash adjustment (0.005"-0.007" intake, 0.005"-0.007" exhaust).</td>
+    </tr>
+    <tr>
+      <td class="num-col">19</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=magnetic+parts+tray" target="_blank">Magnetic parts tray</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Keeps bolts, nuts, and small parts from rolling away during teardown.</td>
+    </tr>
+    <tr>
+      <td class="num-col">20</td>
+      <td class="tool-name"><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=wire+brush+tool" target="_blank">Wire brush</a></td>
+      <td class="qty-col">1</td>
+      <td class="purpose-col">Cleans gasket surfaces, rust, carbon buildup from mating faces.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="totals">
+  <span>Total Required Tools: 20</span>
+  <span>All metric (mm) except feeler gauges (SAE thousandths)</span>
+</div>
+
+<div class="footer-note">
+  Precision tools (torque wrench, compression tester, micrometer, calipers) are shared checkout items -- not stored in individual toolboxes. See Mr. McAteer to check these out when needed for measurement and final assembly.
+</div>
+
+<div class="laminate-badge">
+  Laminate this page -- tape inside toolbox lid -- check against it daily
+</div>
+
+</body>
+</html>

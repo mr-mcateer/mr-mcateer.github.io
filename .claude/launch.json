@@ -30,6 +30,18 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8084", "--directory", "polestrike"],
       "port": 8084
+    },
+    {
+      "name": "stock-analysis",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8085", "--directory", "stock-analysis"],
+      "port": 8085
+    },
+    {
+      "name": "toolbox-certification",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8086", "--directory", "toolbox-certification"],
+      "port": 8086
     }
   ]
 }
