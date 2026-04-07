@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toolbox Certification Day - Audit Form</title>
+  <style>
+    :root {
+      --text: #1a1a2e;
+      --accent: #c0392b;
+      --border: #333;
+      --light-border: #ccc;
+      --muted: #555;
+      --highlight: #fff3cd;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { background: #fff; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.4;
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 0.4in;
+      color-scheme: light;
+    }
+
+    /* --- HEADER --- */
+    .doc-header {
+      text-align: center;
+      border-bottom: 3px solid var(--border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .doc-header h1 { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .doc-header .sub { font-size: 0.85rem; color: var(--muted); margin-top: 0.15rem; }
+
+    /* --- INFO FIELDS --- */
+    .info-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.6rem;
+      font-size: 0.9rem;
+    }
+    .info-field { flex: 1; min-width: 200px; }
+    .info-field label { font-weight: 700; }
+    .info-field .blank {
+      display: inline-block;
+      border-bottom: 1px solid var(--border);
+      min-width: 140px;
+      margin-left: 0.25rem;
+    }
+
+    /* --- SENIOR CALLOUT --- */
+    .callout {
+      background: var(--highlight);
+      border: 1px solid #d4a800;
+      border-radius: 4px;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.82rem;
+      margin-bottom: 0.75rem;
+    }
+    .callout strong { display: block; margin-bottom: 0.15rem; }
+
+    /* --- OBJECTIVE --- */
+    .objective {
+      font-size: 0.88rem;
+      margin-bottom: 0.6rem;
+      padding: 0.4rem 0.6rem;
+      background: #f0f0f0;
+      border-left: 4px solid var(--accent);
+    }
+
+    /* --- PROCEDURE STEPS --- */
+    .steps { margin-bottom: 0.75rem; }
+    .steps h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .step {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 0.45rem;
+      font-size: 0.85rem;
+      align-items: flex-start;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 1.6rem;
+      height: 1.6rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .step-text { flex: 1; }
+    .step-text strong { display: block; }
+
+    /* --- REFERENCE LEGEND --- */
+    .legend {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+      margin-bottom: 0.6rem;
+      padding: 0.4rem 0.6rem;
+      background: #f8f8f8;
+      border: 1px solid var(--light-border);
+      border-radius: 4px;
+    }
+    .legend-group { }
+    .legend-group strong { display: block; margin-bottom: 0.1rem; font-size: 0.8rem; }
+    .legend-item { display: inline-block; margin-right: 0.75rem; }
+    .code { font-weight: 700; }
+    .code-k { color: #27ae60; }
+    .code-r { color: #c0392b; }
+    .code-m { color: #2980b9; }
+
+    /* --- TABLES --- */
+    h2.section-title {
+      font-size: 1rem;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.2rem;
+      margin-bottom: 0.4rem;
+      margin-top: 0.75rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+      margin-bottom: 0.5rem;
+    }
+    th {
+      background: var(--border);
+      color: white;
+      font-weight: 700;
+      text-align: left;
+      padding: 0.3rem 0.4rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    td {
+      border: 1px solid var(--light-border);
+      padding: 0.25rem 0.4rem;
+      vertical-align: top;
+    }
+    .cat-row td {
+      background: #e8e8e8;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      padding: 0.2rem 0.4rem;
+    }
+    td.center { text-align: center; }
+    .check-col { width: 2rem; text-align: center; }
+    .cond-col { width: 2.5rem; text-align: center; }
+    .act-col { width: 2.5rem; text-align: center; }
+    .notes-col { width: 30%; }
+    .qty-col { width: 2rem; text-align: center; }
+
+    /* extras table */
+    .extras-num { width: 1.5rem; text-align: center; font-weight: 700; }
+    .extras-desc { width: 35%; }
+    .extras-route { width: 20%; }
+
+    /* --- SUMMARY --- */
+    .summary {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      margin: 0.75rem 0 0.5rem;
+      padding: 0.5rem 0.6rem;
+      border: 2px solid var(--border);
+    }
+    .summary-item label { font-weight: 700; }
+    .summary-item .blank {
+      display: inline-block;
+      border-bottom: 1px solid var(--border);
+      width: 2.5rem;
+      margin: 0 0.15rem;
+      text-align: center;
+    }
+    .status-row {
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-top: 0.35rem;
+    }
+    .status-opt {
+      display: inline-block;
+      border: 2px solid var(--border);
+      padding: 0.15rem 0.75rem;
+      margin-right: 0.5rem;
+      border-radius: 4px;
+    }
+    .status-ready { border-color: #27ae60; color: #27ae60; }
+    .status-attn { border-color: #e67e22; color: #e67e22; }
+    .status-crit { border-color: #c0392b; color: #c0392b; }
+
+    /* --- SIGN OFF --- */
+    .signoff {
+      margin-top: 0.6rem;
+      padding-top: 0.5rem;
+      border-top: 2px solid var(--border);
+      font-size: 0.85rem;
+    }
+    .sig-line {
+      display: flex;
+      gap: 2rem;
+      margin-top: 0.4rem;
+    }
+    .sig-field { flex: 1; }
+    .sig-field .sig-blank {
+      display: block;
+      border-bottom: 1px solid var(--border);
+      margin-top: 0.6rem;
+      height: 1.2rem;
+    }
+
+    /* --- MYSTERY TOOLS (page 2) --- */
+    .page-break { page-break-before: always; margin-top: 2rem; }
+    .mystery-header {
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+    .mystery-header h1 { font-size: 1.3rem; text-transform: uppercase; }
+    .mystery-header p { font-size: 0.85rem; color: var(--muted); }
+    .bonus-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.15rem 0.6rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+    }
+    .mystery-table td { font-size: 0.78rem; }
+    .route-tag {
+      display: inline-block;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .route-metals { background: #e8eaf6; color: #283593; }
+    .route-vehicle { background: #fce4ec; color: #c62828; }
+    .route-shared { background: #e8f5e9; color: #2e7d32; }
+    .route-precision { background: #fff3e0; color: #e65100; }
+    .route-keep { background: #e0f2f1; color: #00695c; }
+    .route-instructor { background: #f3e5f5; color: #6a1b9a; }
+
+    .nav-back {
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .nav-back:hover { text-decoration: underline; }
+
+    /* --- TOOL IMAGE LINKS --- */
+    .tool-link {
+      color: #1a5276;
+      text-decoration: none;
+      border-bottom: 1px dotted #1a5276;
+    }
+    .tool-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .tool-link::after {
+      content: " \1F50D";
+      font-size: 0.6em;
+      vertical-align: super;
+      opacity: 0.5;
+    }
+
+    /* --- PRINT STYLES --- */
+    @media print {
+      body { padding: 0.25in; }
+      .nav-back { display: none; }
+      .page-break { page-break-before: always; margin-top: 0; }
+      .tool-link { color: inherit; border-bottom: none; }
+      .tool-link::after { display: none; }
+    }
+    @media screen {
+      body { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="index.html" class="nav-back">&larr; Back to Toolbox Certification Hub</a>
+
+<!-- ==================== PAGE 1: AUDIT FORM ==================== -->
+<div class="doc-header">
+  <h1>Toolbox Certification Day</h1>
+  <div class="sub">Mr. McAteer -- Automotive Manufacturing -- Crescent Valley HS</div>
+</div>
+
+<div class="info-row">
+  <div class="info-field"><label>Date:</label> <span class="blank">&nbsp;</span></div>
+  <div class="info-field"><label>Period:</label> <span class="blank">&nbsp;</span></div>
+</div>
+<div class="info-row">
+  <div class="info-field"><label>Toolbox Color:</label> <span class="blank">&nbsp;</span></div>
+  <div class="info-field"><label>Engine Group:</label> <span class="blank">&nbsp;</span></div>
+</div>
+
+<div class="objective">
+  <strong>Objective:</strong> Inventory, organize, and certify your toolbox. Every tool needed for engine work must be present, functional, and in the right place. This is graded.
+</div>
+
+<div class="callout">
+  <strong>Seniors (Abe, Zeph, Lincoln, Colton):</strong>
+  You are auditing the teacher tool cabinet using this same process. Between your own audit, float to student boxes to help identify unknown tools, verify audit accuracy, and answer questions. Students: if you find something you cannot identify, ask a senior first.
+</div>
+
+<div class="steps">
+  <h2>Procedure</h2>
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-text"><strong>Empty the toolbox completely.</strong> Lay every item on your bench. Group by type: sockets, wrenches, screwdrivers, pliers, specialty.</div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-text"><strong>Audit each tool against the Master Tool List.</strong> Check the laminated list inside the lid. For each of the 20 required tools: Is it present? Rate condition 1-5. Mark action: K, R, or M.</div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-text"><strong>Pull extras.</strong> Any tool NOT on the Master List goes to the Orphan Bin on the front bench. Log it on your Extras Table. Use the Mystery Tools reference (page 2) to identify unknowns. If you are still stuck, ask a senior or check the Tool Identifier on your phone.</div>
+  </div>
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-text"><strong>Clean and organize.</strong> Wipe every tool. Arrange drawers: Top = sockets + ratchet + extensions. Middle = wrenches. Bottom = screwdrivers, pliers, specialty.</div>
+  </div>
+  <div class="step">
+    <div class="step-num">5</div>
+    <div class="step-text"><strong>Get certified.</strong> Bring your completed audit form to Mr. McAteer. He spot-checks 3 items. If they match your form, you pass.</div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-group">
+    <strong>Condition</strong>
+    <span class="legend-item">5 = New</span>
+    <span class="legend-item">4 = Good</span>
+    <span class="legend-item">3 = Worn</span>
+    <span class="legend-item">2 = Damaged</span>
+    <span class="legend-item">1 = Replace</span>
+  </div>
+  <div class="legend-group">
+    <strong>Action</strong>
+    <span class="legend-item"><span class="code code-k">K</span> = Keep</span>
+    <span class="legend-item"><span class="code code-r">R</span> = Replace</span>
+    <span class="legend-item"><span class="code code-m">M</span> = Missing</span>
+  </div>
+  <div class="legend-group">
+    <strong>Drawer Layout</strong>
+    <span class="legend-item">Top = sockets/ratchet/extensions</span>
+    <span class="legend-item">Middle = wrenches</span>
+    <span class="legend-item">Bottom = screwdrivers, pliers, specialty</span>
+  </div>
+</div>
+
+<!-- ===== AUDIT TABLE ===== -->
+<h2 class="section-title">Toolbox Audit Form</h2>
+<div class="info-row" style="margin-bottom:0.3rem">
+  <div class="info-field"><label>Box:</label> <span class="blank">&nbsp;</span></div>
+  <div class="info-field"><label>Lead:</label> <span class="blank">&nbsp;</span></div>
+  <div class="info-field"><label>Auditors:</label> <span class="blank" style="min-width:200px">&nbsp;</span></div>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Tool</th>
+      <th class="qty-col">Req</th>
+      <th class="check-col">&#10003;?</th>
+      <th class="cond-col">Cond</th>
+      <th class="act-col">Action</th>
+      <th class="notes-col">Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- SOCKETS & DRIVE -->
+    <tr class="cat-row"><td colspan="6">Sockets &amp; Drive (Top Drawer)</td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=3/8+drive+ratchet+tool" target="_blank">Ratchet, 3/8" drive</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=3+inch+socket+extension+3/8+drive" target="_blank">Extension, 3" (3/8" drive)</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=6+inch+socket+extension+3/8+drive" target="_blank">Extension, 6" (3/8" drive)</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=8mm+socket" target="_blank">8mm socket</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=10mm+socket" target="_blank">10mm socket</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=12mm+socket" target="_blank">12mm socket</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=13mm+socket" target="_blank">13mm socket</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=14mm+socket" target="_blank">14mm socket</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <!-- WRENCHES -->
+    <tr class="cat-row"><td colspan="6">Wrenches (Middle Drawer)</td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=8mm+combination+wrench" target="_blank">8mm combination wrench</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=10mm+combination+wrench" target="_blank">10mm combination wrench</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=12mm+combination+wrench" target="_blank">12mm combination wrench</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=13mm+combination+wrench" target="_blank">13mm combination wrench</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <!-- SCREWDRIVERS -->
+    <tr class="cat-row"><td colspan="6">Screwdrivers (Bottom Drawer)</td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=phillips+%232+screwdriver" target="_blank">Phillips #2 screwdriver</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=3/16+flathead+screwdriver" target="_blank">Flathead screwdriver, 3/16"</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <!-- PLIERS -->
+    <tr class="cat-row"><td colspan="6">Pliers (Bottom Drawer)</td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=needle+nose+pliers" target="_blank">Needle-nose pliers</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=slip+joint+pliers" target="_blank">Slip-joint pliers</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <!-- SPECIALTY -->
+    <tr class="cat-row"><td colspan="6">Specialty (Bottom Drawer)</td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=8+inch+adjustable+wrench" target="_blank">Adjustable wrench, 8"</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=feeler+gauge+set" target="_blank">Feeler gauge set</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=magnetic+parts+tray" target="_blank">Magnetic parts tray</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=wire+brush+tool" target="_blank">Wire brush</a></td><td class="center">1</td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+
+<!-- ===== EXTRAS TABLE ===== -->
+<h2 class="section-title" id="extras">Extras (Not on Master List &rarr; Orphan Bin)</h2>
+<table>
+  <thead>
+    <tr>
+      <th class="extras-num">#</th>
+      <th class="extras-desc">Tool Found</th>
+      <th>Description (What does it look like?)</th>
+      <th class="extras-route">Route To</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="center">1</td><td></td><td></td><td></td></tr>
+    <tr><td class="center">2</td><td></td><td></td><td></td></tr>
+    <tr><td class="center">3</td><td></td><td></td><td></td></tr>
+    <tr><td class="center">4</td><td></td><td></td><td></td></tr>
+    <tr><td class="center">5</td><td></td><td></td><td></td></tr>
+    <tr><td class="center">6</td><td></td><td></td><td></td></tr>
+    <tr><td class="center">7</td><td></td><td></td><td></td></tr>
+    <tr><td class="center">8</td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+
+<!-- ===== SUMMARY ===== -->
+<div class="summary">
+  <div class="summary-item"><label>Present:</label> <span class="blank">&nbsp;</span> / 20</div>
+  <div class="summary-item"><label>Missing:</label> <span class="blank">&nbsp;</span></div>
+  <div class="summary-item"><label>Replace:</label> <span class="blank">&nbsp;</span></div>
+</div>
+<div class="status-row">
+  Status (circle):
+  <span class="status-opt status-ready">READY</span>
+  <span class="status-opt status-attn">NEEDS ATTENTION</span>
+  <span class="status-opt status-crit">CRITICAL</span>
+</div>
+
+<!-- ===== SIGN-OFF ===== -->
+<div class="signoff">
+  <strong>Sign-Off</strong>
+  <div class="sig-line">
+    <div class="sig-field"><label>Lead:</label><span class="sig-blank"></span></div>
+    <div class="sig-field"><label>Mr. McAteer:</label><span class="sig-blank"></span></div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 2: MYSTERY TOOLS ==================== -->
+<div class="page-break">
+  <div class="mystery-header">
+    <h1>What Is This Thing?</h1>
+    <p>Common shop tools that are NOT part of the Predator 212 kit.</p>
+    <p>Found a tool not on your Master List? Check here first.</p>
+    <span class="bonus-badge">Correctly ID one by name + function = +2 bonus points</span>
+  </div>
+
+  <table class="mystery-table">
+    <thead>
+      <tr>
+        <th style="width:18%">Tool</th>
+        <th style="width:28%">Looks Like</th>
+        <th style="width:32%">What It Does</th>
+        <th style="width:22%">Route To</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=torque+wrench+tool" target="_blank">Torque wrench</a></strong></td>
+        <td>Ratchet with a dial, scale, or click mechanism on the handle</td>
+        <td>Sets exact bolt tightness (ft-lb or in-lb). Used for final assembly only.</td>
+        <td><span class="route-tag route-precision">Precision cart</span></td>
+      </tr>
+      <tr>
+        <td><strong><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=spark+plug+socket" target="_blank">Spark plug socket</a></strong></td>
+        <td>Deep socket with a rubber insert inside</td>
+        <td>Grips the spark plug without cracking the ceramic insulator</td>
+        <td><span class="route-tag route-shared">Shared shelf</span></td>
+      </tr>
+      <tr>
+        <td><strong><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=torx+star+bit+set" target="_blank">Torx / star bits</a></strong></td>
+        <td>Star-shaped tips, usually in a folding set</td>
+        <td>For automotive electronics fasteners. Not used on Predator 212.</td>
+        <td><span class="route-tag route-instructor">Instructor cabinet</span></td>
+      </tr>
+      <tr>
+        <td><strong><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=snap+ring+pliers" target="_blank">Snap ring pliers</a></strong></td>
+        <td>Pliers with small pointed tips that bend in or out</td>
+        <td>Removes retaining clips from shafts and bores</td>
+        <td><span class="route-tag route-instructor">Instructor cabinet</span></td>
+      </tr>
+      <tr>
+        <td><strong><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=manual+impact+driver+tool" target="_blank">Impact driver (manual)</a></strong></td>
+        <td>Thick, heavy screwdriver body</td>
+        <td>Strike with a hammer to free seized screws</td>
+        <td><span class="route-tag route-instructor">Instructor cabinet</span></td>
+      </tr>
+      <tr>
+        <td><strong><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=brass+drift+punch" target="_blank">Brass drift punch</a></strong></td>
+        <td>Solid brass rod, tapered tip</td>
+        <td>Drives parts out without marring or damaging surfaces</td>
+        <td><span class="route-tag route-shared">Shared shelf</span></td>
+      </tr>
+      <tr>
+        <td><strong><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=oil+filter+wrench" target="_blank">Oil filter wrench</a></strong></td>
+        <td>Metal band or cap-grip tool</td>
+        <td>Removes spin-on oil filters. Pred 212 has none -- this is a stray.</td>
+        <td><span class="route-tag route-vehicle">Vehicle area</span></td>
+      </tr>
+      <tr>
+        <td><strong><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=harmonic+balancer+puller" target="_blank">Harmonic balancer puller</a></strong></td>
+        <td>Heavy disc with center bolt and arms</td>
+        <td>Removes press-fit pulleys. From the vehicle side of the shop.</td>
+        <td><span class="route-tag route-vehicle">Vehicle area</span></td>
+      </tr>
+      <tr>
+        <td><strong><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=thread+pitch+gauge" target="_blank">Thread pitch gauge</a></strong></td>
+        <td>Fan of toothed metal blades</td>
+        <td>Match blade teeth to bolt threads for thread ID</td>
+        <td><span class="route-tag route-shared">Shared shelf</span></td>
+      </tr>
+      <tr>
+        <td><strong><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=gasket+scraper+tool" target="_blank">Gasket scraper</a></strong></td>
+        <td>Flat blade, looks like a putty knife</td>
+        <td>Cleans gasket material from mating surfaces. Actually useful.</td>
+        <td><span class="route-tag route-keep">KEEP if good</span></td>
+      </tr>
+      <tr>
+        <td><strong><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=tap+and+die+set" target="_blank">Tap and die set</a></strong></td>
+        <td>Cylindrical cutters in a hinged case</td>
+        <td>Cuts or repairs threads. Belongs in the metals shop.</td>
+        <td><span class="route-tag route-metals">Metals shop</span></td>
+      </tr>
+      <tr>
+        <td><strong><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=vacuum+gauge+automotive" target="_blank">Vacuum gauge</a></strong></td>
+        <td>Round dial with a rubber hose</td>
+        <td>Measures intake vacuum on running engines</td>
+        <td><span class="route-tag route-instructor">Instructor cabinet</span></td>
+      </tr>
+      <tr>
+        <td><strong><a class="tool-link" href="https://www.google.com/search?tbm=isch&q=bearing+puller+tool" target="_blank">Bearing puller</a></strong></td>
+        <td>Spider arms with center bolt</td>
+        <td>Pulls bearings off shafts. From vehicle work.</td>
+        <td><span class="route-tag route-vehicle">Vehicle area</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:1rem; padding:0.5rem 0.75rem; border:2px dashed var(--light-border); font-size:0.85rem; text-align:center;">
+    Found something not on either list? Ask a senior -- they are working through the teacher cabinet and can help identify strays. Or take a photo, label it with your toolbox color, and bring it to Mr. McAteer.
+  </div>
+</div>
+
+</body>
+</html>

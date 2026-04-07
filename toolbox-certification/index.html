@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toolbox Certification - Mr. McAteer's Auto Shop</title>
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --card-bg: #fff;
+      --text: #1a1a2e;
+      --accent: #c0392b;
+      --accent-light: #e74c3c;
+      --border: #dee2e6;
+      --muted: #6c757d;
+      --green: #27ae60;
+      --blue: #2980b9;
+      --orange: #e67e22;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { background: #fff; color-scheme: light; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .header {
+      background: var(--accent);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .header h1 { font-size: 2rem; margin-bottom: 0.25rem; }
+    .header p { opacity: 0.9; font-size: 1.1rem; }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    .intro {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .intro h2 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .intro p { color: var(--muted); }
+    .cards { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    @media (min-width: 600px) { .cards { grid-template-columns: 1fr 1fr; } }
+    .card {
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      display: block;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .card h3 { font-size: 1.15rem; margin-bottom: 0.35rem; }
+    .card p { font-size: 0.9rem; color: var(--muted); }
+    .card .badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 0.75rem;
+      text-transform: uppercase;
+    }
+    .badge-print { background: #e8f5e9; color: #2e7d32; }
+    .badge-ref { background: #e3f2fd; color: #1565c0; }
+    .badge-id { background: #fff3e0; color: #e65100; }
+    .footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    @media print { body { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Toolbox Certification</h1>
+    <p>Mr. McAteer -- Automotive Manufacturing -- Crescent Valley HS</p>
+  </div>
+  <div class="container">
+    <div class="intro">
+      <h2>What is this?</h2>
+      <p>Everything you need for Toolbox Certification Day. Print the audit form and the master list, or use the tool identifier on your phone to look up unknown tools.</p>
+    </div>
+    <div class="cards">
+      <a href="certification-day.html" class="card">
+        <span class="icon">&#9997;</span>
+        <h3>Certification Day Audit Form</h3>
+        <p>Step-by-step instructions and the graded audit checklist. Print one per toolbox group.</p>
+        <span class="badge badge-print">Print</span>
+      </a>
+      <a href="master-tool-list.html" class="card">
+        <span class="icon">&#128295;</span>
+        <h3>Master Tool List</h3>
+        <p>The 20 required tools for Predator 212 engine work. Laminate and tape inside each lid.</p>
+        <span class="badge badge-ref">Reference</span>
+      </a>
+      <a href="tool-identifier.html" class="card">
+        <span class="icon">&#128269;</span>
+        <h3>Tool Identifier</h3>
+        <p>Found something weird? Search or browse to identify mystery tools and learn where they go.</p>
+        <span class="badge badge-id">Interactive</span>
+      </a>
+      <a href="certification-day.html#extras" class="card">
+        <span class="icon">&#128230;</span>
+        <h3>Mystery Tools Reference</h3>
+        <p>Common strays from metals, vehicle work, and shared shelves. Bonus points for correct IDs.</p>
+        <span class="badge badge-id">Bonus +2</span>
+      </a>
+    </div>
+  </div>
+  <div class="footer">
+    Prompt AI Solutions -- promptaisolutions.com
+  </div>
+</body>
+</html>
