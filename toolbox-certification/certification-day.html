@@ -286,13 +286,35 @@
       opacity: 0.5;
     }
 
+    /* --- PRINT FOOTER --- */
+    .print-footer {
+      display: none;
+    }
+
     /* --- PRINT STYLES --- */
     @media print {
-      body { padding: 0.25in; }
+      body { padding: 0.5in 0.5in 0.75in; }
       .nav-back { display: none; }
       .page-break { page-break-before: always; margin-top: 0; }
       .tool-link { color: inherit; border-bottom: none; }
       .tool-link::after { display: none; }
+      .print-footer {
+        display: block;
+        position: fixed;
+        bottom: 0.25in;
+        left: 0.5in;
+        right: 0.5in;
+        font-size: 0.7rem;
+        color: #888;
+        border-top: 1px solid #ccc;
+        padding-top: 0.2rem;
+        display: flex;
+        justify-content: space-between;
+      }
+      /* prevent table rows from splitting across pages */
+      tr { page-break-inside: avoid; }
+      .summary { page-break-inside: avoid; }
+      .signoff { page-break-inside: avoid; }
     }
     @media screen {
       body { padding: 1rem; }
@@ -325,6 +347,10 @@
 <div class="callout">
   <strong>Seniors (Abe, Zeph, Lincoln, Colton):</strong>
   You are auditing the teacher tool cabinet using this same process. Between your own audit, float to student boxes to help verify audit accuracy and answer questions after students have checked the reference materials.
+</div>
+
+<div style="font-size:0.8rem; color:var(--muted); margin-bottom:0.6rem; padding:0.25rem 0.5rem; background:#f0f0f0; border-radius:3px; text-align:center;">
+  Need to identify a tool? Use the Tool Identifier on your phone: <strong style="font-family:monospace;">promptaisolutions.com/toolbox-certification/</strong>
 </div>
 
 <div class="steps">
@@ -579,6 +605,16 @@
   <div style="margin-top:1rem; padding:0.5rem 0.75rem; border:2px dashed var(--light-border); font-size:0.85rem; text-align:center;">
     Found something not on either list? Check the Tool Identifier on your phone first. Still stuck? Ask a senior -- they are working through the teacher cabinet and can help. Last resort: photo it, label it with your toolbox color, and bring it to Mr. McAteer.
   </div>
+
+  <div style="margin-top:1rem; padding:0.5rem 0.75rem; background:#e3f2fd; border:2px solid #1565c0; border-radius:4px; font-size:0.85rem; text-align:center;">
+    <strong>Tool Identifier (on your phone):</strong> <span style="font-family:monospace; font-size:0.9em;">promptaisolutions.com/toolbox-certification/</span>
+  </div>
+</div>
+
+<!-- Print footer: appears at bottom of every printed page -->
+<div class="print-footer">
+  <span>Mr. McAteer -- Automotive Manufacturing -- CVHS</span>
+  <span>promptaisolutions.com/toolbox-certification/</span>
 </div>
 
 </body>
