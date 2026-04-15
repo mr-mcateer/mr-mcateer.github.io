@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@
   <title>Prompt AI Solutions | Scaled Communication Through Automation</title>
   <meta name="description"
     content="AI-powered communication campaigns that sound like you, not a robot. We build automation systems that scale your authentic voice across every channel.">
-  <meta name="theme-color" content="#1a1a1a">
+  <meta name="theme-color" content="#0a0a0b">
   <meta property="og:title" content="Prompt AI Solutions">
   <meta property="og:description" content="Scaled communication campaigns in authentic voices through automation.">
   <meta property="og:type" content="website">
@@ -15,67 +15,77 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/animations.css">
   <style>
-    /* ===== DESIGN TOKENS ===== */
+    /* ===== DESIGN TOKENS (Dark-First) ===== */
     :root {
-      --white: #ffffff;
-      --off-white: #fafafa;
-      --gray-50: #f5f5f7;
-      --gray-100: #e8e8ed;
-      --gray-200: #d2d2d7;
-      --gray-400: #86868b;
-      --gray-600: #6e6e73;
-      --gray-800: #1d1d1f;
-      --black: #000000;
-      --accent: #0071e3;
-      --accent-hover: #0077ed;
+      --white: #0a0a0b;
+      --off-white: #111113;
+      --gray-50: #18181b;
+      --gray-100: #1f1f23;
+      --gray-200: #2a2a30;
+      --gray-400: #55555c;
+      --gray-600: #8b8b92;
+      --gray-800: #f0f0f3;
+      --black: #ffffff;
+      --accent: #7c5cff;
+      --accent-hover: #9b82ff;
+      --accent-blue: #3b82f6;
+      --gradient-accent: linear-gradient(135deg, #7c5cff, #3b82f6);
+      --glow-color: rgba(124, 92, 255, 0.15);
+      --glow-strong: rgba(124, 92, 255, 0.25);
+      --border-subtle: #1f1f23;
+      --border-hover: #2a2a30;
       --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-display: 'Playfair Display', Georgia, serif;
-      --max-width: 980px;
-      --max-width-wide: 1120px;
+      --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-width: 1080px;
+      --max-width-wide: 1240px;
       --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
       --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    /* ===== DARK MODE ===== */
-    [data-theme="dark"] {
-      --white: #1d1d1f;
-      --off-white: #161618;
-      --gray-50: #2a2a2c;
-      --gray-100: #3a3a3c;
-      --gray-200: #48484a;
-      --gray-400: #98989d;
-      --gray-600: #aeaeb2;
-      --gray-800: #f5f5f7;
-      --black: #ffffff;
-      --accent: #2997ff;
-      --accent-hover: #64b5f6;
+    /* ===== LIGHT MODE ===== */
+    [data-theme="light"] {
+      --white: #ffffff;
+      --off-white: #f8f8fa;
+      --gray-50: #f0f0f3;
+      --gray-100: #e4e4e7;
+      --gray-200: #d1d1d6;
+      --gray-400: #8b8b92;
+      --gray-600: #55555c;
+      --gray-800: #1d1d1f;
+      --black: #111113;
+      --accent: #6d4aed;
+      --accent-hover: #5a36d6;
+      --accent-blue: #2563eb;
+      --gradient-accent: linear-gradient(135deg, #6d4aed, #2563eb);
+      --glow-color: rgba(109, 74, 237, 0.08);
+      --glow-strong: rgba(109, 74, 237, 0.12);
+      --border-subtle: #e4e4e7;
+      --border-hover: #d1d1d6;
     }
 
-    [data-theme="dark"] .site-nav {
-      background: rgba(29, 29, 31, 0.82);
+    [data-theme="light"] .site-nav {
+      background: rgba(255, 255, 255, 0.72);
+      border-bottom-color: transparent;
+    }
+
+    [data-theme="light"] .site-nav.nav-scrolled {
+      background: rgba(255, 255, 255, 0.92);
       border-bottom-color: var(--gray-100);
     }
 
-    [data-theme="dark"] .site-nav.nav-scrolled {
-      background: rgba(29, 29, 31, 0.95);
+    [data-theme="light"] .about-photo {
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
     }
 
-    [data-theme="dark"] .service-card {
-      border: 1px solid var(--gray-100);
-    }
-
-    [data-theme="dark"] .case-card {
-      border: 1px solid var(--gray-100);
-    }
-
-    [data-theme="dark"] .about-photo {
-      border: 1px solid var(--gray-100);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-    }
+    /* Theme toggle icon visibility */
+    .icon-moon { display: none; }
+    .icon-sun { display: inline-block; }
+    [data-theme="light"] .icon-sun { display: none; }
+    [data-theme="light"] .icon-moon { display: inline-block; }
 
     /* ===== RESET ===== */
     *,
@@ -88,13 +98,14 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 64px;
       -webkit-text-size-adjust: 100%;
     }
 
     body {
       font-family: var(--font-body);
-      font-size: 17px;
-      line-height: 1.65;
+      font-size: 16px;
+      line-height: 1.7;
       color: var(--gray-800);
       background: var(--white);
       -webkit-font-smoothing: antialiased;
@@ -107,8 +118,8 @@
     h2,
     h3 {
       font-family: var(--font-display);
-      font-weight: 500;
-      line-height: 1.15;
+      font-weight: 700;
+      line-height: 1.1;
     }
 
     a {
@@ -147,7 +158,7 @@
     }
 
     section {
-      padding: 100px 0;
+      padding: 120px 0;
     }
 
     /* ===== SCROLL REVEAL ===== */
@@ -162,6 +173,30 @@
       transform: translateY(0);
     }
 
+    /* ===== UTILITIES ===== */
+    .gradient-text {
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-border-top {
+      position: relative;
+    }
+
+    .gradient-border-top::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gradient-accent);
+      border-radius: 20px 20px 0 0;
+      z-index: 2;
+    }
+
     /* ===== NAV ===== */
     .site-nav {
       position: fixed;
@@ -169,7 +204,7 @@
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.72);
+      background: rgba(10, 10, 11, 0.72);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
       border-bottom: 1px solid transparent;
@@ -177,7 +212,7 @@
     }
 
     .site-nav.nav-scrolled {
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(10, 10, 11, 0.92);
       border-bottom-color: var(--gray-100);
     }
 
@@ -193,8 +228,8 @@
 
     .site-nav__logo {
       font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 15px;
+      font-weight: 700;
+      font-size: 16px;
       color: var(--gray-800);
       letter-spacing: -0.01em;
     }
@@ -224,11 +259,12 @@
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 18px;
       color: var(--gray-600);
       padding: 4px;
       line-height: 1;
       transition: color 0.2s;
+      display: flex;
+      align-items: center;
     }
 
     .theme-toggle:hover {
@@ -237,36 +273,62 @@
 
     /* ===== HERO ===== */
     .hero {
-      padding: 160px 0 100px;
+      padding: 160px 0 120px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, var(--glow-strong) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
     }
 
     .hero__eyebrow {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 980px;
+      background: var(--off-white);
+      border: 1px solid var(--border-subtle);
       font-family: var(--font-body);
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 16px;
+      margin-bottom: 24px;
     }
 
     .hero h1 {
-      font-size: clamp(40px, 6vw, 64px);
-      letter-spacing: -0.025em;
+      font-size: clamp(48px, 7vw, 80px);
+      letter-spacing: -0.035em;
+      line-height: 1.05;
       color: var(--black);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
     }
 
     .hero__sub {
-      font-size: clamp(18px, 2.2vw, 22px);
+      font-size: clamp(17px, 2vw, 20px);
       color: var(--gray-600);
-      max-width: 620px;
+      max-width: 540px;
       margin: 0 auto 40px;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
     .hero__cta-group {
@@ -276,6 +338,7 @@
       flex-wrap: wrap;
     }
 
+    /* ===== BUTTONS ===== */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -291,30 +354,37 @@
     }
 
     .btn--primary {
-      background: var(--accent);
+      background: var(--gradient-accent);
       color: #fff;
     }
 
     .btn--primary:hover {
-      background: var(--accent-hover);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 30px var(--glow-color);
       color: #fff;
-      transform: scale(1.02);
     }
 
     .btn--secondary {
-      background: var(--gray-50);
+      background: transparent;
+      border: 1px solid var(--border-subtle);
       color: var(--gray-800);
     }
 
     .btn--secondary:hover {
-      background: var(--gray-100);
+      background: var(--off-white);
+      border-color: var(--border-hover);
       color: var(--gray-800);
+    }
+
+    .btn--large {
+      padding: 18px 36px;
+      font-size: 16px;
     }
 
     /* ===== SECTION HEADERS ===== */
     .section-eyebrow {
       font-family: var(--font-body);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -323,47 +393,54 @@
     }
 
     .section-title {
-      font-size: clamp(32px, 4vw, 48px);
-      letter-spacing: -0.02em;
+      font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: -0.03em;
       color: var(--black);
       margin-bottom: 16px;
     }
 
     .section-sub {
-      font-size: 18px;
+      font-size: 17px;
       color: var(--gray-600);
       max-width: 600px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    /* ===== SERVICES ===== */
-    .services {
-      background: var(--off-white);
-    }
-
+    /* ===== SERVICES (Bento Grid) ===== */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
       margin-top: 48px;
     }
 
+    .services-grid .service-card:nth-child(1),
+    .services-grid .service-card:nth-child(2) {
+      grid-column: span 2;
+    }
+
+    .services-grid .service-card:nth-child(4) {
+      grid-column: span 3;
+    }
+
     .service-card {
-      background: var(--white);
-      border-radius: 18px;
-      padding: 36px 32px;
-      transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+      background: var(--off-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px;
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s;
     }
 
     .service-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      border-color: var(--border-hover);
     }
 
     .service-card__icon {
-      font-size: 32px;
-      margin-bottom: 16px;
       display: block;
+      color: var(--accent);
+      margin-bottom: 16px;
     }
 
     .service-card h3 {
@@ -380,100 +457,117 @@
       line-height: 1.6;
     }
 
-    /* ===== APPROACH ===== */
-    .approach-grid {
+    /* ===== ABOUT ===== */
+    .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 3fr 2fr;
       gap: 64px;
       align-items: center;
       margin-top: 48px;
     }
 
-    .approach-steps {
-      list-style: none;
-      counter-reset: step;
+    .about-photo {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3), 0 0 60px var(--glow-color);
+      object-fit: cover;
+      aspect-ratio: 3 / 4;
+      transition: transform 0.5s var(--ease-out);
     }
 
-    .approach-steps li {
-      counter-increment: step;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--gray-100);
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
+    .about-photo:hover {
+      transform: translateY(-4px);
     }
 
-    .approach-steps li::before {
-      content: counter(step);
+    .about-bio p {
+      font-size: 17px;
+      color: var(--gray-600);
+      margin-bottom: 20px;
+      line-height: 1.75;
+    }
+
+    .about-bio p:first-child {
+      color: var(--black);
+      font-size: 20px;
       font-family: var(--font-display);
-      font-size: 28px;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    /* ===== APPROACH (3-Card Grid) ===== */
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .approach-card {
+      background: var(--off-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px;
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s;
+    }
+
+    .approach-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      border-color: var(--border-hover);
+    }
+
+    .approach-card__number {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 48px;
       font-weight: 700;
       color: var(--accent);
-      min-width: 36px;
-      line-height: 1.2;
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: 16px;
+      transition: opacity 0.3s ease;
     }
 
-    .approach-steps h3 {
+    .approach-card:hover .approach-card__number {
+      opacity: 1;
+    }
+
+    .approach-card h3 {
       font-family: var(--font-body);
-      font-size: 17px;
+      font-size: 19px;
       font-weight: 600;
       color: var(--black);
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
 
-    .approach-steps p {
+    .approach-card p {
       font-size: 15px;
       color: var(--gray-600);
-      line-height: 1.55;
-    }
-
-    .approach-visual {
-      background: var(--gray-50);
-      border-radius: 20px;
-      padding: 48px 40px;
-      text-align: center;
-    }
-
-    .approach-visual__diagram {
-      font-size: 15px;
-      color: var(--gray-600);
-      line-height: 2;
-    }
-
-    .approach-visual__diagram strong {
-      color: var(--black);
-      font-weight: 600;
-    }
-
-    .approach-visual__arrow {
-      color: var(--accent);
-      font-size: 20px;
-      display: block;
-      margin: 8px 0;
+      line-height: 1.6;
     }
 
     /* ===== CASE STUDIES ===== */
-    .cases {
-      background: var(--off-white);
-    }
-
     .cases-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 28px;
+      gap: 16px;
       margin-top: 48px;
     }
 
     .case-card {
-      background: var(--white);
-      border-radius: 18px;
+      background: var(--off-white);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
       overflow: hidden;
-      transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s;
     }
 
     .case-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      border-color: var(--border-hover);
     }
 
     .case-card__header {
@@ -481,12 +575,17 @@
     }
 
     .case-card__tag {
-      font-size: 12px;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 980px;
+      background: var(--gray-50);
+      border: 1px solid var(--border-subtle);
+      font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
 
     .case-card h3 {
@@ -511,96 +610,131 @@
       font-weight: 600;
     }
 
+    .case-card__link--muted {
+      color: var(--gray-400);
+    }
+
     /* ===== FEATURED CASE CARD ===== */
     .case-card--featured {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      border-left: 4px solid var(--accent);
-      border-top: 1px solid var(--gray-100);
-      border-right: 1px solid var(--gray-100);
-      border-bottom: 1px solid var(--gray-100);
-      margin-bottom: 28px;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 16px;
       margin-top: 48px;
       text-decoration: none;
       color: inherit;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
     }
-    .case-card--featured:hover { cursor: pointer; box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
-    .case-card--featured .featured-main { padding: 36px 32px; }
+
+    .case-card--featured:hover {
+      cursor: pointer;
+    }
+
+    .case-card--featured .featured-main {
+      padding: 36px 32px;
+    }
+
+    .case-card--featured .featured-main p {
+      padding: 0;
+      margin-bottom: 16px;
+    }
+
+    .case-card--featured .case-card__link {
+      padding: 0;
+    }
+
     .case-card--featured .featured-aside {
       padding: 36px 32px;
-      border-left: 1px solid var(--gray-100);
-      display: flex; flex-direction: column; justify-content: center;
+      border-left: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
-    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
     .feature-list li {
-      font-size: 15px; color: var(--gray-600); line-height: 1.55;
-      padding-left: 20px; position: relative;
-    }
-    .feature-list li::before {
-      content: ''; position: absolute; left: 0; top: 8px;
-      width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
-    }
-    .feature-label {
-      display: block; font-size: 11px; font-weight: 600;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 2px;
-    }
-    [data-theme="dark"] .case-card--featured {
-      border: 1px solid var(--gray-100);
-      border-left: 4px solid var(--accent);
-    }
-    [data-theme="dark"] .case-card--featured .featured-aside {
-      border-left-color: var(--gray-100);
-    }
-    @media (max-width: 768px) {
-      .case-card--featured { grid-template-columns: 1fr; }
-      .case-card--featured .featured-aside {
-        border-left: none; border-top: 1px solid var(--gray-100);
-      }
-    }
-
-    /* ===== ABOUT ===== */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 2fr 3fr;
-      gap: 64px;
-      align-items: center;
-      margin-top: 16px;
-    }
-
-    .about-photo {
-      width: 100%;
-      height: auto;
-      border-radius: 16px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-      object-fit: cover;
-      aspect-ratio: 3 / 4;
-      transition: transform 0.5s var(--ease-out);
-    }
-
-    .about-photo:hover {
-      transform: translateY(-4px);
-    }
-
-    .about-bio p {
-      font-size: 17px;
+      font-size: 15px;
       color: var(--gray-600);
-      margin-bottom: 20px;
-      line-height: 1.75;
+      line-height: 1.55;
+      padding-left: 20px;
+      position: relative;
     }
 
-    .about-bio p:first-child {
-      color: var(--black);
-      font-size: 20px;
+    .feature-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .feature-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+
+    .featured-metrics {
+      display: flex;
+      gap: 32px;
+      margin: 24px 0;
+      padding: 20px 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .metric__value {
+      display: block;
       font-family: var(--font-display);
-      margin-bottom: 24px;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .metric__label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gray-400);
     }
 
     /* ===== CONTACT ===== */
     .contact {
-      background: var(--off-white);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact::before {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, var(--glow-strong) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .contact .container {
+      position: relative;
+      z-index: 1;
     }
 
     .contact .section-sub {
@@ -611,9 +745,28 @@
 
     /* ===== FOOTER ===== */
     .site-footer {
-      padding: 40px 0;
+      padding: 32px 0;
       border-top: 1px solid var(--gray-100);
-      text-align: center;
+    }
+
+    .site-footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .site-footer__links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .site-footer__links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-600);
     }
 
     .site-footer p {
@@ -625,32 +778,34 @@
       color: var(--gray-600);
     }
 
-    .site-footer__links {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      margin-bottom: 12px;
-      list-style: none;
-    }
-
-    .site-footer__links a {
-      font-size: 13px;
-      font-weight: 500;
-    }
-
     /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .services-grid .service-card:nth-child(1),
+      .services-grid .service-card:nth-child(2),
+      .services-grid .service-card:nth-child(4) {
+        grid-column: span 1;
+      }
+    }
+
     @media (max-width: 768px) {
       section {
-        padding: 72px 0;
+        padding: 80px 0;
       }
 
       .hero {
-        padding: 120px 0 72px;
+        padding: 120px 0 80px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
       }
 
       .approach-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
       }
 
       .about-grid {
@@ -660,10 +815,34 @@
 
       .about-photo {
         margin: 0 auto;
+        max-width: 320px;
+        order: -1;
+      }
+
+      .case-card--featured {
+        grid-template-columns: 1fr;
+      }
+
+      .case-card--featured .featured-aside {
+        border-left: none;
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .featured-metrics {
+        gap: 20px;
+      }
+
+      .metric__value {
+        font-size: 24px;
       }
 
       .site-nav__links {
         display: none;
+      }
+
+      .site-footer__inner {
+        flex-direction: column;
+        text-align: center;
       }
     }
   </style>
@@ -677,13 +856,15 @@
       <a href="#" class="site-nav__logo">Prompt AI Solutions</a>
       <ul class="site-nav__links">
         <li><a href="#services">Services</a></li>
-        <li><a href="#approach">Approach</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="theme-toggle" aria-label="Toggle dark mode" onclick="toggleTheme()">
-        <span class="theme-toggle__icon">&#9790;</span>
+        <span class="theme-toggle__icon">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </span>
       </button>
     </div>
   </nav>
@@ -693,67 +874,64 @@
     <div class="container">
       <p class="hero__eyebrow">Prompt AI Solutions</p>
       <h1>Your voice, amplified.<br>Not replaced.</h1>
-      <p class="hero__sub">I build AI-powered systems that scale authentic communication across every channel.
-        The technology stays invisible. Your message stays human.</p>
+      <p class="hero__sub">You need to reach a hundred people, and each one deserves a personal touch.
+        I build the systems that make that possible. Every email, proposal, and follow-up sounds like you wrote it yourself.</p>
       <div class="hero__cta-group">
-        <a href="#contact" class="btn btn--primary">Start a conversation</a>
-        <a href="#approach" class="btn btn--secondary">See how it works</a>
+        <a href="#contact" class="btn btn--primary">Tell me what you need</a>
+        <a href="#work" class="btn btn--secondary">See my work</a>
       </div>
     </div>
   </section>
 
-  <!-- About (Moved to Top) -->
+  <!-- About -->
   <section id="about" style="padding-top: 20px;">
     <div class="container">
       <div class="about-grid">
-        <img src="img/andy-mcateer.jpg" alt="Andrew McAteer" class="about-photo" loading="lazy">
         <div class="about-bio">
-          <p>Hi, I am Andrew McAteer, and I build systems that make people more effective. By day, I teach metals,
-            engines, and
-            fabrication to high school students. By night, I design AI-powered automation for professionals
-            that need to communicate at scale.</p>
-          <p>That dual perspective matters. Education demands clarity, empathy, and the ability to meet people where
-            they are. Those same principles drive every automation system I build: technology that serves people, not
-            the other way around.</p>
-          <p>When your outreach reads like it was written by a person who actually cares, it is. The AI just helped me
-            reach more people on your behalf.</p>
+          <p>I am Andrew McAteer. I teach high school shop classes by day and build AI systems for businesses by night.</p>
+          <p>That combination matters. Teaching forces you to explain things clearly, meet people where they are,
+            and never hide behind jargon. I bring that same mindset to every automation project: the technology
+            should serve you, not the other way around.</p>
+          <p>When your outreach reads like it was written by someone who actually cares, it was. The AI just
+            helped you reach more people.</p>
         </div>
+        <img src="img/andy-mcateer.jpg" alt="Andrew McAteer" class="about-photo" loading="lazy">
       </div>
     </div>
   </section>
 
   <!-- Services -->
-  <section id="services" class="services">
+  <section id="services">
     <div class="container--wide">
-      <p class="section-eyebrow">What I do</p>
-      <h2 class="section-title">Scaled communication.<br>Authentic voice.</h2>
-      <p class="section-sub">AI should be a tool in the background, not a gimmick in the foreground. I design
-        systems that multiply your reach while keeping every message distinctly yours.</p>
+      <p class="section-eyebrow">What you get</p>
+      <h2 class="section-title">More gets done.<br>It all still sounds like you.</h2>
+      <p class="section-sub">Every solution I build has one job: your work gets done faster,
+        and all of it still reads like you personally sat down and did it.</p>
 
       <div class="services-grid">
-        <div class="service-card">
-          <span class="service-card__icon" aria-hidden="true">&#9993;</span>
-          <h3>Outreach Campaigns</h3>
-          <p>Personalized email sequences, follow-ups, and multi-channel campaigns that adapt tone and content to each
-            recipient without losing your voice.</p>
+        <div class="service-card glow-card">
+          <svg class="service-card__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4z"/></svg>
+          <h3>Personalized Outreach</h3>
+          <p>Send a hundred emails without writing a hundred emails. Each one adapts to the recipient while
+            keeping your tone and personality intact.</p>
         </div>
-        <div class="service-card">
-          <span class="service-card__icon" aria-hidden="true">&#9881;</span>
-          <h3>Workflow Automation</h3>
-          <p>Connect your existing tools into intelligent pipelines. Data flows, reports generate, and updates ship
-            without manual intervention.</p>
+        <div class="service-card glow-card">
+          <svg class="service-card__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <h3>Automated Workflows</h3>
+          <p>Stop copying data between apps and chasing down updates. I connect your existing tools
+            so information moves on its own and reports write themselves.</p>
         </div>
-        <div class="service-card">
-          <span class="service-card__icon" aria-hidden="true">&#9998;</span>
-          <h3>Content Systems</h3>
-          <p>Curriculum, documentation, proposals, and internal communications built from templates that maintain
-            consistency at scale.</p>
+        <div class="service-card glow-card">
+          <svg class="service-card__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+          <h3>Smart Templates</h3>
+          <p>Turn your best proposals, reports, and lesson plans into reusable templates that customize
+            themselves for every new client, project, or audience.</p>
         </div>
-        <div class="service-card">
-          <span class="service-card__icon" aria-hidden="true">&#128202;</span>
-          <h3>AI Consulting</h3>
-          <p>Strategy sessions and implementation guidance for teams adopting AI. No hype, no jargon. Just what works
-            for your use case.</p>
+        <div class="service-card glow-card">
+          <svg class="service-card__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <h3>AI Strategy</h3>
+          <p>Not sure where AI fits in your business? I will look at how your team actually works and tell you
+            where it helps, where it does not, and what to try first.</p>
         </div>
       </div>
     </div>
@@ -763,176 +941,151 @@
   <section id="approach">
     <div class="container--wide">
       <p class="section-eyebrow">How it works</p>
-      <h2 class="section-title">The AI stays invisible.</h2>
-      <p class="section-sub">Three phases. One goal: communication that scales without losing what makes it
-        yours.</p>
+      <h2 class="section-title">How we work together.</h2>
+      <p class="section-sub">Three steps. You stay in control the whole time.</p>
 
       <div class="approach-grid">
-        <ol class="approach-steps">
-          <li class="step-item">
-            <div class="step-icon-container">
-              <svg class="step-circle" width="40" height="40" viewBox="0 0 40 40">
-                <circle class="step-circle-path" cx="20" cy="20" r="18" transform="rotate(-90 20 20)"></circle>
-                <text class="step-number-text" x="20" y="22">1</text>
-              </svg>
-              <div class="step-connector"></div>
-            </div>
-            <div class="step-content">
-              <h3>Listen</h3>
-              <p>I study your existing communication. Tone, cadence, vocabulary, the details that make your voice
-                recognizable. This becomes the foundation.</p>
-            </div>
-          </li>
-          <li class="step-item">
-            <div class="step-icon-container">
-              <svg class="step-circle" width="40" height="40" viewBox="0 0 40 40">
-                <circle class="step-circle-path" cx="20" cy="20" r="18" transform="rotate(-90 20 20)"></circle>
-                <text class="step-number-text" x="20" y="22">2</text>
-              </svg>
-              <div class="step-connector"></div>
-            </div>
-            <div class="step-content">
-              <h3>Build</h3>
-              <p>Custom automation tailored to your channels and workflows. Every template, every sequence, every
-                trigger designed around how you already work.</p>
-            </div>
-          </li>
-          <li class="step-item">
-            <div class="step-icon-container">
-              <svg class="step-circle" width="40" height="40" viewBox="0 0 40 40">
-                <circle class="step-circle-path" cx="20" cy="20" r="18" transform="rotate(-90 20 20)"></circle>
-                <text class="step-number-text" x="20" y="22">3</text>
-              </svg>
-            </div>
-            <div class="step-content">
-              <h3>Scale</h3>
-              <p>Launch with guardrails. Monitor quality. Iterate. What took hours now takes minutes, and recipients
-                never know the difference.</p>
-            </div>
-          </li>
-        </ol>
-        <div class="approach-visual">
-          <div class="approach-visual__diagram">
-            <strong class="flow-anim">Your Voice</strong>
-            <span class="approach-visual__arrow flow-arrow-anim">&#8595;</span>
-            <strong class="flow-anim">AI-Powered Templates</strong>
-            <span class="approach-visual__arrow flow-arrow-anim">&#8595;</span>
-            <strong class="flow-anim">Personalized at Scale</strong>
-            <span class="approach-visual__arrow flow-arrow-anim">&#8595;</span>
-            <strong class="flow-final">100 messages that sound like 1</strong>
-          </div>
+        <div class="approach-card glow-card">
+          <span class="approach-card__number">01</span>
+          <h3>I learn how you talk</h3>
+          <p>I read your past emails, proposals, and messages. I pick up your tone, your word choices,
+            the things that make your writing sound like you. That becomes the foundation.</p>
+        </div>
+        <div class="approach-card glow-card">
+          <span class="approach-card__number">02</span>
+          <h3>I build your system</h3>
+          <p>I create templates and automations that match your style and plug into the tools you already use.
+            Nothing changes about how you work.</p>
+        </div>
+        <div class="approach-card glow-card">
+          <span class="approach-card__number">03</span>
+          <h3>You hit send</h3>
+          <p>Your messages go out. A hundred people hear from you this week instead of ten.
+            Every one of them thinks you wrote it personally.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Case Studies -->
-  <section id="work" class="cases">
+  <section id="work">
     <div class="container--wide">
       <p class="section-eyebrow">Selected work</p>
-      <h2 class="section-title">Projects that ship.</h2>
+      <h2 class="section-title">Work I have done.</h2>
 
       <!-- Featured Project -->
-      <a href="/stock-analysis/" class="case-card case-card--featured animate-on-scroll">
+      <a href="/stock-analysis/" class="case-card case-card--featured gradient-border-top glow-card">
         <div class="featured-main">
           <p class="case-card__tag">AI Agent System</p>
           <h3>Portfolio Intelligence Dashboard</h3>
-          <p style="padding:0;margin-bottom:16px;">A self-running equity research system that monitors 9 stocks using coordinated AI agents. Every 6 hours it pulls fresh data from 150+ sources, produces deep-dive reports with scenario frameworks, and publishes automatically. No human in the loop.</p>
-          <span class="case-card__link" style="padding:0;">Explore the live dashboard &rarr;</span>
+          <p>A stock research system that runs itself. Every 6 hours it checks 150+ data sources, writes detailed analysis for 9 companies, and publishes the results automatically. Nobody has to touch it.</p>
+          <div class="featured-metrics">
+            <div class="metric">
+              <span class="metric__value gradient-text">6h</span>
+              <span class="metric__label">Updates Every</span>
+            </div>
+            <div class="metric">
+              <span class="metric__value gradient-text">9</span>
+              <span class="metric__label">Stocks Analyzed</span>
+            </div>
+            <div class="metric">
+              <span class="metric__value gradient-text">150+</span>
+              <span class="metric__label">Sources Checked</span>
+            </div>
+          </div>
+          <span class="case-card__link">Explore the live dashboard &rarr;</span>
         </div>
         <div class="featured-aside">
           <ul class="feature-list">
             <li>
-              <span class="feature-label">Automation</span>
-              AI agents research and publish every 6 hours with zero human intervention
+              <span class="feature-label">Fully automatic</span>
+              Researches and publishes new reports every 6 hours without anyone touching it
             </li>
             <li>
-              <span class="feature-label">Coverage</span>
-              9 equities with individual deep-dives, bull/bear cases, and action frameworks
+              <span class="feature-label">What it covers</span>
+              Covers 9 stocks with buy/sell analysis, risk scenarios, and clear recommendations
             </li>
             <li>
-              <span class="feature-label">Epistemic honesty</span>
-              Built-in framework documenting what the system can and cannot reliably know
+              <span class="feature-label">Honest about limits</span>
+              Tells you what it knows confidently and what it is guessing about
             </li>
             <li>
-              <span class="feature-label">Infrastructure</span>
-              Pure static HTML/CSS/JS on GitHub Pages. No backend, no API keys, no framework
+              <span class="feature-label">How it runs</span>
+              Runs on a free website host with no monthly fees, no servers to maintain
             </li>
           </ul>
         </div>
       </a>
 
       <div class="cases-grid">
-        <div class="case-card">
+        <div class="case-card glow-card">
           <div class="case-card__header">
             <p class="case-card__tag">Go-to-Market</p>
             <h3>Product Launch Framework</h3>
           </div>
-          <p>End-to-end market intelligence package for a consumer product launch. Buyer personas, competitive
-            landscape, 3-phase GTM strategy, pricing models, and a working consumer site prototype.</p>
-          <span class="case-card__link" style="color:var(--gray-400)">Client project (confidential)</span>
+          <p>Complete research package for a new product launch: who the customers are, what competitors charge,
+            how to reach buyers, and a working website prototype to test the idea.</p>
+          <span class="case-card__link case-card__link--muted">Client project (confidential)</span>
         </div>
-        <div class="case-card">
+        <div class="case-card glow-card">
           <div class="case-card__header">
             <p class="case-card__tag">Education Automation</p>
             <h3>Canvas LMS Integration</h3>
           </div>
-          <p>20+ custom automation tools for a high school CTE program. AI-assisted grading, rubric generation, daily
-            briefings, and exemplar portfolios deployed across 7 course sections.</p>
+          <p>20+ tools that help me run my own teaching program. AI handles grading assistance, daily briefings,
+            and student portfolio examples across 7 class sections so I can focus on teaching.</p>
           <a href="https://promptaieducation.com" class="case-card__link">Visit the education site &rarr;</a>
         </div>
-        <div class="case-card">
+        <div class="case-card glow-card">
           <div class="case-card__header">
             <p class="case-card__tag">Web Design</p>
             <h3>District Website Redesign</h3>
           </div>
-          <p>Modern, accessible website prototype for a K-12 school district. Data-driven architecture, responsive
-            design, and structured content management for 30+ schools.</p>
+          <p>A modern website redesign for a school district with 30+ schools. Clean design, easy navigation,
+            and a system that makes it simple for staff to keep content up to date.</p>
           <a href="https://promptaieducation.com/csd509j-redesign/" class="case-card__link">See the prototype &rarr;</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About section moved to top -->
-
   <!-- Contact -->
   <section id="contact" class="contact">
     <div class="container">
       <p class="section-eyebrow">Get in touch</p>
-      <h2 class="section-title">Ready to scale your voice?</h2>
-      <p class="section-sub">Tell me about your communication challenge. I will tell you if automation can help,
-        and exactly how I would approach it.</p>
-      <a href="mailto:andrew@promptaisolutions.com" class="btn btn--primary">andrew@promptaisolutions.com</a>
+      <h2 class="section-title">Let's figure out what you need.</h2>
+      <p class="section-sub">Tell me what you are trying to say and who needs to hear it.
+        If automation can help, I will show you exactly how.</p>
+      <a href="mailto:andrew@promptaisolutions.com" class="btn btn--primary btn--large">andrew@promptaisolutions.com</a>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
-      <ul class="site-footer__links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="https://promptaieducation.com">Education</a></li>
-      </ul>
-      <p>&copy; 2026 Prompt AI Solutions. Corvallis, Oregon.</p>
+      <div class="site-footer__inner">
+        <ul class="site-footer__links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="https://promptaieducation.com">Education</a></li>
+        </ul>
+        <p>&copy; 2026 Prompt AI Solutions. Corvallis, Oregon.</p>
+      </div>
     </div>
   </footer>
 
   <script>
-    /* ===== DARK MODE ===== */
+    /* ===== THEME TOGGLE ===== */
     function toggleTheme() {
-      const html = document.documentElement;
-      const current = html.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
       html.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
-      document.querySelector('.theme-toggle__icon').textContent = next === 'dark' ? '\u2600' : '\u263E';
     }
     (function () {
-      const saved = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', saved);
-      if (saved === 'dark') document.querySelector('.theme-toggle__icon').textContent = '\u2600';
+      var saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
     })();
 
     /* ===== NAV SCROLL ===== */
