@@ -1,6 +1,6 @@
 /* css/animations.css */
 
-/* SCENE 1: Hero Section Load */
+/* ===== SCENE 1: Hero Section Load ===== */
 .hero__eyebrow {
   opacity: 0;
   animation: hero-fade-in 0.3s ease-out forwards;
@@ -43,29 +43,18 @@
   }
 }
 
-/* SCENE 2: Services Grid */
+/* ===== SCENE 2: Services Grid ===== */
 .service-card {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s;
   --card-index: 0;
 }
 
-.service-card:nth-child(1) {
-  --card-index: 0;
-}
-
-.service-card:nth-child(2) {
-  --card-index: 1;
-}
-
-.service-card:nth-child(3) {
-  --card-index: 2;
-}
-
-.service-card:nth-child(4) {
-  --card-index: 3;
-}
+.service-card:nth-child(1) { --card-index: 0; }
+.service-card:nth-child(2) { --card-index: 1; }
+.service-card:nth-child(3) { --card-index: 2; }
+.service-card:nth-child(4) { --card-index: 3; }
 
 .service-card__icon {
   display: inline-block;
@@ -77,10 +66,6 @@
 .service-card.animate-in {
   opacity: 1;
   transform: translateY(0);
-}
-
-.service-card.animate-in {
-  /* Using important because the base transition handles hover as well */
   transition-delay: calc(var(--card-index) * 150ms);
 }
 
@@ -90,214 +75,55 @@
   transition-delay: calc((var(--card-index) * 150ms) + 100ms);
 }
 
-/* Services card hover interaction over-ride */
 .service-card.animate-in:hover {
   transform: translateY(-4px);
   transition-delay: 0s;
 }
 
-/* SCENE 3: How It Works */
-.approach-steps {
-  position: relative;
-  list-style: none;
-  counter-reset: none !important;
-}
-
-.approach-steps li::before {
-  display: none !important;
-}
-
-.approach-steps li {
-  border-bottom: none !important;
-  padding: 0 !important;
-}
-
-.step-item {
-  position: relative;
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  padding: 0 0 40px 0 !important;
-}
-
-.step-icon-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  min-width: 36px;
-}
-
-.step-circle {
-  width: 36px;
-  height: 36px;
-}
-
-.step-circle-path {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 2;
-  stroke-dasharray: 113.097;
-  /* 2 * pi * 18 */
-  stroke-dashoffset: 113.097;
-  transition: stroke-dashoffset 0.5s ease-in-out;
-}
-
-.step-number-text {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 700;
-  fill: var(--accent);
-  text-anchor: middle;
-  dominant-baseline: central;
+/* ===== SCENE 3: Approach Cards ===== */
+.approach-card {
   opacity: 0;
-  transition: opacity 0.3s ease 0.3s;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s;
+  --card-index: 0;
 }
 
-.step-content {
-  opacity: 0;
-  transform: translateX(-10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
+.approach-card:nth-child(1) { --card-index: 0; }
+.approach-card:nth-child(2) { --card-index: 1; }
+.approach-card:nth-child(3) { --card-index: 2; }
 
-.step-connector {
-  width: 2px;
-  height: calc(100% - 36px);
-  background: var(--gray-200);
-  position: absolute;
-  top: 36px;
-  left: 17px;
-  transform-origin: top;
-  transform: scaleY(0);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.step-item.animate-in .step-circle-path {
-  stroke-dashoffset: 0;
-}
-
-.step-item.animate-in .step-number-text {
-  opacity: 1;
-}
-
-.step-item.animate-in .step-content {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.step-item.animate-in .step-connector {
-  transform: scaleY(1);
-}
-
-/* SCENE 4: Flow Diagram Cascade */
-.flow-anim {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-}
-
-.flow-arrow-anim {
-  opacity: 0;
-  transform: scaleY(0);
-  display: inline-block;
-  transform-origin: top;
-  transition: opacity 0.2s linear, transform 0.2s linear;
-}
-
-.flow-final {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-
-@keyframes flow-pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.02);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-.flow-anim.animate-in {
+.approach-card.animate-in {
   opacity: 1;
   transform: translateY(0);
+  transition-delay: calc(var(--card-index) * 150ms);
 }
 
-.flow-arrow-anim.animate-in {
-  opacity: 1;
-  transform: scaleY(1);
+.approach-card.animate-in:hover {
+  transform: translateY(-4px);
+  transition-delay: 0s;
 }
 
-.flow-final.animate-in {
-  opacity: 1;
-  transform: scale(1);
-  animation: flow-pulse 0.6s ease-out 0.4s 1 forwards;
-}
-
-.flow-anim:nth-child(1) {
-  transition-delay: 0ms;
-}
-
-.flow-arrow-anim:nth-child(2) {
-  transition-delay: 300ms;
-}
-
-.flow-anim:nth-child(3) {
-  transition-delay: 500ms;
-}
-
-.flow-arrow-anim:nth-child(4) {
-  transition-delay: 800ms;
-}
-
-.flow-anim:nth-child(5) {
-  transition-delay: 1000ms;
-}
-
-.flow-arrow-anim:nth-child(6) {
-  transition-delay: 1300ms;
-}
-
-.flow-final:nth-child(7) {
-  transition-delay: 1500ms;
-}
-
-/* SCENE 5: Project Cards Hover */
+/* ===== SCENE 4: Case Cards ===== */
 .case-card {
   opacity: 0;
   transform: translateY(20px);
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, border-color 0.3s, opacity 0.6s ease;
   --card-index: 0;
 }
 
-.case-card:nth-child(1) {
-  --card-index: 0;
-}
-
-.case-card:nth-child(2) {
-  --card-index: 1;
-}
-
-.case-card:nth-child(3) {
-  --card-index: 2;
-}
+.case-card:nth-child(1) { --card-index: 0; }
+.case-card:nth-child(2) { --card-index: 1; }
+.case-card:nth-child(3) { --card-index: 2; }
 
 .case-card.animate-in {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: calc(var(--card-index) * 150ms), calc(var(--card-index) * 150ms), 0ms;
+  transition-delay: calc(var(--card-index) * 150ms), calc(var(--card-index) * 150ms), 0ms, 0ms;
 }
 
 .case-card.animate-in:hover {
   transform: translateY(-4px) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
 }
 
 .case-card__link {
@@ -309,11 +135,53 @@
   transform: translateX(4px);
 }
 
-.case-card.animate-in:hover .case-card__tag {
-  filter: brightness(1.2);
+/* Featured case card */
+.case-card--featured {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s;
 }
 
-/* TYPEWRITER CURSOR */
+.case-card--featured.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.case-card--featured.animate-in:hover {
+  transform: translateY(-4px);
+}
+
+/* ===== GLOW CARD EFFECT ===== */
+.glow-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-card::before {
+  content: '';
+  position: absolute;
+  top: var(--mouse-y, 50%);
+  left: var(--mouse-x, 50%);
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.glow-card:hover::before {
+  opacity: 1;
+}
+
+.glow-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== TYPEWRITER CURSOR ===== */
 .typewriter-cursor {
   display: inline-block;
   width: 0px;
@@ -328,27 +196,16 @@
   bottom: 0.1em;
   height: 1.1em;
   width: 2.5px;
-  background-color: var(--black);
+  background-color: var(--accent);
   animation: blink 0.8s step-end infinite;
 }
 
 @keyframes blink {
-
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-[data-theme="dark"] .typewriter-cursor.active::after {
-  background-color: var(--white);
-}
-
-/* Reduced Motion and Mobile Adjustments */
+/* ===== Reduced Motion and Mobile Adjustments ===== */
 @media (max-width: 768px) {
   .service-card.animate-in {
     transition-delay: calc(var(--card-index) * 75ms);
@@ -358,13 +215,16 @@
     transition-delay: calc((var(--card-index) * 75ms) + 50ms);
   }
 
+  .approach-card.animate-in {
+    transition-delay: calc(var(--card-index) * 75ms);
+  }
+
   .case-card.animate-in {
-    transition-delay: calc(var(--card-index) * 75ms), calc(var(--card-index) * 75ms), 0ms;
+    transition-delay: calc(var(--card-index) * 75ms), calc(var(--card-index) * 75ms), 0ms, 0ms;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
@@ -380,21 +240,14 @@
   .hero__cta-group,
   .service-card,
   .service-card__icon,
-  .step-number-text,
-  .step-content,
-  .flow-anim,
-  .flow-arrow-anim,
-  .flow-final,
-  .case-card {
+  .approach-card,
+  .case-card,
+  .case-card--featured {
     opacity: 1 !important;
     transform: none !important;
   }
 
-  .step-circle-path {
-    stroke-dashoffset: 0 !important;
-  }
-
-  .step-connector {
-    transform: scaleY(1) !important;
+  .glow-card::before {
+    display: none !important;
   }
 }
