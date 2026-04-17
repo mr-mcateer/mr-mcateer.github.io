@@ -1,0 +1,169 @@
+/* ==========================================================
+   FCoV-23 Design Tokens
+   Single source of truth — dark mode is a token swap
+   ========================================================== */
+
+:root {
+  /* --- Brand Colors --- */
+  --color-teal-50:  #f0fdfa;
+  --color-teal-100: #ccfbf1;
+  --color-teal-400: #2dd4bf;
+  --color-teal-500: #14b8a6;
+  --color-teal-600: #0d9488;
+  --color-teal-700: #0f766e;
+  --color-navy-50:  #f0f4ff;
+  --color-navy-100: #dbeafe;
+  --color-navy-700: #1e3a5f;
+  --color-navy-800: #152d4a;
+  --color-navy-900: #0c1d30;
+  --color-navy-950: #070f1a;
+
+  /* --- Semantic: Light Mode --- */
+  --bg:              #ffffff;
+  --bg-subtle:       #f7f9fc;
+  --bg-surface:      #ffffff;
+  --bg-surface-alt:  #f0f4f9;
+  --border:          #dde2ed;
+  --border-strong:   #b8c4d8;
+
+  --text-primary:    #0c1d30;
+  --text-secondary:  #3d5068;
+  --text-muted:      #6b7fa0;
+  --text-inverse:    #ffffff;
+
+  --accent:          #0d9488;
+  --accent-hover:    #0f766e;
+  --accent-soft:     #f0fdfa;
+  --accent-text:     #0d9488;
+
+  --link:            #0d9488;
+  --link-hover:      #0f766e;
+
+  --shadow-sm:       0 1px 3px rgba(12,29,48,.06), 0 1px 2px rgba(12,29,48,.04);
+  --shadow-md:       0 4px 12px rgba(12,29,48,.08), 0 2px 4px rgba(12,29,48,.04);
+  --shadow-lg:       0 12px 32px rgba(12,29,48,.12), 0 4px 8px rgba(12,29,48,.06);
+  --shadow-card:     0 2px 8px rgba(12,29,48,.07);
+
+  --nav-bg:          rgba(255,255,255,0.88);
+  --nav-border:      rgba(0,0,0,0.08);
+
+  /* --- Typography Scale (1.25 modular) --- */
+  --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg:   1.125rem;   /* 18px */
+  --text-xl:   1.25rem;    /* 20px */
+  --text-2xl:  1.5rem;     /* 24px */
+  --text-3xl:  1.875rem;   /* 30px */
+  --text-4xl:  2.375rem;   /* 38px */
+  --text-5xl:  3rem;       /* 48px */
+  --text-6xl:  3.75rem;    /* 60px */
+
+  --leading-tight:  1.2;
+  --leading-snug:   1.35;
+  --leading-normal: 1.6;
+  --leading-loose:  1.8;
+
+  --tracking-tight:  -0.025em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.04em;
+  --tracking-wider:   0.08em;
+
+  /* --- Spacing --- */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.25rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+  --sp-24: 6rem;
+  --sp-32: 8rem;
+
+  /* --- Radii --- */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-full: 9999px;
+
+  /* --- Transitions --- */
+  --ease-out:    cubic-bezier(0.2, 0, 0, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast:      120ms;
+  --t-med:       240ms;
+  --t-slow:      400ms;
+
+  /* --- Layout --- */
+  --container:    1100px;
+  --container-sm: 740px;
+  --container-lg: 1280px;
+  --section-y:    5rem;
+}
+
+/* --- Dark Mode (CSS-only fallback for no-JS) --- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:              #090f1b;
+    --bg-subtle:       #0d1525;
+    --bg-surface:      #111d2e;
+    --bg-surface-alt:  #172137;
+    --border:          #1e2d42;
+    --border-strong:   #2a3f58;
+    --text-primary:    #e8edf5;
+    --text-secondary:  #99afc8;
+    --text-muted:      #617d9c;
+    --text-inverse:    #090f1b;
+    --accent:          #2dd4bf;
+    --accent-hover:    #5eead4;
+    --accent-soft:     rgba(45,212,191,0.1);
+    --accent-text:     #2dd4bf;
+    --link:            #2dd4bf;
+    --link-hover:      #5eead4;
+    --shadow-sm:       0 1px 3px rgba(0,0,0,.3);
+    --shadow-md:       0 4px 12px rgba(0,0,0,.4);
+    --shadow-lg:       0 12px 32px rgba(0,0,0,.5);
+    --shadow-card:     0 2px 8px rgba(0,0,0,.35);
+    --nav-bg:          rgba(9,15,27,0.88);
+    --nav-border:      rgba(255,255,255,0.07);
+  }
+}
+
+/* --- Dark Mode (JS toggle) --- */
+[data-theme="dark"] {
+  --bg:              #090f1b;
+  --bg-subtle:       #0d1525;
+  --bg-surface:      #111d2e;
+  --bg-surface-alt:  #172137;
+  --border:          #1e2d42;
+  --border-strong:   #2a3f58;
+
+  --text-primary:    #e8edf5;
+  --text-secondary:  #99afc8;
+  --text-muted:      #617d9c;
+  --text-inverse:    #090f1b;
+
+  --accent:          #2dd4bf;
+  --accent-hover:    #5eead4;
+  --accent-soft:     rgba(45,212,191,0.1);
+  --accent-text:     #2dd4bf;
+
+  --link:            #2dd4bf;
+  --link-hover:      #5eead4;
+
+  --shadow-sm:       0 1px 3px rgba(0,0,0,.3);
+  --shadow-md:       0 4px 12px rgba(0,0,0,.4);
+  --shadow-lg:       0 12px 32px rgba(0,0,0,.5);
+  --shadow-card:     0 2px 8px rgba(0,0,0,.35);
+
+  --nav-bg:          rgba(9,15,27,0.88);
+  --nav-border:      rgba(255,255,255,0.07);
+}
