@@ -93,16 +93,30 @@ STEP 10 audit manifest + circuit breaker maintenance
 
 ### Python toolkit (stdlib-only except yfinance)
 `~/.claude/scheduled-tasks/stock-analysis-refresh/tools/`:
-- `quote_feed.py` -- yfinance grounded prices (authoritative)
+
+**Data acquisition + scoring:**
+- `quote_feed.py` -- yfinance grounded prices (authoritative, hard gate 7/9)
 - `wsb_scan.py` -- Reddit heat + sentiment, case-sensitive ticker match
 - `outcome_ledger.py` -- append / settle / stats on the calibration JSONL
 - `catalyst_score.py` -- tier x recency scoring, 1.5 min-score gate
 - `classify_and_retry.py` -- sub-agent failure classifier + adapted
   retry-prompt generator
-- `render_geopolitical.py` -- deterministic renderer for the Vetted
-  Geopolitical Scenarios card (marker-delimited in HTML)
-- `render_email.py` -- deterministic renderer for the BLUF email
-  (Opus writes prose strings; Python renders structure)
+
+**Deterministic renderers (canonical JSON in, HTML/text out):**
+- `render_geopolitical.py` -- `logs/geopolitical_scenarios.json`
+  -> Vetted Geopolitical Scenarios card (between `<!-- GEO_SECTION_{START,END} -->`)
+- `render_macro_context.py` -- `logs/macro_context.json`
+  -> 8-tile risk strip + near-term catalysts + bigger-picture + tariff-exposure table
+     (between `<!-- MACRO_CONTEXT_{START,END} -->`)
+- `render_scenarios.py` -- `logs/scenarios_planner.json`
+  -> Interactive Scenario Planner (3 tabs, plain-english narratives, 9 impacts each,
+     probability-sum validation) (between `<!-- SCENARIOS_PLANNER_{START,END} -->`)
+- `render_email.py` -- `logs/email_input.json`
+  -> plain-text email subject + body for Mike's Gmail draft
+
+All renderers are idempotent: identical input -> byte-identical output -> `status=unchanged`.
+All renderers report a `render_hash` for audit. Content between markers is machine-written
+only; hand-edits there are forbidden and will be overwritten on the next run.
 
 ### Agent defs (purpose-built, pinned `tools:` allowlist)
 `~/.claude/agents/`:
@@ -121,13 +135,14 @@ STEP 10 audit manifest + circuit breaker maintenance
 - `email_input.json` -- feeds render_email.py
 - `{run_id}.json` -- audit manifest per run (retain 60)
 
-### Dashboard render markers
-Between these markers is machine-written and must NEVER be hand-edited:
+### Dashboard render markers (all machine-written, NEVER hand-edit)
 ```
-<!-- GEO_SECTION_START -->
-...rendered by tools/render_geopolitical.py...
-<!-- GEO_SECTION_END -->
+<!-- MACRO_CONTEXT_START -->     ...render_macro_context.py...     <!-- MACRO_CONTEXT_END -->
+<!-- GEO_SECTION_START -->       ...render_geopolitical.py...      <!-- GEO_SECTION_END -->
+<!-- SCENARIOS_PLANNER_START --> ...render_scenarios.py...         <!-- SCENARIOS_PLANNER_END -->
 ```
+Any manual edit between these markers will be overwritten on the next autonomous run.
+Add fresh data to the canonical JSON in `~/.claude/scheduled-tasks/stock-analysis-refresh/logs/` instead.
 
 ### Lessons from production validation (2026-04-18)
 1. **Sub-agent tool provisioning is non-deterministic.** Same agent type
