@@ -1044,65 +1044,7 @@ footer a { color: var(--accent-blue); text-decoration: none; }
   </div>
 </section>
 
-<!-- ============ MACRO SCENARIO PLANNER ============ -->
-<section id="scenarios">
-  <div class="container">
-    <!-- SCENARIOS_PLANNER_START -->
-    <div class="section-header"><div class="section-label">Macro Scenarios</div><h2 class="section-title">Interactive Scenario Planner</h2><p class="section-desc">Three macro paths for the rest of 2026. Probabilities are grounded in current bank research (Goldman 30% recession odds, JPMorgan 35%). Click a scenario to see how each holding responds and what action the model suggests.</p></div>
-    <div class="scenario-tabs">
-      <button class="scenario-tab active" onclick="showScenario('soft_landing',this)">Soft Landing and AI Validated (40%)</button>
-      <button class="scenario-tab" onclick="showScenario('geopolitical_shock',this)">Geopolitical and Oil Shock (30%)</button>
-      <button class="scenario-tab" onclick="showScenario('ai_pullback',this)">AI Capex Pullback (30%)</button>
-    </div>
-
-    <div id="panel-soft_landing" class="scenario-panel active">
-      <div class="card" style="margin-bottom:20px;"><h3 style="color:var(--accent-green);">Soft Landing and AI Validated Scenario</h3><p style="font-size:13px;color:var(--text-secondary);margin-top:8px;">The economy normalizes. Iran pulls back. Trade deal holds. Hyperscaler AI spending starts showing revenue returns by Q3. The Fed delivers one cut. Tech re-rates higher.</p></div>
-      <div class="impact-grid">
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-green);">NVDA +30 to +40%</div><div class="ic-impact">Wall Street confirms AI spending pays off. NVIDIA can sell every chip it makes.</div><div class="ic-action"><span class="scenario-action action-hold">Hold Full</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-green);">MU +25 to +35%</div><div class="ic-impact">AI memory chips stay in short supply. Pricing keeps climbing into 2027.</div><div class="ic-action"><span class="scenario-action action-hold">Hold Full</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-green);">META +30 to +50%</div><div class="ic-impact">Ad revenue grows fast while legal cases settle at manageable levels. Stock reprices toward the high end of Wall Street targets.</div><div class="ic-action"><span class="scenario-action action-hold">Hold Full</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-green);">MSFT +25 to +35%</div><div class="ic-impact">Cloud business accelerates as companies deploy AI at scale. Copilot subscription revenue starts offsetting capex.</div><div class="ic-action"><span class="scenario-action action-hold">Hold Full</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-green);">AMZN +20 to +30%</div><div class="ic-impact">AWS growth reaccelerates and retail margins expand. Calmer oil helps logistics costs.</div><div class="ic-action"><span class="scenario-action action-hold">Hold Full</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-green);">GOOG +20 to +25%</div><div class="ic-impact">Search revenue holds, Google Cloud grows over 40 percent, Gemini starts making real money.</div><div class="ic-action"><span class="scenario-action action-hold">Hold Full</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-green);">AAPL +10 to +15%</div><div class="ic-impact">Steady grower. Services business keeps compounding. No near-term drama.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-green);">BROS +25 to +40%</div><div class="ic-impact">Consumers keep spending on coffee. National expansion keeps opening new stores.</div><div class="ic-action"><span class="scenario-action action-add">Add</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-green);">TSLA +5 to +15%</div><div class="ic-impact">The robotaxi story gets clearer, but the stock already prices in a lot of that.</div><div class="ic-action"><span class="scenario-action action-monitor">Monitor</span></div></div>
-      </div>
-    </div>
-
-    <div id="panel-geopolitical_shock" class="scenario-panel">
-      <div class="card" style="margin-bottom:20px;"><h3 style="color:var(--accent-red);">Geopolitical and Oil Shock Scenario</h3><p style="font-size:13px;color:var(--text-secondary);margin-top:8px;">Iran keeps the Strait of Hormuz closed or limited. Oil sustainably spikes above $100. Broader risk-off tone. The Fed stays hawkish on energy-driven inflation. Defensive positioning wins.</p></div>
-      <div class="impact-grid">
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">AMZN -10 to -15%</div><div class="ic-impact">Data centers and logistics eat a big energy bill. Margins compress.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">AAPL -10 to -15%</div><div class="ic-impact">Consumer demand softens on lower confidence. China exposure compounds the hit.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">TSLA -10 to -20%</div><div class="ic-impact">Lithium and battery input costs spike. Tesla cannot pass costs through in a weak consumer.</div><div class="ic-action"><span class="scenario-action action-trim">Trim 15%</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">NVDA -5 to -10%</div><div class="ic-impact">Short-term risk-off compression, but multi-year capex cycles limit the damage.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">MU -10 to -15%</div><div class="ic-impact">Same dynamic as NVIDIA. Memory contracts are multi-year.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">META -5 to -10%</div><div class="ic-impact">Mostly domestic revenue, moderate ad pullback risk.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">MSFT -5 to -10%</div><div class="ic-impact">Software revenue is resilient. Enterprise spending holds up.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">GOOG -5 to -8%</div><div class="ic-impact">Ad revenue softens. Cloud demand is stable.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">BROS -10 to -15%</div><div class="ic-impact">Consumer spending pullback and input cost inflation hit both sides.</div><div class="ic-action"><span class="scenario-action action-wait">Wait to Add</span></div></div>
-      </div>
-    </div>
-
-    <div id="panel-ai_pullback" class="scenario-panel">
-      <div class="card" style="margin-bottom:20px;"><h3 style="color:var(--accent-amber);">AI Capex Pullback Scenario</h3><p style="font-size:13px;color:var(--text-secondary);margin-top:8px;">Hyperscaler AI revenue does not catch up with the $700 billion capex bill. Microsoft or Meta cut 2026 guidance. NVDA and MU get repriced as the AI trade unwinds selectively.</p></div>
-      <div class="impact-grid">
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">NVDA -25 to -35%</div><div class="ic-impact">Directly tied to AI capex. Orders soften materially.</div><div class="ic-action"><span class="scenario-action action-trim">Trim 25%</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">MU -20 to -30%</div><div class="ic-impact">HBM demand is tied to AI buildout. Memory pricing corrects.</div><div class="ic-action"><span class="scenario-action action-trim">Trim 20%</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">META -10 to -15%</div><div class="ic-impact">$125B capex questioned, but ad revenue is the fallback.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">MSFT -10 to -15%</div><div class="ic-impact">Azure AI growth slows. Core enterprise software holds.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">AMZN -8 to -12%</div><div class="ic-impact">AWS Bedrock demand questioned. Retail stable.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">GOOG -8 to -12%</div><div class="ic-impact">Gemini ROI questioned. Search and YouTube are the fallback.</div><div class="ic-action"><span class="scenario-action action-hold">Hold</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">AAPL -3 to -5%</div><div class="ic-impact">Least AI-dependent name in the portfolio. Relative outperformer.</div><div class="ic-action"><span class="scenario-action action-hold">Safe Haven</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-blue);">BROS 0 to -5%</div><div class="ic-impact">Coffee is uncorrelated with tech capex. Possible add candidate.</div><div class="ic-action"><span class="scenario-action action-add">Add (uncorrelated)</span></div></div>
-        <div class="impact-card"><div class="ic-ticker" style="color:var(--accent-red);">TSLA -5 to -15%</div><div class="ic-impact">AI narrative damaged. Robotaxi timeline questioned.</div><div class="ic-action"><span class="scenario-action action-monitor">Monitor</span></div></div>
-      </div>
-    </div>
-    <p style="font-size:10px;color:var(--text-muted);margin-top:10px;text-align:right;">scenarios rendered 2026-04-19T05:30:00Z &middot; run <code>20260418T215414</code></p>
-  <!-- SCENARIOS_PLANNER_END -->
-  </div>
-</section>
+<!-- REMOVED 2026-04-19: Interactive Scenario Planner section. Macro scenario probabilities change on a quarterly cadence, not twice-daily, and the canonical scenarios_planner.json was a static snapshot not regenerated by the orchestrator. Keeping a section that looks programmatic but is not live creates false confidence. Live coverage of the same territory: Vetted Geopolitical Scenarios card (tier-1 sourced) + BLUF grid Bears column (per-ticker) + per-ticker conviction scores. -->
 
 <!-- ============ WHAT THIS MODEL CANNOT KNOW ============ -->
 <section id="sources">
