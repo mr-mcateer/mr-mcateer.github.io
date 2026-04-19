@@ -1047,24 +1047,34 @@ footer a { color: var(--accent-blue); text-decoration: none; }
       </table>
       </div>
     </div>
-    <div class="card" style="margin-top:16px;border-top:3px solid var(--accent-amber);">
+    <!-- GEO_SECTION_START -->
+<div class="card" style="margin-top:16px;border-top:3px solid var(--accent-amber);">
       <h3 style="color:var(--accent-amber);">Vetted Geopolitical Scenarios &middot; tier-1 sources only</h3>
-      <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px;">Split-agent pipeline (retrieval = Haiku fetcher per topic, synthesis = Opus orchestrator). Gate: each scenario requires 2+ tier-1 sources to publish. Whitelist: Reuters / Bloomberg / WSJ / FT / AP / BBC / Economist / Nikkei / .gov / CSIS / CFR / Brookings / Chatham House / Atlantic Council / IISS / PIIE / ECB.</p>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px;">
+        Split-agent pipeline: retrieval = Haiku fetcher per topic, synthesis = Opus orchestrator.
+        Gate: each scenario requires 2+ tier-1 sources to publish. Whitelist v2026-04-18:
+        Reuters / Bloomberg / WSJ / FT / AP / BBC / Economist / Nikkei / .gov / CSIS / CFR / Brookings /
+        Chatham House / Atlantic Council / IISS / PIIE / ECB.
+      </p>
       <div style="overflow-x:auto;">
       <table class="scenario-table" style="margin-top:8px;font-size:13px;">
         <thead><tr><th>Scenario</th><th>Likelihood</th><th>Horizon</th><th>Sev</th><th>Portfolio impact</th><th>Tier-1 sources</th></tr></thead>
         <tbody>
-          <tr><td style="font-weight:700;">Iran-Hormuz ceasefire fragility</td><td><span class="risk-level risk-high">high 65-85%</span></td><td>7d</td><td>5</td><td>WTI +, hyperscalers --, AMZN --</td><td>5 (Bloomberg x3, Washington Post, Chatham House)</td></tr>
-          <tr><td style="font-weight:700;">Fed FOMC Apr 28-29 hold</td><td><span class="risk-level risk-high">high 65-85%</span></td><td>7d</td><td>4</td><td>growth names - ; BROS -- (discretionary)</td><td>9 (federalreserve.gov: FOMC stmt, minutes, Waller speech)</td></tr>
-          <tr><td style="font-weight:700;">Taiwan-TSMC systemic risk</td><td><span class="risk-level risk-medium">medium 40-60%</span></td><td>quarter</td><td>4</td><td>NVDA --, AAPL --, MU - ; Q1 +58% EPS mitigates near-term</td><td>3 (CSIS, PIIE/Mary Lovely, TSMC IR via CNBC)</td></tr>
-          <tr><td style="font-weight:700;">US-China semi tariff regime</td><td><span class="risk-level risk-high">high 65-85%</span></td><td>quarter</td><td>3</td><td>NVDA mixed (H200 licensing +), MU - , AAPL --</td><td>11 (whitehouse.gov, bis.gov, cfr.org, ustr.gov)</td></tr>
-          <tr><td style="font-weight:700;">EU DMA enforcement (GOOG)</td><td><span class="risk-level risk-high">high 65-85%</span></td><td>30d</td><td>3</td><td>GOOG --, META - , AAPL + (Ads/Maps undesignated)</td><td>6 (europa.eu official, 4 Commission releases)</td></tr>
-          <tr><td style="font-weight:700;">Russia-Ukraine war status quo</td><td><span class="risk-level risk-high">high 65-85%</span></td><td>quarter</td><td>2</td><td>indirect: chip-control tailwind for Western semis; EU gas cost pressure</td><td>10 (Bloomberg, Washington Post x2, IISS, Atlantic Council x2, CSIS, ECB, Brookings)</td></tr>
+          <tr><td style="font-weight:700;">Iran-Hormuz ceasefire fragility &middot; <span style="color:var(--accent-red);">sources disagree</span></td><td><span class="risk-level risk-high">high 65-85%</span></td><td>7d</td><td>5</td><td>WTI +, hyperscalers --, AMZN --</td><td>5 tier-1 / 2 tier-2 &middot; Bloomberg x3, Washington Post, Chatham House</td></tr>
+          <tr><td style="font-weight:700;">Fed FOMC Apr 28-29 hold</td><td><span class="risk-level risk-high">high 65-85%</span></td><td>7d</td><td>4</td><td>growth names - ; BROS -- (discretionary)</td><td>9 tier-1 / 2 tier-2 &middot; federalreserve.gov FOMC stmt + minutes, Waller Apr 17 speech</td></tr>
+          <tr><td style="font-weight:700;">Taiwan-TSMC systemic risk</td><td><span class="risk-level risk-medium">medium 40-60%</span></td><td>quarter</td><td>4</td><td>NVDA --, AAPL --, MU - ; Q1 +58% EPS mitigates near-term</td><td>3 tier-1 / 1 tier-2 &middot; CSIS, PIIE (M. Lovely), TSMC Q1 IR via CNBC</td></tr>
+          <tr><td style="font-weight:700;">EU DMA enforcement (Google)</td><td><span class="risk-level risk-high">high 65-85%</span></td><td>30d</td><td>3</td><td>GOOG --, META - , AAPL + (Ads/Maps undesignated)</td><td>6 tier-1 / 5 tier-2 &middot; europa.eu Commission releases x4, CNBC aggregated fines</td></tr>
+          <tr><td style="font-weight:700;">US-China semi tariff regime</td><td><span class="risk-level risk-high">high 65-85%</span></td><td>quarter</td><td>3</td><td>NVDA mixed (H200 licensing +), MU - , AAPL --</td><td>11 tier-1 &middot; whitehouse.gov, bis.gov, cfr.org, ustr.gov</td></tr>
+          <tr><td style="font-weight:700;">Russia-Ukraine war status quo</td><td><span class="risk-level risk-high">high 65-85%</span></td><td>quarter</td><td>2</td><td>indirect: chip-control tailwind for Western semis; EU gas cost pressure</td><td>10 tier-1 &middot; Bloomberg, Washington Post x2, IISS, Atlantic Council x2, CSIS, ECB, Brookings</td></tr>
         </tbody>
       </table>
       </div>
-      <p style="font-size:12px;color:var(--text-muted);margin-top:10px;"><strong>Aggregator notes.</strong> Dropped scenarios (sub-2 tier-1 source bar): none this run; all 6 topics cleared. Material divergence flagged: Iran-Hormuz -- Iran declared strait open Apr 17, Trump blockade remains Apr 18 (sources contradict on operational status). Retry engaged for Taiwan-TSMC (initial fetcher returned tool_unavailable; orchestrator-level WebSearch recovered 3 tier-1 cards including TSMC Q1 2026 IR data).</p>
+      <p style="font-size:11px;color:var(--text-muted);margin-top:10px;">
+        <strong>6</strong> scenarios &middot; <strong>44</strong> tier-1 + <strong>10</strong> tier-2 evidence cards &middot;
+        generated 2026-04-19T04:45:00Z &middot; run_id <code>20260418T211344</code> &middot; pipeline <code>v2.3_split_fetcher</code>. Retries engaged: 1.
+      </p>
     </div>
+    <!-- GEO_SECTION_END -->
   </div>
 </section>
 
