@@ -84,7 +84,7 @@ STEP 4  catalyst scoring (tier x recency decay; 36h half-life)
 STEP 5  append calibration entries (outcome_ledger.py append)
 STEP 6  HTML edits (where deltas warrant) + canonical JSON writes +
           programmatic renders (render_geopolitical.py, future BLUF/heatmap)
-STEP 7  integrity gate (div 405-440, evi == 18, close delta <=2)
+STEP 7  integrity gate (div 340-380, evi == 18, close delta <=2, run_id consistency across all canonical JSONs)
 STEP 8  deploy (stash / rebase / push; never force)
 STEP 9  email assembly: write email_input.json, run render_email.py,
           Gmail MCP create_draft
@@ -106,6 +106,12 @@ STEP 10 audit manifest + circuit breaker maintenance
 - `render_bluf_grid.py` -- `logs/tickers.json`
   -> 9-card BLUF grid with 4-column evidence strip (analyst count, PT range,
      conviction, bears refuted) (between `<!-- BLUF_GRID_{START,END} -->`)
+- `render_portfolio_matrix.py` -- `logs/tickers.json`
+  -> Portfolio Matrix comparison table, 9 rows sorted by upside DESC
+     (between `<!-- PORTFOLIO_MATRIX_{START,END} -->`)
+- `render_deep_dive.py` -- `logs/tickers.json`
+  -> Per-ticker deep-dive BLUF cards (9 sections, marker-delimited per ticker:
+     `<!-- BLUF_MU_{START,END} -->`, `<!-- BLUF_META_{START,END} -->`, etc.)
 - `render_macro_context.py` -- `logs/macro_context.json`
   -> 8-tile risk strip + near-term catalysts + bigger-picture + tariff-exposure table
      (between `<!-- MACRO_CONTEXT_{START,END} -->`)
@@ -145,9 +151,19 @@ only; hand-edits there are forbidden and will be overwritten on the next run.
 
 ### Dashboard render markers (all machine-written, NEVER hand-edit)
 ```
-<!-- BLUF_GRID_START -->       ...render_bluf_grid.py...      <!-- BLUF_GRID_END -->
-<!-- MACRO_CONTEXT_START -->   ...render_macro_context.py...  <!-- MACRO_CONTEXT_END -->
-<!-- GEO_SECTION_START -->     ...render_geopolitical.py...   <!-- GEO_SECTION_END -->
+<!-- BLUF_GRID_START -->         ...render_bluf_grid.py...        <!-- BLUF_GRID_END -->
+<!-- PORTFOLIO_MATRIX_START -->  ...render_portfolio_matrix.py... <!-- PORTFOLIO_MATRIX_END -->
+<!-- BLUF_MU_START -->           ...render_deep_dive.py (MU)...   <!-- BLUF_MU_END -->
+<!-- BLUF_META_START -->         ...render_deep_dive.py (META)... <!-- BLUF_META_END -->
+<!-- BLUF_NVDA_START -->         ...render_deep_dive.py (NVDA)... <!-- BLUF_NVDA_END -->
+<!-- BLUF_MSFT_START -->         ...render_deep_dive.py (MSFT)... <!-- BLUF_MSFT_END -->
+<!-- BLUF_AMZN_START -->         ...render_deep_dive.py (AMZN)... <!-- BLUF_AMZN_END -->
+<!-- BLUF_GOOG_START -->         ...render_deep_dive.py (GOOG)... <!-- BLUF_GOOG_END -->
+<!-- BLUF_AAPL_START -->         ...render_deep_dive.py (AAPL)... <!-- BLUF_AAPL_END -->
+<!-- BLUF_TSLA_START -->         ...render_deep_dive.py (TSLA)... <!-- BLUF_TSLA_END -->
+<!-- BLUF_BROS_START -->         ...render_deep_dive.py (BROS)... <!-- BLUF_BROS_END -->
+<!-- MACRO_CONTEXT_START -->     ...render_macro_context.py...    <!-- MACRO_CONTEXT_END -->
+<!-- GEO_SECTION_START -->       ...render_geopolitical.py...     <!-- GEO_SECTION_END -->
 ```
 Any manual edit between these markers will be overwritten on the next autonomous run.
 Add fresh data to the canonical JSON in `~/.claude/scheduled-tasks/stock-analysis-refresh/logs/` instead.
