@@ -393,6 +393,7 @@ footer a { color: var(--accent-blue); text-decoration: none; }
     <div class="nav-spacer"></div>
     <a href="#mag7" class="nav-tab" data-section="mag7">Matrix</a>
     <a href="#macro" class="nav-tab" data-section="macro">Macro</a>
+    <a href="#options" class="nav-tab" data-section="options">Options</a>
     <div class="nav-spacer"></div>
     <a href="#sources" class="nav-tab" data-section="sources">Limits</a>
     <div style="flex:1"></div>
@@ -1042,6 +1043,101 @@ footer a { color: var(--accent-blue); text-decoration: none; }
       </p>
     </div>
     <!-- GEO_SECTION_END -->
+  </div>
+</section>
+
+<!-- ============ OPTION SELLING WATCH ============ -->
+<section id="options">
+  <div class="container">
+    <div class="section-header"><div class="section-label">Option Selling Watch</div><h2 class="section-title">Setups currently visible in the market</h2></div>
+    <!-- OPTIONS_SECTION_START -->
+<div class="card" style="margin-top:24px;border-top:3px solid var(--accent-cyan);">
+      <h3 style="color:var(--accent-cyan);">Option Selling Watch &middot; disciplined wheel setups</h3>
+      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:8px;">
+        For each name on the watchlist we show the single most attractive short put
+        (the "get paid to maybe buy shares cheaper" trade) and the single most
+        attractive short call (the "get paid while you own the stock" trade)
+        currently visible in the option chain. These are observations about what
+        the market is offering, not recommendations.
+      </p>
+      <p style="font-size:11px;color:var(--text-muted);margin-bottom:14px;">
+        Screen rules, in plain English: expires in 25-50 days; strike
+        chosen so the market is pricing roughly 65-80%
+        odds that the trade expires worthless; open interest at least 250
+        contracts and a tight bid-ask spread so you can actually get filled.
+        Yields are shown on a 30-day basis so you can compare across different
+        expirations. Implied-vol regime tag tells you how nervous the market is
+        about the name right now -- the higher, the more premium, the more risk.
+      </p>
+
+      <h4 style="margin-top:12px;color:var(--accent-cyan);font-size:14px;">Cash-secured puts &middot; get paid to maybe buy the stock lower</h4>
+      <div style="overflow-x:auto;">
+      <table class="scenario-table" style="margin-top:6px;font-size:13px;">
+        <thead><tr>
+          <th>Ticker</th>
+          <th>Spot</th>
+          <th>Implied vol</th>
+          <th>Strike</th>
+          <th>Expires</th>
+          <th>Premium yield (30d)</th>
+          <th>Chance worthless</th>
+          <th>Strike vs spot</th>
+          <th>Cash tied up per contract</th>
+        </tr></thead>
+        <tbody>
+          <tr><td style="font-weight:700;">OKLO</td><td>$66.84</td><td><span style="color:var(--accent-red);font-weight:600;">100%</span> <span style="color:var(--text-muted);font-size:11px;">(very high)</span></td><td>$60.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">8.08%</span></td><td>70%</td><td>10.2% below</td><td>$6,000</td></tr>
+          <tr><td style="font-weight:700;">MU</td><td>$452.70</td><td><span style="color:var(--accent-amber);font-weight:600;">70%</span> <span style="color:var(--text-muted);font-size:11px;">(elevated)</span></td><td>$430.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">5.96%</span></td><td>66%</td><td>5.0% below</td><td>$43,000</td></tr>
+          <tr><td style="font-weight:700;">TSLA</td><td>$401.09</td><td><span style="color:var(--accent-blue);font-weight:600;">46%</span> <span style="color:var(--text-muted);font-size:11px;">(normal)</span></td><td>$385.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">3.89%</span></td><td>65%</td><td>4.0% below</td><td>$38,500</td></tr>
+          <tr><td style="font-weight:700;">AVGO</td><td>$406.06</td><td><span style="color:var(--accent-blue);font-weight:600;">42%</span> <span style="color:var(--text-muted);font-size:11px;">(normal)</span></td><td>$390.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">3.28%</span></td><td>67%</td><td>4.0% below</td><td>$39,000</td></tr>
+          <tr><td style="font-weight:700;">META</td><td>$686.97</td><td><span style="color:var(--accent-blue);font-weight:600;">40%</span> <span style="color:var(--text-muted);font-size:11px;">(normal)</span></td><td>$660.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">3.26%</span></td><td>67%</td><td>3.9% below</td><td>$66,000</td></tr>
+          <tr><td style="font-weight:700;">AMZN</td><td>$250.74</td><td><span style="color:var(--accent-blue);font-weight:600;">38%</span> <span style="color:var(--text-muted);font-size:11px;">(normal)</span></td><td>$240.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">3.11%</span></td><td>68%</td><td>4.3% below</td><td>$24,000</td></tr>
+          <tr><td style="font-weight:700;">MSFT</td><td>$422.34</td><td><span style="color:var(--accent-blue);font-weight:600;">35%</span> <span style="color:var(--text-muted);font-size:11px;">(normal)</span></td><td>$405.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">2.66%</span></td><td>69%</td><td>4.1% below</td><td>$40,500</td></tr>
+          <tr><td style="font-weight:700;">NVDA</td><td>$200.98</td><td><span style="color:var(--accent-blue);font-weight:600;">40%</span> <span style="color:var(--text-muted);font-size:11px;">(normal)</span></td><td>$195.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">2.57%</span></td><td>67%</td><td>3.0% below</td><td>$19,500</td></tr>
+          <tr><td style="font-weight:700;">GOOG</td><td>$338.56</td><td><span style="color:var(--accent-blue);font-weight:600;">34%</span> <span style="color:var(--text-muted);font-size:11px;">(normal)</span></td><td>$325.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">2.33%</span></td><td>70%</td><td>4.0% below</td><td>$32,500</td></tr>
+          <tr><td style="font-weight:700;">AAPL</td><td>$270.75</td><td><span style="color:var(--text-muted);font-weight:600;">27%</span> <span style="color:var(--text-muted);font-size:11px;">(low)</span></td><td>$260.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">1.90%</span></td><td>70%</td><td>4.0% below</td><td>$26,000</td></tr>
+          <tr><td style="font-weight:700;">BROS</td><td>$53.46</td><td><span style="color:var(--accent-amber);font-weight:600;">70%</span> <span style="color:var(--text-muted);font-size:11px;">(elevated)</span></td><td colspan="6" style="color:var(--text-muted);font-style:italic;">no put setup tonight (liquidity gate failed for every candidate)</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h4 style="margin-top:18px;color:var(--accent-cyan);font-size:14px;">Covered calls &middot; get paid to maybe sell shares higher</h4>
+      <div style="overflow-x:auto;">
+      <table class="scenario-table" style="margin-top:6px;font-size:13px;">
+        <thead><tr>
+          <th>Ticker</th>
+          <th>Spot</th>
+          <th>Implied vol</th>
+          <th>Strike</th>
+          <th>Expires</th>
+          <th>Premium yield (30d)</th>
+          <th>Chance not called away</th>
+          <th>Strike vs spot</th>
+        </tr></thead>
+        <tbody>
+          <tr><td style="font-weight:700;">OKLO</td><td>$66.84</td><td><span style="color:var(--accent-red);font-weight:600;">100%</span> <span style="color:var(--text-muted);font-size:11px;">(very high)</span></td><td>$80.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">5.23%</span></td><td>67%</td><td>19.7% above</td></tr>
+          <tr><td style="font-weight:700;">MU</td><td>$452.70</td><td><span style="color:var(--accent-amber);font-weight:600;">70%</span> <span style="color:var(--text-muted);font-size:11px;">(elevated)</span></td><td>$510.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">3.64%</span></td><td>68%</td><td>12.7% above</td></tr>
+          <tr><td style="font-weight:700;">TSLA</td><td>$401.09</td><td><span style="color:var(--accent-blue);font-weight:600;">46%</span> <span style="color:var(--text-muted);font-size:11px;">(normal)</span></td><td>$430.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">2.76%</span></td><td>67%</td><td>7.2% above</td></tr>
+          <tr><td style="font-weight:700;">AVGO</td><td>$406.06</td><td><span style="color:var(--accent-blue);font-weight:600;">42%</span> <span style="color:var(--text-muted);font-size:11px;">(normal)</span></td><td>$430.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">2.60%</span></td><td>66%</td><td>5.9% above</td></tr>
+          <tr><td style="font-weight:700;">META</td><td>$686.97</td><td><span style="color:var(--accent-blue);font-weight:600;">40%</span> <span style="color:var(--text-muted);font-size:11px;">(normal)</span></td><td>$730.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">2.54%</span></td><td>67%</td><td>6.3% above</td></tr>
+          <tr><td style="font-weight:700;">AMZN</td><td>$250.74</td><td><span style="color:var(--accent-blue);font-weight:600;">38%</span> <span style="color:var(--text-muted);font-size:11px;">(normal)</span></td><td>$265.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">2.53%</span></td><td>66%</td><td>5.7% above</td></tr>
+          <tr><td style="font-weight:700;">MSFT</td><td>$422.34</td><td><span style="color:var(--accent-blue);font-weight:600;">35%</span> <span style="color:var(--text-muted);font-size:11px;">(normal)</span></td><td>$445.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">2.27%</span></td><td>67%</td><td>5.4% above</td></tr>
+          <tr><td style="font-weight:700;">NVDA</td><td>$200.98</td><td><span style="color:var(--accent-blue);font-weight:600;">40%</span> <span style="color:var(--text-muted);font-size:11px;">(normal)</span></td><td>$215.00</td><td>33d</td><td><span style="color:var(--accent-green);font-weight:700;">2.00%</span></td><td>67%</td><td>7.0% above</td></tr>
+          <tr><td style="font-weight:700;">GOOG</td><td>$338.56</td><td><span style="color:var(--accent-blue);font-weight:600;">34%</span> <span style="color:var(--text-muted);font-size:11px;">(normal)</span></td><td>$355.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">2.28%</span></td><td>65%</td><td>4.9% above</td></tr>
+          <tr><td style="font-weight:700;">AAPL</td><td>$270.75</td><td><span style="color:var(--text-muted);font-weight:600;">27%</span> <span style="color:var(--text-muted);font-size:11px;">(low)</span></td><td>$280.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">1.83%</span></td><td>66%</td><td>3.4% above</td></tr>
+          <tr><td style="font-weight:700;">BROS</td><td>$53.46</td><td><span style="color:var(--accent-amber);font-weight:600;">70%</span> <span style="color:var(--text-muted);font-size:11px;">(elevated)</span></td><td>$60.00</td><td>26d</td><td><span style="color:var(--accent-green);font-weight:700;">4.04%</span></td><td>68%</td><td>12.2% above</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p style="font-size:11px;color:var(--text-muted);margin-top:12px;">
+        Generated 2026-04-20T02:55:45.092481+00:00. Option prices are from CBOE's public feed with a
+        15-minute delay, which is fine for overnight planning. The "chance
+        worthless" number is a quick market-implied probability taken from each
+        contract's delta -- it is a rough guide, not a guarantee. No
+        recommendation is being made for any specific investor.
+      </p>
+    </div>
+    <!-- OPTIONS_SECTION_END -->
   </div>
 </section>
 

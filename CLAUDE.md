@@ -96,6 +96,13 @@ STEP 10 audit manifest + circuit breaker maintenance
 
 **Data acquisition + scoring:**
 - `quote_feed.py` -- yfinance grounded prices (authoritative, hard gate 7/9)
+- `options_chain.py` -- CBOE delayed-quotes option chain fetcher (stdlib only,
+  no auth, 15-minute delay). Appends ATM 30-day IV to `iv_history.jsonl` so
+  a true 52-week IV rank can be computed after ~20 sessions.
+- `options_candidates.py` -- picks the single best cash-secured-put and
+  covered-call candidate per ticker using the disciplined-seller spine
+  (25-50 day expiry, 0.20-0.35 delta, OI >= 250, tight spreads). Output is
+  flagged `public_safe: true`.
 - `wsb_scan.py` -- Reddit heat + sentiment, case-sensitive ticker match
 - `outcome_ledger.py` -- append / settle / stats on the calibration JSONL
 - `catalyst_score.py` -- tier x recency scoring, 1.5 min-score gate
@@ -117,6 +124,10 @@ STEP 10 audit manifest + circuit breaker maintenance
      (between `<!-- MACRO_CONTEXT_{START,END} -->`)
 - `render_geopolitical.py` -- `logs/geopolitical_scenarios.json`
   -> Vetted Geopolitical Scenarios card (between `<!-- GEO_SECTION_{START,END} -->`)
+- `render_options_ladder.py` -- `logs/options_candidates.json`
+  -> Option Selling Watch card with two tables (best cash-secured put per
+     ticker, best covered call per ticker) (between `<!-- OPTIONS_SECTION_{START,END} -->`).
+     Refuses to render unless input is flagged `public_safe: true`.
 - `render_email.py` -- `logs/email_input.json`
   -> plain-text email subject + body for Mike's Gmail draft
 
@@ -146,8 +157,26 @@ only; hand-edits there are forbidden and will be overwritten on the next run.
 ### Canonical JSON inputs (single source of truth)
 `~/.claude/scheduled-tasks/stock-analysis-refresh/logs/`:
 - `geopolitical_scenarios.json` -- feeds both dashboard card and email
+- `options_chain.json` -- CBOE-sourced raw option chain (public market data)
+- `options_candidates.json` -- picked best put + best call per ticker,
+  public_safe=true, feeds render_options_ladder.py
+- `iv_history.jsonl` -- rolling ATM-30d IV history per symbol (public market data)
 - `email_input.json` -- feeds render_email.py
+- `positions.json` -- **PRIVATE**, holdings + cash + open short options. Lives
+  in `~/.claude/...` only. Never committed to this repo. Read ONLY by the email
+  renderer (v1.1) and by assignment-watch tooling. NEVER by public renderers.
 - `{run_id}.json` -- audit manifest per run (retain 60)
+
+### Public / private split (enforced across renderers)
+- **Public** site output must never contain: share counts, cash balances, cost
+  basis, assignment events, personalized recommendations, or anything that
+  names the reader or says "you should". Those go to the private email only.
+- **Public renderers** (`render_bluf_grid.py`, `render_portfolio_matrix.py`,
+  `render_deep_dive.py`, `render_macro_context.py`, `render_geopolitical.py`,
+  `render_options_ladder.py`) read ONLY public-safe canonical JSONs and never
+  import from `positions.json`.
+- **Private renderer** (`render_email.py`, v1.1+) MAY read positions.json to
+  personalize the BLUF email that goes to Mike's inbox directly.
 
 ### Dashboard render markers (all machine-written, NEVER hand-edit)
 ```
@@ -164,6 +193,7 @@ only; hand-edits there are forbidden and will be overwritten on the next run.
 <!-- BLUF_BROS_START -->         ...render_deep_dive.py (BROS)... <!-- BLUF_BROS_END -->
 <!-- MACRO_CONTEXT_START -->     ...render_macro_context.py...    <!-- MACRO_CONTEXT_END -->
 <!-- GEO_SECTION_START -->       ...render_geopolitical.py...     <!-- GEO_SECTION_END -->
+<!-- OPTIONS_SECTION_START -->   ...render_options_ladder.py...   <!-- OPTIONS_SECTION_END -->
 ```
 Any manual edit between these markers will be overwritten on the next autonomous run.
 Add fresh data to the canonical JSON in `~/.claude/scheduled-tasks/stock-analysis-refresh/logs/` instead.
