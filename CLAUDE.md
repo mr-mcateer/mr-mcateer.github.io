@@ -97,10 +97,15 @@ STEP 5  append calibration entries (outcome_ledger.py append)
 STEP 6  HTML edits (where deltas warrant) + canonical JSON writes +
           programmatic renders (render_geopolitical.py, future BLUF/heatmap)
 STEP 7  integrity gate (div 340-380, evi == 18, close delta <=2, run_id consistency across all canonical JSONs)
-STEP 8  deploy (stash / rebase / push; never force)
-STEP 9  email assembly: write email_input.json, run render_email.py,
-          Gmail MCP create_draft
-STEP 10 audit manifest + circuit breaker maintenance
+STEP 8   deploy (stash / rebase / push; never force)
+STEP 8.5 email decision gate (email_decide.py): compute materiality
+          from deltas vs communicated_state.json; return skip / brief / full
+STEP 9   email assembly, routed by 8.5:
+          skip  -> no draft, commit ledger with consecutive_skips++
+          brief -> write email_brief_input.json, run render_email_brief.py
+          full  -> write email_input.json, run render_email.py
+          Then Gmail MCP create_draft + email_state.py commit
+STEP 10  audit manifest + circuit breaker maintenance
 ```
 
 ### Python toolkit (stdlib-only except yfinance)
@@ -141,7 +146,19 @@ STEP 10 audit manifest + circuit breaker maintenance
      ticker, best covered call per ticker) (between `<!-- OPTIONS_SECTION_{START,END} -->`).
      Refuses to render unless input is flagged `public_safe: true`.
 - `render_email.py` -- `logs/email_input.json`
-  -> plain-text email subject + body for Mike's Gmail draft
+  -> plain-text FULL email subject + body for Mike's Gmail draft
+
+**Email decision + brief path (new 2026-04-20):**
+- `email_decide.py` -- reads current canonical JSONs + `logs/communicated_state.json`
+  -> returns `{decision: skip|brief|full, materiality_score, deltas[], brief_seed}`.
+  Default decision is SKIP. Twice-daily runs that produce no material change
+  create no draft. Keep-alive brief fires only after 3+ silent days.
+- `render_email_brief.py` -- `logs/email_brief_input.json` (seeded from decide.brief_seed)
+  -> compact 150-350 word email, NO fixed sections, leads with top delta.
+- `email_state.py` -- the ONLY writer of `logs/communicated_state.json`.
+  Commit runs AFTER Gmail draft success (or after a skip is logged).
+  Never-re-surface invariant: `catalysts_communicated[]` blocks a source
+  URL from leading a second email for 14 days.
 
 **Removed 2026-04-19**: `render_scenarios.py` and the Interactive Scenario
 Planner section. Macro scenario probabilities change quarterly (when Goldman,
@@ -173,7 +190,15 @@ only; hand-edits there are forbidden and will be overwritten on the next run.
 - `options_candidates.json` -- picked best put + best call per ticker,
   public_safe=true, feeds render_options_ladder.py
 - `iv_history.jsonl` -- rolling ATM-30d IV history per symbol (public market data)
-- `email_input.json` -- feeds render_email.py
+- `email_input.json` -- feeds render_email.py (FULL tier)
+- `email_brief_input.json` -- feeds render_email_brief.py (BRIEF tier; transient, written per-run)
+- `communicated_state.json` -- persistent ledger of what Mike was last told.
+  Only writer: email_state.py. Consumed by email_decide.py for delta diffs.
+  Contains per-ticker {price, conviction, stance, pt_mean, buy_pct, bears_refuted_num},
+  macro snapshot, per-scenario likelihood buckets, options actionable list,
+  and catalysts_communicated[] URL ring-buffer (14-day retention).
+- `watchlist_criteria.json` -- STUB. Mike's screening mandate for new-name
+  opportunity surfacing. Scanner disabled until user populates hard_filters.
 - `positions.json` -- **PRIVATE**, holdings + cash + open short options. Lives
   in `~/.claude/...` only. Never committed to this repo. Read ONLY by the email
   renderer (v1.1) and by assignment-watch tooling. NEVER by public renderers.
