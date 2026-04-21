@@ -37,12 +37,24 @@ img/                            # Site images
 ## Stock Analysis Dashboard (stock-analysis/index.html)
 
 Live portfolio intelligence artifact. Updated autonomously by the
-`stock-analysis-refresh` scheduled task (weekdays 05:30 + 12:30 PT). Public
-URL: https://promptaisolutions.com/stock-analysis/
+`stock-analysis-refresh` scheduled task (weekdays 05:30 + 13:30 PT --
+afternoon slot moved out of the 3-4pm ET 0DTE reversal window per Options
+Intelligence Upgrade M1). Public URL:
+https://promptaisolutions.com/stock-analysis/
 
-**Portfolio universe (9 tickers):** MU, META, NVDA, MSFT, AMZN, GOOG, AAPL,
-TSLA, BROS. Recipient of the BLUF email is Mike McAteer at
-`m-mcateer@hotmail.com`.
+**Portfolio universes:**
+- Research / BLUF / conviction scoring (9 tickers): MU, META, NVDA, MSFT,
+  AMZN, GOOG, AAPL, TSLA, BROS.
+- Options desk (24 tickers, short-duration put-selling per client directive
+  2026-04-20): the core 9 + AVGO + OKLO + defense primes (LMT, RTX, NOC,
+  GD, PLTR) + addictive-product moats (PM, MO, STZ, SBUX, NFLX) + payment
+  rails (V, MA, INTU). Spine: 7-14 DTE, 0.15-0.25 delta, OI >= 500,
+  spread <= 5%, puts-primary, covered calls collapsed. Gamma-wall warning
+  banner required on dashboard. See
+  `~/.claude/scheduled-tasks/stock-analysis-refresh/DESIGN_BRIEF.md` and
+  `docs/options-compendium.md` for the full rationale.
+
+Recipient of the BLUF email is Mike McAteer at `m-mcateer@hotmail.com`.
 
 ### Pipeline architecture (v2.3, validated end-to-end 2026-04-18)
 
