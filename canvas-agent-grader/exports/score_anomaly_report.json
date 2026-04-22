@@ -1,0 +1,80 @@
+{
+  "generated_at": "2026-04-12 16:34:21",
+  "snapshot_file": "exports/gradebook_snapshot.json",
+  "submission_anomalies": [
+    {
+      "course_id": "23164",
+      "course_label": "P3 Metals 1",
+      "assignment_id": 475458,
+      "assignment_name": "Campus Handrail Plaque - Design & Fabrication",
+      "points_possible": 70.0,
+      "user_id": 8384,
+      "student_name": "Iain Bailes",
+      "score": 71.0,
+      "grade": "71",
+      "overage": 1.0,
+      "ratio": 1.0143,
+      "severity": "MINOR",
+      "graded_at": "2026-03-06T00:21:32Z"
+    },
+    {
+      "course_id": "23164",
+      "course_label": "P3 Metals 1",
+      "assignment_id": 476471,
+      "assignment_name": "Metal Types \u2014 Unit Quiz",
+      "points_possible": 25.0,
+      "user_id": 15415,
+      "student_name": "Colton Hankey",
+      "score": 35.0,
+      "grade": "35",
+      "overage": 10.0,
+      "ratio": 1.4,
+      "severity": "MAJOR",
+      "graded_at": "2026-03-06T00:23:22Z"
+    },
+    {
+      "course_id": "23124",
+      "course_label": "P1 Engines Fab 1",
+      "assignment_id": 475434,
+      "assignment_name": "Predator 212 - Engine Teardown Portfolio",
+      "points_possible": 100.0,
+      "user_id": 10263,
+      "student_name": "Abe Moore",
+      "score": 101.0,
+      "grade": "101",
+      "overage": 1.0,
+      "ratio": 1.01,
+      "severity": "MINOR",
+      "graded_at": "2026-03-11T03:25:26Z"
+    }
+  ],
+  "enrollment_anomalies": [
+    {
+      "course_id": "23164",
+      "course_label": "P3 Metals 1",
+      "user_id": 8384,
+      "student_name": "Iain Bailes",
+      "current_score": 100.18,
+      "current_grade": "A",
+      "final_score": 96.5,
+      "overage": 0.18
+    },
+    {
+      "course_id": "23164",
+      "course_label": "P3 Metals 1",
+      "user_id": 15415,
+      "student_name": "Colton Hankey",
+      "current_score": 100.5,
+      "current_grade": "A",
+      "final_score": 88.33,
+      "overage": 0.5
+    }
+  ],
+  "summary": {
+    "total_submission_anomalies": 3,
+    "extreme": 0,
+    "major": 1,
+    "minor": 2,
+    "students_over_100_pct": 2
+  }
+}

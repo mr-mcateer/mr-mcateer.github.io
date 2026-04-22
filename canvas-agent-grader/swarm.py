@@ -9,24 +9,24 @@ from bs4 import BeautifulSoup
 from agents import evaluate_with_strict_agent, evaluate_with_holistic_agent, synthesize_final_grade
 from canvas_api import download_attachment
 
-def run_swarm_on_submission(submission_parts, rubric_text):
+def run_swarm_on_submission(submission_parts, rubric_text, points_possible=None):
     """
     Orchestrates the 3-agent grading pipeline on a multimodal submission.
     Returns a dictionary with the full multi-agent breakdown.
     """
     print("  -> Spinning up Strict Evaluator...")
-    strict_eval = evaluate_with_strict_agent(submission_parts, rubric_text)
-    
+    strict_eval = evaluate_with_strict_agent(submission_parts, rubric_text, points_possible)
+
     # Optional delay to avoid ratelimits if running many concurrently in the future
-    time.sleep(15) 
-    
-    print("  -> Spinning up Holistic Reviewer...")
-    holistic_eval = evaluate_with_holistic_agent(submission_parts, rubric_text)
-    
     time.sleep(15)
-    
+
+    print("  -> Spinning up Holistic Reviewer...")
+    holistic_eval = evaluate_with_holistic_agent(submission_parts, rubric_text, points_possible)
+
+    time.sleep(15)
+
     print("  -> Synthesizing final consensus...")
-    final_eval = synthesize_final_grade(strict_eval, holistic_eval, rubric_text)
+    final_eval = synthesize_final_grade(strict_eval, holistic_eval, rubric_text, points_possible)
     
     # Package it all together
     return {
@@ -131,7 +131,18 @@ def extract_submission_parts(canvas_submission_obj):
             if os.path.exists(tmp_path):
                 os.remove(tmp_path)
                 
+    # 3. Comment thread (instructor feedback + student responses)
+    comments = canvas_submission_obj.get('submission_comments', [])
+    if comments:
+        parts.append("\n--- COMMENT THREAD (instructor and student communication) ---")
+        parts.append("IMPORTANT: Students were told to communicate corrections, clarifications, and additional context via comments. Give credit for information provided in comments.")
+        for c in comments:
+            author = c.get('author_name', 'Unknown')
+            body = c.get('comment', '')
+            created = c.get('created_at', '')
+            parts.append(f"[{created}] {author}: {body}")
+
     if not parts:
         return ["No content found to evaluate."]
-        
+
     return parts

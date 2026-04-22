@@ -1,0 +1,1248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Monday April 20 2026 -- Teaching Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* -------- palette -------- */
+  :root {
+    --ink:        #0f172a;
+    --subtle:     #475569;
+    --faint:      #94a3b8;
+    --line:       #e2e8f0;
+    --hairline:   #f1f5f9;
+    --paper:      #ffffff;
+    --cream:      #fafaf7;
+    --slate-bg:   #f8fafc;
+    --accent:     #1e3a8a;
+    --good:       #166534;
+    --good-bg:    #ecfdf5;
+    --warn:       #92400e;
+    --warn-bg:    #fffbeb;
+    --alert:      #991b1b;
+    --alert-bg:   #fef2f2;
+    --ink-box:    #0b1220;
+  }
+
+  @page { size: letter; margin: 0.45in; }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    font-size: 10.5pt;
+    line-height: 1.45;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    page-break-after: always;
+    padding: 0;
+  }
+  .page:last-of-type { page-break-after: auto; }
+
+  /* -------- type -------- */
+  h1, h2, h3, h4 {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  h1 { font-weight: 900; font-size: 34pt; line-height: 1.05; letter-spacing: -0.025em; }
+  h2 { font-weight: 800; font-size: 18pt; line-height: 1.15; letter-spacing: -0.02em; }
+  h3 { font-weight: 700; font-size: 12pt; line-height: 1.25; }
+  h4 { font-weight: 700; font-size: 10pt; line-height: 1.3; text-transform: uppercase; letter-spacing: 0.08em; color: var(--subtle); }
+  p { margin: 0 0 8pt 0; }
+
+  .eyebrow {
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .lede {
+    font-size: 13pt;
+    line-height: 1.4;
+    font-weight: 400;
+    color: var(--subtle);
+    max-width: 6.5in;
+  }
+
+  .mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 9pt;
+  }
+
+  /* -------- layout helpers -------- */
+  .grid  { display: grid; gap: 10pt; }
+  .g2    { grid-template-columns: 1fr 1fr; }
+  .g3    { grid-template-columns: 1fr 1fr 1fr; }
+  .g4    { grid-template-columns: repeat(4, 1fr); }
+  .g-2-1 { grid-template-columns: 2fr 1fr; }
+  .flex  { display: flex; gap: 10pt; }
+  .fcol  { display: flex; flex-direction: column; gap: 6pt; }
+  .between { display: flex; justify-content: space-between; align-items: baseline; }
+  .spacer-s { height: 6pt; }
+  .spacer-m { height: 12pt; }
+  .spacer-l { height: 24pt; }
+
+  /* -------- cover -------- */
+  .cover {
+    padding: 24pt 0 16pt 0;
+    border-bottom: 1pt solid var(--line);
+  }
+  .cover .date {
+    font-size: 11pt;
+    color: var(--subtle);
+    margin-top: 6pt;
+    font-weight: 500;
+  }
+  .hero-number {
+    font-size: 120pt;
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    color: var(--ink);
+  }
+  .hero-number small {
+    display: block;
+    font-size: 10pt;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--faint);
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-top: 6pt;
+  }
+
+  .headline-row {
+    display: grid;
+    grid-template-columns: 60pt 1fr;
+    align-items: start;
+    gap: 12pt;
+    padding: 12pt 0;
+    border-top: 0.5pt solid var(--line);
+  }
+  .headline-row:last-child { border-bottom: 0.5pt solid var(--line); }
+  .headline-row .tag {
+    font-weight: 800;
+    font-size: 11pt;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+  .headline-row .tag small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 500;
+    color: var(--faint);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .headline-row .body {
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+  .headline-row .body strong { font-weight: 700; }
+
+  /* -------- section header -------- */
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 6pt;
+    border-bottom: 1.5pt solid var(--ink);
+    margin-bottom: 14pt;
+  }
+  .section-head .num {
+    font-size: 9pt;
+    font-weight: 700;
+    color: var(--faint);
+    letter-spacing: 0.16em;
+  }
+
+  /* -------- cards -------- */
+  .card {
+    border: 0.75pt solid var(--line);
+    border-radius: 4pt;
+    padding: 10pt 12pt;
+    background: var(--paper);
+    break-inside: avoid;
+  }
+  .card .title {
+    font-weight: 800;
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--subtle);
+    margin-bottom: 6pt;
+  }
+  .card.tight { padding: 8pt 10pt; }
+
+  .pill {
+    display: inline-block;
+    padding: 2pt 7pt;
+    border-radius: 99pt;
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .pill.good   { background: var(--good-bg); color: var(--good); }
+  .pill.warn   { background: var(--warn-bg); color: var(--warn); }
+  .pill.alert  { background: var(--alert-bg); color: var(--alert); }
+  .pill.slate  { background: var(--slate-bg); color: var(--subtle); }
+
+  /* -------- bar -------- */
+  .bar {
+    height: 6pt;
+    background: var(--hairline);
+    border-radius: 99pt;
+    overflow: hidden;
+    position: relative;
+  }
+  .bar .fill {
+    height: 100%;
+    border-radius: 99pt;
+  }
+  .bar .fill.good   { background: #22c55e; }
+  .bar .fill.warn   { background: #f59e0b; }
+  .bar .fill.alert  { background: #ef4444; }
+
+  /* -------- sections table -------- */
+  table.data {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+  }
+  table.data th, table.data td {
+    padding: 5pt 7pt;
+    border-bottom: 0.5pt solid var(--line);
+    text-align: left;
+    vertical-align: middle;
+  }
+  table.data th {
+    font-weight: 700;
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--faint);
+    border-bottom: 1pt solid var(--ink);
+  }
+  table.data td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.data tr.group-row td { font-weight: 700; color: var(--subtle); background: var(--slate-bg); }
+
+  /* -------- callouts -------- */
+  .callout {
+    border-left: 3pt solid var(--ink);
+    padding: 8pt 12pt;
+    background: var(--cream);
+    margin: 8pt 0;
+  }
+  .callout.alert  { border-left-color: var(--alert); background: var(--alert-bg); }
+  .callout.warn   { border-left-color: var(--warn); background: var(--warn-bg); }
+  .callout.good   { border-left-color: var(--good); background: var(--good-bg); }
+
+  .callout .label {
+    font-size: 8pt;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 4pt;
+  }
+  .callout.alert .label { color: var(--alert); }
+  .callout.warn  .label { color: var(--warn); }
+  .callout.good  .label { color: var(--good); }
+
+  /* -------- timeline -------- */
+  .timeline {
+    border: 0.75pt solid var(--line);
+    border-radius: 4pt;
+    overflow: hidden;
+  }
+  .tl-row {
+    display: grid;
+    grid-template-columns: 55pt 1fr;
+    gap: 10pt;
+    padding: 8pt 12pt;
+    border-top: 0.5pt solid var(--hairline);
+    align-items: start;
+  }
+  .tl-row:first-child { border-top: none; }
+  .tl-row .tl-time {
+    font-weight: 800;
+    color: var(--ink);
+    font-size: 11pt;
+    font-variant-numeric: tabular-nums;
+  }
+  .tl-row .tl-time small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 600;
+    color: var(--faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 1pt;
+  }
+  .tl-row .tl-body { font-size: 10pt; line-height: 1.45; }
+  .tl-row .tl-body strong { font-weight: 700; }
+
+  /* -------- priority list -------- */
+  .priority-list { counter-reset: prio; }
+  .priority-item {
+    display: grid;
+    grid-template-columns: 32pt 1fr;
+    gap: 10pt;
+    padding: 10pt 0;
+    border-top: 0.5pt solid var(--line);
+    break-inside: avoid;
+  }
+  .priority-item:first-child { border-top: none; }
+  .priority-item .n {
+    font-size: 20pt;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.04em;
+  }
+  .priority-item .n small {
+    display: block;
+    font-size: 7pt;
+    font-weight: 700;
+    color: var(--faint);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 3pt;
+  }
+  .priority-item .body .who {
+    font-weight: 800;
+    font-size: 11pt;
+    color: var(--ink);
+  }
+  .priority-item .body .meta {
+    font-size: 8.5pt;
+    color: var(--faint);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 1pt;
+  }
+  .priority-item .body .say {
+    margin-top: 4pt;
+    font-size: 10pt;
+    line-height: 1.45;
+  }
+  .priority-item .body .say em {
+    font-style: italic;
+    color: var(--subtle);
+  }
+
+  /* -------- big quote -------- */
+  .pull-quote {
+    border-top: 1pt solid var(--ink);
+    border-bottom: 1pt solid var(--ink);
+    padding: 14pt 0;
+    margin: 16pt 0;
+    font-size: 16pt;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+  .pull-quote cite {
+    display: block;
+    font-size: 9pt;
+    font-weight: 500;
+    font-style: normal;
+    color: var(--subtle);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 8pt;
+  }
+
+  /* -------- footer -------- */
+  .page-footer {
+    margin-top: 16pt;
+    padding-top: 8pt;
+    border-top: 0.5pt solid var(--hairline);
+    display: flex;
+    justify-content: space-between;
+    font-size: 8pt;
+    color: var(--faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* -------- ADHD one-pager -------- */
+  .adhd-cover {
+    background: var(--ink-box);
+    color: #f8fafc;
+    padding: 20pt 24pt;
+    margin: -2pt;
+    border-radius: 4pt;
+  }
+  .adhd-cover h1 {
+    color: white;
+    font-size: 36pt;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+  }
+  .adhd-cover .eyebrow { color: #94a3b8; }
+  .adhd-cover .lede { color: #cbd5e1; }
+
+  .adhd-block {
+    padding: 14pt 0;
+    border-top: 0.5pt solid #334155;
+    color: #f1f5f9;
+  }
+  .adhd-block:first-of-type { border-top: none; }
+  .adhd-block h3 {
+    color: white;
+    font-size: 11pt;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 8pt;
+    font-weight: 800;
+  }
+  .adhd-block ol, .adhd-block ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    counter-reset: adhd;
+  }
+  .adhd-block ol li {
+    counter-increment: adhd;
+    padding: 4pt 0 4pt 28pt;
+    font-size: 11pt;
+    line-height: 1.4;
+    position: relative;
+    color: #e2e8f0;
+  }
+  .adhd-block ol li::before {
+    content: counter(adhd);
+    position: absolute;
+    left: 0;
+    top: 2pt;
+    width: 20pt;
+    height: 20pt;
+    background: #f8fafc;
+    color: var(--ink-box);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 9pt;
+  }
+  .adhd-block ul li {
+    padding: 3pt 0 3pt 16pt;
+    font-size: 10.5pt;
+    line-height: 1.45;
+    color: #e2e8f0;
+    position: relative;
+  }
+  .adhd-block ul li::before {
+    content: "\2192";
+    position: absolute;
+    left: 0;
+    top: 3pt;
+    color: #94a3b8;
+    font-weight: 700;
+  }
+  .adhd-block strong { color: white; font-weight: 700; }
+
+  /* -------- misc -------- */
+  ul.clean { list-style: none; margin: 0; padding: 0; }
+  ul.clean li { padding: 3pt 0; border-top: 0.5pt solid var(--hairline); font-size: 10pt; }
+  ul.clean li:first-child { border-top: none; }
+  ul.clean li strong { font-weight: 700; }
+
+  .kpi {
+    display: flex;
+    flex-direction: column;
+    gap: 2pt;
+  }
+  .kpi .v { font-size: 22pt; font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+  .kpi .l { font-size: 8pt; font-weight: 600; color: var(--faint); text-transform: uppercase; letter-spacing: 0.12em; }
+
+  hr.rule {
+    border: none;
+    border-top: 0.5pt solid var(--line);
+    margin: 14pt 0;
+  }
+
+  .key-val {
+    display: grid;
+    grid-template-columns: 90pt 1fr;
+    gap: 2pt 10pt;
+    font-size: 9.5pt;
+  }
+  .key-val .k { color: var(--faint); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-size: 8pt; }
+  .key-val .v { color: var(--ink); }
+
+</style>
+</head>
+<body>
+
+<!-- =========================================================== -->
+<!-- PAGE 1 -- COVER                                              -->
+<!-- =========================================================== -->
+<section class="page">
+
+  <div class="cover">
+    <div class="eyebrow">Teaching Playbook</div>
+    <h1>Monday<br>April 20, 2026.</h1>
+    <div class="date">ALL day schedule &middot; P1 Autos 50 min &middot; P3 + P5 Metals 45 min each &middot; No calendar conflicts</div>
+  </div>
+
+  <div class="spacer-l"></div>
+
+  <div class="grid g-2-1">
+    <div>
+      <div class="eyebrow">The through-line for this week</div>
+      <div class="pull-quote">
+        Every student names the one project they will finish by June 11, writes it on the wall, and we protect the minutes it takes to get there.
+        <cite>The commitment this Monday sets the tone for 23 days</cite>
+      </div>
+
+      <h3 style="margin-bottom: 8pt;">Today's three headlines</h3>
+
+      <div class="headline-row">
+        <div class="tag">P1<small>Autos</small></div>
+        <div class="body">
+          <strong>Module 05 Keep It Running opens.</strong>
+          Oil change debrief from Thursday into maintenance intervals, with a visceral sludge clip so the lesson sticks.
+          Oil Change Lab deadline moved to Friday 04/24 (announce loud).
+        </div>
+      </div>
+      <div class="headline-row">
+        <div class="tag">P3<small>Metals</small></div>
+        <div class="body">
+          <strong>The 23-day commitment goes on the wall.</strong>
+          Each student names the ONE project they finish by June 11.
+          Alec Steele Damascus video opens the period; triage conversations with Trevor, Logan, Colm, Kaiden close it.
+        </div>
+      </div>
+      <div class="headline-row">
+        <div class="tag">P5<small>Metals</small></div>
+        <div class="body">
+          <strong>Same framework, different urgency.</strong>
+          Liam Miller (21.6%, 9 missing) is the conversation of the day.
+          Open with "what is going on," not "where is your work."
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="hero-number">
+        23<small>Teaching days remaining<br>To June 11 finals</small>
+      </div>
+      <div class="spacer-m"></div>
+      <div class="card tight">
+        <div class="title">Semester burn rate</div>
+        <div class="bar" style="margin: 4pt 0;"><div class="fill good" style="width:65%;"></div></div>
+        <div style="display:flex; justify-content:space-between; font-size:9pt; color:var(--subtle); font-weight:600;">
+          <span>Day 43 of 66</span><span>65% through</span>
+        </div>
+        <hr class="rule">
+        <div class="key-val">
+          <div class="k">P1 Autos</div><div class="v">1,790 min left</div>
+          <div class="k">P3 Metals</div><div class="v">1,755 min left</div>
+          <div class="k">P5 Metals</div><div class="v">1,755 min left</div>
+          <div class="k">Week shape</div><div class="v">Mon &middot; Tue &middot; Thu</div>
+        </div>
+      </div>
+      <div class="spacer-m"></div>
+      <div class="card tight" style="background: var(--slate-bg);">
+        <div class="title">One new rule on every wall</div>
+        <div style="font-weight: 700; font-size: 11pt; letter-spacing: -0.01em;">
+          No wandering.
+        </div>
+        <div style="font-size: 9.5pt; color: var(--subtle); margin-top: 3pt;">
+          If you leave the Autos shop, Metals shop, or Kirsche's lab, tell me first or you are marked absent. Bathroom passes one at a time.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Page 1 &middot; Cover</span>
+    <span>Prepared Sun Apr 19 evening</span>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- PAGE 2 -- STATE OF THE SHOP (DASHBOARD)                      -->
+<!-- =========================================================== -->
+<section class="page">
+
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">Section 1</div>
+      <h2>The state of the shop.</h2>
+    </div>
+    <div class="num">01 / 08</div>
+  </div>
+
+  <div class="lede" style="margin-bottom: 16pt;">
+    Five active sections, 44 students, 1,790 shop minutes remaining per Autos student. P1 is healthy. P5 Metals runs on a bimodal split -- star fabricators and stuck kids sharing a bay. P3 Metals is the section that needs you this quarter.
+  </div>
+
+  <div class="grid g3" style="margin-bottom: 14pt;">
+    <div class="card">
+      <div class="kpi"><div class="v">44</div><div class="l">Unique students</div></div>
+    </div>
+    <div class="card">
+      <div class="kpi"><div class="v">19</div><div class="l">At-risk students (3+ missing or &lt;60%)</div></div>
+    </div>
+    <div class="card">
+      <div class="kpi"><div class="v">4</div><div class="l">Failing both a Metals + Engines section</div></div>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom: 8pt;">Per-section health</h3>
+  <table class="data">
+    <thead>
+      <tr>
+        <th>Section</th><th class="num">Enrolled</th>
+        <th style="width: 2.2in;">Course average</th>
+        <th class="num">At-risk</th><th class="num">High perf.</th>
+        <th>Vibe</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>P1 Engines Fab 1</strong></td>
+        <td class="num">10</td>
+        <td><div class="bar"><div class="fill good" style="width: 90.6%;"></div></div><span class="mono" style="color: var(--subtle);">90.6%</span></td>
+        <td class="num">6</td><td class="num">8</td>
+        <td><span class="pill good">Healthy</span></td>
+      </tr>
+      <tr>
+        <td><strong>P1 Engines Fab 2</strong></td>
+        <td class="num">9</td>
+        <td><div class="bar"><div class="fill good" style="width: 91.6%;"></div></div><span class="mono" style="color: var(--subtle);">91.6%</span></td>
+        <td class="num">4</td><td class="num">8</td>
+        <td><span class="pill good">Healthy</span></td>
+      </tr>
+      <tr>
+        <td><strong>P3 Metals 1</strong></td>
+        <td class="num">9</td>
+        <td><div class="bar"><div class="fill alert" style="width: 62.4%;"></div></div><span class="mono" style="color: var(--subtle);">62.4%</span></td>
+        <td class="num">8</td><td class="num">2</td>
+        <td><span class="pill alert">Struggling</span></td>
+      </tr>
+      <tr>
+        <td><strong>P3 Metals 2</strong></td>
+        <td class="num">4</td>
+        <td><div class="bar"><div class="fill alert" style="width: 66.0%;"></div></div><span class="mono" style="color: var(--subtle);">66.0%</span></td>
+        <td class="num">3</td><td class="num">1</td>
+        <td><span class="pill alert">Struggling</span></td>
+      </tr>
+      <tr>
+        <td><strong>P5 Metals 1</strong></td>
+        <td class="num">13</td>
+        <td><div class="bar"><div class="fill good" style="width: 87.6%;"></div></div><span class="mono" style="color: var(--subtle);">87.6%</span></td>
+        <td class="num">8</td><td class="num">10</td>
+        <td><span class="pill warn">Bimodal</span></td>
+      </tr>
+      <tr>
+        <td><strong>P5 Metals 2</strong></td>
+        <td class="num">2</td>
+        <td><div class="bar"><div class="fill good" style="width: 86.8%;"></div></div><span class="mono" style="color: var(--subtle);">86.8%</span></td>
+        <td class="num">1</td><td class="num">1</td>
+        <td><span class="pill good">Steady</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="spacer-m"></div>
+
+  <div class="grid g2">
+    <div class="callout good">
+      <div class="label">What is working</div>
+      <ul class="clean" style="margin-top:4pt;">
+        <li><strong>P1 average 91%.</strong> The portfolio format is driving real engagement. Eight high performers across two sections.</li>
+        <li><strong>P5 Metals stars.</strong> Ten students at 90%+ in one section -- rare. North, Zack, Dell, Willow, Calvin, Hans, Bodhi, Matthew, Calan, Jackson are all carrying their own weight.</li>
+        <li><strong>Video-hook + hands-on rhythm.</strong> Last Thursday's live oil change created real curiosity about maintenance -- that momentum goes directly into Module 05 today.</li>
+        <li><strong>Cross-roster Colton paradox.</strong> Colton's 100% in P1-F2 tells you the portfolio system rewards ambitious students regardless of mess habits. Keep that incentive; just tighten the cleanup.</li>
+      </ul>
+    </div>
+    <div class="callout alert">
+      <div class="label">What is underwater</div>
+      <ul class="clean" style="margin-top:4pt;">
+        <li><strong>P3 average 62%.</strong> Eight of nine in P3-M1 are at-risk. This is the section that needs different project structure, not just more open shop.</li>
+        <li><strong>Liam Miller</strong> at 21.6% with 9 missing. Among your highest performers' classmates -- he is watching them succeed while he falls further behind.</li>
+        <li><strong>Kaiden Lucas</strong> is failing in both P3-M2 (40%) and P1-F2 (49%). Same student, same pattern, two sections. Needs a single conversation with a parent present.</li>
+        <li><strong>Insurance Decoded backlog.</strong> 6 submissions in P1-F2 filed 04/14; nothing graded until tonight's swarm run. Announce deadline compliance matters.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Page 2 &middot; State of the shop</span>
+    <span>Monday 04/20 &middot; ALL day</span>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- PAGE 3 -- P1 AUTOS DEEP DIVE                                 -->
+<!-- =========================================================== -->
+<section class="page">
+
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">Section 2 &middot; Period 1</div>
+      <h2>P1 Autos &middot; 50 minutes.</h2>
+    </div>
+    <div class="num">02 / 08</div>
+  </div>
+
+  <div class="lede" style="margin-bottom: 14pt;">
+    Thursday was the live oil change on your car. Today turns that into Module 05 Keep It Running. Students who are caught up become the shop crew. No one leaves idle.
+  </div>
+
+  <h4 style="color: var(--ink); margin-bottom: 6pt;">Daily journal prompt</h4>
+  <div class="callout">
+    Last Thursday you saw an oil change happen on a real car. Now imagine a driver who skipped every oil change for five years. What do you think is the FIRST thing that goes wrong -- and when?
+  </div>
+
+  <div class="spacer-m"></div>
+
+  <h3 style="margin-bottom: 8pt;">Flow</h3>
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-time">5m<small>hook</small></div>
+      <div class="tl-body">
+        <strong>ChrisFix "Top 10 Mistakes Car Owners Make"</strong> (4:24).
+        Cue to 1:40 for the cold-engine redlining clip. No filler, no language concerns, 6.6M views in its decade on YouTube.
+        <div class="mono" style="color: var(--subtle); margin-top: 3pt;">youtube.com/watch?v=gkn-K2noClw</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time">8m<small>whiteboard</small></div>
+      <div class="tl-body">
+        <strong>The three intervals that save your engine.</strong>
+        Oil &amp; filter 3K-5K (conventional) or 7.5K-10K (synthetic).
+        Tire rotation 5K-7.5K + monthly pressure check.
+        Brake fluid flush every 2-3 years -- "nobody does this, until the pedal goes to the floor."
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time">3m<small>consequence</small></div>
+      <div class="tl-body">
+        <strong>Rainman Ray sludge clip</strong>, cue 2:00-4:00. Valve cover comes off, cam journals drowning in tar. The visual that does more teaching than a worksheet.
+        <div class="mono" style="color: var(--subtle); margin-top: 3pt;">youtube.com/watch?v=czeUsE2WspU</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time">28m<small>two tracks</small></div>
+      <div class="tl-body">
+        <strong>Track A -- Canvas Module 05 Keep It Running.</strong>
+        Build the maintenance schedule for your portfolio vehicle. Three deliverables: annual cost estimate, three early-warning symptoms, one thing a shady mechanic will try to sell you that you do not need.
+        <br><br>
+        <strong>Track B -- Shop crew</strong> (for students caught up on the portfolio):
+        <ul class="clean" style="margin-top:3pt;">
+          <li>Two new small-engine projects just arrived. See me for teardown / diagnose / rebuild assignments.</li>
+          <li>Haul-off crew (2 volunteers, gloves): load used oil jugs, antifreeze, gas cans into Mr. McAteer's truck.</li>
+          <li>Oil collector drain team (2 volunteers) with John.</li>
+          <li>Shop sweep + possible hose-out of the bay floor. Weather call at the top of the period.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time">6m<small>wrap</small></div>
+      <div class="tl-body">
+        Grade check on laptops. Every student pulls up their Canvas grades.
+        <strong>Announce loudly:</strong> Oil Change Lab deadline has moved to <strong>Friday 04/24 at 11:59 PM</strong>. If you already turned in a writeup you are locked in. If not, this week is your window.
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer-m"></div>
+
+  <div class="grid g2">
+    <div class="card">
+      <div class="title">Pull-aside this period</div>
+      <ul class="clean">
+        <li><strong>Daniel Darling.</strong> Open his Predator 212 portfolio Google Doc together on his laptop. Verify photos and instructor checkpoints. If still locked, we have to talk about the zero.</li>
+        <li><strong>Brandon Robertson.</strong> What files did he mean to attach to Module 03? Re-upload directly on the assignment, not in the comment thread.</li>
+        <li><strong>Cynthia Tran.</strong> Three zeros, all wrong-file uploads. Let us get the right files turned in today.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="title">What landed tonight</div>
+      <ul class="clean">
+        <li><strong>Real Price Tag point value:</strong> dropped from 40 to 20 in both P1 sections to match the rubric sum. No more mental math during grading.</li>
+        <li><strong>Oil Change Lab:</strong> deadline pushed 04/10 to 04/24 in Canvas. Students will see the new date when they log in.</li>
+        <li><strong>Fresh swarm grades:</strong> three CSVs waiting for your review before push. See page 5.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Page 3 &middot; P1 Autos</span>
+    <span>50 minutes &middot; Two tracks + three videos</span>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- PAGE 4 -- METALS DEEP DIVE                                   -->
+<!-- =========================================================== -->
+<section class="page">
+
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">Section 3 &middot; Periods 3 + 5</div>
+      <h2>Metals &middot; 45 minutes each.</h2>
+    </div>
+    <div class="num">03 / 08</div>
+  </div>
+
+  <div class="lede" style="margin-bottom: 14pt;">
+    Open shop mode has quietly carried Metals since mid-March. Today that mode becomes a 23-day commitment -- one project per student, on the wall, owned until June 11. The Alec Steele video opens the period because his whole point is "we've got to have a plan."
+  </div>
+
+  <h4 style="color: var(--ink); margin-bottom: 6pt;">Daily journal prompt</h4>
+  <div class="callout">
+    There are 23 class days left before finals. Name the ONE project you want to have finished and graded by June 11 -- and the first thing you need to do this period to get there.
+  </div>
+
+  <div class="spacer-m"></div>
+
+  <h3 style="margin-bottom: 8pt;">Flow</h3>
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-time">11m<small>hook</small></div>
+      <div class="tl-body">
+        <strong>Alec Steele -- Making Raindrop Pattern Damascus</strong> (11:01). A complete fabrication project from raw steel stack to finished reveal in one short video. His opening line is literally "we've got to have a plan."
+        <div class="mono" style="color: var(--subtle); margin-top: 3pt;">youtube.com/watch?v=f3sYUt28od8</div>
+        <div style="margin-top: 4pt; color: var(--subtle);">
+          Etch reveal at 9:22 is the phones-down moment. Optional worksheet ready to print (see page 5).
+        </div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time">4m<small>commitment</small></div>
+      <div class="tl-body">
+        Countdown reveal on the board. Every student writes their commitment project next to their name on the whiteboard. Those commitments stay up the rest of the semester -- the wall itself becomes the accountability.
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time">5m<small>triage</small></div>
+      <div class="tl-body">
+        One-on-one at the workbench while other students are already working. Three questions, short answers:
+        <em>Where are you right now? What is blocking you? What do you need from me this week?</em>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time">20m<small>open shop</small></div>
+      <div class="tl-body">
+        Stations live. Priority by remaining days + lowest submitted:
+        <ul class="clean" style="margin-top:3pt;">
+          <li><strong>Metal Bookend</strong> -- push hardest; 2 of 13 submitted in P5, 1 of 9 in P3.</li>
+          <li><strong>Campus Handrail Plaque</strong> -- finish work, fit and polish.</li>
+          <li><strong>Design Challenge</strong> -- scrap + Epilog laser + spray. Low-friction.</li>
+          <li><strong>CSWA practice</strong> -- self-check with the answer key.</li>
+          <li><strong>Plasma CNC</strong> -- use the calculator before cutting. Queue with me.</li>
+          <li><strong>Knee Mill</strong> -- check with Bob for rotation.</li>
+          <li><strong>Metal Entrepreneur Challenge</strong> -- closeout writeups (P5 only).</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time">5m<small>exit ticket</small></div>
+      <div class="tl-body">
+        On the way out: <strong>one concrete thing you accomplished today; one thing you need Tuesday to keep moving.</strong> Hand in the worksheet if you used one.
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer-m"></div>
+
+  <div class="grid g2">
+    <div class="card">
+      <div class="title">P3 Metals pull-aside</div>
+      <ul class="clean">
+        <li><strong>Trevor Skaggs</strong> (23.8%, 9 missing). One project, two weeks. Pick it together.</li>
+        <li><strong>Logan Baller</strong> (32.5%, 8 missing). Same approach.</li>
+        <li><strong>Colm Barton</strong> (47.2%, 6 missing). Same.</li>
+        <li><strong>Kaiden Lucas</strong> (40%; also 49% in P1-F2). Parent call this week if no engagement today.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="title">P5 Metals pull-aside</div>
+      <ul class="clean">
+        <li><strong>Liam Miller</strong> (21.6%, 9 missing). Most urgent conversation of your day. Open with "what is going on," not "where is your work."</li>
+        <li><strong>Dominic Desalvo</strong> (60.7%, 6 missing). One clear commitment.</li>
+        <li><strong>Hans Tarubal</strong>. Close the Deep Clean Day 3/30 writeup before Thursday -- it is the only thing flagging his otherwise clean record.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Page 4 &middot; Metals</span>
+    <span>45 minutes &middot; Countdown begins</span>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- PAGE 5 -- THE GRADING PUNCHLIST                              -->
+<!-- =========================================================== -->
+<section class="page">
+
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">Section 4</div>
+      <h2>The grading punchlist.</h2>
+    </div>
+    <div class="num">04 / 08</div>
+  </div>
+
+  <div class="lede" style="margin-bottom: 14pt;">
+    Three draft-grade CSVs are ready. The swarm agreed on most; a handful need your judgment. Push order below. Cleaning points for 28 students plus three targeted comments already went in tonight.
+  </div>
+
+  <div class="grid g3" style="margin-bottom: 14pt;">
+    <div class="callout good">
+      <div class="label">Already done</div>
+      <ul class="clean" style="margin-top:4pt;">
+        <li><strong>Real Price Tag points</strong> 40 to 20 (both sections)</li>
+        <li><strong>Oil Change Lab</strong> due date moved to Fri 04/24</li>
+        <li><strong>Shop Cleanup 4/16</strong> 10/10 to all 28 metals students</li>
+        <li><strong>Personal comments</strong> to Trevor, Dawson, Colton -- verified verbatim</li>
+      </ul>
+    </div>
+    <div class="callout warn">
+      <div class="label">Your push tomorrow</div>
+      <ul class="clean" style="margin-top:4pt;">
+        <li><code class="mono">regrade_real_price_tag.csv</code> 14 rows</li>
+        <li><code class="mono">draft_grades_P1_Engines_Fab_2.csv</code> 11 rows</li>
+        <li><code class="mono">draft_grades_P1_Engines_Fab_1.csv</code> 17 rows</li>
+      </ul>
+      <div style="margin-top: 6pt; font-size: 9pt; color: var(--subtle);">
+        All in <code class="mono">canvas-agent-grader/exports/</code>. Push with <code class="mono">cli.py submit</code>.
+      </div>
+    </div>
+    <div class="callout alert">
+      <div class="label">Do not push without SpeedGrader</div>
+      <ul class="clean" style="margin-top:4pt;">
+        <li><strong>Hazel Shaub</strong> on Module 05 (S=12 H=30, 60% agent gap -- something was missed)</li>
+        <li><strong>Daniel Darling</strong> on Predator 212 (locked Google Doc)</li>
+        <li><strong>Hans Tarubal</strong> on Insurance Decoded (not in CSV, text entry may be empty)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom: 8pt;">Real Price Tag regrade -- 14 rows on the new 20-pt scale</h3>
+  <table class="data">
+    <thead>
+      <tr>
+        <th>Student</th><th>Section</th>
+        <th class="num">Old (/40)</th><th class="num">New (/20)</th>
+        <th class="num">Halved equiv.</th><th class="num">Delta</th><th>Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Alex Eigel</td><td>P1-F1</td><td class="num">40</td><td class="num"><strong>19.0</strong></td><td class="num">20.0</td><td class="num">-1.0</td><td>small ding on rescore</td></tr>
+      <tr><td>Hazel Shaub</td><td>P1-F1</td><td class="num">36</td><td class="num"><strong>20.0</strong></td><td class="num">18.0</td><td class="num">+2.0</td><td>bump up on rescore</td></tr>
+      <tr><td>Natalie Yong</td><td>P1-F1</td><td class="num">36</td><td class="num"><strong>19.0</strong></td><td class="num">18.0</td><td class="num">+1.0</td><td>small bump</td></tr>
+      <tr><td>David O'Briant</td><td>P1-F2</td><td class="num">32</td><td class="num"><strong>19.5</strong></td><td class="num">16.0</td><td class="num">+3.5</td><td>big bump -- original may have missed effort</td></tr>
+      <tr><td>Oliver Norris</td><td>P1-F2</td><td class="num">40</td><td class="num"><strong>20.0</strong></td><td class="num">20.0</td><td class="num">0.0</td><td>perfect, clean halve</td></tr>
+      <tr><td>Hans Tarubal</td><td>P1-F2</td><td class="num">34</td><td class="num"><strong>15.0</strong></td><td class="num">17.0</td><td class="num">-2.0</td><td>swarm graded stricter than you did</td></tr>
+      <tr class="group-row"><td colspan="7">Previously ungraded</td></tr>
+      <tr><td>Ian Fuhrman</td><td>P1-F1</td><td class="num">--</td><td class="num"><strong>19.0</strong></td><td class="num">--</td><td class="num">new</td><td>clean agent agreement</td></tr>
+      <tr><td>Zeph Caze</td><td>P1-F1</td><td class="num">--</td><td class="num"><strong>17.0</strong></td><td class="num">--</td><td class="num">new</td><td>clean</td></tr>
+      <tr><td>Nathan Clark</td><td>P1-F1</td><td class="num">--</td><td class="num"><strong>17.0</strong></td><td class="num">--</td><td class="num">new</td><td>clean on rescore</td></tr>
+      <tr><td>Cynthia Tran</td><td>P1-F1</td><td class="num">--</td><td class="num"><strong>0.0</strong></td><td class="num">--</td><td class="num">new</td><td>wrong file, never resubmitted</td></tr>
+      <tr><td>Daniel Darling</td><td>P1-F1</td><td class="num">--</td><td class="num"><strong>14.0</strong></td><td class="num">--</td><td class="num">new</td><td>fair given what agents could read</td></tr>
+      <tr><td>Brandon Robertson</td><td>P1-F2</td><td class="num">--</td><td class="num"><strong>0.0</strong></td><td class="num">--</td><td class="num">new</td><td>see-comments; files not attached to assignment</td></tr>
+      <tr><td>Lincoln Ziniker</td><td>P1-F2</td><td class="num">--</td><td class="num"><strong>16.0</strong></td><td class="num">--</td><td class="num">new</td><td>clean</td></tr>
+      <tr><td>Noah Steele</td><td>P1-F2</td><td class="num">--</td><td class="num"><strong>18.0</strong></td><td class="num">--</td><td class="num">new</td><td>clean</td></tr>
+    </tbody>
+  </table>
+
+  <div class="spacer-m"></div>
+
+  <div class="callout">
+    <div class="label">Push order in the morning</div>
+    <ol style="margin: 6pt 0 0 16pt; padding: 0;">
+      <li><code class="mono">python3 cli.py submit --course 23124 --file exports/regrade_real_price_tag.csv</code></li>
+      <li><code class="mono">python3 cli.py submit --course 23344 --file exports/regrade_real_price_tag.csv</code></li>
+      <li><code class="mono">python3 cli.py submit --course 23344 --file exports/draft_grades_P1_Engines_Fab_2.csv</code></li>
+      <li><code class="mono">python3 cli.py submit --course 23124 --file exports/draft_grades_P1_Engines_Fab_1.csv</code> (review Hazel 05 first)</li>
+    </ol>
+  </div>
+
+  <div class="page-footer">
+    <span>Page 5 &middot; Grading punchlist</span>
+    <span>28 already posted &middot; 42 more queued</span>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- PAGE 6 -- PEOPLE                                             -->
+<!-- =========================================================== -->
+<section class="page">
+
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">Section 5</div>
+      <h2>Who to talk to tomorrow.</h2>
+    </div>
+    <div class="num">05 / 08</div>
+  </div>
+
+  <div class="lede" style="margin-bottom: 14pt;">
+    Ranked by urgency. The opener matters more than the content -- get the first sentence right and the conversation can carry itself.
+  </div>
+
+  <div class="priority-list">
+    <div class="priority-item">
+      <div class="n">1<small>P5 &middot; today</small></div>
+      <div class="body">
+        <div class="who">Liam Miller &middot; P5 Metals 1</div>
+        <div class="meta">21.6% &middot; 9 missing &middot; most urgent in the building</div>
+        <div class="say">
+          He is sitting next to ten students at 90%+ watching them succeed while he falls further behind. This conversation is not about grades. Start with: <em>"Liam, I want five minutes with you today. Not about missing work. I just want to know what is going on."</em> Then listen. Pick one project he will actually do.
+        </div>
+      </div>
+    </div>
+    <div class="priority-item">
+      <div class="n">2<small>P3/P1 &middot; today</small></div>
+      <div class="body">
+        <div class="who">Kaiden Lucas &middot; P3 Metals 2 + P1 Engines Fab 2</div>
+        <div class="meta">40% here &middot; 49% in Engines &middot; failing both your sections</div>
+        <div class="say">
+          Same student, same pattern, two sections. A single conversation is more effective than two. Opener: <em>"Kaiden, you are the only student who has me in back-to-back periods. I see more of your work than anyone. I am going to keep it real with you."</em> Then one project per section, and a parent call on the calendar for Thursday.
+        </div>
+      </div>
+    </div>
+    <div class="priority-item">
+      <div class="n">3<small>P3 &middot; today</small></div>
+      <div class="body">
+        <div class="who">Trevor Skaggs &middot; P3 Metals 1</div>
+        <div class="meta">23.8% &middot; 9 missing &middot; already got the cleanup warning tonight</div>
+        <div class="say">
+          He just got a written warning on his cleanup grade about the welding-booth mess. Today's conversation acknowledges the welding practice is valued, and pivots to the one project that finishes. Frame: <em>"Trevor, the welding is real work. Let us pick the one piece that carries it forward."</em>
+        </div>
+      </div>
+    </div>
+    <div class="priority-item">
+      <div class="n">4<small>P3 &middot; today</small></div>
+      <div class="body">
+        <div class="who">Logan Baller &middot; P3 Metals 1</div>
+        <div class="meta">32.5% &middot; 8 missing</div>
+        <div class="say">
+          Similar profile to Trevor. Pick the one project. If you want the conversation to stick, make it physical -- walk over to a specific bench, pick up a specific piece of steel, and say "this one."
+        </div>
+      </div>
+    </div>
+    <div class="priority-item">
+      <div class="n">5<small>P1 &middot; today</small></div>
+      <div class="body">
+        <div class="who">Daniel Darling &middot; P1 Engines Fab 1</div>
+        <div class="meta">60.2% &middot; 4 missing &middot; Predator 212 locked</div>
+        <div class="say">
+          The portfolio swarm could not see his Google Doc because he locked it. Pull him aside, sit at his laptop, have him open it. Either the work is there (verify) or it is not (accept the 14/20 rescore and close it out). Either way, end with a reset.
+        </div>
+      </div>
+    </div>
+    <div class="priority-item">
+      <div class="n">6<small>P1 &middot; today</small></div>
+      <div class="body">
+        <div class="who">Brandon Robertson &middot; P1 Engines Fab 2</div>
+        <div class="meta">100% average &middot; but lost points on two assignments by uploading wrong</div>
+        <div class="say">
+          Not an at-risk conversation. A workflow fix. He is putting files in comment threads instead of on the assignment. Two minutes: show him how to attach properly, then move on.
+        </div>
+      </div>
+    </div>
+    <div class="priority-item">
+      <div class="n">7<small>P5 &middot; today</small></div>
+      <div class="body">
+        <div class="who">Dominic Desalvo &middot; P5 Metals 1</div>
+        <div class="meta">60.7% &middot; 6 missing</div>
+        <div class="say">
+          Not as dire as Liam but on the same slope. One clear commitment. Same framework.
+        </div>
+      </div>
+    </div>
+    <div class="priority-item">
+      <div class="n">8<small>any period</small></div>
+      <div class="body">
+        <div class="who">Cynthia Tran &middot; P1 Engines Fab 1</div>
+        <div class="meta">96.4% overall but three zeros from wrong-file uploads</div>
+        <div class="say">
+          Quick fix, big lift. Her actual work is there; she just uploaded the wrong files for 01, 02, and 03. Walk her through re-uploading correctly. Two minutes each.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout warn" style="margin-top: 14pt;">
+    <div class="label">Parent-contact list -- this week, not today</div>
+    If no engagement improvement by Thursday, call home: <strong>Trevor Skaggs, Logan Baller, Kaiden Lucas, Liam Miller.</strong>
+    Tone: "I want you to know what I am seeing, and I want us on the same page before finals week." Not discipline. Partnership.
+  </div>
+
+  <div class="page-footer">
+    <span>Page 6 &middot; People</span>
+    <span>8 conversations &middot; 4 parent calls cued</span>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- PAGE 7 -- THIS WEEK + BEYOND                                 -->
+<!-- =========================================================== -->
+<section class="page">
+
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">Section 6</div>
+      <h2>The week &middot; the stretch &middot; the finish.</h2>
+    </div>
+    <div class="num">06 / 08</div>
+  </div>
+
+  <div class="lede" style="margin-bottom: 14pt;">
+    You have three instructional days this week (Mon / Tue / Thu), eight weeks total before finals. That is shorter than it feels. Here is the shape of it.
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <div class="title">This week &middot; Apr 20-24</div>
+      <ul class="clean">
+        <li><strong>Mon 04/20 ALL</strong> -- this playbook. Countdown starts. Cleaning points posted. Grades pushed.</li>
+        <li><strong>Tue 04/21 ODD (90 min)</strong> -- deeper open shop on commitment projects. Insurance Decoded grading in P1.</li>
+        <li><strong>Wed 04/22 ODD</strong> -- no your shop classes.</li>
+        <li><strong>Thu 04/23 ALL</strong> -- Shop Cleanup 4/23 assignment (publish + grade). First parent-call check-in on Trevor / Logan / Liam / Kaiden.</li>
+        <li><strong>Fri 04/24</strong> -- Oil Change Lab hard deadline, 11:59 PM.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="title">The 23-day burn rate</div>
+      <ul class="clean">
+        <li><strong>Weeks remaining:</strong> 8 weeks of instruction (one with Memorial Day short)</li>
+        <li><strong>ALL days left:</strong> 7 at 50/45 minutes</li>
+        <li><strong>ODD days left:</strong> 16 at 90 minutes</li>
+        <li><strong>Project capacity per student:</strong> 1 major + 1 minor (realistic)</li>
+        <li><strong>Risk:</strong> three students (Trevor, Logan, Liam) have zero finished projects from Q3. Their commitment choice today is effectively their Q4 grade.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="spacer-m"></div>
+
+  <div class="grid g2">
+    <div class="callout good">
+      <div class="label">What is working -- protect these</div>
+      <ul class="clean" style="margin-top:4pt;">
+        <li><strong>P1 portfolio format.</strong> Writeup + photo + checkpoint = real engagement + grades that track effort. Do not change this before June.</li>
+        <li><strong>Video-hook discipline.</strong> Short, high-stakes video leading into hands-on work. Thursday's oil change is a template; today's sludge clip + Damascus reveal continue the pattern.</li>
+        <li><strong>Weekly cleanup points.</strong> Low-friction 10 pts that reward shop citizenship. Keeps the bar clear even for struggling students.</li>
+        <li><strong>Cross-tier peer help.</strong> Ask high performers to help stuck students during the last 5 minutes of open shop -- voluntary, not assigned.</li>
+      </ul>
+    </div>
+    <div class="callout alert">
+      <div class="label">What needs work -- this quarter</div>
+      <ul class="clean" style="margin-top:4pt;">
+        <li><strong>Shop cleanliness after welding practice.</strong> Trevor and Dawson are the named offenders tonight. Bob the 83-year-old staff member cleans up after Colton. This is a culture problem that a good April fixes.</li>
+        <li><strong>P3 Metals structure.</strong> Open shop alone does not work for a section where 8 of 9 are at-risk. Consider a micro-assignment gate for P3 specifically -- weekly "here is what you did" writeup for 5 pts.</li>
+        <li><strong>File-attachment hygiene.</strong> Brandon, Cynthia, Daniel each lost points to upload workflow, not content. Two-minute demo in P1 at the next grade check fixes it.</li>
+        <li><strong>Insurance Decoded grading lag.</strong> 6 submissions sat 4 days before tonight's swarm. For the remaining modules 05-06, grade within 48h of deadline.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="spacer-m"></div>
+
+  <div class="pull-quote" style="font-size: 14pt;">
+    Pick the one student this week who you can clearly measure a change in. Keep the receipts. That student is proof to yourself that the 23 days mattered.
+    <cite>For the long quarter closeout &middot; pick the winnable fight</cite>
+  </div>
+
+  <div class="page-footer">
+    <span>Page 7 &middot; The stretch</span>
+    <span>8 weeks to finals</span>
+  </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- PAGE 8 -- ADHD ONE-PAGER                                     -->
+<!-- =========================================================== -->
+<section class="page">
+
+  <div class="adhd-cover">
+    <div class="eyebrow">The one page</div>
+    <h1>If you only read<br>one thing.</h1>
+    <div class="lede">Everything above, compressed. Read it at the stoplight. Read it again in the parking lot. That is enough.</div>
+  </div>
+
+  <div class="adhd-cover" style="margin-top: 0; border-top-left-radius: 0; border-top-right-radius: 0;">
+
+    <div class="adhd-block">
+      <h3>5 things before the first bell</h3>
+      <ol>
+        <li><strong>Push three grade CSVs.</strong> Open the Apple Note, copy the four <span class="mono" style="color:#93c5fd;">cli.py submit</span> commands, paste them one at a time.</li>
+        <li><strong>Print the Metals worksheet</strong> from <span class="mono" style="color:#93c5fd;">~/Downloads/monday-briefing-2026-04-20/</span>. 10 copies per period.</li>
+        <li><strong>Paste the two Google Sites agendas</strong> using the clipboard workflow. Autos first, then Metals.</li>
+        <li><strong>Pre-cue three videos.</strong> ChrisFix at 1:40. Rainman Ray at 2:00. Alec Steele from the start.</li>
+        <li><strong>Put the No-Wandering sign on both shop doors.</strong> Bathroom one at a time.</li>
+      </ol>
+    </div>
+
+    <div class="adhd-block">
+      <h3>5 people to find today</h3>
+      <ol>
+        <li><strong>Liam Miller</strong> (P5). Open with "what is going on." Listen. One project.</li>
+        <li><strong>Kaiden Lucas</strong> (P3-M2 and P1-F2). One conversation covers both. Parent call Thursday.</li>
+        <li><strong>Trevor + Logan + Colm</strong> (P3-M1). Each picks a commitment project, on the wall.</li>
+        <li><strong>Daniel Darling</strong> (P1-F1). Sit at his laptop. Unlock the Predator 212 doc.</li>
+        <li><strong>Brandon Robertson</strong> (P1-F2). Two-minute upload workflow fix.</li>
+      </ol>
+    </div>
+
+    <div class="adhd-block">
+      <h3>5 rules you are reinforcing</h3>
+      <ul>
+        <li><strong>No wandering.</strong> Tell me or you are absent.</li>
+        <li><strong>Bathroom</strong> one at a time.</li>
+        <li><strong>Closed-toe shoes + safety glasses</strong> on the shop floor.</li>
+        <li><strong>Phones face-down</strong> during videos and mini-lecture.</li>
+        <li><strong>Clean your station before you leave.</strong> Bob is 83.</li>
+      </ul>
+    </div>
+
+    <div class="adhd-block">
+      <h3>5 announcements (say each one out loud)</h3>
+      <ul>
+        <li><strong>Oil Change Lab</strong> deadline is now <strong>Friday 04/24 at 11:59 PM.</strong></li>
+        <li><strong>Real Price Tag</strong> point value has been corrected -- it is <strong>out of 20</strong> now, not 40.</li>
+        <li><strong>23 teaching days</strong> remain. Every student names one commitment project today.</li>
+        <li><strong>Small-engine projects</strong> are available for portfolio-caught-up Autos students.</li>
+        <li><strong>Haul-off + oil collector + sweep volunteers</strong> needed in P1. Signup at my bench.</li>
+      </ul>
+    </div>
+
+    <div class="adhd-block">
+      <h3>The one truth for the day</h3>
+      <p style="font-size: 13pt; line-height: 1.4; font-weight: 500; color: white; margin: 0;">
+        Every student who writes a commitment project on the wall today is reachable. Every student who does not will need a second ask. The wall is the teaching tool -- not the projects.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>Page 8 &middot; The one page</span>
+    <span>The rest of this document is optional &middot; this page is not</span>
+  </div>
+</section>
+
+</body>
+</html>

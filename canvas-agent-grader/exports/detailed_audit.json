@@ -1,0 +1,916 @@
+{
+  "generated_at": "2026-04-19 20:41:25",
+  "courses": {
+    "23164": {
+      "label": "P3 Metals 1",
+      "students": {
+        "8384": "Iain Bailes",
+        "8388": "Logan Baller",
+        "4523": "Colm Barton",
+        "11921": "Kaydenn Bertsch",
+        "15415": "Colton Hankey",
+        "4586": "Simon Holmboe",
+        "8435": "Navin Manley",
+        "21134": "Travis Martinez",
+        "8401": "Trevor Skaggs"
+      },
+      "assignments_needing_grading": [
+        {
+          "id": 476530,
+          "name": "The Exorcism of the Plasma Cutter \u2014 Reflection",
+          "points_possible": 5.0,
+          "has_rubric": false,
+          "due_at": "2026-02-24T23:30:00Z",
+          "ungraded_submissions": [
+            {
+              "workflow_state": "graded",
+              "submitted_at": null,
+              "graded_at": "2026-02-27T02:26:22Z",
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": true,
+              "attempt": null,
+              "submission_type": null,
+              "content": [
+                "(no submission)"
+              ],
+              "comments": [],
+              "student_name": "Colton Hankey",
+              "user_id": 15415
+            }
+          ]
+        },
+        {
+          "id": 477271,
+          "name": "Metal Bookend Project \u2014 Design, Cut, Weld",
+          "points_possible": 40.0,
+          "has_rubric": false,
+          "due_at": "2026-04-03T06:59:59Z",
+          "ungraded_submissions": [
+            {
+              "workflow_state": "graded",
+              "submitted_at": null,
+              "graded_at": "2026-04-09T17:57:29Z",
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": true,
+              "attempt": null,
+              "submission_type": null,
+              "content": [
+                "(no submission)"
+              ],
+              "comments": [],
+              "student_name": "Colton Hankey",
+              "user_id": 15415
+            }
+          ]
+        }
+      ]
+    },
+    "23132": {
+      "label": "P3 Metals 2",
+      "students": {
+        "4671": "Audrey Godinez",
+        "3713": "Kaiden Lucas",
+        "8370": "Dawson Richards",
+        "8354": "Lincoln Ziniker"
+      },
+      "assignments_needing_grading": []
+    },
+    "23188": {
+      "label": "P5 Metals 1",
+      "students": {
+        "20528": "Matthew Curtis",
+        "8362": "Dominic Desalvo",
+        "1768": "Calan Ellis",
+        "8348": "Willow Inman",
+        "8430": "Odin MacCarty",
+        "3623": "North McKeown",
+        "20754": "Liam Miller",
+        "1320": "Zack Morris",
+        "22591": "Dell Rutherford",
+        "20460": "Calvin Slupe",
+        "11596": "Jackson Smith",
+        "20756": "Hans Tarubal",
+        "20623": "Bodhi Zaremba"
+      },
+      "assignments_needing_grading": [
+        {
+          "id": 475441,
+          "name": "Metal Entrepreneur Challenge",
+          "points_possible": 100.0,
+          "has_rubric": true,
+          "due_at": "2026-02-27T23:59:59Z",
+          "ungraded_submissions": [
+            {
+              "workflow_state": "graded",
+              "submitted_at": null,
+              "graded_at": "2026-04-02T18:57:45Z",
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": true,
+              "attempt": null,
+              "submission_type": null,
+              "content": [
+                "(no submission)"
+              ],
+              "comments": [],
+              "student_name": "North McKeown",
+              "user_id": 3623
+            },
+            {
+              "workflow_state": "graded",
+              "submitted_at": null,
+              "graded_at": "2026-04-02T18:57:50Z",
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": true,
+              "attempt": null,
+              "submission_type": null,
+              "content": [
+                "(no submission)"
+              ],
+              "comments": [],
+              "student_name": "Willow Inman",
+              "user_id": 8348
+            }
+          ]
+        }
+      ]
+    },
+    "23177": {
+      "label": "P5 Metals 2",
+      "students": {
+        "4823": "Gwen Kelly",
+        "10263": "Abe Moore"
+      },
+      "assignments_needing_grading": []
+    },
+    "23124": {
+      "label": "P1 Engines Fab 1",
+      "students": {
+        "3678": "Zeph Caz\u00e9",
+        "3876": "Nathan Clark",
+        "14996": "Daniel Darling",
+        "1424": "Alex Eigel",
+        "2567": "Ian Fuhrman",
+        "3659": "Cole Lehman",
+        "10263": "Abe Moore",
+        "3719": "Hazel Shaub",
+        "8312": "Cynthia Tran",
+        "17511": "Natalie Yong"
+      },
+      "assignments_needing_grading": [
+        {
+          "id": 475434,
+          "name": "Predator 212 - Engine Teardown Portfolio",
+          "points_possible": 100.0,
+          "has_rubric": true,
+          "due_at": "2026-03-13T06:59:59Z",
+          "ungraded_submissions": [
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-09T15:17:42Z",
+              "graded_at": "2026-04-07T02:29:43Z",
+              "score": 20.0,
+              "grade": "20",
+              "late": true,
+              "missing": false,
+              "excused": false,
+              "attempt": 2,
+              "submission_type": "online_url",
+              "content": [
+                "URL: https://docs.google.com/document/d/18tT-hDN0HDSuszxKl2sjzJ7fLCnjDiW9KRa85gxCIJE/edit?usp=sharing"
+              ],
+              "comments": [
+                {
+                  "author": "Andy McAteer",
+                  "comment": "Daniel, I appreciate you being upfront. Your honesty counts for something, but the portfolio grade comes from the documentation, not just doing the teardown. Can you get me even a few photos from your phone showing any of the teardown steps? Screenshots of your workstation, the parts laid out, anyth",
+                  "created_at": "2026-03-12T22:54:45Z"
+                },
+                {
+                  "author": "Andy McAteer",
+                  "comment": "Hey Daniel -- looks like most of the portfolio still needs to be filled in. No worries, just get your documentation added and resubmit when you're ready.",
+                  "created_at": "2026-03-19T03:11:35Z"
+                },
+                {
+                  "author": "Daniel Darling",
+                  "comment": "sent you an email with photos. hopefully they help",
+                  "created_at": "2026-03-19T20:13:40Z"
+                },
+                {
+                  "author": "Andy McAteer",
+                  "comment": "Daniel -- I got your email with the photos. Can you add those directly into your portfolio document and resubmit here on Canvas? I need everything in one place to give you proper credit for your documentation work.",
+                  "created_at": "2026-04-01T23:24:33Z"
+                },
+                {
+                  "author": "Andy McAteer",
+                  "comment": "Daniel -- I reviewed your portfolio again. The template is here but the photos and written assessments are still mostly blank (Photo #11, #12, and later all say 'INSERT YOUR PHOTO HERE'). I know you emailed photos on 3/19 -- please add them directly into the document and fill in the assessment secti",
+                  "created_at": "2026-04-07T02:29:43Z"
+                },
+                {
+                  "author": "Daniel Darling",
+                  "comment": "I resubmitted with the photos I do Have. they're at the bottom",
+                  "created_at": "2026-04-09T20:25:12Z"
+                }
+              ],
+              "student_name": "Daniel Darling",
+              "user_id": 14996
+            }
+          ]
+        },
+        {
+          "id": 476273,
+          "name": "02 \u2014 Everything You Should Check Before You Buy",
+          "points_possible": 25.0,
+          "has_rubric": true,
+          "due_at": "2026-04-09T06:59:59Z",
+          "ungraded_submissions": [
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-10T15:25:51Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": true,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_upload",
+              "content": [
+                "FILE: everything on sticker.pdf (72496 bytes)"
+              ],
+              "comments": [],
+              "student_name": "Hazel Shaub",
+              "user_id": 3719
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-14T15:17:08Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": true,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_upload",
+              "content": [
+                "FILE: Portfolio Page 2_ Sticker Breakdown & VIN Decode.pdf (82788 bytes)"
+              ],
+              "comments": [],
+              "student_name": "Cynthia Tran",
+              "user_id": 8312
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-14T15:34:33Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": true,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_upload",
+              "content": [
+                "FILE: 02 - Everything You Should Check Before You Buy: Sticker Breakdown and VIN Decode.docx (319827 bytes)"
+              ],
+              "comments": [],
+              "student_name": "Natalie Yong",
+              "user_id": 17511
+            }
+          ]
+        },
+        {
+          "id": 476272,
+          "name": "01 \u2014 Your First Car Is Probably a Bad Deal",
+          "points_possible": 20.0,
+          "has_rubric": true,
+          "due_at": "2026-04-03T06:59:59Z",
+          "ungraded_submissions": [
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-06T15:40:20Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": true,
+              "missing": false,
+              "excused": null,
+              "attempt": 2,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (41 chars): Your First Car Is Probably a Bad Deal.pdf"
+              ],
+              "comments": [
+                {
+                  "author": "Andy McAteer",
+                  "comment": "Hey Cynthia -- it looks like the wrong document got attached here. I'm seeing a project retrospective template instead of your vehicle research. Could you resubmit with the right file?",
+                  "created_at": "2026-03-19T03:11:36Z"
+                },
+                {
+                  "author": "Andy McAteer",
+                  "comment": "Hey Cynthia -- just checking in again. It still looks like there is no content here. Is this the version you meant to submit? If you have your vehicle research ready, please resubmit and I will grade it.",
+                  "created_at": "2026-04-01T23:24:31Z"
+                },
+                {
+                  "author": "Cynthia Tran",
+                  "comment": "You messed up on grading! There should be something here! But I'll resubmit.",
+                  "created_at": "2026-04-06T15:36:15Z"
+                }
+              ],
+              "student_name": "Cynthia Tran",
+              "user_id": 8312
+            }
+          ]
+        },
+        {
+          "id": 476274,
+          "name": "03 \u2014 The Real Price Tag",
+          "points_possible": 40.0,
+          "has_rubric": true,
+          "due_at": "2026-04-03T06:59:59Z",
+          "ungraded_submissions": [
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-02T15:40:35Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (851 chars): Purchase Price: $10,000.00Down Payment (20%): $10,000.00 x 0.20 = $2,000.00Loan Amount: $10,000.00 - $2,000.00 = $8,000.00APR: 5.5% (pre-approved through Oregon State Credit Union)Loan ScenariosLoan S..."
+              ],
+              "comments": [],
+              "student_name": "Ian Fuhrman",
+              "user_id": 2567
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-03T06:34:10Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (699 chars): $900$360048 months$83.72 per month$418.72 total interest paid$4,018.72 total amount paid60 months$68.76 per month$525.85 total interest paid$4,125.85 total amount72 months$58.82 per month$634.78 total..."
+              ],
+              "comments": [],
+              "student_name": "Zeph Caz\u00e9",
+              "user_id": 3678
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-02T15:33:42Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (451 chars): 1. price listed: $6500, down payment: $13002. $53003&4. a. $120.93 per month at 48 month, 604.82 interest, $5,804.82 total b. $99.33 at 60 months, \u00a0$759.56 interest, \u00a0$5,959.56 total c. $84.96 at 72 m..."
+              ],
+              "comments": [],
+              "student_name": "Nathan Clark",
+              "user_id": 3876
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-14T20:47:21Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": true,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (55 chars): Page 3 -- The Most Expensive Room in the Dealership.pdf"
+              ],
+              "comments": [],
+              "student_name": "Cynthia Tran",
+              "user_id": 8312
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-02T15:30:35Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (246 chars): 2010 Ford Fusion$1,039.20$4,156.8048: $96.67 per month $4,640.28\u00a0 total, interest: $483.48, 60: \u00a0$79.40 monthly $4,763.98 total, interest: $607.1872:$67.91 monthly, $4,889.76 total, interest: $732.96_..."
+              ],
+              "comments": [],
+              "student_name": "Daniel Darling",
+              "user_id": 14996
+            }
+          ]
+        },
+        {
+          "id": 476275,
+          "name": "04 \u2014 Insurance Decoded",
+          "points_possible": 25.0,
+          "has_rubric": true,
+          "due_at": "2026-04-16T06:59:59Z",
+          "ungraded_submissions": [
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-13T15:38:47Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_upload",
+              "content": [
+                "FILE: Real Cost.docx (154002 bytes)"
+              ],
+              "comments": [],
+              "student_name": "Ian Fuhrman",
+              "user_id": 2567
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-14T15:37:03Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_upload",
+              "content": [
+                "FILE: insurance.pdf (55572 bytes)"
+              ],
+              "comments": [],
+              "student_name": "Hazel Shaub",
+              "user_id": 3719
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-13T15:38:06Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (351 chars): 1. About 280 per month2. liability limits are $25k per person / $50k total per accident / $20k for property damage, Collision Deductible: $1,000, Comprehensive Deductible: $500, Required Level: Same a..."
+              ],
+              "comments": [],
+              "student_name": "Nathan Clark",
+              "user_id": 3876
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-14T16:16:19Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_upload",
+              "content": [
+                "FILE: 04- Insurance Decoded.docx (318781 bytes)"
+              ],
+              "comments": [],
+              "student_name": "Natalie Yong",
+              "user_id": 17511
+            }
+          ]
+        },
+        {
+          "id": 476277,
+          "name": "05 \u2014 Keep It Running",
+          "points_possible": 30.0,
+          "has_rubric": true,
+          "due_at": "2026-04-23T06:59:59Z",
+          "ungraded_submissions": [
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-14T15:42:13Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (938 chars): 1. Tire Size IdentificationBase/Limited Trim:225/65R17Sport Trim:235/55R18Base (Optional):215/70R16most common size: 225/65R17.2. Selected Tire ResearchBrand/Model:Goodyear Assurance MaxLifeType:All-S..."
+              ],
+              "comments": [],
+              "student_name": "Hazel Shaub",
+              "user_id": 3719
+            }
+          ]
+        },
+        {
+          "id": 476281,
+          "name": "06 \u2014 When Things Go Wrong",
+          "points_possible": 15.0,
+          "has_rubric": true,
+          "due_at": "2026-04-30T06:59:59Z",
+          "ungraded_submissions": [
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-14T15:49:53Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (2115 chars): #Item NameSource (Example)Est. PriceWhy Included1Jumper Cables (12-ft, 4-Gauge)Amazon / Walmart$25.00To start your car if the battery dies.2LED Flashlight + Extra BatteriesTarget / Home Depot$15.00Cri..."
+              ],
+              "comments": [],
+              "student_name": "Hazel Shaub",
+              "user_id": 3719
+            }
+          ]
+        },
+        {
+          "id": 482951,
+          "name": "If I Had $5,000 Build Sheet",
+          "points_possible": 10.0,
+          "has_rubric": true,
+          "due_at": "2026-04-01T06:59:59Z",
+          "ungraded_submissions": [
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-02T02:48:17Z",
+              "graded_at": "2026-04-01T23:26:50Z",
+              "score": 0.0,
+              "grade": "0",
+              "late": true,
+              "missing": false,
+              "excused": false,
+              "attempt": 1,
+              "submission_type": "online_upload",
+              "content": [
+                "FILE: Mod Build Sheet Autos -- Zeph Caz\u00e9.docx (11819 bytes)"
+              ],
+              "comments": [
+                {
+                  "author": "Andy McAteer",
+                  "comment": "This assignment was due Tuesday night and no submission was received.",
+                  "created_at": "2026-04-01T23:26:50Z"
+                }
+              ],
+              "student_name": "Zeph Caz\u00e9",
+              "user_id": 3678
+            },
+            {
+              "workflow_state": "graded",
+              "submitted_at": null,
+              "graded_at": "2026-04-01T23:30:28Z",
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": true,
+              "attempt": null,
+              "submission_type": null,
+              "content": [
+                "(no submission)"
+              ],
+              "comments": [
+                {
+                  "author": "Andy McAteer",
+                  "comment": "This assignment was due Tuesday night and no submission was received.",
+                  "created_at": "2026-04-01T23:26:51Z"
+                },
+                {
+                  "author": "Andy McAteer",
+                  "comment": "No worries Cynthia -- I know you were out. When you are back, take a look at the exemplar on Canvas and submit your build sheet when you are ready. No rush.",
+                  "created_at": "2026-04-01T23:28:31Z"
+                }
+              ],
+              "student_name": "Cynthia Tran",
+              "user_id": 8312
+            }
+          ]
+        }
+      ]
+    },
+    "23344": {
+      "label": "P1 Engines Fab 2",
+      "students": {
+        "15415": "Colton Hankey",
+        "3713": "Kaiden Lucas",
+        "1875": "Oliver Norris",
+        "763": "David O'Briant",
+        "2306": "John Quick",
+        "3736": "Brandon Robertson",
+        "8410": "Noah Steele",
+        "20756": "Hans Tarubal",
+        "8354": "Lincoln Ziniker"
+      },
+      "assignments_needing_grading": [
+        {
+          "id": 476302,
+          "name": "02 \u2014 Everything You Should Check Before You Buy",
+          "points_possible": 25.0,
+          "has_rubric": true,
+          "due_at": "2026-04-09T06:59:59Z",
+          "ungraded_submissions": [
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-08T22:29:20Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_upload",
+              "content": [
+                "FILE: Everything You Should Check Before You Buy.pdf (61113 bytes)"
+              ],
+              "comments": [],
+              "student_name": "Brandon Robertson",
+              "user_id": 3736
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-03-05T17:02:42Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (170 chars): Base price$17,495MSRP $19,995Cost of \"sport\" package, $2500Vin: JF1GH63689G803692Heated seats are unnecessarycountry: USAPlant info:FHI (Yajima Plant ), OTA, GUNMA, JAPAN"
+              ],
+              "comments": [
+                {
+                  "author": "Andy McAteer",
+                  "comment": "Noah, you have a start with the base price and VIN. To flesh this out: (1) Plug your VIN into the NHTSA decoder at https://vpic.nhtsa.dot.gov/decoder/ and document what each position means. (2) List out the factory options on your Impreza and discuss 2-3 of them -- would you actually want them? That",
+                  "created_at": "2026-03-12T22:54:55Z"
+                },
+                {
+                  "author": "Andy McAteer",
+                  "comment": "Hey Noah -- just wanted to check, is this your final submission for this assignment? You still have time to make updates before I finalize the grade.",
+                  "created_at": "2026-03-19T03:11:50Z"
+                },
+                {
+                  "author": "Andy McAteer",
+                  "comment": "Noah -- is this the version you want graded? You have a solid start with the VIN and base price. If you can flesh out the NHTSA decode and options analysis, resubmit and I will re-grade.",
+                  "created_at": "2026-04-01T23:24:38Z"
+                }
+              ],
+              "student_name": "Noah Steele",
+              "user_id": 8410
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-08T04:26:55Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (1944 chars): Portfolio Vehicle:2009 Toyota Corolla XLE| Silver | 180,000 miles | $5,500 purchasePrice Breakdown (Original MSRP vs. My Purchase Price)Line ItemAmountBase Price (2009 Toyota Corolla)XLE: $17,550 w/au..."
+              ],
+              "comments": [],
+              "student_name": "Hans Tarubal",
+              "user_id": 20756
+            }
+          ]
+        },
+        {
+          "id": 476303,
+          "name": "03 \u2014 The Real Price Tag",
+          "points_possible": 40.0,
+          "has_rubric": true,
+          "due_at": "2026-04-03T06:59:59Z",
+          "ungraded_submissions": [
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-02T16:21:27Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (34 chars): The submission is in the comments."
+              ],
+              "comments": [
+                {
+                  "author": "Brandon Robertson",
+                  "comment": "Please see attached files.",
+                  "created_at": "2026-04-02T16:21:40Z"
+                }
+              ],
+              "student_name": "Brandon Robertson",
+              "user_id": 3736
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-06T15:56:20Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": true,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (770 chars): Determine a realistic down payment (aim for 20%).$2,400Calculate loan amount (price minus down payment).$9,600Calculate monthly payment and total cost at48, 60, and 72 monthsusing 5.5% APR.$223/month/..."
+              ],
+              "comments": [],
+              "student_name": "Lincoln Ziniker",
+              "user_id": 8354
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-02T15:33:13Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (425 chars): initial purchase price $10,000. down payment=10,000 X .2 = $2,000$8,000 loan amount. 10,000 - 8,00072 monthly payment: $130.70. 60 monthly payment: $152.81. 48 monthly payment: $186.05.72: $9,410.62 i..."
+              ],
+              "comments": [],
+              "student_name": "Noah Steele",
+              "user_id": 8410
+            }
+          ]
+        },
+        {
+          "id": 476304,
+          "name": "04 \u2014 Insurance Decoded",
+          "points_possible": 25.0,
+          "has_rubric": true,
+          "due_at": "2026-04-16T06:59:59Z",
+          "ungraded_submissions": [
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-14T16:16:37Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_upload",
+              "content": [
+                "FILE: Portfolio Page 4.docx (320320 bytes)"
+              ],
+              "comments": [],
+              "student_name": "David O'Briant",
+              "user_id": 763
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-13T15:58:35Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (1220 chars): Page 4: Insurance: You're Required to Buy It, You Should Understand ItPortfolio Vehicle:2000 Honda CRV SE | White | 140,000 miles | $4,000 purchaseQuote Data: Coverage LevelsInsurance Coverage for 200..."
+              ],
+              "comments": [],
+              "student_name": "Oliver Norris",
+              "user_id": 1875
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-14T16:10:06Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_upload",
+              "content": [
+                "FILE: Insurance Decoded.pdf (38369 bytes)"
+              ],
+              "comments": [],
+              "student_name": "Brandon Robertson",
+              "user_id": 3736
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-14T16:06:19Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_upload",
+              "content": [
+                "FILE: Untitled document.docx (7588 bytes)"
+              ],
+              "comments": [],
+              "student_name": "Lincoln Ziniker",
+              "user_id": 8354
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-14T15:40:36Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 1,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (240 chars): 1. Liability limit: $50K, Collision deductible:$25k per accident, Comprehensive deductible: $100, UM: \u00a0$50/1002. $105/Month, $1260/ Year.3. 500: 1 year, $2,168... 3 year, $6,504... 1000: 1 year, $1,84..."
+              ],
+              "comments": [],
+              "student_name": "Noah Steele",
+              "user_id": 8410
+            },
+            {
+              "workflow_state": "submitted",
+              "submitted_at": "2026-04-14T15:59:24Z",
+              "graded_at": null,
+              "score": null,
+              "grade": null,
+              "late": false,
+              "missing": false,
+              "excused": null,
+              "attempt": 2,
+              "submission_type": "online_text_entry",
+              "content": [
+                "TEXT (1516 chars): Portfolio Vehicle:2009 Corolla XLE\u00a0 | Silver | 180,000 miles | $5,500 purchaseQuote Data: Coverage LevelsCoverage TypeMy CoverageOregon MinimumBodily Injury Liability$50/100/50 (per person/per acciden..."
+              ],
+              "comments": [],
+              "student_name": "Hans Tarubal",
+              "user_id": 20756
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

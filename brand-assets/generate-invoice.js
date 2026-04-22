@@ -35,6 +35,11 @@ const os = require('os');
     // Invoice -> Downloads
     await renderPDF('invoice.html', downloadsDir, 'Prompt_AI_Solutions_Invoice_ResolvePT.pdf');
 
+    // Mike McAteer monthly invoices (Jan-Mar 2026)
+    await renderPDF('invoice-mmcateer-2026-01.html', downloadsDir, 'PAI_Invoice_MMcAteer_January_2026.pdf');
+    await renderPDF('invoice-mmcateer-2026-02.html', downloadsDir, 'PAI_Invoice_MMcAteer_February_2026.pdf');
+    await renderPDF('invoice-mmcateer-2026-03.html', downloadsDir, 'PAI_Invoice_MMcAteer_March_2026.pdf');
+
     await browser.close();
-    console.log(`Success! Invoice saved to Downloads.`);
+    console.log(`Success! All invoices saved to Downloads.`);
 })();

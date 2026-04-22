@@ -13,16 +13,24 @@ if not GEMINI_API_KEY:
 client = genai.Client(api_key=GEMINI_API_KEY)
 MODEL_ID = 'gemini-2.5-flash'
 
-def evaluate_with_strict_agent(submission_parts, rubric_text):
+def evaluate_with_strict_agent(submission_parts, rubric_text, points_possible=None):
     """
     Agent 1: The Strict Rubric Adherent.
     """
+    points_cap = f"\n    MAXIMUM POINTS POSSIBLE: {points_possible}. Your suggested_score MUST NOT exceed this value." if points_possible else ""
     prompt_intro = f"""
-    You are the 'Strict Rubric Evaluator' agent. 
+    You are the 'Strict Rubric Evaluator' agent.
     Your ONLY job is to evaluate the provided student submission strictly according to the provided rubric.
     Do not give credit for effort, formatting, or tangential insights unless explicitly stated in the rubric.
     Be extremely critical and objective.
     Review the submission payload, which may contain text, URLs, and images of physical fabrication or design.
+
+    IMPORTANT: The comment thread between instructor and student is part of the submission record.
+    Students were told to communicate corrections, additional context, and clarifications via comments.
+    If a student provides additional information, answers, or corrections in the comments, count that as part of their submission.
+    If the instructor asked for revisions and the student responded with more work in comments, credit that work.
+    If the submission body is empty but comments contain substantive work, grade the comment content.
+    {points_cap}
 
     RUBRIC:
     {rubric_text}
@@ -53,16 +61,24 @@ def evaluate_with_strict_agent(submission_parts, rubric_text):
     return json.loads(response.text)
 
 
-def evaluate_with_holistic_agent(submission_parts, rubric_text):
+def evaluate_with_holistic_agent(submission_parts, rubric_text, points_possible=None):
     """
     Agent 2: The Holistic Reviewer.
     """
+    points_cap = f"\n    MAXIMUM POINTS POSSIBLE: {points_possible}. Your suggested_score MUST NOT exceed this value." if points_possible else ""
     prompt_intro = f"""
-    You are the 'Holistic Reviewer' agent. 
+    You are the 'Holistic Reviewer' agent.
     While you should reference the provided rubric, your primary job is to evaluate the student's OVERALL grasp of the concept.
     Look for deep insights, effort, creativity, and critical thinking.
     If a student missed a minor technicality in the rubric but demonstrated profound understanding in their work/photos, suggest a higher score.
     Review the submission payload, which may contain text, URLs, and images of physical fabrication or design.
+
+    IMPORTANT: The comment thread between instructor and student is part of the submission record.
+    Students were told to communicate corrections, additional context, and clarifications via comments.
+    If a student provides additional information, answers, or corrections in the comments, count that as part of their submission.
+    If the instructor asked for revisions and the student responded with more work in comments, credit that work.
+    If the submission body is empty but comments contain substantive work, grade the comment content.
+    {points_cap}
 
     RUBRIC:
     {rubric_text}
@@ -92,13 +108,15 @@ def evaluate_with_holistic_agent(submission_parts, rubric_text):
     return json.loads(response.text)
 
 
-def synthesize_final_grade(strict_evaluation, holistic_evaluation, rubric_text):
+def synthesize_final_grade(strict_evaluation, holistic_evaluation, rubric_text, points_possible=None):
     """
     Agent 3: The Synthesizer (Lead Agent).
     """
+    points_cap = f"\n    MAXIMUM POINTS POSSIBLE: {points_possible}. Your final_suggested_score MUST NOT exceed this value." if points_possible else ""
     prompt = f"""
     You are the 'Lead Grading Synthesizer' agent.
     Your job is to read the reports from two specialized grading agents, resolve any discrepancies, and finalize a suggested score for the student.
+    {points_cap}
 
     RUBRIC context:
     {rubric_text}
@@ -110,6 +128,7 @@ def synthesize_final_grade(strict_evaluation, holistic_evaluation, rubric_text):
     {json.dumps(holistic_evaluation, indent=2)}
 
     Determine the final fair score. If the two agents widely disagree, use your best judgment to find the middle ground or side with the stronger argument.
+    Remember: student comments are part of the record. If either agent noted work done in comments, factor that in.
 
     Output your analysis as raw JSON (no markdown formatting, no code blocks) matching this EXACT schema:
     {{

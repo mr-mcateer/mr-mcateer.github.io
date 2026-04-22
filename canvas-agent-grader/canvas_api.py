@@ -30,6 +30,102 @@ def _make_put_request(endpoint, payload=None):
     response.raise_for_status()
     return response.json()
 
+def _make_post_request(endpoint, payload=None):
+    """Internal helper for POST requests (creating assignments, quizzes, etc.)"""
+    url = f"{CANVAS_API_URL}/api/v1/{endpoint}"
+    response = requests.post(url, headers=HEADERS, json=payload)
+    response.raise_for_status()
+    return response.json()
+
+
+def create_assignment(course_id, params):
+    """
+    Creates an assignment in a course.
+    params: dict with keys like name, description, points_possible,
+            submission_types, published, due_at, etc.
+    Returns the created assignment JSON.
+    """
+    payload = {'assignment': params}
+    return _make_post_request(f'courses/{course_id}/assignments', payload)
+
+
+def create_rubric(course_id, assignment_id, title, criteria):
+    """
+    Creates and associates a rubric with an assignment.
+    criteria: list of dicts with keys: description, points, ratings
+      ratings: list of dicts with keys: description, points
+    Returns the created rubric JSON.
+    """
+    # Canvas expects criteria as indexed dict {"0": {...}, "1": {...}}
+    criteria_payload = {}
+    for i, c in enumerate(criteria):
+        ratings_payload = {}
+        for j, r in enumerate(c['ratings']):
+            ratings_payload[str(j)] = {
+                'description': r['description'],
+                'points': r['points']
+            }
+        criteria_payload[str(i)] = {
+            'description': c['description'],
+            'points': c['points'],
+            'ratings': ratings_payload
+        }
+
+    payload = {
+        'rubric': {
+            'title': title,
+            'criteria': criteria_payload
+        },
+        'rubric_association': {
+            'association_id': assignment_id,
+            'association_type': 'Assignment',
+            'use_for_grading': True,
+            'purpose': 'grading'
+        }
+    }
+    return _make_post_request(f'courses/{course_id}/rubrics', payload)
+
+
+def create_quiz(course_id, params):
+    """
+    Creates a Classic Quiz in a course.
+    params: dict with keys like title, description, quiz_type,
+            allowed_attempts, published, etc.
+    Returns the created quiz JSON.
+    """
+    payload = {'quiz': params}
+    return _make_post_request(f'courses/{course_id}/quizzes', payload)
+
+
+def create_quiz_question(course_id, quiz_id, params):
+    """
+    Adds a question to a Classic Quiz.
+    params: dict with keys like question_name, question_text,
+            question_type, points_possible, answers, etc.
+    Returns the created question JSON.
+    """
+    payload = {'question': params}
+    return _make_post_request(
+        f'courses/{course_id}/quizzes/{quiz_id}/questions', payload)
+
+
+def create_announcement(course_id, title, message_html, delayed_post_at=None):
+    """
+    Creates an announcement (discussion_topic with is_announcement=True).
+    delayed_post_at: optional ISO 8601 timestamp for scheduled posting.
+    Returns the created announcement JSON.
+    """
+    payload = {
+        'title': title,
+        'message': message_html,
+        'is_announcement': True,
+        'published': True,
+    }
+    if delayed_post_at:
+        payload['delayed_post_at'] = delayed_post_at
+    return _make_post_request(
+        f'courses/{course_id}/discussion_topics', payload)
+
 
 def get_active_courses():
     """Returns a list of active courses the user is enrolled in/teaching."""

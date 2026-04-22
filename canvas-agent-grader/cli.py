@@ -30,12 +30,20 @@ def cmd_evaluate(course_id, assignment_id):
     3. Output the results to a local CSV.
     """
     print(f"Loading data for Assignment {assignment_id} in Course {course_id}...")
-    
-    # 1. Get Rubric
+
+    # 1. Get Rubric and points_possible
     raw_rubric = get_assignment_rubric(course_id, assignment_id)
     if not raw_rubric:
         print("[WARNING] No rubric found on this assignment in Canvas! The agents will grade purely holistically.")
     rubric_text = format_rubric_from_canvas(raw_rubric)
+
+    # Fetch assignment details for points_possible
+    from canvas_api import _make_request
+    try:
+        assignment_detail = _make_request(f'courses/{course_id}/assignments/{assignment_id}')
+        a_pts = assignment_detail.get('points_possible')
+    except:
+        a_pts = None
     
     # 2. Get Submissions
     submissions = get_ungraded_submissions(course_id, assignment_id)
@@ -74,9 +82,14 @@ def cmd_evaluate(course_id, assignment_id):
             
         # Hit the swarm
         try:
-            swarm_eval = run_swarm_on_submission(submission_parts, rubric_text)
+            swarm_eval = run_swarm_on_submission(submission_parts, rubric_text, a_pts)
             final = swarm_eval['final_conclusion']
-            
+
+            # Hard cap at points_possible
+            final_score = final.get('final_suggested_score')
+            if a_pts and final_score is not None:
+                final_score = min(float(final_score), float(a_pts))
+
             results.append({
                 "User ID": user_id,
                 "Student Name": name,
@@ -84,14 +97,14 @@ def cmd_evaluate(course_id, assignment_id):
                 "Strict Agent Score": swarm_eval['strict_agent'].get('suggested_score'),
                 "Strict Rationale": swarm_eval['strict_agent'].get('rationale'),
                 "Holistic Agent Score": swarm_eval['holistic_agent'].get('suggested_score'),
-                "Final Recommended Score": final.get('final_suggested_score'),
+                "Final Recommended Score": final_score,
                 "Resolution Rationale": final.get('resolution_rationale')
             })
-            print(f"  -> Recommended Score: {final.get('final_suggested_score')}")
-            
+            print(f"  -> Recommended Score: {final_score}")
+
         except Exception as e:
             print(f"  -> [ERROR] Failed to evaluate student {name}: {e}")
-            
+
     # 4. Save
     if results:
         df = pd.DataFrame(results)
@@ -120,62 +133,72 @@ def cmd_evaluate_course(course_id):
     for a in assignments:
         assignment_id = a['id']
         assignment_name = a['name']
-        print(f"\n--- Processing Assignment: {assignment_name} ({assignment_id}) ---")
-        
+        a_pts = a.get('points_possible')
+        print(f"\n--- Processing Assignment: {assignment_name} ({assignment_id}) [Max: {a_pts} pts] ---")
+
         # 1. Get Rubric
         raw_rubric = get_assignment_rubric(course_id, assignment_id)
         if not raw_rubric:
             print("[WARNING] No rubric found on this assignment in Canvas! The agents will grade purely holistically.")
         rubric_text = format_rubric_from_canvas(raw_rubric)
-        
+
         # 2. Get Submissions
         submissions = get_ungraded_submissions(course_id, assignment_id)
         if not submissions:
             print("No submissions found (or all are already graded).")
             continue
-            
+
         print(f"Found {len(submissions)} total submissions.")
-        
+
         # 3. Process each submission
         for sub in submissions:
             if sub.get('workflow_state') == 'graded':
                 continue
             if sub.get('workflow_state') == 'unsubmitted':
                 continue
-                
+
             user_id = sub['user_id']
             name = get_student_name(course_id, user_id)
-            
+
             print(f"\nEvaluating student: {name} ({user_id})...")
             submission_parts = extract_submission_parts(sub)
-            
-            if not submission_parts or len(submission_parts) == 1 and "No content" in str(submission_parts[0]):
+
+            # Don't skip if comments exist — student may have communicated via comments
+            has_comments = bool(sub.get('submission_comments'))
+            if not has_comments and (not submission_parts or len(submission_parts) == 1 and "No content" in str(submission_parts[0])):
                 print("  -> Skipping: No content found to evaluate.")
                 continue
-                
+
             excerpt = "Multimodal content (Images/Docs)"
             if isinstance(submission_parts[0], str):
                 excerpt = submission_parts[0][:150] + "..."
-                
+
             try:
-                swarm_eval = run_swarm_on_submission(submission_parts, rubric_text)
+                swarm_eval = run_swarm_on_submission(submission_parts, rubric_text, a_pts)
                 final = swarm_eval['final_conclusion']
-                
+
+                # Hard cap at points_possible
+                final_score = final.get('final_suggested_score')
+                if a_pts and final_score is not None:
+                    final_score = min(float(final_score), float(a_pts))
+
                 all_results.append({
                     "Course Name": course_name,
                     "Assignment Name": assignment_name,
                     "Assignment ID": assignment_id,
                     "User ID": user_id,
                     "Student Name": name,
+                    "Points Possible": a_pts,
                     "Submission Excerpt": excerpt,
+                    "Has Comments": has_comments,
                     "Strict Agent Score": swarm_eval['strict_agent'].get('suggested_score'),
                     "Strict Rationale": swarm_eval['strict_agent'].get('rationale'),
                     "Holistic Agent Score": swarm_eval['holistic_agent'].get('suggested_score'),
-                    "Final Recommended Score": final.get('final_suggested_score'),
+                    "Final Recommended Score": final_score,
                     "Resolution Rationale": final.get('resolution_rationale')
                 })
-                print(f"  -> Recommended Score: {final.get('final_suggested_score')}")
-                
+                print(f"  -> Recommended Score: {final_score} / {a_pts}")
+
             except Exception as e:
                 print(f"  -> [ERROR] Failed to evaluate student {name}: {e}")
                 

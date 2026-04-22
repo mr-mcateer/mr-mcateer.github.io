@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Letterhead</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap');
+
+        :root {
+            --white: #ffffff;
+            --gray-200: #d2d2d7;
+            --gray-400: #86868b;
+            --gray-600: #6e6e73;
+            --gray-800: #1d1d1f;
+            --black: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: 8.5in 11in;
+            margin: 0;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            justify-content: center;
+        }
+
+        .page {
+            width: 8.5in;
+            height: 11in;
+            background: white;
+            position: relative;
+            padding: 1in;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.25in;
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20pt;
+            font-weight: 500;
+            color: var(--black);
+            letter-spacing: -0.01em;
+            margin-bottom: 4pt;
+        }
+
+        .brand-sub {
+            font-size: 8pt;
+            font-weight: 600;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 8.5pt;
+            line-height: 1.6;
+            color: var(--gray-600);
+        }
+
+        .contact-info .strong-text {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        .line {
+            height: 1px;
+            background-color: var(--gray-200);
+            width: 100%;
+        }
+
+        /* BODY */
+        .content-area {
+            flex-grow: 1;
+            margin-top: 0.5in;
+            /* Visual placeholder just for design preview, though usually letterhead is empty */
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            font-size: 8pt;
+            color: var(--gray-400);
+            border-top: 1px solid var(--gray-200);
+            padding-top: 0.2in;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+        <div class="header">
+            <div class="left-col">
+                <div class="brand-title">Prompt AI Solutions</div>
+                <div class="brand-sub">Andy McAteer, Consultant</div>
+            </div>
+            <div class="right-col contact-info">
+                <div>3335 Avondale Place &bull; Philomath, OR 97370</div>
+                <div><span class="strong-text">208 406 4443</span> &bull; promptaisolutions.com</div>
+            </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="content-area"></div>
+
+        <div class="footer">
+            SCALED COMMUNICATION. AUTHENTIC VOICE.
+        </div>
+    </div>
+
+</body>
+
+</html>
