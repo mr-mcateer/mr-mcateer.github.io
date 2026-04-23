@@ -23,3 +23,12 @@ venv/
 # Temporary files
 /tmp/
 *.tmp
+
+# Student PII -- Canvas/Synergy reconciliation inputs and outputs.
+# Repo is public; rosters stay local only.
+canvas-agent-grader/inputs/
+canvas-agent-grader/exports/synergy_reconcile_*
+canvas-agent-grader/exports/chappy_reply_*
+
+# Claude Code worktrees (ephemeral, agent-isolated working copies)
+.claude/worktrees/
