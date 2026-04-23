@@ -101,7 +101,7 @@ STEP 4  catalyst scoring (tier x recency decay; 36h half-life)
 STEP 5  append calibration entries (outcome_ledger.py append)
 STEP 6  HTML edits (where deltas warrant) + canonical JSON writes +
           programmatic renders (render_geopolitical.py, future BLUF/heatmap)
-STEP 7  integrity gate (div 340-380, evi == 18, close delta <=2, run_id consistency across all canonical JSONs)
+STEP 7  integrity gate (div 340-395, evi == 18, close delta <=2, run_id consistency across all canonical JSONs)
 STEP 8   deploy (stash / rebase / push; never force)
 STEP 9   audit manifest + circuit breaker maintenance
 ```
@@ -116,8 +116,8 @@ STEP 9   audit manifest + circuit breaker maintenance
   a true 52-week IV rank can be computed after ~20 sessions.
 - `options_candidates.py` -- picks the single best cash-secured-put and
   covered-call candidate per ticker using the disciplined-seller spine
-  (25-50 day expiry, 0.20-0.35 delta, OI >= 250, tight spreads). Output is
-  flagged `public_safe: true`.
+  (7-14 day expiry, 0.15-0.25 delta, OI >= 500, spread <= 5%; per the
+  2026-04-20 client directive). Output is flagged `public_safe: true`.
 - `wsb_scan.py` -- Reddit heat + sentiment, case-sensitive ticker match
 - `outcome_ledger.py` -- append / settle / stats on the calibration JSONL
 - `catalyst_score.py` -- tier x recency scoring, 1.5 min-score gate

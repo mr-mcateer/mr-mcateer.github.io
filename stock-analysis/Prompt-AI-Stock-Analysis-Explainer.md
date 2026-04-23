@@ -35,10 +35,12 @@ left alone overnight.
 The dashboard is the rendered output of a small autonomous pipeline that
 runs on a fixed schedule. The mechanics, in plain language:
 
-1. **Pull fresh option chains from CBOE** at 10:33 AM and 2:33 PM Eastern,
-   Tuesday through Friday. The afternoon slot is deliberately outside the
-   3-4 PM ET zero-day-to-expiry reversal window, so the data reflects a
-   settled tape rather than a churning one.
+1. **Pull fresh option chains from CBOE** twice every weekday: a
+   **morning settle** run at 10:33 AM Eastern (07:33 PT), once the open
+   has stopped thrashing, and a **pre-close prep** run at 2:33 PM Eastern
+   (11:33 PT). The afternoon slot is deliberately before the 3-4 PM ET
+   zero-day-to-expiry reversal window, so the data reflects a settled
+   tape rather than a churning one.
 2. **Apply an event filter.** Any expiration that spans a known earnings
    release, an FOMC decision, a CPI print, or a non-farm payrolls release
    is dropped. You will never see a setup quoted across an event the
@@ -58,9 +60,11 @@ runs on a fixed schedule. The mechanics, in plain language:
 6. **Mike opens his browser, scans, decides.** No sign-in, no account, no
    personalization. The dashboard is the artifact.
 
-A thin daily email accompanies the run, but only when something has
-materially changed since the last update. Most days, no email is sent.
-The default is silence.
+There is no email, no alert, no push notification. The dashboard is the
+only output surface. Mike and his advisory peers check it when they want
+to; nothing arrives in anyone's inbox. That is deliberate -- silence by
+default means there is no risk of an automated message saying something
+the operator does not endorse.
 
 ---
 
@@ -164,13 +168,12 @@ weekend-theta tailwind. He decided.
 
 The public dashboard never shows holdings, share counts, cash balances,
 cost basis, or assignment events. None of that is on the URL above and
-none of it ever will be. Personalization, when it exists at all, happens
-only in a private email path that Mike opted into.
+none of it ever will be. There is no personalization layer at all --
+the page is identical for every viewer.
 
-The tool drafts no emails on its own without review. It places no
-trades. It has no broker connection. It moves no money. It is a read-only
-artifact rendered to a static page, and a private email draft that
-Andrew reviews before sending.
+The tool sends no emails. It places no trades. It has no broker
+connection. It moves no money. It is a read-only artifact rendered to a
+static page. The operator decides what, if anything, to do with it.
 
 Mike's advisory peers can use the same dashboard at the same URL.
 Nothing on it is personalized to him. Anyone landing on the page sees
