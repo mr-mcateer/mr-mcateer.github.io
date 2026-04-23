@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prompt AI Solutions | Stock Analysis Dashboard Explainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: Letter;
+    margin: 0.6in 0.7in 0.55in 0.7in;
+    @bottom-left {
+      content: "Prompt AI Solutions  |  Stock Analysis Dashboard explainer  |  April 2026";
+      font-family: 'Inter', sans-serif;
+      font-size: 7.5pt;
+      color: #5b6470;
+    }
+    @bottom-right {
+      content: "promptaisolutions.com/stock-analysis/";
+      font-family: 'Inter', sans-serif;
+      font-size: 7.5pt;
+      color: #0e478f;
+    }
+  }
+  @page :first {
+    @bottom-left { content: ""; }
+    @bottom-right { content: ""; }
+  }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0d1117;
+    --ink-soft: #2c333d;
+    --ink-mute: #5b6470;
+    --rule: #d8dde3;
+    --rule-soft: #ecedf0;
+    --bg: #ffffff;
+    --bg-soft: #f6f8fa;
+    --accent: #0e478f;       /* deep navy-blue, professional */
+    --accent-soft: #e7eef8;
+    --hairline: #cfd5dc;
+    --green: #1a7f37;
+    --amber: #9a6700;
+    --red: #b42318;
+  }
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    position: relative;
+  }
+  .page.cover { page-break-after: always; }
+  .pagebreak { page-break-after: always; }
+
+  /* ---------- COVER ---------- */
+  .cover {
+    height: 9.6in;
+    display: flex; flex-direction: column;
+    padding-top: 0;
+  }
+  .cover .brandbar {
+    display: flex; align-items: baseline; justify-content: space-between;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 12px;
+    font-size: 9.5pt; color: var(--ink-mute); letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .cover .brandbar .name { color: var(--accent); font-weight: 700; letter-spacing: 0.18em; }
+  .cover .stack { margin-top: 0.7in; }
+  .cover h1 {
+    font-size: 38pt;
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .cover h2 {
+    font-size: 19pt;
+    font-weight: 400;
+    color: var(--ink-soft);
+    margin-top: 14px;
+    line-height: 1.25;
+    max-width: 5.6in;
+  }
+  .cover .tag {
+    margin-top: 36px;
+    font-size: 12pt;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .cover .meta {
+    margin-top: auto;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    font-size: 9.5pt;
+  }
+  .cover .meta .label {
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    font-size: 8pt;
+    margin-bottom: 4px;
+  }
+  .cover .meta .value { color: var(--ink); font-weight: 500; }
+  .cover .meta a { color: var(--accent); text-decoration: none; }
+
+  /* ---------- HEADER (non-cover) ---------- */
+  .pageheader {
+    display: flex; align-items: baseline; justify-content: space-between;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-mute);
+  }
+  .pageheader .left { color: var(--accent); font-weight: 700; letter-spacing: 0.18em; }
+
+  /* ---------- HEADINGS ---------- */
+  h1.section, h2.section {
+    font-size: 19pt;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+    margin: 0 0 6px 0;
+    color: var(--ink);
+  }
+  .kicker {
+    font-size: 8.5pt;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  h3 {
+    font-size: 12pt;
+    font-weight: 600;
+    margin: 22px 0 8px 0;
+    color: var(--ink);
+  }
+  h4 {
+    font-size: 10.5pt;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 14px 0 4px 0;
+  }
+
+  p { margin: 0 0 10px 0; color: var(--ink-soft); }
+  p.lead { font-size: 11.5pt; color: var(--ink); }
+
+  /* ---------- LISTS ---------- */
+  ol, ul { margin: 6px 0 12px 18px; }
+  ol li, ul li {
+    margin-bottom: 6px;
+    color: var(--ink-soft);
+  }
+  ol li strong, ul li strong { color: var(--ink); }
+
+  /* ---------- TABLES ---------- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 16px 0;
+    font-size: 9.5pt;
+  }
+  th, td {
+    text-align: left;
+    padding: 9px 11px;
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top;
+    color: var(--ink-soft);
+  }
+  th {
+    background: var(--bg-soft);
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--hairline);
+  }
+  td strong { color: var(--ink); }
+
+  /* ---------- BLOCKS ---------- */
+  .panel {
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    background: var(--bg-soft);
+    padding: 14px 16px;
+    border-radius: 4px;
+    margin: 14px 0 18px 0;
+  }
+  .panel .panel-label {
+    font-size: 8pt;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin-bottom: 4px;
+  }
+  .panel p { color: var(--ink); }
+  .panel p:last-child { margin-bottom: 0; }
+
+  /* ---------- SCREENSHOTS ---------- */
+  figure {
+    margin: 14px 0 18px 0;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #06090f;
+    text-align: center;
+  }
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 2.7in;
+    object-fit: cover;
+    object-position: top center;
+  }
+  figure.tall img { max-height: 3.0in; }
+  figure.short img { max-height: 2.0in; }
+  figcaption {
+    background: var(--bg-soft);
+    color: var(--ink-mute);
+    font-size: 8.5pt;
+    padding: 6px 12px;
+    border-top: 1px solid var(--rule);
+    line-height: 1.4;
+  }
+
+  /* ---------- TWO-COL GRID ---------- */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 10px 0;
+  }
+  .card {
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 11px 14px;
+  }
+  .card h4 { margin-top: 0; margin-bottom: 4px; color: var(--accent); }
+  .card p { margin-bottom: 0; font-size: 9.5pt; line-height: 1.5; }
+
+  /* ---------- NARRATIVE ---------- */
+  .narrative {
+    border-left: 3px solid var(--hairline);
+    padding-left: 14px;
+    margin: 6px 0 10px 0;
+    color: var(--ink-soft);
+    font-size: 9.8pt;
+    line-height: 1.45;
+  }
+  .narrative strong { color: var(--ink); }
+  .narrative p { margin-bottom: 5px; }
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    border-top: 1px solid var(--rule);
+    margin-top: 14px;
+    padding-top: 6px;
+    font-size: 8pt;
+    color: var(--ink-mute);
+    display: flex; justify-content: space-between;
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  .small { font-size: 9pt; color: var(--ink-mute); }
+
+  /* avoid orphan headings */
+  h1, h2, h3, h4 { break-after: avoid-page; }
+  figure, .card { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!--  PAGE 1 -- COVER                                              -->
+<!-- ============================================================ -->
+<section class="page cover">
+  <div class="brandbar">
+    <span class="name">Prompt AI Solutions</span>
+    <span>Briefing | April 2026</span>
+  </div>
+
+  <div class="stack">
+    <div class="tag">Stock Analysis Dashboard</div>
+    <h1>A god-like secretary<br>for premium-selling decisions.</h1>
+    <h2>What the dashboard does, how it differs from a Bloomberg
+    terminal or a retail screener, and why it earns ninety seconds
+    of an experienced operator's attention.</h2>
+  </div>
+
+  <div class="meta">
+    <div>
+      <div class="label">Prepared for</div>
+      <div class="value">Mike McAteer<br>and the advisory group</div>
+    </div>
+    <div>
+      <div class="label">Live dashboard</div>
+      <div class="value"><a href="https://promptaisolutions.com/stock-analysis/">promptaisolutions.com/stock-analysis/</a></div>
+    </div>
+    <div>
+      <div class="label">Andrew McAteer</div>
+      <div class="value">mcateerandy@gmail.com<br><a href="https://promptaisolutions.com">promptaisolutions.com</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  PAGE 2 -- WHAT IT IS                                         -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="kicker">What this tool is</div>
+  <h2 class="section">A scannable, opinionated, single page.</h2>
+
+  <p class="lead">A free public web dashboard scoped to one strategy:
+  selling options premium on a curated watchlist of names you already
+  know. You open it in a browser, scan it for under two minutes, and
+  decide. It never tells you what to do.</p>
+
+  <p>No login. No account. No download. Updated automatically twice
+  every weekday during US market hours, then left alone overnight.
+  Anyone with the link sees what Mike sees; nothing on the public
+  surface is personalized.</p>
+
+  <h3>The watchlist universe (24 tickers, four baskets)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:32%">Basket</th>
+        <th>Tickers</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Mega-cap tech</strong><br><span class="small">the original 9</span></td>
+        <td>MU, META, NVDA, MSFT, AMZN, GOOG, AAPL, TSLA, BROS</td>
+      </tr>
+      <tr>
+        <td><strong>Defense primes</strong></td>
+        <td>LMT, RTX, NOC, GD, PLTR</td>
+      </tr>
+      <tr>
+        <td><strong>Addictive consumer staples</strong></td>
+        <td>PM, MO, STZ, SBUX, NFLX</td>
+      </tr>
+      <tr>
+        <td><strong>Payment rails and infrastructure</strong></td>
+        <td>V, MA, INTU, AVGO, OKLO</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <figure class="tall">
+    <img src="img-explainer/regime-and-verdicts.png" alt="Volatility regime tile and per-ticker verdicts grid">
+    <figcaption>Top of the live dashboard: volatility risk premium tile
+    framing every other number on the page, followed by a 9-card verdict
+    grid for the original mega-cap basket. Live price, analyst target,
+    conviction score, and bear-case knockdowns per name.</figcaption>
+  </figure>
+
+  <div class="panel">
+    <div class="panel-label">In one sentence</div>
+    <p>It shows you which options you could sell today on a curated
+    watchlist of stocks, with passive visual cues highlighting the
+    high-yield, the about-to-expire, and the earnings-blocked, so you
+    can decide for yourself.</p>
+  </div>
+
+</section>
+
+<!-- ============================================================ -->
+<!--  PAGE 3 -- HOW IT WORKS                                       -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="kicker">How it works</div>
+  <h2 class="section">A small autonomous pipeline on a fixed schedule.</h2>
+
+  <ol>
+    <li><strong>Pull fresh option chains from CBOE</strong> at 10:33 AM
+    and 2:33 PM Eastern, Tuesday through Friday. The afternoon slot is
+    deliberately outside the 3-4 PM ET zero-day-to-expiry reversal
+    window, so the data reflects a settled tape rather than a churning
+    one.</li>
+
+    <li><strong>Apply an event filter.</strong> Any expiration that
+    spans a known earnings release, an FOMC decision, a CPI print, or a
+    non-farm payrolls release is dropped. You will never see a setup
+    quoted across an event the underwriter cannot price.</li>
+
+    <li><strong>Pick the disciplined-seller candidate per ticker.</strong>
+    The spine is 7 to 14 days to expiry, 0.15 to 0.25 delta, open
+    interest at or above 500 contracts, bid-ask spread at or under 5%.
+    Names that fail the liquidity gate are still shown; they are flagged
+    so you can see why.</li>
+
+    <li><strong>Compute the volatility risk premium regime.</strong>
+    Implied volatility minus realized volatility. If the premium is
+    compressed, position sizing drops to half standard. If it is rich,
+    sizing can step up to 1.25x with a tail-risk caveat. The regime tile
+    sits at the top of the page so it frames every other number.</li>
+
+    <li><strong>Render the dashboard.</strong> The page is rebuilt from
+    canonical JSON inputs by deterministic Python renderers. Identical
+    input gives byte-identical output. Nothing is hand-edited.</li>
+
+    <li><strong>Mike opens his browser, scans, decides.</strong> No
+    sign-in, no account, no personalization. The dashboard is the
+    artifact.</li>
+  </ol>
+
+  <figure class="tall">
+    <img src="img-explainer/options-watch.png" alt="Option Selling Watch table with event-blocked rows flagged in red">
+    <figcaption>Working surface. Twenty-four rows, one per ticker.
+    Earnings-blocked and macro-blocked rows are flagged red so you can
+    see at a glance how much of the universe is tradable today and how
+    much is not. The primary-watch sub-table below shows the single
+    best cash-secured-put candidate per name when one survives every
+    gate.</figcaption>
+  </figure>
+
+  <p class="small">A thin daily email accompanies the run, but only when
+  something has materially changed since the last update. Most days, no
+  email is sent. The default is silence.</p>
+
+</section>
+
+<!-- ============================================================ -->
+<!--  PAGE 4 -- DIFFERENTIATORS                                    -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="kicker">Why this is different from what you already have</div>
+  <h2 class="section">Scope and posture, not coverage.</h2>
+
+  <p>Mike's advisory group already has Bloomberg, broker research
+  portals, retail option screeners, and decades of pattern recognition.
+  The dashboard does not try to compete with any of them on coverage. It
+  competes on scope and posture.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:24%">You already have</th>
+        <th style="width:36%">What it gives you</th>
+        <th>Where this dashboard differs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Bloomberg, broker research portals</strong></td>
+        <td>Encyclopedic coverage. Everything about everything.</td>
+        <td>Opinionated about the universe and the strategy. Less surface
+        area, more actionability. You stop scrolling sooner.</td>
+      </tr>
+      <tr>
+        <td><strong>Retail option screeners</strong><br><span class="small">Barchart, OptionStrat</span></td>
+        <td>Screen the entire option universe by criteria.</td>
+        <td>Scoped to twenty-four names you already follow. Chaos-aware:
+        rows are flagged by event proximity and liquidity, not just
+        sorted by yield.</td>
+      </tr>
+      <tr>
+        <td><strong>Analyst research, newsletters</strong></td>
+        <td>Tell you what to buy.</td>
+        <td>Never tells you what to do. Surfaces the live options market
+        and lets you decide.</td>
+      </tr>
+      <tr>
+        <td><strong>Roll-your-own spreadsheets</strong></td>
+        <td>Exactly what you want, until you stop maintaining them.</td>
+        <td>Autonomous. Fresh every market session without a human in the
+        loop.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>The secretary framing</h3>
+  <p>A competent secretary does not tell the boss what to do. She knows
+  everyone in the room, has the agenda ready, anticipates needs, and
+  makes the boss's day flow.</p>
+
+  <p>This dashboard is that secretary, scoped to options selling. It
+  pulls the chains. It blocks earnings-spanning expirations. It flags
+  compressed volatility regimes that should shrink position sizing. It
+  surfaces Thursday-optimal weekend-theta candidates. It tells you
+  nothing about what to trade.</p>
+
+  <p>That posture matters more than any single feature. A
+  Bloomberg-using professional who reads "buy this, sell that" three
+  hundred times a day has every reason to ignore the
+  three-hundred-and-first source. A surface that earns ninety seconds of
+  attention is a surface that respects the operator's judgment.</p>
+
+
+</section>
+
+<!-- ============================================================ -->
+<!--  PAGE 5 -- SESSION + PRIVACY + ENGAGEMENT                     -->
+<!-- ============================================================ -->
+<section class="page">
+  <div class="kicker">A typical Mike session</div>
+  <h2 class="section">Ninety seconds, no opinions.</h2>
+
+  <div class="narrative">
+    <p>It is Thursday, 10:35 AM Eastern. Mike opens the dashboard on his
+    phone over coffee.</p>
+
+    <p>The regime tile reads <strong>VRP compressed, 0.5x size</strong>.
+    He internalizes that. Whatever he writes today, he writes half size.</p>
+
+    <p>He scans the Option Selling Watch table. Nineteen of twenty-four
+    rows are flagged red: <strong>FOMC in 7d. No disciplined setup this
+    cycle.</strong> Three rows are flagged for individual earnings
+    within the window. Two rows are clean.</p>
+
+    <p>Both clean rows carry a <strong>THU-OPT</strong> badge: today is
+    Thursday and a next-Friday expiry exists, which means the contract
+    decays through a weekend without market hours. Sellable.</p>
+
+    <p>He taps the higher-yield row, opens his broker on the same phone,
+    places a half-size cash-secured put. Done.</p>
+
+    <p><strong>Total elapsed time: ninety seconds.</strong> The dashboard
+    never told him to trade. It told him which rows were not blocked and
+    which carried the weekend-theta tailwind. He decided.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>Privacy</h4>
+      <p>The public dashboard never shows holdings, share counts, cash
+      balances, cost basis, or assignment events. None of that is on the
+      URL above and none of it ever will be. Personalization, when it
+      exists at all, happens only in a private email path the reader
+      opted into.</p>
+    </div>
+    <div class="card">
+      <h4>Safety</h4>
+      <p>The tool drafts no emails on its own without review. It places
+      no trades. It has no broker connection. It moves no money. It is a
+      read-only artifact rendered to a static page, plus a private email
+      draft that Andrew reviews before sending.</p>
+    </div>
+  </div>
+
+  <p class="small">Disclosures: the dashboard is educational and is not
+  financial advice. Every reader makes their own decisions. The site
+  carries explicit "limitations" copy in its header for the same
+  reason.</p>
+
+  <div class="panel" style="margin-top:14px;">
+    <div class="panel-label">If your group wants a similar dashboard | Engage</div>
+    <p>The pattern generalizes. One strategy, a curated watchlist, an
+    autonomous pipeline, a scannable single page, no opinions. If a
+    member of the group wants a version scoped to their own universe
+    and strategy (covered calls on dividend names, cash-secured puts on
+    industrials, calendar spreads on commodity ETFs), the build is
+    straightforward.</p>
+    <p style="margin-bottom:0;"><strong>Andrew McAteer</strong> &nbsp;|&nbsp;
+    mcateerandy@gmail.com &nbsp;|&nbsp;
+    <a href="https://promptaisolutions.com">promptaisolutions.com</a>
+    &nbsp;|&nbsp;
+    <a href="https://promptaisolutions.com/stock-analysis/">promptaisolutions.com/stock-analysis/</a></p>
+  </div>
+
+</section>
+
+</body>
+</html>

@@ -37,9 +37,11 @@ img/                            # Site images
 ## Stock Analysis Dashboard (stock-analysis/index.html)
 
 Live portfolio intelligence artifact. Updated autonomously by the
-`stock-analysis-refresh` scheduled task (weekdays 05:30 + 13:30 PT --
-afternoon slot moved out of the 3-4pm ET 0DTE reversal window per Options
-Intelligence Upgrade M1). Public URL:
+`stock-analysis-refresh` scheduled task (weekdays 07:33 + 11:33 PT --
+morning settle and pre-close-prep slots, both inside RTH and clear of the
+3-4pm ET 0DTE reversal window per Options Intelligence Upgrade M1).
+Schedule retimed 2026-04-23 from the prior 05:30 + 13:30 PT slots when the
+auto-emailer was removed. Public URL:
 https://promptaisolutions.com/stock-analysis/
 
 **Portfolio universes:**
@@ -54,12 +56,15 @@ https://promptaisolutions.com/stock-analysis/
   `~/.claude/scheduled-tasks/stock-analysis-refresh/DESIGN_BRIEF.md` and
   `docs/options-compendium.md` for the full rationale.
 
-Recipient of the BLUF email is Mike McAteer at `m-mcateer@hotmail.com`.
+The auto-emailer was removed 2026-04-23. The dashboard is now the only output
+surface; no Gmail drafts are created. See
+`stock-analysis/SECRETARY_VISION.md` for the broader "god-like secretary"
+reframe currently in design.
 
-### Pipeline architecture (v2.3, validated end-to-end 2026-04-18)
+### Pipeline architecture (v2.4, post-emailer-removal)
 
 Lives at `~/.claude/scheduled-tasks/stock-analysis-refresh/` (NOT in this
-repo). Model: Opus 4.7 1M (via project `.claude/settings.json`). 10-step
+repo). Model: Opus 4.7 1M (via project `.claude/settings.json`). 9-step
 pipeline with 2 invariants:
 
 1. **Orchestrator-first retry is the PRIMARY path for `tool_unavailable`.**
@@ -98,14 +103,7 @@ STEP 6  HTML edits (where deltas warrant) + canonical JSON writes +
           programmatic renders (render_geopolitical.py, future BLUF/heatmap)
 STEP 7  integrity gate (div 340-380, evi == 18, close delta <=2, run_id consistency across all canonical JSONs)
 STEP 8   deploy (stash / rebase / push; never force)
-STEP 8.5 email decision gate (email_decide.py): compute materiality
-          from deltas vs communicated_state.json; return skip / brief / full
-STEP 9   email assembly, routed by 8.5:
-          skip  -> no draft, commit ledger with consecutive_skips++
-          brief -> write email_brief_input.json, run render_email_brief.py
-          full  -> write email_input.json, run render_email.py
-          Then Gmail MCP create_draft + email_state.py commit
-STEP 10  audit manifest + circuit breaker maintenance
+STEP 9   audit manifest + circuit breaker maintenance
 ```
 
 ### Python toolkit (stdlib-only except yfinance)
@@ -145,20 +143,12 @@ STEP 10  audit manifest + circuit breaker maintenance
   -> Option Selling Watch card with two tables (best cash-secured put per
      ticker, best covered call per ticker) (between `<!-- OPTIONS_SECTION_{START,END} -->`).
      Refuses to render unless input is flagged `public_safe: true`.
-- `render_email.py` -- `logs/email_input.json`
-  -> plain-text FULL email subject + body for Mike's Gmail draft
 
-**Email decision + brief path (new 2026-04-20):**
-- `email_decide.py` -- reads current canonical JSONs + `logs/communicated_state.json`
-  -> returns `{decision: skip|brief|full, materiality_score, deltas[], brief_seed}`.
-  Default decision is SKIP. Twice-daily runs that produce no material change
-  create no draft. Keep-alive brief fires only after 3+ silent days.
-- `render_email_brief.py` -- `logs/email_brief_input.json` (seeded from decide.brief_seed)
-  -> compact 150-350 word email, NO fixed sections, leads with top delta.
-- `email_state.py` -- the ONLY writer of `logs/communicated_state.json`.
-  Commit runs AFTER Gmail draft success (or after a skip is logged).
-  Never-re-surface invariant: `catalysts_communicated[]` blocks a source
-  URL from leading a second email for 14 days.
+**Removed 2026-04-23**: `render_email.py`, `render_email_brief.py`,
+`email_decide.py`, `email_state.py`, plus the canonical JSONs
+`email_input.json`, `email_brief_input.json`, `communicated_state.json`,
+and all `email_decision_{run_id}.json` audit files. The auto-emailer is gone;
+the dashboard is the only output surface.
 
 **Removed 2026-04-19**: `render_scenarios.py` and the Interactive Scenario
 Planner section. Macro scenario probabilities change quarterly (when Goldman,
@@ -185,35 +175,32 @@ only; hand-edits there are forbidden and will be overwritten on the next run.
 
 ### Canonical JSON inputs (single source of truth)
 `~/.claude/scheduled-tasks/stock-analysis-refresh/logs/`:
-- `geopolitical_scenarios.json` -- feeds both dashboard card and email
+- `geopolitical_scenarios.json` -- feeds the dashboard Vetted Geopolitical Scenarios card
 - `options_chain.json` -- CBOE-sourced raw option chain (public market data)
 - `options_candidates.json` -- picked best put + best call per ticker,
   public_safe=true, feeds render_options_ladder.py
 - `iv_history.jsonl` -- rolling ATM-30d IV history per symbol (public market data)
-- `email_input.json` -- feeds render_email.py (FULL tier)
-- `email_brief_input.json` -- feeds render_email_brief.py (BRIEF tier; transient, written per-run)
-- `communicated_state.json` -- persistent ledger of what Mike was last told.
-  Only writer: email_state.py. Consumed by email_decide.py for delta diffs.
-  Contains per-ticker {price, conviction, stance, pt_mean, buy_pct, bears_refuted_num},
-  macro snapshot, per-scenario likelihood buckets, options actionable list,
-  and catalysts_communicated[] URL ring-buffer (14-day retention).
 - `watchlist_criteria.json` -- STUB. Mike's screening mandate for new-name
   opportunity surfacing. Scanner disabled until user populates hard_filters.
 - `positions.json` -- **PRIVATE**, holdings + cash + open short options. Lives
-  in `~/.claude/...` only. Never committed to this repo. Read ONLY by the email
-  renderer (v1.1) and by assignment-watch tooling. NEVER by public renderers.
+  in `~/.claude/...` only. Never committed to this repo. Currently unread by
+  any active tool (the email renderer that previously consumed it was removed
+  2026-04-23). Reserved for future assignment-watch tooling.
 - `{run_id}.json` -- audit manifest per run (retain 60)
 
 ### Public / private split (enforced across renderers)
 - **Public** site output must never contain: share counts, cash balances, cost
   basis, assignment events, personalized recommendations, or anything that
-  names the reader or says "you should". Those go to the private email only.
+  names the reader or says "you should". The auto-emailer that was the only
+  consumer of private data has been removed; positions.json is currently
+  read by no tool.
 - **Public renderers** (`render_bluf_grid.py`, `render_portfolio_matrix.py`,
   `render_deep_dive.py`, `render_macro_context.py`, `render_geopolitical.py`,
   `render_options_ladder.py`) read ONLY public-safe canonical JSONs and never
   import from `positions.json`.
-- **Private renderer** (`render_email.py`, v1.1+) MAY read positions.json to
-  personalize the BLUF email that goes to Mike's inbox directly.
+- **Future personalization tooling** (assignment watch, per-lot CC sizing) must
+  live in a separate private tool with its own canonical JSON, never consumed
+  by the public dashboard renderers.
 
 ### Dashboard render markers (all machine-written, NEVER hand-edit)
 ```
@@ -255,10 +242,11 @@ Add fresh data to the canonical JSON in `~/.claude/scheduled-tasks/stock-analysi
 6. **Programmatic renderers eliminate the "did I update all 27 surfaces"
    drift problem.** Canonical JSON + deterministic render is cheaper
    than 27 Edit-tool calls and always consistent.
-7. **Email writes in plain English, not pipeline jargon.** Tier-grouped
-   holdings (Strongest / Solid / Risk Watch) scan better than ranked
-   lists. Company names lead, tickers in parens. Every acronym is
-   annotated on first use.
+7. **The auto-emailer was retired 2026-04-23.** The dashboard alone is the
+   public artifact. Lessons learned about plain-English summarization,
+   tier-grouped holdings (Strongest / Solid / Risk Watch), company-name-first
+   formatting, and acronym annotation carry forward into how dashboard cards
+   are written.
 
 ### Commit message convention
 Autonomous refresh runs use:
@@ -273,4 +261,4 @@ counts, any retries engaged, and dropped scenarios.
 - Skip hooks (--no-verify).
 - Fabricate analyst counts, PT ranges, or source citations.
 - Publish a scenario with fewer than 2 tier-1 sources.
-- Send the Gmail draft automatically. Drafts only; Andrew reviews and sends.
+- Resurrect the auto-emailer without explicit user direction (removed 2026-04-23).
