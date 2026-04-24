@@ -1,0 +1,69 @@
+#!/bin/sh
+#
+# pre-commit hook: catch phantom git submodules before they break Pages.
+#
+# History: on 2026-04-22 .claude/worktrees/keen-pike was committed as a
+# gitlink (mode 160000) with no .gitmodules entry. Three consecutive Pages
+# builds errored on `git submodule update --init --recursive` because the
+# referenced submodule had no URL. The live site was frozen at the prior
+# commit for three days before anyone noticed. This hook prevents that
+# class of failure.
+#
+# Behavior:
+# - For every NEW or MODIFIED gitlink (mode 160000) in the staged diff,
+#   require a matching path entry in .gitmodules. If missing, abort the
+#   commit with an explanatory message.
+# - Anything else: pass through.
+#
+# Bypass (only when you really mean it): git commit --no-verify
+
+set -e
+
+# Find all gitlinks staged for commit. The :000000/100644 -> :160000
+# transitions and pure adds both register as new submodule lines.
+phantom=""
+while IFS=$'\t' read -r meta path; do
+    # meta is e.g. ":100644 160000 abc... def... R" or ":000000 160000 0000... abc... A"
+    new_mode=$(printf '%s' "$meta" | awk '{print $2}')
+    if [ "$new_mode" = "160000" ]; then
+        # gitlink staged. Check .gitmodules for this path.
+        if [ ! -f .gitmodules ]; then
+            phantom="${phantom}${path}\n"
+        elif ! git config --file .gitmodules --get-regexp "submodule\..*\.path" 2>/dev/null \
+                | awk '{print $2}' | grep -Fxq "$path"; then
+            phantom="${phantom}${path}\n"
+        fi
+    fi
+done <<EOF
+$(git diff --cached --raw)
+EOF
+
+if [ -n "$phantom" ]; then
+    cat >&2 <<EOMSG
+
+[pre-commit] PHANTOM SUBMODULE DETECTED -- aborting commit.
+
+The following path(s) are staged as gitlinks (mode 160000) but have no
+matching entry in .gitmodules:
+
+$(printf '%b' "$phantom")
+This will break GitHub Pages builds (it broke us once on 2026-04-22 and the
+live site was frozen for three days). The most likely cause: a Claude Code
+worktree at .claude/worktrees/* got committed accidentally.
+
+To fix:
+    git rm --cached <path>
+    echo "<path>" >> .gitignore   # if you want to permanently ignore it
+    git commit
+
+If you genuinely meant to add a real submodule, add it the proper way:
+    git submodule add <url> <path>
+
+To bypass this check (do not unless you understand the consequence):
+    git commit --no-verify
+
+EOMSG
+    exit 1
+fi
+
+exit 0
