@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta Platforms (META) -- Deep dive | Prompt AI Solutions</title>
+<meta name="description" content="Meta Platforms (META) -- Deep dive -- static snapshot from the Prompt AI Solutions options-writing trade sheet pipeline.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Inter', system-ui, sans-serif;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --max-width: 1280px;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #06090f;
+  --bg-secondary: #0d1117;
+  --bg-card: #161b22;
+  --bg-card-hover: #1c2333;
+  --bg-card-alt: #0d1117;
+  --border: #21262d;
+  --border-glow: rgba(88, 166, 255, 0.12);
+  --text-primary: #f0f6fc;
+  --text-secondary: #8b949e;
+  --text-muted: #484f58;
+  --accent-green: #3fb950;
+  --accent-red: #f85149;
+  --accent-amber: #d29922;
+  --accent-blue: #58a6ff;
+  --accent-purple: #bc8cff;
+  --accent-cyan: #39d2c0;
+  --accent-pink: #f778ba;
+  --glow-green: rgba(63, 185, 80, 0.1);
+  --glow-red: rgba(248, 81, 73, 0.1);
+  --glow-blue: rgba(88, 166, 255, 0.08);
+  --glow-amber: rgba(210, 153, 34, 0.1);
+  --chart-bg: #0d1117;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 40px rgba(88, 166, 255, 0.06);
+  --table-stripe: rgba(255,255,255,0.02);
+}
+
+[data-theme="light"] {
+  --bg-primary: #f6f8fa;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f3f4f6;
+  --bg-card-alt: #f6f8fa;
+  --border: #d0d7de;
+  --border-glow: rgba(9, 105, 218, 0.08);
+  --text-primary: #1f2328;
+  --text-secondary: #656d76;
+  --text-muted: #8b949e;
+  --accent-green: #1a7f37;
+  --accent-red: #cf222e;
+  --accent-amber: #9a6700;
+  --accent-blue: #0969da;
+  --accent-purple: #8250df;
+  --accent-cyan: #0e8a7e;
+  --accent-pink: #bf3989;
+  --glow-green: rgba(26, 127, 55, 0.06);
+  --glow-red: rgba(207, 34, 46, 0.06);
+  --glow-blue: rgba(9, 105, 218, 0.05);
+  --glow-amber: rgba(154, 103, 0, 0.06);
+  --chart-bg: #f6f8fa;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  --shadow-glow: 0 0 40px rgba(9, 105, 218, 0.03);
+  --table-stripe: rgba(0,0,0,0.02);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 17px;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* -- Utility controls (integrated into nav) -- */
+.theme-toggle {
+  background: transparent; border: none; cursor: pointer;
+  font-size: 18px; color: var(--text-muted); transition: color 0.2s;
+  padding: 0 8px; height: 52px; display: flex; align-items: center;
+}
+.theme-toggle:hover { color: var(--text-primary); }
+.back-link {
+  color: var(--text-muted); text-decoration: none;
+  font-size: 15px; font-weight: 400; letter-spacing: 0.2px;
+  transition: color 0.2s; height: 52px; display: flex; align-items: center;
+  padding: 0 16px 0 0;
+}
+.back-link:hover { color: var(--text-primary); }
+
+/* -- Navigation: Rams principle #10 "as little design as possible" -- */
+.stock-nav {
+  position: sticky; top: 0; z-index: 900;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.stock-nav::-webkit-scrollbar { display: none; }
+.stock-nav .container {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; min-width: max-content; height: 52px;
+}
+.nav-tab {
+  padding: 0 18px; height: 52px;
+  display: inline-flex; align-items: center;
+  font-size: 15px; font-weight: 400; letter-spacing: 0.1px;
+  color: var(--text-muted); text-decoration: none;
+  transition: color 0.2s; white-space: nowrap;
+  position: relative;
+}
+.nav-tab:hover { color: var(--text-primary); }
+.nav-tab.active { color: var(--text-primary); font-weight: 500; }
+.nav-tab.active::after {
+  content: ''; position: absolute; bottom: 0; left: 18px; right: 18px;
+  height: 2px; background: var(--text-primary); border-radius: 1px;
+}
+.nav-spacer { width: 24px; flex-shrink: 0; }
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+section {
+  padding: 64px 0; opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+section.visible { opacity: 1; transform: translateY(0); }
+.section-header { margin-bottom: 32px; }
+.section-label {
+  font-size: 13px; font-weight: 500; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;
+}
+.section-title {
+  font-family: var(--font-body); font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 300; line-height: 1.3; letter-spacing: -0.3px;
+}
+.section-desc { color: var(--text-muted); margin-top: 8px; max-width: 680px; font-size: 16px; font-weight: 300; line-height: 1.7; }
+
+.hero {
+  min-height: 55vh; display: flex; align-items: center;
+  justify-content: center; text-align: center;
+  padding: 100px 24px 40px; position: relative; overflow: hidden;
+}
+.hero::before { display: none; }
+.hero-content { position: relative; z-index: 1; max-width: 880px; }
+.hero-badge {
+  display: inline-block; font-size: 14px; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: var(--font-body); font-size: clamp(2.4rem, 5vw, 3.4rem);
+  font-weight: 300; line-height: 1.15; margin-bottom: 20px;
+  color: var(--text-primary); letter-spacing: -0.5px;
+}
+.hero-sub { font-size: 18px; color: var(--text-muted); max-width: 600px; margin: 0 auto 32px; font-weight: 300; line-height: 1.8; }
+
+.card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px; transition: var(--transition);
+}
+.card:hover { border-color: var(--border-glow); box-shadow: var(--shadow-glow); }
+.card h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+
+.bluf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.bluf-card { position: relative; overflow: hidden; padding: 22px; }
+.bluf-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.bluf-card.green-top::before { background: var(--accent-green); }
+.bluf-card.blue-top::before { background: var(--accent-blue); }
+.bluf-card.amber-top::before { background: var(--accent-amber); }
+.bluf-card.red-top::before { background: var(--accent-red); }
+.bluf-card.purple-top::before { background: var(--accent-purple); }
+.bluf-ticker { font-size: 16px; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
+.bluf-price { font-family: var(--font-body); font-size: 30px; font-weight: 600; }
+.bluf-target { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+.bluf-evidence {
+  font-size: 11.5px; color: var(--text-muted); margin-top: 6px;
+  letter-spacing: 0.2px; font-variant-numeric: tabular-nums;
+  padding-top: 6px; border-top: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; gap: 4px 10px;
+}
+.bluf-evidence .ev-tag { white-space: nowrap; }
+.bluf-evidence .ev-conv { color: var(--text-secondary); font-weight: 600; }
+.bluf-stance {
+  display: inline-block; padding: 5px 14px; border-radius: 50px;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.3px; margin-top: 10px;
+}
+.stance-green { background: var(--glow-green); color: var(--accent-green); }
+.stance-blue { background: var(--glow-blue); color: var(--accent-blue); }
+.stance-amber { background: var(--glow-amber); color: var(--accent-amber); }
+.stance-red { background: var(--glow-red); color: var(--accent-red); }
+
+.heat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.heat-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 20px; transition: var(--transition);
+  position: relative; overflow: hidden;
+}
+.heat-card:hover { border-color: var(--border-glow); transform: translateY(-2px); }
+.hc-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+.hc-ticker { font-size: 20px; font-weight: 700; }
+.hc-signal { padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 600; }
+.hc-price { font-family: var(--font-body); font-size: 26px; font-weight: 600; margin-bottom: 6px; }
+.hc-meta { display: flex; flex-wrap: wrap; gap: 10px; font-size: 14px; color: var(--text-secondary); }
+.hc-bar { height: 4px; border-radius: 2px; background: var(--border); margin-top: 10px; overflow: hidden; }
+.hc-bar-fill { height: 100%; border-radius: 2px; width: 0; transition: width 1s ease; }
+.hc-note { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+
+.stock-divider { text-align: center; padding: 80px 24px 20px; }
+.divider-ticker { font-size: 42px; font-weight: 200; font-family: var(--font-body); letter-spacing: -1px; }
+.divider-name { font-size: 13px; color: var(--text-muted); margin-top: 6px; font-weight: 400; }
+
+.metrics-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+.metric-tile {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 16px; text-align: center;
+}
+.metric-tile .val { font-size: 22px; font-weight: 700; line-height: 1.2; }
+.metric-tile .lbl { font-size: 13px; color: var(--text-muted); margin-top: 4px; font-weight: 500; letter-spacing: 0.3px; }
+
+.chart-section { background: var(--chart-bg); border-radius: var(--radius); padding: 24px; border: 1px solid var(--border); }
+.bar-group { margin-bottom: 14px; }
+.bar-group:last-child { margin-bottom: 0; }
+.bar-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; font-weight: 500; }
+.bar-track { height: 24px; background: var(--bg-card); border-radius: 4px; overflow: hidden; }
+.bar-fill {
+  height: 100%; border-radius: 4px; width: 0; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex; align-items: center; padding-left: 8px; font-size: 13px; font-weight: 600; color: #fff;
+}
+.bar-fill.green { background: linear-gradient(90deg, var(--accent-green), #2ea043); }
+.bar-fill.blue { background: linear-gradient(90deg, var(--accent-blue), #388bfd); }
+.bar-fill.red { background: linear-gradient(90deg, var(--accent-red), #da3633); }
+.bar-fill.amber { background: linear-gradient(90deg, var(--accent-amber), #bb8009); }
+.bar-fill.purple { background: linear-gradient(90deg, var(--accent-purple), #a371f7); }
+.bar-fill.cyan { background: linear-gradient(90deg, var(--accent-cyan), #2ea8a1); }
+
+.risk-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.risk-tile {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 14px 16px; display: flex; justify-content: space-between; align-items: center;
+}
+.risk-tile .dim { font-size: 13px; font-weight: 500; }
+.risk-level { font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 50px; }
+.risk-high { background: var(--glow-red); color: var(--accent-red); }
+.risk-medium { background: var(--glow-amber); color: var(--accent-amber); }
+.risk-low { background: var(--glow-green); color: var(--accent-green); }
+
+.case-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.case-card h3 { font-size: 17px; }
+.case-list { list-style: none; }
+.case-list li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 15px; line-height: 1.6; display: flex; gap: 8px; }
+.case-list li:last-child { border-bottom: none; }
+.case-icon { font-size: 13px; flex-shrink: 0; margin-top: 4px; }
+.bull-icon { color: var(--accent-green); }
+.bear-icon { color: var(--accent-red); }
+
+.scenario-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.scenario-table th {
+  text-align: left; padding: 14px 16px; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.8px; text-transform: uppercase; color: var(--text-muted);
+  border-bottom: 2px solid var(--border);
+}
+.scenario-table td { padding: 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.scenario-table tr:nth-child(even) { background: var(--table-stripe); }
+.scenario-table .scenario-name { font-weight: 600; min-width: 160px; }
+.scenario-action {
+  display: inline-block; padding: 4px 14px; border-radius: 50px; font-size: 13px; font-weight: 600;
+}
+.action-add { background: var(--glow-green); color: var(--accent-green); }
+.action-hold { background: var(--glow-blue); color: var(--accent-blue); }
+.action-trim { background: var(--glow-amber); color: var(--accent-amber); }
+.action-monitor { background: rgba(139,148,158,0.1); color: var(--text-secondary); }
+.action-sell { background: var(--glow-red); color: var(--accent-red); }
+.action-buy { background: var(--glow-green); color: var(--accent-green); }
+.action-wait { background: var(--glow-amber); color: var(--accent-amber); }
+
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+  width: 2px; background: var(--border);
+}
+.tl-item { position: relative; margin-bottom: 24px; }
+.tl-item::before {
+  content: ''; position: absolute; left: -24px; top: 6px;
+  width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--border);
+  background: var(--bg-primary);
+}
+.tl-item.tl-red::before { border-color: var(--accent-red); background: var(--glow-red); }
+.tl-item.tl-amber::before { border-color: var(--accent-amber); background: var(--glow-amber); }
+.tl-item.tl-green::before { border-color: var(--accent-green); background: var(--glow-green); }
+.tl-item.tl-blue::before { border-color: var(--accent-blue); background: var(--glow-blue); }
+.tl-date { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.3px; }
+.tl-title { font-weight: 600; font-size: 16px; margin-top: 2px; }
+.tl-desc { font-size: 15px; color: var(--text-secondary); margin-top: 4px; line-height: 1.6; }
+
+.analyst-strip { max-width: 600px; }
+.rating-bar { display: flex; height: 32px; border-radius: 6px; overflow: hidden; margin-bottom: 12px; }
+.rating-segment { display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #fff; transition: width 1s ease; }
+.seg-strong-buy { background: #1a7f37; }
+.seg-buy { background: #3fb950; }
+.seg-hold { background: #d29922; }
+.seg-sell { background: #f85149; }
+.rating-legend { display: flex; gap: 16px; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-secondary); }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+.verdict-box {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 36px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.verdict-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+.verdict-box.v-green::before { background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan)); }
+.verdict-box.v-blue::before { background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple)); }
+.confidence-track { height: 8px; background: var(--border); border-radius: 4px; margin: 16px auto 8px; max-width: 300px; }
+.confidence-fill { height: 100%; border-radius: 4px; width: 0; transition: width 1.2s ease; }
+
+.comp-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); }
+.comp-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.comp-table th {
+  text-align: left; padding: 12px 14px; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.8px; text-transform: uppercase; color: var(--text-muted);
+  border-bottom: 2px solid var(--border); background: var(--bg-primary); white-space: nowrap;
+}
+.comp-table td { padding: 14px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.comp-table tr:nth-child(even) { background: var(--table-stripe); }
+.comp-table tr:hover { background: var(--bg-card-hover); }
+
+.entry-levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.entry-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 20px; text-align: center;
+}
+.entry-card .ep-label { font-size: 13px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--text-muted); }
+.entry-card .ep-price { font-family: var(--font-body); font-size: 34px; font-weight: 600; margin: 8px 0; }
+.entry-card .ep-action { font-size: 15px; font-weight: 600; }
+.entry-card .ep-note { font-size: 14px; color: var(--text-secondary); margin-top: 8px; line-height: 1.6; }
+
+.disclaimer {
+  background: var(--bg-card-alt); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 24px; font-size: 14px;
+  color: var(--text-muted); line-height: 1.7; margin-top: 32px;
+}
+footer {
+  padding: 40px 24px; text-align: center; border-top: 1px solid var(--border);
+  font-size: 15px; color: var(--text-muted);
+}
+footer a { color: var(--accent-blue); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .case-columns, .entry-levels { grid-template-columns: 1fr; }
+  .nav-tab { padding: 0 12px; font-size: 14px; }
+  .nav-spacer { width: 12px; }
+  section { padding: 40px 0; }
+  .hero { min-height: 45vh; padding-top: 80px; }
+  .heat-grid { grid-template-columns: 1fr 1fr; }
+  .bluf-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .heat-grid { grid-template-columns: 1fr; }
+  .metrics-strip { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+<nav class="stock-nav">
+  <div class="container">
+    <a href="/stock-analysis/" class="back-link">&#8592; Back to dashboard</a>
+    <div style="flex:1"></div>
+    <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">&#9790;</span></button>
+  </div>
+</nav>
+<section class="hero visible" style="min-height:auto;padding:80px 24px 20px;">
+  <div class="hero-content">
+    <div class="hero-badge">Deep dive snapshot</div>
+    <h1>Meta Platforms <span style="color:var(--text-muted);font-weight:300;">(META)</span></h1>
+    <p class="hero-sub">Static snapshot from the most recent autonomous research pass. The dashboard at <a href="/stock-analysis/" style="color:var(--accent-blue);text-decoration:underline;">/stock-analysis/</a> is the live trade-sheet view; this page is the underlying research depth for context.</p>
+  </div>
+</section>
+<!-- ============ META DEEP DIVE ============ -->
+<div id="meta-section">
+<div class="stock-divider"><div class="divider-ticker" style="color:var(--accent-blue);">META</div><div class="divider-name">Meta Platforms, Inc. &middot; $659.15</div></div>
+
+<!-- BLUF_META_START -->
+<section><div class="container"><div class="card bluf-card green-top" style="max-width:800px;margin:0 auto;"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;"><div><div class="bluf-price" style="color:var(--accent-green);">$659.15</div><div style="font-size:13px;color:var(--text-secondary);">-2.2% Thu Apr 23 | 17% from 52-wk high | +27% vs 52-wk low | PT range $676-$1144</div><div class="bluf-evidence"><span class="ev-tag">67 analysts 61B/6H/0S (91% Buy)</span><span class="ev-tag">PT $676 / $856 mean / $1144</span><span class="ev-tag ev-conv">Conviction 88/100</span><span class="ev-tag">P/E 28.09 trailing / 18.39 fwd</span></div></div><span class="bluf-stance stance-green">Strong Buy</span></div><p style="color:var(--text-secondary);margin-top:16px;font-size:14px;">Meta at $660 with 67 analysts at 91% buy -- the strongest analyst consensus upgrade in today&#x27;s run (up from 45 analysts last run). Every analyst PT low ($676) is above today&#x27;s price ($659), meaning the most bearish analyst on the street still sees upside from here. PT mean $856 (+30% upside). MTIA chip deployment with Broadcom is new evidence that Meta&#x27;s $115-135B capex is yielding proprietary AI infrastructure, not just cloud rent -- this partially refutes the capex-overspend bear. Q1 2026 earnings April 30. EU DMA fine (200M EUR) is baked in and appealed. Down -2.2% today in a broad selloff with no stock-specific catalyst.</p></div></div></section>
+<!-- BLUF_META_END -->
+
+<section><div class="container"><div class="section-header"><div class="section-label">Fundamentals</div><h2 class="section-title">Key Metrics</h2></div>
+<div class="metrics-strip">
+  <div class="metric-tile"><div class="val" style="color:var(--accent-blue);">$201B</div><div class="lbl">FY2025 Revenue</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-blue);">+22%</div><div class="lbl">Revenue YoY</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-blue);">41%</div><div class="lbl">Q4 Op Margin</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-blue);">18.73x</div><div class="lbl">Forward P/E</div></div>
+  <div class="metric-tile"><div class="val">$1.39T</div><div class="lbl">Market Cap</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-blue);">$55B</div><div class="lbl">Q1 Guide (mid)</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-red);">$19.1B</div><div class="lbl">RL Losses '25</div></div>
+  <div class="metric-tile"><div class="val" style="color:var(--accent-amber);">$125B</div><div class="lbl">2026 Capex</div></div>
+</div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Legal &amp; Regulatory</div><h2 class="section-title">Liability Tracker</h2></div>
+<div class="timeline">
+  <div class="tl-item tl-red"><div class="tl-date">March 25-27, 2026</div><div class="tl-title">BREAKING: Beijing Blocks $2B Manus AI Acquisition</div><div class="tl-desc">China placed exit bans on Manus AI cofounders, barring them from leaving the country. First time Beijing has used exit bans to impede a deal with a US tech firm. Alleges "Singapore-washing" to evade Chinese oversight.</div></div>
+  <div class="tl-item tl-red"><div class="tl-date">March 24, 2026</div><div class="tl-title">New Mexico Child Safety Verdict: $375M</div><div class="tl-desc">Jury found Meta liable for harm to minors. First US state to win at trial against a tech platform over child safety. Phase 2 trial (remedies) starts May 4. Appeal expected.</div></div>
+  <div class="tl-item tl-red"><div class="tl-date">March 25, 2026</div><div class="tl-title">LA Child Safety Verdict: $6M (Bellwether for ~2,000 Suits)</div><div class="tl-desc">Meta and YouTube found liable for designing addictive products. This is a bellwether case that could influence ~2,000 pending similar lawsuits. Internal docs showed Meta execs strategized to attract "tweens."</div></div>
+  <div class="tl-item tl-amber"><div class="tl-date">January 2026</div><div class="tl-title">FTC Appeal Filed (Antitrust)</div><div class="tl-desc">FTC appealing November 2025 ruling that Meta is not a monopolist. Appeal timeline: 12-18 months.</div></div>
+  <div class="tl-item tl-green"><div class="tl-date">November 2025</div><div class="tl-title">FTC Antitrust: Meta Wins</div><div class="tl-desc">Federal court ruled Meta is not a monopolist. Major legal victory, though FTC is appealing.</div></div>
+  <div class="tl-item tl-amber"><div class="tl-date">April 2025</div><div class="tl-title">EU DMA Fine: EUR 200M</div><div class="tl-desc">European Commission fine for Digital Markets Act violations. Compliance measures in progress.</div></div>
+  <div class="tl-item tl-amber"><div class="tl-date">Ongoing</div><div class="tl-title">40+ State Attorney General Lawsuits</div><div class="tl-desc">Multi-state litigation alleging harm to minors. Potential total exposure: $2-10B range (est.).</div></div>
+</div>
+<div class="card" style="margin-top:24px;background:var(--glow-amber);">
+  <div style="font-size:14px;font-weight:700;color:var(--accent-amber);margin-bottom:8px;">Total Liability Exposure Estimate</div>
+  <div style="font-size:13px;color:var(--text-secondary);"><strong>Low end:</strong> $5B (settlements) &middot; <strong>High end:</strong> $30B (Meta's own SEC filings reference "tens of billions") &middot; <strong>Pending:</strong> ~2,000 individual suits + 42+ state AG suits + class actions through 2027 &middot; <strong>Context:</strong> Meta has $46B annual FCF and $80B+ OCF. Even the high-end scenario is survivable.</div>
+</div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Risk Profile</div><h2 class="section-title">Exposure Assessment</h2></div>
+<div class="risk-strip">
+  <div class="risk-tile"><span class="dim">Child Safety Suits</span><span class="risk-level risk-high">High</span></div>
+  <div class="risk-tile"><span class="dim">AI Capex ROI</span><span class="risk-level risk-high">High</span></div>
+  <div class="risk-tile"><span class="dim">Reality Labs Burn</span><span class="risk-level risk-high">High</span></div>
+  <div class="risk-tile"><span class="dim">EU Regulation</span><span class="risk-level risk-medium">Medium</span></div>
+  <div class="risk-tile"><span class="dim">FTC Appeal</span><span class="risk-level risk-medium">Medium</span></div>
+  <div class="risk-tile"><span class="dim">Workforce Cuts</span><span class="risk-level risk-medium">Medium</span></div>
+  <div class="risk-tile"><span class="dim">Ad Market Share</span><span class="risk-level risk-low">Low</span></div>
+  <div class="risk-tile"><span class="dim">User Growth</span><span class="risk-level risk-low">Low</span></div>
+</div></div></section>
+
+<section><div class="container"><div class="section-header"><div class="section-label">Thesis</div><h2 class="section-title">Bull and Bear Cases</h2></div>
+<div class="case-columns">
+  <div class="card case-card"><h3><span class="case-icon bull-icon">&#9650;</span> Bull Case &middot; $900 (+33%)</h3><ul class="case-list">
+    <li><span class="case-icon bull-icon">&#9650;</span> $201B revenue base growing 22%+ with expanding margins</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> AI capex ($125B) builds competitive moat in inference and ads</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> Liability settlements manageable vs $80B+ annual OCF</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> FTC antitrust win removes breakup overhang</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> Threads surpassed X at 141.5M DAU; WhatsApp Business projected $30-40B long-term</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> Nebius $27B AI deal + Llama 4 live; closed-source "Avocado" model coming Q2</li>
+    <li><span class="case-icon bull-icon">&#9650;</span> 18.73x P/E with 59% analyst upside; 0 Sell ratings among 42 analysts</li>
+  </ul></div>
+  <div class="card case-card"><h3><span class="case-icon bear-icon">&#9660;</span> Bear Case &middot; $380 (-44%)</h3><ul class="case-list">
+    <li><span class="case-icon bear-icon">&#9660;</span> SEC filings reference "tens of billions" in child safety exposure; ~2,000 suits pending</li>
+    <li><span class="case-icon bear-icon">&#9660;</span> Reality Labs: cumulative $83.6B losses; Horizon Worlds near-shutdown in March</li>
+    <li><span class="case-icon bear-icon">&#9660;</span> $125B AI capex with uncertain ROI timeline</li>
+    <li><span class="case-icon bear-icon">&#9660;</span> Llama 4 setbacks; closed-source pivot signals strategy uncertainty</li>
+    <li><span class="case-icon bear-icon">&#9660;</span> 20% layoffs signal cost pressure beneath growth narrative</li>
+  </ul></div>
+</div></div></section>
+<section><div class="container"><div class="section-header"><div class="section-label">Wall Street</div><h2 class="section-title">Analyst Consensus</h2></div>
+<div class="analyst-strip">
+  <div class="rating-bar"><div class="rating-segment seg-strong-buy" data-width="60" style="width:0%;">60%</div><div class="rating-segment seg-buy" data-width="30" style="width:0%;">30%</div><div class="rating-segment seg-hold" data-width="8" style="width:0%;">8%</div><div class="rating-segment seg-sell" data-width="2" style="width:0%;">2%</div></div>
+  <div class="rating-legend"><div class="legend-item"><div class="legend-dot" style="background:#1a7f37;"></div>Strong Buy</div><div class="legend-item"><div class="legend-dot" style="background:#3fb950;"></div>Buy</div><div class="legend-item"><div class="legend-dot" style="background:#d29922;"></div>Hold</div><div class="legend-item"><div class="legend-dot" style="background:#f85149;"></div>Sell</div></div>
+</div>
+<div style="margin-top:16px;font-size:13px;color:var(--text-secondary);">Consensus: <strong style="color:var(--accent-green);">Strong Buy</strong> (42 analysts, 79 Buy / 7 Hold / 0 Sell) &middot; Avg Target: <strong>$862</strong> (+28%) &middot; High: <strong>$1,144</strong> &middot; Low: <strong>$676</strong></div>
+</div></section>
+
+<section><div class="container"><div class="verdict-box v-blue">
+  <div style="font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--accent-blue);margin-bottom:8px;">META Verdict: Strong Buy</div>
+  <p style="max-width:600px;margin:0 auto;color:var(--text-secondary);font-size:14px;">Recovered +14.8% from March lows with 25% analyst upside still remaining ($841 consensus). The $201B ad machine, Llama 4 launch, and 41% operating margins are not broken. Child safety liability is real but manageable vs. $80B+ annual OCF. The Manus/Beijing block adds noise but not structural damage.</p>
+  <div class="confidence-track"><div class="confidence-fill" data-width="82" style="background:var(--accent-blue);"></div></div>
+  <div style="font-size:12px;color:var(--text-muted);">Confidence: 82%</div>
+</div></div></section>
+</div>
+
+
+<section><div class="container"><div class="disclaimer"><strong>Not investment advice.</strong> This page is a static snapshot generated from the autonomous research pipeline. It cannot predict the future. Consult a licensed financial advisor before acting on any of this. The creator of this tool holds positions in several of the securities discussed.</div></div></section>
+<footer><div class="container"><p><a href="/stock-analysis/">&#8592; Back to dashboard</a> &middot; &copy; 2026 <a href="/">Prompt AI Solutions</a></p></div></footer>
+<script>
+function toggleTheme(){var h=document.documentElement;var n=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('theme',n);document.querySelector('.theme-icon').innerHTML=n==='dark'?'&#9790;':'&#9788;';}
+(function(){var s=localStorage.getItem('theme');if(s){document.documentElement.setAttribute('data-theme',s);}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:light)').matches){document.documentElement.setAttribute('data-theme','light');}var i=document.querySelector('.theme-icon');if(i)i.innerHTML=document.documentElement.getAttribute('data-theme')==='dark'?'&#9790;':'&#9788;';})();
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');entry.target.querySelectorAll('.bar-fill[data-width]').forEach(function(b){setTimeout(function(){b.style.width=b.dataset.width+'%';},200);});entry.target.querySelectorAll('.confidence-fill[data-width]').forEach(function(b){setTimeout(function(){b.style.width=b.dataset.width+'%';},400);});entry.target.querySelectorAll('.hc-bar-fill[data-width]').forEach(function(b){setTimeout(function(){b.style.width=b.dataset.width+'%';},300);});}});},{threshold:0.1});
+document.querySelectorAll('section').forEach(function(s){observer.observe(s);});
+</script>
+</body>
+</html>
