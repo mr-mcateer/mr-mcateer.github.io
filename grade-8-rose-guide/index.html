@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metal Rose -- Level 1 Metalwork Project -- Mr. McAteer</title>
+  <meta name="description" content="Step-by-step student guide for the Grade 8 Metal Rose project. Tools, vocabulary, layout, cutting, sanding, and a teacher approval gate.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf7f3;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #6c757d;
+      --border: #e3dfd8;
+      --border-strong: #c9c2b6;
+      --accent: #b35e3c;
+      --accent-light: #d97e5a;
+      --accent-soft: #fbeee6;
+      --ink: #111;
+      --green: #1a7a1a;
+      --green-soft: #e8f5e9;
+      --blue: #2563eb;
+      --blue-soft: #e0ecff;
+      --amber: #b45309;
+      --amber-soft: #fff4d6;
+      --danger: #b91c1c;
+      --danger-soft: #fde7e7;
+      --slate: #2d3e50;
+      --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+    }
+    [data-theme="dark"] {
+      --bg: #0f1419;
+      --card-bg: #1a1f2e;
+      --text: #e8e8e8;
+      --muted: #9aa3b2;
+      --border: #2a3140;
+      --border-strong: #3a4250;
+      --accent: #d97e5a;
+      --accent-light: #e8a78a;
+      --accent-soft: #2a1f1a;
+      --ink: #f4f4f4;
+      --green: #4ade80;
+      --green-soft: #1a2e1a;
+      --blue: #60a5fa;
+      --blue-soft: #1a2540;
+      --amber: #fbbf24;
+      --amber-soft: #2e2510;
+      --danger: #f87171;
+      --danger-soft: #2e1a1a;
+      --slate: #94a3b8;
+      --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.2);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { background: var(--bg); color-scheme: light; scroll-behavior: smooth; }
+    [data-theme="dark"] html { color-scheme: dark; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============ NAV ============ */
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .topnav .brand {
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-right: auto;
+    }
+    .topnav a, .topnav button {
+      font-family: inherit;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      background: transparent;
+      cursor: pointer;
+    }
+    .topnav a:hover, .topnav button:hover {
+      color: var(--text);
+      background: var(--bg);
+    }
+    .topnav .theme-btn { font-weight: 600; }
+    .topnav .print-btn { color: var(--accent); border-color: var(--border); }
+    .topnav .print-btn:hover { background: var(--accent-soft); color: var(--accent); }
+
+    /* ============ HEADER ============ */
+    .hero {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      color: #fff;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+    }
+    .hero .level-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .hero .subtitle {
+      font-size: 1rem;
+      opacity: 0.95;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .hero .meta-row {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+      font-size: 0.85rem;
+    }
+    .hero .meta-row span { opacity: 0.95; }
+    .hero .meta-row strong { font-weight: 700; }
+
+    /* ============ LAYOUT ============ */
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+    section { margin-bottom: 2.5rem; }
+    section > h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+    section > h2 .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+    section > .lede {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      max-width: 660px;
+    }
+
+    /* ============ CARDS ============ */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+    }
+    .card + .card { margin-top: 0.85rem; }
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .card p { color: var(--text); }
+    .card p + p { margin-top: 0.5rem; }
+
+    /* Hero card with finished-rose SVG */
+    .makecard {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      align-items: center;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+    @media (min-width: 700px) {
+      .makecard { grid-template-columns: 220px 1fr; }
+    }
+    .makecard svg { display: block; max-width: 220px; margin: 0 auto; }
+    .makecard h2 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .makecard p { color: var(--muted); font-size: 0.95rem; }
+    .makecard .tags {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.85rem;
+      flex-wrap: wrap;
+    }
+    .makecard .tags span {
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* ============ VIDEO ============ */
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #000;
+      border: 1px solid var(--border);
+    }
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    .video-fallback {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+    .video-fallback a { color: var(--accent); }
+
+    /* ============ ORIENTATION GRID ============ */
+    .orient-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
+    @media (min-width: 600px) {
+      .orient-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .orient-cell {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+    .orient-cell .label {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .orient-cell .val {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .orient-cell ul { padding-left: 1.1rem; margin-top: 0.25rem; }
+    .orient-cell li { font-size: 0.9rem; color: var(--text); margin-bottom: 0.15rem; }
+
+    /* ============ VOCABULARY ============ */
+    .vocab {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+    @media (min-width: 600px) { .vocab { grid-template-columns: 1fr 1fr; } }
+    .vocab dt {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.95rem;
+      margin-bottom: 0.1rem;
+    }
+    .vocab dd {
+      color: var(--text);
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+    .vocab .pair {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.7rem 0.85rem;
+    }
+
+    /* ============ TOOLS ============ */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
+    @media (min-width: 600px) { .tools-grid { grid-template-columns: 1fr 1fr; } }
+    .tool {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0.85rem;
+      align-items: start;
+    }
+    .tool .ico {
+      width: 56px;
+      height: 56px;
+      background: var(--accent-soft);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tool .ico svg { width: 38px; height: 38px; }
+    .tool h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .tool .use {
+      font-size: 0.85rem;
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .tool .safety {
+      margin-top: 0.45rem;
+      padding: 0.4rem 0.55rem;
+      background: var(--amber-soft);
+      border-left: 3px solid var(--amber);
+      font-size: 0.78rem;
+      color: var(--text);
+      border-radius: 4px;
+    }
+    .tool .safety strong { color: var(--amber); font-weight: 700; }
+
+    /* ============ CHECKLIST ============ */
+    .checklist {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .checklist h3 { margin-bottom: 0.6rem; }
+    .checklist label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.35rem 0;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    .checklist input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .checklist label.done { color: var(--muted); text-decoration: line-through; }
+    .checklist .reset-btn {
+      margin-top: 0.5rem;
+      font-family: inherit;
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    .checklist .reset-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ============ STEPS ============ */
+    .step {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow);
+    }
+    .step .step-head {
+      display: flex;
+      gap: 0.85rem;
+      align-items: baseline;
+      margin-bottom: 0.85rem;
+    }
+    .step .step-num {
+      flex: 0 0 auto;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step .step-title { font-size: 1.25rem; font-weight: 700; line-height: 1.3; }
+    .step .step-body p { margin-bottom: 0.6rem; }
+    .step .step-body p:last-child { margin-bottom: 0; }
+    .step .diagram {
+      margin: 1rem 0;
+      padding: 0.85rem;
+      background: var(--bg);
+      border: 1px dashed var(--border-strong);
+      border-radius: 8px;
+      text-align: center;
+    }
+    .step .diagram svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+    .step .diagram .caption {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+    .step .checkpoint {
+      margin-top: 0.85rem;
+      padding: 0.7rem 0.85rem;
+      background: var(--green-soft);
+      border-left: 4px solid var(--green);
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    .step .checkpoint strong { color: var(--green); }
+    .step .watchout {
+      margin-top: 0.5rem;
+      padding: 0.7rem 0.85rem;
+      background: var(--amber-soft);
+      border-left: 4px solid var(--amber);
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    .step .watchout strong { color: var(--amber); }
+    .step .substep {
+      margin: 0.7rem 0 0.7rem 0;
+      padding: 0.7rem 0.85rem;
+      background: var(--blue-soft);
+      border-left: 3px solid var(--blue);
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    .step .substep strong { color: var(--blue); }
+
+    /* ============ APPROVAL GATE ============ */
+    .gate {
+      background: var(--danger);
+      color: #fff;
+      border-radius: 14px;
+      padding: 1.75rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(185,28,28,0.25);
+    }
+    .gate .stop-svg { display: block; margin: 0 auto 0.6rem; }
+    .gate h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+    .gate h2 .num { display: none; }
+    .gate p { font-size: 1rem; max-width: 600px; margin: 0 auto 0.5rem; }
+    .gate .why {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255,255,255,0.3);
+      font-size: 0.85rem;
+      opacity: 0.95;
+    }
+
+    /* ============ BIG IDEA ============ */
+    .big-idea {
+      background: linear-gradient(135deg, var(--slate) 0%, #1a2532 100%);
+      color: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    [data-theme="dark"] .big-idea {
+      background: linear-gradient(135deg, #1a2532 0%, #0a1018 100%);
+      border: 1px solid var(--border);
+    }
+    .big-idea .label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 0.5rem;
+    }
+    .big-idea h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .big-idea h2::before { content: ""; }
+    .big-idea p { font-size: 0.95rem; opacity: 0.95; }
+
+    /* ============ TROUBLESHOOTING ============ */
+    .troubleshoot details {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .troubleshoot summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--text);
+      font-size: 0.95rem;
+      list-style: none;
+      position: relative;
+      padding-left: 1.3rem;
+    }
+    .troubleshoot summary::-webkit-details-marker { display: none; }
+    .troubleshoot summary::before {
+      content: "+";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    .troubleshoot details[open] summary::before { content: "-"; }
+    .troubleshoot details[open] summary { margin-bottom: 0.5rem; }
+    .troubleshoot p { font-size: 0.9rem; padding-left: 1.3rem; color: var(--text); }
+
+    /* ============ SELF-CHECK ============ */
+    .selfcheck {
+      background: var(--green-soft);
+      border: 2px solid var(--green);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+    [data-theme="dark"] .selfcheck { background: var(--green-soft); }
+    .selfcheck h3 {
+      color: var(--green);
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    .selfcheck p { font-size: 0.85rem; color: var(--text); margin-bottom: 0.6rem; }
+    .selfcheck label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.3rem 0;
+      font-size: 0.92rem;
+      cursor: pointer;
+    }
+    .selfcheck input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--green);
+      cursor: pointer;
+    }
+    .selfcheck label.done { color: var(--muted); text-decoration: line-through; }
+    .selfcheck .gate-msg {
+      margin-top: 0.85rem;
+      padding: 0.6rem 0.8rem;
+      background: rgba(255,255,255,0.5);
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--green);
+      display: none;
+    }
+    [data-theme="dark"] .selfcheck .gate-msg { background: rgba(0,0,0,0.3); }
+    .selfcheck.complete .gate-msg { display: block; }
+
+    /* ============ COMING NEXT ============ */
+    .coming-next {
+      background: var(--bg);
+      border: 2px dashed var(--border-strong);
+      border-radius: 10px;
+      padding: 1.25rem;
+      text-align: center;
+      color: var(--muted);
+    }
+    .coming-next .label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .coming-next p { font-size: 0.95rem; }
+
+    /* ============ SOURCES ============ */
+    .sources {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .sources ul { list-style: none; }
+    .sources li {
+      padding: 0.35rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .sources li:last-child { border-bottom: none; }
+    .sources a { color: var(--accent); text-decoration: none; }
+    .sources a:hover { text-decoration: underline; }
+    .sources .pdf-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      background: var(--danger-soft);
+      color: var(--danger);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      margin-left: 0.3rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    /* ============ FOOTER ============ */
+    .footer {
+      text-align: center;
+      padding: 2rem 1.5rem 1rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    .footer a { color: var(--muted); }
+
+    /* ============ PRINT ============ */
+    @media print {
+      :root {
+        --bg: #fff;
+        --card-bg: #fff;
+        --text: #000;
+        --muted: #444;
+        --border: #999;
+        --shadow: none;
+      }
+      html, body { background: #fff !important; color: #000 !important; }
+      body { font-size: 10.5pt; line-height: 1.4; }
+      .topnav, .video-wrap, .video-fallback, .checklist .reset-btn,
+      .selfcheck .gate-msg { display: none !important; }
+      .hero {
+        background: #fff !important;
+        color: #000 !important;
+        padding: 0.4in 0;
+        text-align: left;
+        border-bottom: 2pt solid #000;
+      }
+      .hero h1 { font-size: 18pt; color: #000; }
+      .hero .level-tag { background: transparent; color: #555; padding: 0; border: 1px solid #555; }
+      .hero .subtitle { color: #333; }
+      .container { padding: 0.3in 0.5in 0.5in; max-width: 100%; }
+      .makecard, .step, .card, .orient-cell, .checklist, .selfcheck, .big-idea, .gate {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1pt solid #999 !important;
+        page-break-inside: avoid;
+      }
+      .gate {
+        background: #fff !important;
+        color: #000 !important;
+        border: 3pt solid #000 !important;
+      }
+      .gate h2 { color: #000 !important; }
+      .big-idea {
+        background: #fff !important;
+        color: #000 !important;
+        border: 2pt solid #000 !important;
+      }
+      .big-idea h2, .big-idea .label, .big-idea p { color: #000 !important; opacity: 1 !important; }
+      .step .checkpoint, .step .watchout, .step .substep {
+        background: #fff !important;
+        border-left: 3pt solid #000 !important;
+      }
+      .tool { border-left: 3pt solid #000 !important; }
+      .footer { border-top: 1pt solid #999; padding-top: 0.2in; }
+      a { color: #000 !important; text-decoration: underline; }
+      section { page-break-inside: auto; }
+      .step, .tool, .gate { page-break-inside: avoid; }
+    }
+
+    @page { size: letter; margin: 0.5in; }
+
+    /* utility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.5rem 0.75rem;
+      text-decoration: none;
+      border-radius: 0 0 6px 0;
+    }
+    .skip-link:focus { top: 0; }
+    .toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      padding: 0.85rem 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      font-size: 0.82rem;
+    }
+    .toc strong { color: var(--muted); margin-right: 0.4rem; font-weight: 600; }
+    .toc a {
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+    }
+    .toc a:hover { background: var(--accent-soft); }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="topnav" aria-label="Top">
+  <a href="../index.html" class="brand">Mr. McAteer</a>
+  <a href="#tools">Tools</a>
+  <a href="#procedure">Procedure</a>
+  <a href="#self-check">Self-check</a>
+  <a href="#sources">Sources</a>
+  <button type="button" class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">Dark</button>
+  <button type="button" class="print-btn" onclick="window.print()">Print</button>
+</nav>
+
+<header class="hero">
+  <span class="level-tag">Level 1 Metalwork Project</span>
+  <h1>Metal Rose</h1>
+  <p class="subtitle">A guided, step-by-step build. Layout your shapes, get teacher approval, then cut, sand, and assemble a sheet-metal flower you can take home.</p>
+  <div class="meta-row">
+    <span><strong>Time:</strong> 3-5 class periods</span>
+    <span><strong>Reading level:</strong> Grade 7</span>
+    <span><strong>Difficulty:</strong> Beginner</span>
+  </div>
+</header>
+
+<main id="main" class="container">
+
+<!-- ============ TABLE OF CONTENTS ============ -->
+<div class="toc" aria-label="Page contents">
+  <strong>Jump to:</strong>
+  <a href="#what-youll-make">What you'll make</a>
+  <a href="#watch-first">Watch first</a>
+  <a href="#orientation">Orientation</a>
+  <a href="#vocab">Vocabulary</a>
+  <a href="#tools">Tools (7)</a>
+  <a href="#materials">Materials</a>
+  <a href="#procedure">Procedure</a>
+  <a href="#big-idea">Big idea</a>
+  <a href="#troubleshoot">Troubleshooting</a>
+  <a href="#self-check">Self-check</a>
+  <a href="#sources">Sources</a>
+</div>
+
+<!-- ============ WHAT YOU'LL MAKE ============ -->
+<section id="what-youll-make">
+  <div class="makecard">
+    <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration of a finished metal rose">
+      <!-- Stem -->
+      <line x1="100" y1="120" x2="100" y2="230" stroke="#3a5a3a" stroke-width="4" stroke-linecap="round"/>
+      <!-- Leaves -->
+      <path d="M 100 170 Q 70 160 55 180 Q 75 195 100 180 Z" fill="#4a7c4a" stroke="#2d4d2d" stroke-width="1.2"/>
+      <path d="M 100 195 Q 130 188 145 205 Q 125 218 100 205 Z" fill="#4a7c4a" stroke="#2d4d2d" stroke-width="1.2"/>
+      <line x1="100" y1="175" x2="80" y2="178" stroke="#2d4d2d" stroke-width="0.8"/>
+      <line x1="100" y1="200" x2="125" y2="203" stroke="#2d4d2d" stroke-width="0.8"/>
+      <!-- Outer petals (large) -->
+      <g transform="translate(100,90)">
+        <ellipse cx="0" cy="-32" rx="22" ry="32" fill="#c9543a" stroke="#7a2515" stroke-width="1.4" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-32" rx="22" ry="32" fill="#c9543a" stroke="#7a2515" stroke-width="1.4" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-32" rx="22" ry="32" fill="#c9543a" stroke="#7a2515" stroke-width="1.4" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-32" rx="22" ry="32" fill="#c9543a" stroke="#7a2515" stroke-width="1.4" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-32" rx="22" ry="32" fill="#c9543a" stroke="#7a2515" stroke-width="1.4" transform="rotate(288)"/>
+      </g>
+      <!-- Mid petals -->
+      <g transform="translate(100,90)">
+        <ellipse cx="0" cy="-22" rx="14" ry="22" fill="#d97050" stroke="#7a2515" stroke-width="1.2" transform="rotate(36)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="22" fill="#d97050" stroke="#7a2515" stroke-width="1.2" transform="rotate(108)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="22" fill="#d97050" stroke="#7a2515" stroke-width="1.2" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="22" fill="#d97050" stroke="#7a2515" stroke-width="1.2" transform="rotate(252)"/>
+        <ellipse cx="0" cy="-22" rx="14" ry="22" fill="#d97050" stroke="#7a2515" stroke-width="1.2" transform="rotate(324)"/>
+      </g>
+      <!-- Inner bud -->
+      <circle cx="100" cy="90" r="11" fill="#a73a26" stroke="#5c1810" stroke-width="1.4"/>
+      <circle cx="100" cy="90" r="5" fill="#7a2515"/>
+      <!-- Highlight to look metallic -->
+      <ellipse cx="92" cy="84" rx="3" ry="2" fill="#fff" opacity="0.5"/>
+    </svg>
+    <div>
+      <h2>What you will make</h2>
+      <p>A small sheet-metal rose with five petals, a center bud, and one or two leaves. Designed flat on paper, traced onto thin sheet metal, snipped out, shaped by hand, then assembled.</p>
+      <div class="tags">
+        <span>Sheet metal</span>
+        <span>Hand layout</span>
+        <span>Cold-formed</span>
+        <span>Take-home</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WATCH FIRST ============ -->
+<section id="watch-first">
+  <h2>Watch first</h2>
+  <p class="lede">Mr. McAteer's class demonstration video. Watch the full thing before you start your own layout.</p>
+  <div class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/g-NbK7fyIqM"
+            title="Metal rose demonstration video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"></iframe>
+  </div>
+  <p class="video-fallback">If the video does not load on the school network, search YouTube for <strong>"Holbrook Tech metal rose"</strong> or watch on the projector during class.</p>
+</section>
+
+<!-- ============ ORIENTATION ============ -->
+<section id="orientation">
+  <h2><span class="num">1</span> Before you start</h2>
+  <p class="lede">A quick orientation so you know what you are signing up for.</p>
+  <div class="orient-grid">
+    <div class="orient-cell">
+      <div class="label">Time needed</div>
+      <div class="val">3 to 5 class periods</div>
+      <ul>
+        <li>Day 1: layout on paper</li>
+        <li>Day 2: cut sheet metal</li>
+        <li>Day 3-4: shape and assemble</li>
+        <li>Day 5: finish and stem</li>
+      </ul>
+    </div>
+    <div class="orient-cell">
+      <div class="label">Materials</div>
+      <div class="val">Sheet metal + a few extras</div>
+      <ul>
+        <li>Sheet metal, 22-26 gauge</li>
+        <li>Plain paper, pencil, sharpie</li>
+        <li>Scrap wood for stem (optional)</li>
+        <li>Sandpaper, 120 then 220 grit</li>
+      </ul>
+    </div>
+    <div class="orient-cell">
+      <div class="label">By the end you will</div>
+      <div class="val">Earn a layout mark + finished rose</div>
+      <ul>
+        <li>Read a measurement to the mm</li>
+        <li>Use snips and a Beverly shear safely</li>
+        <li>Lay out parts to save material</li>
+        <li>Take home a finished metal flower</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VOCABULARY ============ -->
+<section id="vocab">
+  <h2><span class="num">2</span> Words you will hear</h2>
+  <p class="lede">Five terms the teacher will use a lot. Skim them now so the demo makes sense.</p>
+  <dl class="vocab">
+    <div class="pair">
+      <dt>Layout</dt>
+      <dd>The plan on paper before you cut anything. Where each shape goes, how big, in what order.</dd>
+    </div>
+    <div class="pair">
+      <dt>Template</dt>
+      <dd>The cut-out paper shape you trace around onto the sheet metal. Reusable.</dd>
+    </div>
+    <div class="pair">
+      <dt>Gauge</dt>
+      <dd>How thick the sheet metal is. Higher number means thinner. We use 22-26 gauge -- thin enough to snip by hand.</dd>
+    </div>
+    <div class="pair">
+      <dt>Snips</dt>
+      <dd>Heavy-duty scissors made for sheet metal. Aviation snips have color-coded handles for left, right, and straight cuts.</dd>
+    </div>
+    <div class="pair">
+      <dt>Approval</dt>
+      <dd>A teacher signature on your layout before you are allowed to cut metal. No approval, no cutting.</dd>
+    </div>
+  </dl>
+</section>
+
+<!-- ============ TOOLS ============ -->
+<section id="tools">
+  <h2><span class="num">3</span> Tools you will use</h2>
+  <p class="lede">Seven tools, in roughly the order you will reach for them. Read the safety note on each one.</p>
+  <div class="tools-grid">
+
+    <div class="tool">
+      <div class="ico">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-label="Calipers icon">
+          <line x1="6" y1="8" x2="6" y2="32" stroke="#b35e3c" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="6" y1="8" x2="34" y2="8" stroke="#b35e3c" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="34" y1="8" x2="34" y2="22" stroke="#b35e3c" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="6" y1="32" x2="14" y2="32" stroke="#b35e3c" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="22" y="20" width="14" height="6" rx="1" fill="#fff" stroke="#b35e3c" stroke-width="1.5"/>
+          <line x1="26" y1="20" x2="26" y2="26" stroke="#b35e3c" stroke-width="1"/>
+          <line x1="30" y1="20" x2="30" y2="26" stroke="#b35e3c" stroke-width="1"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Calipers</h3>
+        <div class="use">For drawing circles or arcs on paper or on material.</div>
+        <div class="safety"><strong>Watch:</strong> The points are sharp. Keep them flat on the bench when not in use.</div>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="ico">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-label="Center punch icon">
+          <rect x="17" y="6" width="6" height="20" fill="#b35e3c" stroke="#7a3d24" stroke-width="1.5"/>
+          <polygon points="17,26 23,26 20,34" fill="#5a3220" stroke="#3a2010" stroke-width="1"/>
+          <rect x="14" y="4" width="12" height="3" rx="1" fill="#7a3d24"/>
+          <line x1="20" y1="4" x2="20" y2="0" stroke="#999" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Center punch</h3>
+        <div class="use">Used with a hammer. Makes a small dent in metal so the drill bit does not skate when you start a hole.</div>
+        <div class="safety"><strong>Watch:</strong> Safety glasses on. Keep your fingers behind the punch tip, never wrapped around it.</div>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="ico">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-label="Ruler icon">
+          <rect x="4" y="14" width="32" height="12" rx="1" fill="#fff" stroke="#b35e3c" stroke-width="1.8"/>
+          <g stroke="#b35e3c" stroke-width="1">
+            <line x1="8" y1="14" x2="8" y2="20"/>
+            <line x1="12" y1="14" x2="12" y2="18"/>
+            <line x1="16" y1="14" x2="16" y2="20"/>
+            <line x1="20" y1="14" x2="20" y2="18"/>
+            <line x1="24" y1="14" x2="24" y2="20"/>
+            <line x1="28" y1="14" x2="28" y2="18"/>
+            <line x1="32" y1="14" x2="32" y2="20"/>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <h3>Ruler / straight edge</h3>
+        <div class="use">For measuring distance. Also handy as a straight edge when you draw long lines.</div>
+        <div class="safety"><strong>Watch:</strong> Read in millimeters, not eyeballed. 20 mm is double 10 mm, not "about the same."</div>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="ico">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-label="Tin snips icon">
+          <line x1="6" y1="8" x2="22" y2="22" stroke="#b35e3c" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="6" y1="32" x2="22" y2="18" stroke="#b35e3c" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="28" cy="20" r="4" fill="none" stroke="#b35e3c" stroke-width="2"/>
+          <line x1="22" y1="22" x2="34" y2="34" stroke="#d9a48a" stroke-width="3" stroke-linecap="round"/>
+          <line x1="22" y1="18" x2="34" y2="6" stroke="#d9a48a" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Tin snips / aviation snips</h3>
+        <div class="use">Cuts sheet metal up to about 20 gauge thick. Color-coded: yellow straight, green right curves, red left curves.</div>
+        <div class="safety"><strong>Watch:</strong> The cut edge is razor sharp. Bend it under or file it flat the moment a piece is free.</div>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="ico">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-label="Beverly shear icon">
+          <rect x="6" y="22" width="28" height="6" fill="#5a4030" stroke="#3a2010" stroke-width="1.2"/>
+          <rect x="14" y="14" width="6" height="10" fill="#b35e3c" stroke="#7a3d24" stroke-width="1.2"/>
+          <line x1="16" y1="6" x2="34" y2="14" stroke="#b35e3c" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="34" cy="14" r="2.5" fill="#7a3d24"/>
+          <polygon points="14,24 20,24 20,28 14,28" fill="#999"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Beverly shear</h3>
+        <div class="use">Bench-mounted lever shear. Cuts sheet metal and some other flat materials. <strong>No round materials</strong> -- they roll and ruin the blade.</div>
+        <div class="safety"><strong>Watch:</strong> Move material with both hands flat. Keep fingers at least 50 mm (2 inches) from the blade. Lower the handle slowly.</div>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="ico">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-label="Hack saw icon">
+          <rect x="4" y="14" width="32" height="3" fill="#999" stroke="#555" stroke-width="0.8"/>
+          <path d="M 4 17 L 8 19 L 12 17 L 16 19 L 20 17 L 24 19 L 28 17 L 32 19 L 36 17" fill="none" stroke="#555" stroke-width="0.8"/>
+          <rect x="2" y="10" width="4" height="14" rx="1" fill="#b35e3c"/>
+          <rect x="34" y="10" width="4" height="14" rx="1" fill="#b35e3c"/>
+          <rect x="6" y="22" width="28" height="6" rx="1" fill="#7a3d24"/>
+          <rect x="10" y="28" width="20" height="3" rx="1" fill="#5a3220"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Hack saw</h3>
+        <div class="use">Cuts solid material that is held still by a vice or clamp. Slow strokes, full length of the blade.</div>
+        <div class="safety"><strong>Watch:</strong> Clamp the work first, every time. A loose piece will fly. Saw teeth point forward; let the blade do the cutting.</div>
+      </div>
+    </div>
+
+    <div class="tool">
+      <div class="ico">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-label="Drill press icon">
+          <rect x="6" y="32" width="28" height="4" fill="#5a4030"/>
+          <rect x="18" y="6" width="4" height="20" fill="#999"/>
+          <rect x="10" y="6" width="20" height="6" rx="1" fill="#b35e3c"/>
+          <circle cx="20" cy="9" r="2" fill="#7a3d24"/>
+          <rect x="16" y="22" width="8" height="4" fill="#999" stroke="#555" stroke-width="0.6"/>
+          <line x1="20" y1="26" x2="20" y2="32" stroke="#555" stroke-width="2"/>
+          <rect x="12" y="28" width="16" height="4" fill="#777"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Drill press</h3>
+        <div class="use">Puts holes in things. Fast, accurate, and far stronger than a handheld drill.</div>
+        <div class="safety"><strong>Watch:</strong> Removes loose objects like long hair and clothing. Tie hair back. Roll up sleeves. No gloves. No loose strings. Clamp the work.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ MATERIALS CHECKLIST ============ -->
+<section id="materials">
+  <h2><span class="num">4</span> Materials check</h2>
+  <p class="lede">Tap each item as you grab it. Your progress saves automatically on this device.</p>
+  <div class="checklist" id="materials-list">
+    <h3>What you should have at your station</h3>
+    <label><input type="checkbox" data-key="m1"> Plain paper, at least 1 sheet</label>
+    <label><input type="checkbox" data-key="m2"> Pencil and an eraser</label>
+    <label><input type="checkbox" data-key="m3"> Calipers (the kind you can lock and re-open)</label>
+    <label><input type="checkbox" data-key="m4"> Ruler in millimeters</label>
+    <label><input type="checkbox" data-key="m5"> Felt pen or dark Sharpie (blue or black)</label>
+    <label><input type="checkbox" data-key="m6"> Tin snips, your own pair</label>
+    <label><input type="checkbox" data-key="m7"> Sheet metal, enough for 6 shapes</label>
+    <label><input type="checkbox" data-key="m8"> Safety glasses, on your face</label>
+    <label><input type="checkbox" data-key="m9"> Hole punch, to save your drawing if class ends</label>
+    <button type="button" class="reset-btn" id="resetMaterials">Reset checklist</button>
+  </div>
+</section>
+
+<!-- ============ PROCEDURE ============ -->
+<section id="procedure">
+  <h2><span class="num">5</span> Procedure</h2>
+  <p class="lede">Five steps to layout day. Read the whole step before you start it.</p>
+
+  <!-- STEP 1 -->
+  <article class="step" id="step-1">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div class="step-title">Blank paper time</div>
+    </div>
+    <div class="step-body">
+      <p>Grab a clean sheet of plain paper. This is where your whole rose lives until you have teacher approval to cut metal.</p>
+      <p>If class ends before you finish, use the hole punch and slide your paper into the binder. Do not throw it out -- you will keep working on the same drawing tomorrow.</p>
+      <div class="checkpoint"><strong>You will know it is right when:</strong> your name is in the top corner and the page is blank in the middle, ready for shapes.</div>
+      <div class="watchout"><strong>Watch out for:</strong> tearing the page when you punch holes. Punch the corner only, not the middle of your drawing.</div>
+    </div>
+  </article>
+
+  <!-- STEP 2 -->
+  <article class="step" id="step-2">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div class="step-title">Lay out the 6 shapes</div>
+    </div>
+    <div class="step-body">
+      <p>Look at the class demo. Your rose has <strong>six shapes</strong>: three petal layers (large, medium, small), one center bud, and two leaves. Fit all six on one sheet of paper.</p>
+
+      <div class="diagram" aria-label="Six shapes laid out on a sheet of paper">
+        <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg">
+          <!-- Paper outline -->
+          <rect x="6" y="6" width="348" height="208" fill="#fffdf8" stroke="#999" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <!-- Large petal layer (5 lobes) -->
+          <g transform="translate(80,80)">
+            <ellipse cx="0" cy="-32" rx="14" ry="32" fill="none" stroke="#b35e3c" stroke-width="1.5" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-32" rx="14" ry="32" fill="none" stroke="#b35e3c" stroke-width="1.5" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-32" rx="14" ry="32" fill="none" stroke="#b35e3c" stroke-width="1.5" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-32" rx="14" ry="32" fill="none" stroke="#b35e3c" stroke-width="1.5" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-32" rx="14" ry="32" fill="none" stroke="#b35e3c" stroke-width="1.5" transform="rotate(288)"/>
+            <text x="0" y="3" text-anchor="middle" font-size="9" font-weight="700" fill="#7a2515">LARGE</text>
+          </g>
+          <!-- Medium petal layer -->
+          <g transform="translate(180,68)">
+            <ellipse cx="0" cy="-22" rx="10" ry="22" fill="none" stroke="#b35e3c" stroke-width="1.5" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-22" rx="10" ry="22" fill="none" stroke="#b35e3c" stroke-width="1.5" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-22" rx="10" ry="22" fill="none" stroke="#b35e3c" stroke-width="1.5" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-22" rx="10" ry="22" fill="none" stroke="#b35e3c" stroke-width="1.5" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-22" rx="10" ry="22" fill="none" stroke="#b35e3c" stroke-width="1.5" transform="rotate(288)"/>
+            <text x="0" y="3" text-anchor="middle" font-size="8" font-weight="700" fill="#7a2515">MEDIUM</text>
+          </g>
+          <!-- Small petal layer -->
+          <g transform="translate(265,62)">
+            <ellipse cx="0" cy="-15" rx="7" ry="15" fill="none" stroke="#b35e3c" stroke-width="1.5" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-15" rx="7" ry="15" fill="none" stroke="#b35e3c" stroke-width="1.5" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-15" rx="7" ry="15" fill="none" stroke="#b35e3c" stroke-width="1.5" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-15" rx="7" ry="15" fill="none" stroke="#b35e3c" stroke-width="1.5" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-15" rx="7" ry="15" fill="none" stroke="#b35e3c" stroke-width="1.5" transform="rotate(288)"/>
+            <text x="0" y="3" text-anchor="middle" font-size="7" font-weight="700" fill="#7a2515">SMALL</text>
+          </g>
+          <!-- Center bud -->
+          <g transform="translate(320,140)">
+            <circle r="14" fill="none" stroke="#b35e3c" stroke-width="1.5"/>
+            <text x="0" y="3" text-anchor="middle" font-size="7" font-weight="700" fill="#7a2515">BUD</text>
+          </g>
+          <!-- Leaf 1 -->
+          <g transform="translate(80,170)">
+            <path d="M -25 0 Q 0 -18 25 0 Q 0 18 -25 0 Z" fill="none" stroke="#3a7a3a" stroke-width="1.5"/>
+            <text x="0" y="3" text-anchor="middle" font-size="8" font-weight="700" fill="#1a4a1a">LEAF</text>
+          </g>
+          <!-- Leaf 2 -->
+          <g transform="translate(190,170)">
+            <path d="M -25 0 Q 0 -18 25 0 Q 0 18 -25 0 Z" fill="none" stroke="#3a7a3a" stroke-width="1.5"/>
+            <text x="0" y="3" text-anchor="middle" font-size="8" font-weight="700" fill="#1a4a1a">LEAF</text>
+          </g>
+          <!-- Numbering -->
+          <text x="20" y="22" font-size="10" font-weight="700" fill="#666">1</text>
+          <text x="125" y="22" font-size="10" font-weight="700" fill="#666">2</text>
+          <text x="218" y="22" font-size="10" font-weight="700" fill="#666">3</text>
+          <text x="305" y="105" font-size="10" font-weight="700" fill="#666">4</text>
+          <text x="20" y="135" font-size="10" font-weight="700" fill="#666">5</text>
+          <text x="125" y="135" font-size="10" font-weight="700" fill="#666">6</text>
+        </svg>
+        <div class="caption">All six shapes on one page. The leaf goes lower so it does not crowd the petals.</div>
+      </div>
+
+      <div class="substep">
+        <strong>Pro tip:</strong> Tape a pencil to one leg of the calipers. Now you can swing perfect circles. Set the caliper opening to the radius (half the diameter) you want, plant the pointed leg, and rotate the pencil leg around it.
+      </div>
+
+      <div class="diagram" aria-label="Caliper with a pencil taped to one leg, used as a compass">
+        <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Caliper body -->
+          <line x1="60" y1="30" x2="60" y2="120" stroke="#b35e3c" stroke-width="3"/>
+          <line x1="60" y1="30" x2="180" y2="30" stroke="#b35e3c" stroke-width="3"/>
+          <line x1="180" y1="30" x2="180" y2="60" stroke="#b35e3c" stroke-width="3"/>
+          <!-- Hinge -->
+          <circle cx="60" cy="30" r="4" fill="#7a3d24"/>
+          <!-- Other leg pointing down -->
+          <line x1="60" y1="30" x2="60" y2="120" stroke="#b35e3c" stroke-width="3"/>
+          <polygon points="55,118 65,118 60,128" fill="#b35e3c"/>
+          <!-- Pencil taped on the right leg -->
+          <line x1="180" y1="60" x2="220" y2="120" stroke="#fbc02d" stroke-width="6" stroke-linecap="round"/>
+          <polygon points="218,116 226,124 213,127" fill="#1a1a1a"/>
+          <!-- Tape wraps -->
+          <rect x="186" y="68" width="14" height="6" fill="#fff" stroke="#888" stroke-width="0.8" transform="rotate(40 193 71)"/>
+          <rect x="200" y="86" width="14" height="6" fill="#fff" stroke="#888" stroke-width="0.8" transform="rotate(40 207 89)"/>
+          <!-- Drawn circle -->
+          <circle cx="60" cy="120" r="60" fill="none" stroke="#999" stroke-width="0.8" stroke-dasharray="3 2"/>
+          <!-- Labels -->
+          <text x="40" y="145" font-size="10" font-weight="700" fill="#444">point leg (anchor)</text>
+          <text x="200" y="138" font-size="10" font-weight="700" fill="#444">pencil leg (swings)</text>
+          <text x="170" y="65" font-size="9" fill="#888">tape here</text>
+        </svg>
+        <div class="caption">The caliper-pencil-tape trick. Anchor leg stays still, pencil leg traces a circle.</div>
+      </div>
+
+      <div class="checkpoint"><strong>You will know it is right when:</strong> all 6 shapes fit on one page, each is labeled (large, medium, small, bud, leaf, leaf), and there is at least 1 cm of white space between each one.</div>
+      <div class="watchout"><strong>Watch out for:</strong> drawing the petals too small. Make the largest layer at least 60 mm across or the finished rose will look like a button.</div>
+    </div>
+  </article>
+
+  <!-- ============ APPROVAL GATE ============ -->
+  <div class="gate" id="approval-gate" role="alert" aria-label="Stop -- get teacher approval before cutting">
+    <svg class="stop-svg" width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <polygon points="14,4 42,4 52,14 52,42 42,52 14,52 4,42 4,14"
+               fill="#fff" stroke="#fff" stroke-width="2"/>
+      <text x="28" y="36" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="800" fill="#b91c1c">STOP</text>
+    </svg>
+    <h2>Stop. Get teacher approval.</h2>
+    <p>DO NOT cut sheet metal until Mr. McAteer has signed off on your paper layout. Marks are awarded for layout. If you cut early, you lose those marks AND you waste material.</p>
+    <p class="why">Why this matters: most rose disasters start with bad layout. Once metal is cut you cannot uncut it. The 30 seconds it takes for me to look is the cheapest insurance you will ever buy.</p>
+  </div>
+
+  <!-- STEP 3 -->
+  <article class="step" id="step-3">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div class="step-title">After your mark, cut out your paper templates</div>
+    </div>
+    <div class="step-body">
+      <p>You have approval. Use scissors (regular paper scissors, not snips) to cut around each of your six shapes. These paper cut-outs are your <strong>templates</strong>.</p>
+      <p>Write your name on every single piece. Pieces wander. Names bring them back.</p>
+      <p>Use the circles you drew to design the petals and flower parts. Your design should look close to the teacher samples, but creative variation is okay -- different petal shapes, different leaf curves, your call.</p>
+      <div class="checkpoint"><strong>You will know it is right when:</strong> you have 6 paper templates, each with your name on it, stacked together so none get lost.</div>
+      <div class="watchout"><strong>Watch out for:</strong> losing the small bud. It is the easiest one to lose. Tape it to the back of a larger piece if you have to step away.</div>
+    </div>
+  </article>
+
+  <!-- STEP 4 -->
+  <article class="step" id="step-4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div class="step-title">Trace templates onto sheet metal</div>
+    </div>
+    <div class="step-body">
+      <p>Lay your sheet metal flat. Place a template on it. Trace around the edge with a felt pen or dark Sharpie -- blue or black. Pencil will not show on metal.</p>
+      <p>Spacing matters. Leave at least <strong>2 cm (20 mm)</strong> of bare metal between templates. The snips need a path to swing through.</p>
+
+      <div class="diagram" aria-label="Two layouts side by side: one with too little spacing, one with proper 2 cm spacing">
+        <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- LEFT: bad spacing -->
+          <g transform="translate(10,20)">
+            <rect x="0" y="0" width="160" height="160" fill="#fafafa" stroke="#aaa" stroke-width="1"/>
+            <text x="80" y="-6" text-anchor="middle" font-size="10" font-weight="700" fill="#b91c1c">TOO TIGHT</text>
+            <circle cx="40" cy="50" r="28" fill="none" stroke="#b35e3c" stroke-width="1.5"/>
+            <circle cx="100" cy="50" r="28" fill="none" stroke="#b35e3c" stroke-width="1.5"/>
+            <circle cx="40" cy="115" r="28" fill="none" stroke="#b35e3c" stroke-width="1.5"/>
+            <circle cx="100" cy="115" r="28" fill="none" stroke="#b35e3c" stroke-width="1.5"/>
+            <!-- X marks at the gaps -->
+            <text x="70" y="55" text-anchor="middle" font-size="14" font-weight="800" fill="#b91c1c">X</text>
+            <text x="70" y="120" text-anchor="middle" font-size="14" font-weight="800" fill="#b91c1c">X</text>
+            <text x="40" y="85" text-anchor="middle" font-size="14" font-weight="800" fill="#b91c1c">X</text>
+            <text x="100" y="85" text-anchor="middle" font-size="14" font-weight="800" fill="#b91c1c">X</text>
+            <text x="80" y="195" text-anchor="middle" font-size="9" fill="#b91c1c">snips cannot fit through</text>
+          </g>
+          <!-- RIGHT: good spacing -->
+          <g transform="translate(190,20)">
+            <rect x="0" y="0" width="160" height="160" fill="#fafafa" stroke="#aaa" stroke-width="1"/>
+            <text x="80" y="-6" text-anchor="middle" font-size="10" font-weight="700" fill="#1a7a1a">2 CM SPACING</text>
+            <circle cx="34" cy="44" r="22" fill="none" stroke="#b35e3c" stroke-width="1.5"/>
+            <circle cx="120" cy="44" r="22" fill="none" stroke="#b35e3c" stroke-width="1.5"/>
+            <circle cx="34" cy="120" r="22" fill="none" stroke="#b35e3c" stroke-width="1.5"/>
+            <circle cx="120" cy="120" r="22" fill="none" stroke="#b35e3c" stroke-width="1.5"/>
+            <!-- 2cm arrows at the gaps -->
+            <line x1="56" y1="44" x2="98" y2="44" stroke="#1a7a1a" stroke-width="0.8" stroke-dasharray="2 1"/>
+            <text x="77" y="40" text-anchor="middle" font-size="8" font-weight="700" fill="#1a7a1a">2cm</text>
+            <line x1="34" y1="66" x2="34" y2="98" stroke="#1a7a1a" stroke-width="0.8" stroke-dasharray="2 1"/>
+            <text x="22" y="84" text-anchor="middle" font-size="8" font-weight="700" fill="#1a7a1a">2cm</text>
+            <text x="80" y="195" text-anchor="middle" font-size="9" fill="#1a7a1a">snips have room to swing</text>
+          </g>
+        </svg>
+        <div class="caption">Left: shapes packed too close. Snips will run into a neighbor before you finish a cut. Right: 2 cm gaps everywhere -- room for a clean cut.</div>
+      </div>
+
+      <div class="substep">
+        <strong>Imagine the snips pathway.</strong> Before you trace, run your finger between the templates. If your finger does not fit, your snips will not fit either.
+      </div>
+
+      <div class="diagram" aria-label="Snips pathway shown as a curved track around a shape">
+        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sheet -->
+          <rect x="10" y="10" width="300" height="160" fill="#fafafa" stroke="#aaa" stroke-width="1"/>
+          <!-- Shape -->
+          <circle cx="160" cy="90" r="44" fill="#fff" stroke="#b35e3c" stroke-width="2"/>
+          <!-- Pathway -->
+          <circle cx="160" cy="90" r="56" fill="none" stroke="#1a7a1a" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <!-- Snip indicator -->
+          <g transform="translate(216,90)">
+            <line x1="-12" y1="-8" x2="6" y2="0" stroke="#7a3d24" stroke-width="2" stroke-linecap="round"/>
+            <line x1="-12" y1="8" x2="6" y2="0" stroke="#7a3d24" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="-15" cy="0" r="3" fill="#7a3d24"/>
+          </g>
+          <text x="160" y="92" text-anchor="middle" font-size="10" font-weight="700" fill="#7a2515">your shape</text>
+          <text x="160" y="170" text-anchor="middle" font-size="9" fill="#1a7a1a">green dashed line = the path your snips will travel</text>
+        </svg>
+        <div class="caption">The snips will trace a smooth curve about 2-3 mm outside your line. Picture that path before you commit.</div>
+      </div>
+
+      <div class="substep">
+        <strong>Group hint:</strong> If your group buys sheet metal together, cut long strips first. Width = the widest piece + 0.5 cm of "wiggle room." Share strips. Less waste, less fighting over the good piece.
+      </div>
+
+      <div class="diagram" aria-label="Three students sharing a long strip of sheet metal">
+        <svg viewBox="0 0 360 130" xmlns="http://www.w3.org/2000/svg">
+          <!-- Strip -->
+          <rect x="10" y="40" width="340" height="50" fill="#e8e6e1" stroke="#888" stroke-width="1.2"/>
+          <!-- Three template circles on the strip -->
+          <circle cx="60" cy="65" r="18" fill="none" stroke="#b35e3c" stroke-width="1.5"/>
+          <circle cx="160" cy="65" r="18" fill="none" stroke="#b35e3c" stroke-width="1.5"/>
+          <circle cx="280" cy="65" r="18" fill="none" stroke="#b35e3c" stroke-width="1.5"/>
+          <!-- Names -->
+          <text x="60" y="68" text-anchor="middle" font-size="8" font-weight="700" fill="#7a2515">YOU</text>
+          <text x="160" y="68" text-anchor="middle" font-size="8" font-weight="700" fill="#7a2515">PARTNER</text>
+          <text x="280" y="68" text-anchor="middle" font-size="8" font-weight="700" fill="#7a2515">PARTNER</text>
+          <!-- Wiggle room arrows -->
+          <line x1="10" y1="35" x2="350" y2="35" stroke="#1a7a1a" stroke-width="0.8" stroke-dasharray="2 1"/>
+          <text x="180" y="28" text-anchor="middle" font-size="9" font-weight="700" fill="#1a7a1a">strip width = widest piece + 0.5 cm</text>
+          <!-- Spacing markers -->
+          <line x1="78" y1="65" x2="142" y2="65" stroke="#1a7a1a" stroke-width="0.6" stroke-dasharray="2 1"/>
+          <text x="110" y="100" text-anchor="middle" font-size="8" font-weight="700" fill="#1a7a1a">2cm</text>
+          <line x1="178" y1="65" x2="262" y2="65" stroke="#1a7a1a" stroke-width="0.6" stroke-dasharray="2 1"/>
+          <text x="220" y="100" text-anchor="middle" font-size="8" font-weight="700" fill="#1a7a1a">2cm</text>
+          <text x="180" y="118" text-anchor="middle" font-size="9" fill="#444">share the strip; less waste, less fighting</text>
+        </svg>
+        <div class="caption">A shared strip with everyone's templates traced and labeled. Cut order can be any order, but cut full-strip pieces from one end.</div>
+      </div>
+
+      <div class="checkpoint"><strong>You will know it is right when:</strong> every shape on the metal has at least 2 cm of bare metal around it, your name is in pen on the metal next to each one, and you have not cut yet.</div>
+      <div class="watchout"><strong>Watch out for:</strong> tracing on the back side. Metal often has one shinier side. Decide which side is "front" and trace on the front, then your sharpie lines disappear when you sand later.</div>
+    </div>
+  </article>
+
+  <!-- STEP 5 -->
+  <article class="step" id="step-5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div class="step-title">Cut, label, and stack</div>
+    </div>
+    <div class="step-body">
+      <p>Now you cut. Use tin snips for curves, the Beverly shear for straight runs. Make smooth, slow cuts -- short choppy cuts leave jagged edges that take forever to clean up.</p>
+      <p>As each piece comes free, write your name on it in Sharpie and stack it with your other pieces. Six pieces total. Count them before you walk away from your station.</p>
+      <div class="checkpoint"><strong>You will know it is right when:</strong> you have 6 metal pieces, each with your name on it, stacked together. Hand check: count them out loud.</div>
+      <div class="watchout"><strong>Watch out for:</strong> the cut edges. They are sharp enough to draw blood. Bend any rough edge under with pliers before you put a piece in your hand again.</div>
+    </div>
+  </article>
+
+  <!-- COMING NEXT CLASS -->
+  <div class="coming-next">
+    <div class="label">Coming next class</div>
+    <p>Shaping the petals (curl them with the round end of a hammer), drilling the center hole, sanding every piece with 120 then 220 grit, then assembly with a center bolt or rivet, plus the leaves and stem. The original instructions stop here -- "to be continued."</p>
+  </div>
+</section>
+
+<!-- ============ BIG IDEA ============ -->
+<section id="big-idea">
+  <div class="big-idea">
+    <div class="label">Big idea -- remember this one</div>
+    <h2>Sand first. Assemble second.</h2>
+    <p>Do not permanently attach or weld pieces together until you have done as much sanding as possible. Once two pieces are joined, you cannot reach the inside surfaces with sandpaper. A rough inside surface stays rough forever, and it is the first thing your grandma will notice when you give her the rose.</p>
+  </div>
+</section>
+
+<!-- ============ SECOND VIDEO ============ -->
+<section id="watch-second">
+  <h2>Final assembly walkthrough</h2>
+  <p class="lede">A second video that shows the shaping and assembly steps you will tackle in the next class.</p>
+  <div class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/PCwLlyu1xAU"
+            title="Metal rose assembly walkthrough"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"></iframe>
+  </div>
+  <p class="video-fallback">Blocked? Ask Mr. McAteer to play it on the projector or share the file directly.</p>
+</section>
+
+<!-- ============ TROUBLESHOOTING ============ -->
+<section id="troubleshoot">
+  <h2><span class="num">6</span> Troubleshooting</h2>
+  <p class="lede">Tap a question to see the answer.</p>
+  <div class="troubleshoot">
+
+    <details>
+      <summary>My circles look like ovals. What did I do wrong?</summary>
+      <p>The pencil leg of the calipers slipped while you were drawing. Press harder on the point leg (the anchor) and lighter on the pencil leg. Tape the pencil more firmly so it cannot rotate.</p>
+    </details>
+
+    <details>
+      <summary>My snips are stuck halfway through a cut.</summary>
+      <p>You probably tried to turn too sharp. Open the snips, back out a few millimeters, and re-enter the cut at a wider angle. For tight curves, switch to red (left) or green (right) snips.</p>
+    </details>
+
+    <details>
+      <summary>My templates do not fit on one page.</summary>
+      <p>You drew the shapes too big. Erase and start over with the largest petal layer at 60-70 mm across. Everything else scales down from there.</p>
+    </details>
+
+    <details>
+      <summary>The Sharpie line on metal is wider than my pencil line on paper.</summary>
+      <p>That is normal. Cut on the OUTSIDE of the Sharpie line, not the middle. You will sand the line off later.</p>
+    </details>
+
+    <details>
+      <summary>I made one shape wrong. Do I have to redo everything?</summary>
+      <p>No. Draw and cut a replacement template just for that shape. The other five are still good.</p>
+    </details>
+
+    <details>
+      <summary>I cut myself on a metal edge.</summary>
+      <p>Tell Mr. McAteer immediately. Wash with soap and water, apply a band-aid from the first-aid kit. Then bend or file every sharp edge before you keep working.</p>
+    </details>
+
+    <details>
+      <summary>Can I use scrap metal from the bin instead of new sheet?</summary>
+      <p>Yes -- as long as it is flat, clean, and at least as big as your largest template. Scrap is encouraged. Less waste = better project.</p>
+    </details>
+
+  </div>
+</section>
+
+<!-- ============ SELF-CHECK ============ -->
+<section id="self-check">
+  <h2><span class="num">7</span> Self-check before you ask Mr. McAteer</h2>
+  <p class="lede">Before you bring your paper up for approval, run through this list. If any answer is "no," fix it first. This is the single fastest way to get approved on the first try.</p>
+  <div class="selfcheck" id="selfcheck-list">
+    <h3>All five must be YES</h3>
+    <p>Tap each one as you confirm it.</p>
+    <label><input type="checkbox" data-key="s1"> My name is on the page.</label>
+    <label><input type="checkbox" data-key="s2"> All 6 shapes are drawn (large, medium, small, bud, 2 leaves).</label>
+    <label><input type="checkbox" data-key="s3"> Each shape is labeled in writing.</label>
+    <label><input type="checkbox" data-key="s4"> The largest petal layer is at least 60 mm across.</label>
+    <label><input type="checkbox" data-key="s5"> There is at least 1 cm of white space between every shape.</label>
+    <div class="gate-msg">All five YES. You are ready -- bring your paper up.</div>
+  </div>
+</section>
+
+<!-- ============ SOURCES ============ -->
+<section id="sources">
+  <h2><span class="num">8</span> Sources and credits</h2>
+  <div class="card sources">
+    <p style="margin-bottom: 0.6rem;">This guide adapts and re-sequences a Holbrook Tech project for Mr. McAteer's classroom. Original materials:</p>
+    <ul>
+      <li>Source page: <a href="https://holbrooktech.weebly.com/grade-8-rose.html" target="_blank" rel="noopener">holbrooktech.weebly.com/grade-8-rose.html</a></li>
+      <li>Original handout: <a href="https://holbrooktech.weebly.com/uploads/5/3/6/0/53607781/scrap_metal_rose_handout_edited.pdf" target="_blank" rel="noopener">scrap_metal_rose_handout_edited.pdf</a> <span class="pdf-tag">PDF 147 KB</span></li>
+      <li>Marking sheet: <a href="https://holbrooktech.weebly.com/uploads/5/3/6/0/53607781/scrap_metal_rose_marking_sheet.pdf" target="_blank" rel="noopener">scrap_metal_rose_marking_sheet.pdf</a> <span class="pdf-tag">PDF 80 KB</span></li>
+      <li>Original technique credit: <a href="https://www.instructables.com/id/Copper-Rose/" target="_blank" rel="noopener">Copper Rose on Instructables.com</a></li>
+      <li>Demonstration videos: <a href="https://www.youtube.com/watch?v=g-NbK7fyIqM" target="_blank" rel="noopener">YouTube part 1</a>, <a href="https://www.youtube.com/watch?v=PCwLlyu1xAU" target="_blank" rel="noopener">YouTube part 2</a></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <p>Mr. McAteer | Metalwork | Adapted from Holbrook Tech Grade 8 Rose | Print version uses letter paper at 0.5" margins.</p>
+</footer>
+
+<script>
+  (function () {
+    var STORAGE_THEME = 'rose-guide-theme';
+    var STORAGE_MAT = 'rose-guide-materials';
+    var STORAGE_SC = 'rose-guide-selfcheck';
+
+    // --- THEME ---
+    var btn = document.getElementById('themeToggle');
+    var root = document.documentElement;
+    function applyTheme(t) {
+      root.setAttribute('data-theme', t);
+      btn.textContent = t === 'dark' ? 'Light' : 'Dark';
+    }
+    var saved = localStorage.getItem(STORAGE_THEME);
+    if (saved === 'dark' || saved === 'light') applyTheme(saved);
+    btn.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      var next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem(STORAGE_THEME, next);
+    });
+
+    // --- CHECKLIST PERSISTENCE ---
+    function bindChecklist(containerId, storageKey, onChange) {
+      var container = document.getElementById(containerId);
+      if (!container) return;
+      var boxes = container.querySelectorAll('input[type="checkbox"]');
+      var saved = {};
+      try { saved = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch (e) {}
+      boxes.forEach(function (b) {
+        var k = b.getAttribute('data-key');
+        if (saved[k]) {
+          b.checked = true;
+          b.parentElement.classList.add('done');
+        }
+        b.addEventListener('change', function () {
+          b.parentElement.classList.toggle('done', b.checked);
+          var state = {};
+          boxes.forEach(function (x) { state[x.getAttribute('data-key')] = x.checked; });
+          localStorage.setItem(storageKey, JSON.stringify(state));
+          if (onChange) onChange(boxes);
+        });
+      });
+      if (onChange) onChange(boxes);
+    }
+
+    bindChecklist('materials-list', STORAGE_MAT);
+
+    var scContainer = document.getElementById('selfcheck-list');
+    bindChecklist('selfcheck-list', STORAGE_SC, function (boxes) {
+      var allChecked = Array.prototype.every.call(boxes, function (b) { return b.checked; });
+      scContainer.classList.toggle('complete', allChecked);
+    });
+
+    // --- RESET MATERIALS ---
+    var resetBtn = document.getElementById('resetMaterials');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        localStorage.removeItem(STORAGE_MAT);
+        document.querySelectorAll('#materials-list input[type="checkbox"]').forEach(function (b) {
+          b.checked = false;
+          b.parentElement.classList.remove('done');
+        });
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
