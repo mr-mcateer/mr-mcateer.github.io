@@ -42,6 +42,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8086", "--directory", "toolbox-certification"],
       "port": 8086
+    },
+    {
+      "name": "london-countdown",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8087", "--directory", "london-countdown"],
+      "port": 8087
     }
   ]
 }
