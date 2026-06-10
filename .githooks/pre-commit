@@ -66,4 +66,48 @@ EOMSG
     exit 1
 fi
 
+# ---- Public-repo guard: local-only working files ----
+# canvas-agent-grader/ and brand-assets/ are working directories that must
+# never be published (this repo serves a public website). Anything that
+# looks like a student-record export is blocked regardless of path.
+# .gitignore already excludes these; this guard catches force-adds and
+# pattern gaps.
+blocked=""
+while IFS= read -r f; do
+    [ -z "$f" ] && continue
+    case "$f" in
+        canvas-agent-grader/*|brand-assets/*)
+            blocked="${blocked}  ${f}\n"
+            continue
+            ;;
+    esac
+    case "$f" in
+        *.csv|*.json)
+            if git show ":$f" 2>/dev/null | head -5 | grep -qiE '(student[ _]?name|"current_grade"|"final_grade")'; then
+                blocked="${blocked}  ${f}\n"
+            fi
+            ;;
+    esac
+done <<EOF2
+$(git diff --cached --name-only --diff-filter=AM)
+EOF2
+
+if [ -n "$blocked" ]; then
+    cat >&2 <<EOMSG2
+
+[pre-commit] PUBLIC-REPO GUARD -- aborting commit.
+
+The following staged path(s) are local-only working files or look like
+student-record exports. This repo is public; they must not be committed:
+
+$(printf '%b' "$blocked")
+Keep these out of version control here. If one of them is genuinely
+public-safe site content, move it outside the guarded paths first.
+
+To bypass (only if you are certain): git commit --no-verify
+
+EOMSG2
+    exit 1
+fi
+
 exit 0
