@@ -29,6 +29,18 @@ venv/
 canvas-agent-grader/inputs/
 canvas-agent-grader/exports/synergy_reconcile_*
 canvas-agent-grader/exports/chappy_reply_*
+# Grade-run outputs (student names + scores) and at-risk overlays -- local only.
+canvas-agent-grader/exports/grade_run_*
+canvas-agent-grader/exports/draft_grades_*
+canvas-agent-grader/draft_grades_*
+canvas-agent-grader/exports/*_atrisk*
+canvas-agent-grader/exports/gradebook_snapshot.json
+canvas-agent-grader/exports/grade_run_scope.json
 
 # Claude Code worktrees (ephemeral, agent-isolated working copies)
 .claude/worktrees/
+
+# Local-only working directories -- this repo serves a public website.
+# Untracked 2026-06-10; the .githooks/pre-commit guard backstops these.
+canvas-agent-grader/
+brand-assets/
