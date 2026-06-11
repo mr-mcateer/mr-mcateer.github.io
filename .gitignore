@@ -44,3 +44,10 @@ canvas-agent-grader/exports/grade_run_scope.json
 # Untracked 2026-06-10; the .githooks/pre-commit guard backstops these.
 canvas-agent-grader/
 brand-assets/
+
+# Internal tooling + planning docs -- kept local, never published.
+# This repo IS the public website; the root and most files are served, so
+# instruction/vision docs must not be committed. Removed from history 2026-06-11.
+CLAUDE.md
+.claude/
+stock-analysis/SECRETARY_VISION.md
