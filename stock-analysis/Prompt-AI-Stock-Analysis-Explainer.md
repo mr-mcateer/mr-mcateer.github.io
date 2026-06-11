@@ -57,11 +57,11 @@ runs on a fixed schedule. The mechanics, in plain language:
 5. **Render the dashboard.** The page is rebuilt from canonical JSON
    inputs by deterministic Python renderers. Identical input gives
    byte-identical output.
-6. **the operator opens his browser, scans, decides.** No sign-in, no account, no
+6. **The operator opens the dashboard, scans, decides.** No sign-in, no account, no
    personalization. The dashboard is the artifact.
 
 There is no email, no alert, no push notification. The dashboard is the
-only output surface. the operator and his advisory peers check it when they want
+only output surface. The operator and his advisory peers check it when they want
 to; nothing arrives in anyone's inbox. That is deliberate -- silence by
 default means there is no risk of an automated message saying something
 the operator does not endorse.
@@ -106,7 +106,7 @@ event and liquidity gates.
 
 ## Why this is different from what you already have
 
-the operator's advisory group already has Bloomberg, broker research portals,
+The operator's advisory group already has Bloomberg, broker research portals,
 retail option screeners, and decades of pattern recognition. The
 dashboard does not try to compete with any of them on coverage. It
 competes on **scope and posture**.
@@ -138,9 +138,9 @@ operator's judgment.
 
 ---
 
-## A typical the operator session
+## A typical session
 
-It is Thursday, 10:35 AM Eastern. the operator opens the dashboard on his phone
+It is Thursday, 10:35 AM Eastern. The operator opens the dashboard on a phone
 over coffee.
 
 The regime tile reads **VRP compressed, 0.5x size**. He internalizes
